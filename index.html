@@ -1,0 +1,2156 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WELUX STUDIO // Luxembourg & Global — Digital Growth, Creative Lab & Technical Rentals</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cinzel:wght@500;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #FAF9F5;
+      --card-bg: #FFFFFF;
+      --text-color: #161616;
+      --accent-gold: #C5A059;
+      --accent-dark-gold: #8C6D37;
+      --border-subtle: rgba(22, 22, 22, 0.08);
+    }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    .font-serif-luxury { font-family: 'Playfair Display', serif; }
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-mono-tech { font-family: 'JetBrains Mono', monospace; }
+
+    /* Page Transitions */
+    .page-view {
+      display: none;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .page-view.active-page {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Ambient Canvas */
+    #ambient-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* Zoom & Transitions */
+    .img-zoom {
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .group:hover .img-zoom {
+      transform: scale(1.05);
+    }
+
+    .aspect-reel { aspect-ratio: 9 / 16; }
+    .border-subtle { border-color: rgba(22, 22, 22, 0.08); }
+
+    /* Device Mockups */
+    .device-desktop { width: 100%; height: 420px; }
+    .device-tablet { width: 440px; height: 420px; margin: 0 auto; }
+    .device-mobile { width: 280px; height: 420px; margin: 0 auto; }
+
+    .badge-gold {
+      background: #F0ECE1;
+      color: #8C6D37;
+      border: 1px solid #E2DAC8;
+    }
+
+    .gear-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(22, 22, 22, 0.08);
+      transition: all 0.3s ease;
+    }
+    .gear-card:hover {
+      border-color: #C5A059;
+      box-shadow: 0 12px 30px -10px rgba(197, 160, 89, 0.2);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-[#C5A059] selection:text-white relative">
+
+  <!-- Ambient Interactive Canvas (Gold Particles) -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
+  <div class="relative z-50 bg-[#F0ECE1] text-[#8C6D37] text-xs py-2 px-4 border-b border-[#E2DAC8] font-mono-tech">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[#C5A059] animate-pulse"></span>
+        <span class="font-bold">WELUX STUDIO</span>
+        <span class="text-zinc-400">|</span>
+        <span class="text-zinc-600">Luxembourg • Madrid • Paris</span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px]">
+        <span class="hidden md:inline text-zinc-500">Equipamiento Técnico Oficial Amcropa Films & Fotomatón Glam</span>
+        <!-- Language Switcher -->
+        <div class="flex items-center gap-1.5 bg-white/80 px-2 py-0.5 rounded border border-[#E2DAC8] text-[10px] font-bold">
+          <button onclick="setLang('es')" id="lang-es" class="text-black font-extrabold hover:text-[#C5A059]">ES</button>
+          <span class="text-zinc-300">/</span>
+          <button onclick="setLang('en')" id="lang-en" class="text-zinc-400 hover:text-black">EN</button>
+          <span class="text-zinc-300">/</span>
+          <button onclick="setLang('fr')" id="lang-fr" class="text-zinc-400 hover:text-black">FR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MASTER HEADER & NAVIGATION ================= -->
+  <header class="sticky top-0 z-50 bg-[#FAF9F5]/90 backdrop-blur-md border-b border-subtle">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 py-5 flex items-center justify-between">
+      
+      <!-- Brand Identity -->
+      <a href="javascript:void(0)" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-[#161616] text-white flex items-center justify-center font-cinzel font-bold text-lg group-hover:bg-[#C5A059] transition-colors shadow-sm">
+          W
+        </div>
+        <div class="flex flex-col">
+          <span class="font-cinzel font-bold text-xl tracking-[0.22em] text-[#161616] leading-none">WELUX</span>
+          <span class="text-[9px] uppercase tracking-widest text-[#8C6D37] mt-1 font-mono-tech">STUDIO // LUXURY DIGITAL & CINEMA</span>
+        </div>
+      </a>
+
+      <!-- Navigation Menu -->
+      <nav class="hidden lg:flex items-center gap-5 text-xs uppercase tracking-widest font-medium text-zinc-600">
+        <button onclick="navigateTo('home')" id="nav-home" class="nav-link text-black font-bold hover:text-[#C5A059] transition-colors">Inicio</button>
+        <button onclick="navigateTo('services')" id="nav-services" class="nav-link hover:text-black transition-colors">Servicios</button>
+        <button onclick="navigateTo('tours-360')" id="nav-tours-360" class="nav-link hover:text-black transition-colors flex items-center gap-1.5">
+          <span>Tours 360°</span>
+          <span class="px-1.5 py-0.2 bg-[#C5A059] text-white text-[9px] font-bold rounded">3D / VR</span>
+        </button>
+        <button onclick="navigateTo('rentals')" id="nav-rentals" class="nav-link hover:text-black transition-colors flex items-center gap-1.5">
+          <span>Alquiler</span>
+          <span class="px-1.5 py-0.2 bg-[#161616] text-white text-[9px] font-bold rounded">AMCROPA</span>
+        </button>
+        <button onclick="navigateTo('portfolio')" id="nav-portfolio" class="nav-link hover:text-black transition-colors">Portfolio</button>
+        <button onclick="navigateTo('about')" id="nav-about" class="nav-link hover:text-black transition-colors">El Estudio</button>
+        <button onclick="navigateTo('contact')" id="nav-contact" class="nav-link hover:text-black transition-colors">Contacto</button>
+      </nav>
+
+      <!-- Primary Action CTA -->
+      <div class="flex items-center gap-3">
+        <button onclick="navigateTo('contact')" class="px-6 py-3 rounded-full bg-[#161616] hover:bg-[#C5A059] text-white text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-sm hover:shadow-md">
+          Iniciar Proyecto ➔
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- =================================================================== -->
+  <!-- SUBPAGE 1: INICIO (HOME / INMERSIVE VERTICAL SCROLL JOURNEY) -->
+  <!-- =================================================================== -->
+  <main id="page-home" class="page-view active-page relative z-10">
+    
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 pt-16 pb-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-gold text-xs font-mono-tech font-semibold">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#C5A059]"></span>
+            AGENCIA CREATIVA & ALQUILER DE EQUIPAMIENTO CINE PROFESIONAL
+          </div>
+
+          <h1 class="font-serif-luxury text-5xl sm:text-7xl font-normal leading-[1.08] tracking-tight text-[#161616]">
+            Diseñamos el estatus <br>
+            <span class="italic text-[#C5A059]">digital, visual & cinematográfico</span> <br>
+            de marcas líderes.
+          </h1>
+
+          <p class="text-zinc-600 text-base sm:text-lg font-light max-w-xl leading-relaxed">
+            Evolucionamos el ADN de exclusividad y rigor de Luxemburgo: **Social Media Growth**, **Producción 4K de Autor**, **Diseño Web High-End** y **Alquiler de Material Técnico Profesional** (Blackmagic URSA 4.6K G2, Sigma Cine T2, Steadicam Flycam Galaxy, Zoom F6, Røde NTG-2 y Fotomatón Glam) con la garantía de *Amcropa Films*.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-4">
+            <a href="#trailers-section" class="px-8 py-4 rounded-full bg-[#161616] text-white text-xs uppercase tracking-widest font-semibold hover:bg-[#C5A059] transition-all shadow-md flex items-center gap-2">
+              <span>Explorar Trailers de Universos</span>
+              <span>↓</span>
+            </a>
+            <button onclick="navigateTo('rentals')" class="px-8 py-4 rounded-full bg-white border border-zinc-300 text-zinc-800 text-xs uppercase tracking-widest font-medium hover:border-[#C5A059] transition-all shadow-sm">
+              Ver Catálogo Amcropa Gear ➔
+            </button>
+          </div>
+        </div>
+
+        <!-- Master Hero Showcase Reel with Original Editorial Showreel Image -->
+        <div class="lg:col-span-5 relative">
+          <div class="bg-white p-4 rounded-3xl border border-subtle shadow-xl relative overflow-hidden group">
+            <div class="relative aspect-reel rounded-2xl overflow-hidden bg-stone-900">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" 
+                   alt="Welux Cinema Showreel" 
+                   class="w-full h-full object-cover img-zoom">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono-tech font-bold text-black flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+                <span>SHOWREEL OFICIAL // 4K CINE</span>
+              </div>
+
+              <div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
+                <span class="text-[10px] font-mono-tech text-[#E5C17C] uppercase">AMCROPA FILMS GEAR • WELUX STUDIO</span>
+                <h4 class="font-serif-luxury text-2xl font-bold">Producción & Escenografía</h4>
+                <p class="text-xs text-zinc-300 font-light">Rodaje con Blackmagic URSA Mini Pro 4.6K G2, Sigma 18-35mm T2 y Steadicam Flycam Galaxy.</p>
+              </div>
+            </div>
+
+            <div class="mt-4 flex justify-between items-center px-2 text-xs font-mono-tech text-zinc-500">
+              <span>ALCANCE GENERADO</span>
+              <span class="font-bold text-black">+65M Impresiones Acumuladas</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Authority Metrics Banner -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 py-10 border-y border-subtle">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 font-mono-tech text-center">
+        <div class="p-4 bg-white rounded-2xl border border-subtle">
+          <div class="text-xs text-zinc-400 uppercase">// CÁMARA CINE</div>
+          <div class="text-2xl font-bold font-serif-luxury text-black mt-1">4.6K G2</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">Blackmagic URSA Pro</div>
+        </div>
+        <div class="p-4 bg-white rounded-2xl border border-subtle">
+          <div class="text-xs text-zinc-400 uppercase">// TOURS 360° &amp; 3D</div>
+          <div class="text-2xl font-bold font-serif-luxury text-[#8C6D37] mt-1">LiDAR Pro</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">Gemelos Digitales 4K</div>
+        </div>
+        <div class="p-4 bg-white rounded-2xl border border-subtle">
+          <div class="text-xs text-zinc-400 uppercase">// AUDIO PROFESIONAL</div>
+          <div class="text-2xl font-bold font-serif-luxury text-black mt-1">32-Bit Float</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">Zoom F6 &amp; Røde NTG-2</div>
+        </div>
+        <div class="p-4 bg-white rounded-2xl border border-subtle">
+          <div class="text-xs text-zinc-400 uppercase">// ESTABILIZACIÓN</div>
+          <div class="text-2xl font-bold font-serif-luxury text-black mt-1">Galaxy Arm</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">Chaleco Flycam &amp; Redking</div>
+        </div>
+        <div class="p-4 bg-white rounded-2xl border border-subtle">
+          <div class="text-xs text-zinc-400 uppercase">// COBERTURA</div>
+          <div class="text-2xl font-bold font-serif-luxury text-[#8C6D37] mt-1">EU / Global</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">Luxemburgo, Madrid, París</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =================================================================== -->
+    <!-- RECORRIDO EN SCROLL: TRAILERS DE LOS 5 UNIVERSOS -->
+    <!-- =================================================================== -->
+    <section id="trailers-section" class="max-w-7xl mx-auto px-6 sm:px-8 py-24 space-y-32">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-xs font-mono-tech uppercase tracking-widest text-[#8C6D37] font-bold">// RECORRIDO VISUAL POR NUESTRA METODOLOGÍA</span>
+        <h2 class="font-serif-luxury text-4xl sm:text-6xl font-normal text-black">Trailers de Nuestros 6 Universos de Trabajo</h2>
+        <p class="text-zinc-600 text-sm font-light leading-relaxed">
+          Haz scroll y descubre cada uno de nuestros pilares creativos y técnicos con demostraciones audiovisuales en primer plano.
+        </p>
+      </div>
+
+
+      <!-- UNIVERSO 1: SOCIAL MEDIA GROWTH & VIRALIDAD -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 border-t border-subtle">
+        <div class="lg:col-span-5 space-y-6 order-2 lg:order-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-gold font-mono-tech text-xs font-bold">
+            <span>UNIVERSO 01 // SOCIAL MEDIA GROWTH</span>
+          </div>
+          <h3 class="font-serif-luxury text-3xl sm:text-5xl font-normal text-black leading-tight">
+            Dominio de Algoritmos & <br>
+            <span class="italic text-[#C5A059]">Viralidad de Alto Valor.</span>
+          </h3>
+          <p class="text-zinc-600 text-sm font-light leading-relaxed">
+            Construimos comunidades activas de clientes cualificados a través de guiones con ganchos narrativos, optimización algorítmica para Instagram Reels, TikTok y YouTube Shorts.
+          </p>
+          
+          <div class="bg-white p-5 rounded-2xl border border-subtle space-y-2 font-mono-tech text-xs">
+            <div class="flex justify-between text-zinc-500"><span>• Retención Promedio:</span><span class="font-bold text-black">74% en los primeros 3s</span></div>
+            <div class="flex justify-between text-zinc-500"><span>• Frecuencia:</span><span class="font-bold text-black">Estrategia 24-30 Reels/Mes</span></div>
+            <div class="flex justify-between text-zinc-500"><span>• Crecimiento Típico:</span><span class="font-bold text-[#8C6D37]">+45K a +120K Seguidores</span></div>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="navigateTo('services')" class="px-7 py-3.5 rounded-full bg-[#161616] hover:bg-[#C5A059] text-white text-xs uppercase tracking-widest font-semibold transition-all">
+              Ver Detalles de Social Growth ➔
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 order-1 lg:order-2">
+          <div class="bg-white p-4 sm:p-6 rounded-3xl border border-subtle shadow-xl space-y-4 group">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+              <img src="assets/images/social_growth_instagram.jpg" 
+                   alt="Trailer Social Media Growth & Viralidad con X" class="w-full h-full object-cover img-zoom">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1 rounded-full text-[10px] font-mono-tech font-bold text-black flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>TRAILER #01 // SOCIAL GROWTH & 𝕏 / REELS</span>
+              </div>
+
+              <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                <span class="text-[10px] font-mono-tech text-[#E5C17C] uppercase">CASO DE ÉXITO // +1.8M REPRODUCCIONES</span>
+                <h4 class="font-serif-luxury text-2xl font-bold">Campaña de Viralidad Orgánica & Algoritmos</h4>
+                <p class="text-xs text-zinc-300 font-light">Estructura de guion psicológico aplicado a marcas de alto ticket en 𝕏, Reels y TikTok.</p>
+              </div>
+            </div>
+            <div class="flex justify-between items-center text-xs font-mono-tech text-zinc-500 px-2">
+              <span>CANALES: 𝕏, Instagram Reels, TikTok, YouTube</span>
+              <span class="font-bold text-black">METRIC: +340% SHARE RATE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- UNIVERSO 2: CREACIÓN DE CONTENIDO CINEMÁTICO 4K -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 border-t border-subtle">
+        <div class="lg:col-span-7">
+          <div class="bg-white p-4 sm:p-6 rounded-3xl border border-subtle shadow-xl space-y-4 group">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+              <img src="assets/images/art_director_onset.jpg" 
+                   alt="Dirección de Arte y Producción de Autor en Set" class="w-full h-full object-cover img-zoom">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1 rounded-full text-[10px] font-mono-tech font-bold text-black flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                <span>TRAILER #02 // DIRECCIÓN DE ARTE EN SET</span>
+              </div>
+
+              <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                <span class="text-[10px] font-mono-tech text-[#E5C17C] uppercase">DIRECCIÓN CREATIVA // EVENTOS & PRODUCCIÓN</span>
+                <h4 class="font-serif-luxury text-2xl font-bold">Dirección de Arte & Puesta en Escena</h4>
+                <p class="text-xs text-zinc-300 font-light">Coordinación artística presencial, diseño de iluminación y escenografía de autor para marcas líderes.</p>
+              </div>
+            </div>
+            <div class="flex justify-between items-center text-xs font-mono-tech text-zinc-500 px-2">
+              <span>ESTILO: Editorial, Vanguardista & Cercano</span>
+              <span class="font-bold text-black">SEDE: Luxemburgo • Madrid • París</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-gold font-mono-tech text-xs font-bold">
+            <span>UNIVERSO 02 // CREACIÓN DE CONTENIDO</span>
+          </div>
+          <h3 class="font-serif-luxury text-3xl sm:text-5xl font-normal text-black leading-tight">
+            Producción 4K & <br>
+            <span class="italic text-[#C5A059]">Dirección de Arte de Autor.</span>
+          </h3>
+          <p class="text-zinc-600 text-sm font-light leading-relaxed">
+            Eliminamos los videos amateurs grabados con teléfono. Producimos contenido audiovisual con nivel de anuncio publicitario, ópticas de cine, estabilización por chaleco Steadicam e iluminación suave.
+          </p>
+          
+          <div class="bg-white p-5 rounded-2xl border border-subtle space-y-2 font-mono-tech text-xs">
+            <div class="flex justify-between text-zinc-500"><span>• Cámara:</span><span class="font-bold text-black">Blackmagic URSA 4.6K G2</span></div>
+            <div class="flex justify-between text-zinc-500"><span>• Óptica:</span><span class="font-bold text-black">Sigma 18-35mm T2 Cine Zoom</span></div>
+            <div class="flex justify-between text-zinc-500"><span>• Audio:</span><span class="font-bold text-[#8C6D37]">Røde NTG-2 + Zoom F6</span></div>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="navigateTo('portfolio')" class="px-7 py-3.5 rounded-full bg-[#161616] hover:bg-[#C5A059] text-white text-xs uppercase tracking-widest font-semibold transition-all">
+              Ver Galería de Producciones ➔
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- UNIVERSO 3: DISEÑO & DESARROLLO WEB HIGH-END -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 border-t border-subtle">
+        <div class="lg:col-span-5 space-y-6 order-2 lg:order-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-gold font-mono-tech text-xs font-bold">
+            <span>UNIVERSO 03 // DISEÑO & DESARROLLO WEB</span>
+          </div>
+          <h3 class="font-serif-luxury text-3xl sm:text-5xl font-normal text-black leading-tight">
+            Sitios Web Boutique & <br>
+            <span class="italic text-[#C5A059]">Conversión Ultrarrápida.</span>
+          </h3>
+          <p class="text-zinc-600 text-sm font-light leading-relaxed">
+            Diseñamos plataformas web que transmiten el estatus exclusivo de tu marca sin sacrificar la velocidad de carga (&lt; 1.4s) ni la optimización para captar clientes de alto ticket.
+          </p>
+          
+          <div class="bg-white p-5 rounded-2xl border border-subtle space-y-2 font-mono-tech text-xs">
+            <div class="flex justify-between text-zinc-500"><span>• Velocidad de Carga:</span><span class="font-bold text-black">Google PageSpeed 98/100</span></div>
+            <div class="flex justify-between text-zinc-500"><span>• Arquitectura:</span><span class="font-bold text-black">Mobile First & SPA Fluida</span></div>
+            <div class="flex justify-between text-zinc-500"><span>• Conversión:</span><span class="font-bold text-[#8C6D37]">Formularios de Cualificación</span></div>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="navigateTo('portfolio')" class="px-7 py-3.5 rounded-full bg-[#161616] hover:bg-[#C5A059] text-white text-xs uppercase tracking-widest font-semibold transition-all">
+              Probar Emulador Web en Vivo ➔
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 order-1 lg:order-2">
+          <div class="bg-white p-4 sm:p-6 rounded-3xl border border-subtle shadow-xl space-y-4 group">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" 
+                   alt="Trailer Diseño Web" class="w-full h-full object-cover img-zoom">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1 rounded-full text-[10px] font-mono-tech font-bold text-black flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                <span>TRAILER #03 // WEBDESIGN & INTERACTION</span>
+              </div>
+
+              <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                <span class="text-[10px] font-mono-tech text-[#E5C17C] uppercase">BOUTIQUE PLATFORM // LUXEMBOURG REAL ESTATE</span>
+                <h4 class="font-serif-luxury text-2xl font-bold">Experiencia Digital Inmersiva</h4>
+                <p class="text-xs text-zinc-300 font-light">Diseño minimalista con micro-interacciones, tipografía refinada y velocidad extrema.</p>
+              </div>
+            </div>
+            <div class="flex justify-between items-center text-xs font-mono-tech text-zinc-500 px-2">
+              <span>STACK: Modern JavaScript / Tailwind</span>
+              <span class="font-bold text-black">RESPONSIVE: Desktop, Tablet & Mobile</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- UNIVERSO 4: MARKETING, ADS & FÚNELES DE CONVERSIÓN -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 border-t border-subtle">
+        <div class="lg:col-span-7">
+          <div class="bg-white p-4 sm:p-6 rounded-3xl border border-subtle shadow-xl space-y-4 group">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" 
+                   alt="Trailer Marketing y Ads" class="w-full h-full object-cover img-zoom">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1 rounded-full text-[10px] font-mono-tech font-bold text-black flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                <span>TRAILER #04 // PERFORMANCE ADS & ROAS</span>
+              </div>
+
+              <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                <span class="text-[10px] font-mono-tech text-[#E5C17C] uppercase">PAID MEDIA // META & GOOGLE ADS</span>
+                <h4 class="font-serif-luxury text-2xl font-bold">Fúneles de Venta de Alta Rentabilidad</h4>
+                <p class="text-xs text-zinc-300 font-light">Segmentación hiper-dirigida a clientes cualificados con retorno publicitario medible.</p>
+              </div>
+            </div>
+            <div class="flex justify-between items-center text-xs font-mono-tech text-zinc-500 px-2">
+              <span>CANALES: Meta Ads, TikTok & Google</span>
+              <span class="font-bold text-black">RESULTADOS: 4.9X ROAS Promedio</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-gold font-mono-tech text-xs font-bold">
+            <span>UNIVERSO 04 // MARKETING & ADS</span>
+          </div>
+          <h3 class="font-serif-luxury text-3xl sm:text-5xl font-normal text-black leading-tight">
+            Escala Publicitaria & <br>
+            <span class="italic text-[#C5A059]">Retorno de Inversión.</span>
+          </h3>
+          <p class="text-zinc-600 text-sm font-light leading-relaxed">
+            Convertimos la atención generada en las redes en facturación directa. Diseñamos campañas de paid media estructuradas para captar prospectos de alto valor de manera predecible.
+          </p>
+          
+          <div class="bg-white p-5 rounded-2xl border border-subtle space-y-2 font-mono-tech text-xs">
+            <div class="flex justify-between text-zinc-500"><span>• Estrategia:</span><span class="font-bold text-black">Fúneles de Alto Ticket</span></div>
+            <div class="flex justify-between text-zinc-500"><span>• Optimización:</span><span class="font-bold text-black">Reporting Semanal de Métricas</span></div>
+            <div class="flex justify-between text-zinc-500"><span>• ROAS Objetivo:</span><span class="font-bold text-[#8C6D37]">4.2X a 6.5X</span></div>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="navigateTo('contact')" class="px-7 py-3.5 rounded-full bg-[#161616] hover:bg-[#C5A059] text-white text-xs uppercase tracking-widest font-semibold transition-all">
+              Calcular ROI de Campaña ➔
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- UNIVERSO 5: ALQUILER DE MATERIAL TÉCNICO & FOTOMATÓN GLAM (WITH GENERATED STEADICAM & GEAR IMAGES) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 border-t border-subtle">
+        <div class="lg:col-span-5 space-y-6 order-2 lg:order-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-gold font-mono-tech text-xs font-bold">
+            <span>UNIVERSO 05 // ALQUILER & GEAR (AMCROPA FILMS)</span>
+          </div>
+          <h3 class="font-serif-luxury text-3xl sm:text-5xl font-normal text-black leading-tight">
+            Arsenal de Cine & <br>
+            <span class="italic text-[#C5A059]">Fotomatón con Escenografía.</span>
+          </h3>
+          <p class="text-zinc-600 text-sm font-light leading-relaxed">
+            Alquila el kit profesional completo: cámara de cine **Blackmagic URSA Mini Pro 4.6K G2**, óptica de cine **Sigma 18-35mm T2**, monitor **Blackmagic Video Assist 7"**, estabilizador **Flycam Galaxy Dual Steadicam Arm & Chaleco Redking**, grabadora **Zoom F6**, microfonía **Røde NTG-2 / Blimp** y fotomatón glam con escenografía a medida.
+          </p>
+          
+          <div class="bg-white p-5 rounded-2xl border border-subtle space-y-2 font-mono-tech text-xs">
+            <div class="flex justify-between text-zinc-500"><span>• Cámara Cine:</span><span class="font-bold text-black">BMPCC URSA 4.6K G2 + Sigma T2</span></div>
+            <div class="flex justify-between text-zinc-500"><span>• Estabilizador:</span><span class="font-bold text-black">Flycam Galaxy + Chaleco Redking</span></div>
+            <div class="flex justify-between text-zinc-500"><span>• Sonido de Campo:</span><span class="font-bold text-[#8C6D37]">Zoom F6 32-Bit + Røde NTG-2</span></div>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="navigateTo('rentals')" class="px-7 py-3.5 rounded-full bg-[#161616] hover:bg-[#C5A059] text-white text-xs uppercase tracking-widest font-semibold transition-all">
+              Abrir Catálogo de Alquiler ➔
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 order-1 lg:order-2">
+          <div class="bg-white p-4 sm:p-6 rounded-3xl border border-subtle shadow-xl space-y-4 group">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+              <img src="assets/images/master_cinema_studio_gear.jpg" 
+                   alt="Arsenal Completo de Equipamiento Audiovisual y Fotomatón Glam en Estudio" class="w-full h-full object-cover img-zoom">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1 rounded-full text-[10px] font-mono-tech font-bold text-black flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+                <span>TRAILER #05 // ARSENAL TÉCNICO COMPLETO</span>
+              </div>
+
+              <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                <span class="text-[10px] font-mono-tech text-[#E5C17C] uppercase">ARSENAL AUDIOVISUAL // AMCROPA FILMS × WELUX</span>
+                <h4 class="font-serif-luxury text-2xl font-bold">Blackmagic 4.6K, Steadicam, Audio & Fotomatón</h4>
+                <p class="text-xs text-zinc-300 font-light">Todo el equipamiento cinematográfico profesional y cabina de fotomatón glam reunidos en estudio.</p>
+              </div>
+            </div>
+            <div class="flex justify-between items-center text-xs font-mono-tech text-zinc-500 px-2">
+              <span>DISPONIBILIDAD: Luxemburgo, Madrid, París</span>
+              <span class="font-bold text-black">RESERVAS: Packs de Alquiler por Día / Semana</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNIVERSO 6: TOURS VIRTUALES 360° & GEMELOS DIGITALES 3D -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 border-t border-subtle">
+        <div class="lg:col-span-5 space-y-6 order-2 lg:order-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-gold font-mono-tech text-xs font-bold">
+            <span>UNIVERSO 06 // TOURS VIRTUALES 360° &amp; GEMELOS DIGITALES</span>
+          </div>
+          <h3 class="font-serif-luxury text-3xl sm:text-5xl font-normal text-black leading-tight">
+            Gemelos Digitales 3D &amp; <br>
+            <span class="italic text-[#C5A059]">Tours Inmersivos 360°.</span>
+          </h3>
+          <p class="text-zinc-600 text-sm font-light leading-relaxed">
+            Digitalizamos áticos y villas de lujo, sedes corporativas, hoteles boutique y promociones inmobiliarias con tecnología LiDAR de grado métrico y cámaras 4K HDR. Permite a clientes e inversores internacionales recorrer tus espacios con total realismo y cerrar operaciones sin desplazamientos innecesarios.
+          </p>
+          
+          <div class="bg-white p-5 rounded-2xl border border-subtle space-y-2 font-mono-tech text-xs">
+            <div class="flex justify-between text-zinc-500"><span>• Precisión Escaneo:</span><span class="font-bold text-black">LiDAR Infrarrojo &lt; 1% margen</span></div>
+            <div class="flex justify-between text-zinc-500"><span>• Planos de Planta:</span><span class="font-bold text-black">Esquemáticos 2D Acotados (.CAD/PDF)</span></div>
+            <div class="flex justify-between text-zinc-500"><span>• Compatibilidad:</span><span class="font-bold text-[#8C6D37]">iFrame Web, MLS, Apple Vision Pro &amp; Quest</span></div>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="navigateTo('tours-360')" class="px-7 py-3.5 rounded-full bg-[#161616] hover:bg-[#C5A059] text-white text-xs uppercase tracking-widest font-semibold transition-all">
+              Explorar Tours Virtuales 360° ➔
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 order-1 lg:order-2">
+          <div class="bg-white p-4 sm:p-6 rounded-3xl border border-subtle shadow-xl space-y-4 group">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+              <img src="assets/images/virtual_tour_lidar.jpg" 
+                   alt="Trailer Tours Virtuales 360 y Escaneo LiDAR" class="w-full h-full object-cover img-zoom">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1 rounded-full text-[10px] font-mono-tech font-bold text-black flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#C5A059] animate-pulse"></span>
+                <span>TRAILER #06 // GEMELOS DIGITALES &amp; MATTERPORT PRO</span>
+              </div>
+
+              <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                <span class="text-[10px] font-mono-tech text-[#E5C17C] uppercase">INMOBILIARIAS · HOTELES · OFICINAS · ARQUITECTURA</span>
+                <h4 class="font-serif-luxury text-2xl font-bold">Experiencia Espacial Inmersiva 3D</h4>
+                <p class="text-xs text-zinc-300 font-light">Escaneo LiDAR 3D en penthouse de lujo — navegación interactiva, vista Dollhouse y cotas láser.</p>
+              </div>
+            </div>
+            <div class="flex justify-between items-center text-xs font-mono-tech text-zinc-500 px-2">
+              <span>ENTREGA: 24-48h con Embed &amp; Enlace Listo</span>
+              <span class="font-bold text-black">RETENCIÓN: +300% TIEMPO EN WEB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+
+    <!-- Final Call To Action Banner on Home -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 py-20 border-t border-subtle text-center">
+      <div class="max-w-3xl mx-auto space-y-6 bg-white p-12 rounded-3xl border border-subtle shadow-sm">
+        <span class="text-xs font-mono-tech uppercase tracking-widest text-[#8C6D37] font-bold">// COMIENZA AHORA</span>
+        <h2 class="font-serif-luxury text-3xl sm:text-5xl font-normal text-black">¿Listo para Elevar tu Marca?</h2>
+        <p class="text-zinc-600 text-sm font-light leading-relaxed">
+          Ya sea que busques el ecosistema completo de agencia o alquilar equipamiento técnico y fotomatón para tu próximo evento, estamos listos para atenderte.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 pt-2">
+          <button onclick="navigateTo('contact')" class="px-8 py-4 rounded-full bg-[#161616] hover:bg-[#C5A059] text-white text-xs uppercase tracking-widest font-semibold transition-all">
+            Solicitar Diagnóstico Estratégico ➔
+          </button>
+          <button onclick="navigateTo('rentals')" class="px-8 py-4 rounded-full border border-zinc-300 text-zinc-800 text-xs uppercase tracking-widest font-medium hover:border-black transition-all">
+            Calcular Presupuesto de Alquiler ➔
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =================================================================== -->
+  <!-- SUBPAGE 2: SERVICIOS (AGENCY SERVICES) -->
+  <!-- =================================================================== -->
+  <main id="page-services" class="page-view relative z-10">
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 pt-16 pb-20">
+      <div class="max-w-3xl space-y-4 mb-16">
+        <span class="text-xs font-mono-tech uppercase tracking-widest text-[#8C6D37]">// SUBPÁGINA 01 — SERVICIOS INTEGRALES DE AGENCIA</span>
+        <h1 class="font-serif-luxury text-4xl sm:text-6xl font-normal text-black">
+          Arquitectura de Crecimiento & Prestigio
+        </h1>
+        <p class="text-zinc-600 text-base font-light leading-relaxed">
+          Diseñamos soluciones donde cada disciplina creativa interactúa con las demás para construir autoridad, comunidad activa y conversión directa.
+        </p>
+      </div>
+
+      <div class="space-y-12">
+        <!-- Service 1 -->
+        <div class="bg-white p-8 sm:p-12 rounded-3xl border border-subtle grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-sm">
+          <div class="lg:col-span-7 space-y-4">
+            <span class="px-3 py-1 rounded-full badge-gold font-mono-tech text-xs font-bold">01 // SOCIAL MEDIA GROWTH</span>
+            <h2 class="font-serif-luxury text-3xl font-bold text-black">Posicionamiento & Algoritmos de Alto Valor</h2>
+            <p class="text-xs sm:text-sm text-zinc-600 font-light leading-relaxed">
+              Estrategia orgánica para 𝕏, Instagram Reels, TikTok y YouTube Shorts. Guionizamos piezas de alto impacto psicológico y retención, dominando los códigos del algoritmo sin degradar la elegancia de la marca.
+            </p>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="aspect-video rounded-2xl overflow-hidden bg-stone-200 border border-subtle">
+              <img src="assets/images/social_growth_instagram.jpg" alt="Social Growth con 𝕏 e Instagram" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="bg-white p-8 sm:p-12 rounded-3xl border border-subtle grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-sm">
+          <div class="lg:col-span-7 space-y-4">
+            <span class="px-3 py-1 rounded-full badge-gold font-mono-tech text-xs font-bold">02 // CONTENT PRODUCTION & DIRECCIÓN DE ARTE</span>
+            <h2 class="font-serif-luxury text-3xl font-bold text-black">Creación de Contenido Cinemático & Dirección de Autor</h2>
+            <p class="text-xs sm:text-sm text-zinc-600 font-light leading-relaxed">
+              Puesta en escena presencial para marcas y eventos exclusivos. Dirección artística cuidada al milímetro con estilismo, iluminación suave y fotografía editorial de autor.
+            </p>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="aspect-video rounded-2xl overflow-hidden bg-stone-200 border border-subtle">
+              <img src="assets/images/art_director_onset.jpg" alt="Dirección de Arte Presencial" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="bg-white p-8 sm:p-12 rounded-3xl border border-subtle grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-sm">
+          <div class="lg:col-span-7 space-y-4">
+            <span class="px-3 py-1 rounded-full badge-gold font-mono-tech text-xs font-bold">03 // BOUTIQUE WEB DESIGN</span>
+            <h2 class="font-serif-luxury text-3xl font-bold text-black">Diseño & Desarrollo Web High-End</h2>
+            <p class="text-xs sm:text-sm text-zinc-600 font-light leading-relaxed">
+              Desarrollo a medida con arquitectura SPA fluida, tipografía refinada y velocidad extrema (&lt; 1.4s) optimizada para captar clientes de alto ticket.
+            </p>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="aspect-video rounded-2xl overflow-hidden bg-stone-200 border border-subtle">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Diseño Web High-End" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="bg-white p-8 sm:p-12 rounded-3xl border border-subtle grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-sm">
+          <div class="lg:col-span-7 space-y-4">
+            <span class="px-3 py-1 rounded-full badge-gold font-mono-tech text-xs font-bold">04 // PAID MEDIA & FUNNELS</span>
+            <h2 class="font-serif-luxury text-3xl font-bold text-black">Marketing & Publicidad de Alto Rendimiento</h2>
+            <p class="text-xs sm:text-sm text-zinc-600 font-light leading-relaxed">
+              Estrategia de paid media en Meta Ads y Google orientada a rentabilidad directa con un ROAS promedio de 4.9X.
+            </p>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="aspect-video rounded-2xl overflow-hidden bg-stone-200 border border-subtle">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Paid Media" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="bg-white p-8 sm:p-12 rounded-3xl border border-subtle grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-sm">
+          <div class="lg:col-span-7 space-y-4">
+            <span class="px-3 py-1 rounded-full badge-gold font-mono-tech text-xs font-bold">05 // TOURS VIRTUALES 360° &amp; GEMELOS DIGITALES 3D</span>
+            <h2 class="font-serif-luxury text-3xl font-bold text-black">Digitalización Espacial Inmersiva para Inmobiliarias, Hoteles &amp; Oficinas</h2>
+            <p class="text-xs sm:text-sm text-zinc-600 font-light leading-relaxed">
+              Capturamos propiedades exclusivas, sedes corporativas, hoteles boutique y resorts con tecnología LiDAR 4K HDR y Matterport Pro. Generamos gemelos digitales navegables en 3D, vistas axonométricas Dollhouse, planos de planta 2D con cotas de precisión milimétrica y tags interactivos multimedia.
+            </p>
+            <div class="grid grid-cols-2 gap-3 text-xs font-mono-tech pt-2">
+              <div class="bg-[#FAF9F5] p-3 rounded-xl border border-subtle">
+                <span class="text-zinc-400 block">Tecnología</span>
+                <span class="font-bold text-black">LiDAR Pro + 360° 4K HDR</span>
+              </div>
+              <div class="bg-[#FAF9F5] p-3 rounded-xl border border-subtle">
+                <span class="text-zinc-400 block">Entrega Llave en Mano</span>
+                <span class="font-bold text-[#8C6D37]">24–48 Horas</span>
+              </div>
+              <div class="bg-[#FAF9F5] p-3 rounded-xl border border-subtle">
+                <span class="text-zinc-400 block">Integración</span>
+                <span class="font-bold text-black">Idealista, MLS, iFrame &amp; VR</span>
+              </div>
+              <div class="bg-[#FAF9F5] p-3 rounded-xl border border-subtle">
+                <span class="text-zinc-400 block">Planos de Planta</span>
+                <span class="font-bold text-black">Acotados en PDF / CAD</span>
+              </div>
+            </div>
+            <div class="pt-2">
+              <button onclick="navigateTo('tours-360')" class="px-7 py-3 rounded-full bg-[#161616] hover:bg-[#C5A059] text-white text-xs uppercase tracking-widest font-semibold transition-all">
+                Abrir Portal Especializado de Tours 360° ➔
+              </button>
+            </div>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="aspect-video rounded-2xl overflow-hidden bg-stone-200 border border-subtle">
+              <img src="assets/images/virtual_tour_lidar.jpg" alt="Tours Virtuales 360 LiDAR" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+  <!-- =================================================================== -->
+  <!-- SUBPAGE 3: TOURS VIRTUALES 360° & GEMELOS DIGITALES 3D -->
+  <!-- =================================================================== -->
+  <main id="page-tours-360" class="page-view relative z-10">
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 pt-16 pb-20 space-y-20">
+      
+      <!-- Section Header -->
+      <div class="max-w-4xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-gold font-mono-tech text-xs font-bold">
+          <span class="w-2 h-2 rounded-full bg-[#C5A059] animate-ping"></span>
+          <span>MATTERPORT PRO3 LIDAR &amp; 360° 4K HDR // ARQUITECTURA &amp; REAL ESTATE</span>
+        </div>
+        <h1 class="font-serif-luxury text-4xl sm:text-6xl font-normal text-black leading-tight">
+          Tours Virtuales Inmersivos, Gemelos 3D &amp; Planos de Planta
+        </h1>
+        <p class="text-zinc-600 text-base sm:text-lg font-light leading-relaxed">
+          Digitalizamos pisos, áticos de lujo, sedes corporativas, hoteles boutique y proyectos de arquitectura con tecnología LiDAR de grado métrico. Permite a clientes e inversores internacionales recorrer tus espacios con total realismo y cerrar operaciones sin desplazamientos innecesarios.
+        </p>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 font-mono-tech text-center">
+        <div class="p-5 bg-white rounded-2xl border border-subtle shadow-sm">
+          <span class="text-[10px] text-zinc-400 block uppercase">// TIEMPO EN WEB</span>
+          <div class="text-3xl font-bold font-serif-luxury text-black mt-1">+300%</div>
+          <span class="text-[11px] text-zinc-500 mt-0.5 block">Mayor permanencia en el inmueble</span>
+        </div>
+        <div class="p-5 bg-white rounded-2xl border border-subtle shadow-sm">
+          <span class="text-[10px] text-zinc-400 block uppercase">// DECISIÓN DE COMPRA</span>
+          <div class="text-3xl font-bold font-serif-luxury text-[#8C6D37] mt-1">95%</div>
+          <span class="text-[11px] text-zinc-500 mt-0.5 block">Prefieren propiedades con Tour 3D</span>
+        </div>
+        <div class="p-5 bg-white rounded-2xl border border-subtle shadow-sm">
+          <span class="text-[10px] text-zinc-400 block uppercase">// PRECISIÓN MÉTRICA</span>
+          <div class="text-3xl font-bold font-serif-luxury text-black mt-1">&lt; 1%</div>
+          <span class="text-[11px] text-zinc-500 mt-0.5 block">Margen de error con sensor LiDAR</span>
+        </div>
+        <div class="p-5 bg-white rounded-2xl border border-subtle shadow-sm">
+          <span class="text-[10px] text-zinc-400 block uppercase">// PLAZO DE ENTREGA</span>
+          <div class="text-3xl font-bold font-serif-luxury text-[#8C6D37] mt-1">24–48h</div>
+          <span class="text-[11px] text-zinc-500 mt-0.5 block">Listo con iFrame y enlace para portales</span>
+        </div>
+      </div>
+
+      <!-- ================= SIMULADOR INTERACTIVO DE TOUR 360° ================= -->
+      <div class="bg-white p-6 sm:p-10 rounded-3xl border border-subtle shadow-xl space-y-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-subtle pb-6">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span class="text-xs font-mono-tech text-zinc-400 uppercase">WELUX VIRTUAL EXPERIENCE ENGINE v3.4</span>
+            </div>
+            <h3 class="font-serif-luxury text-2xl font-bold text-black">Simulador Interactivo de Visita Virtual</h3>
+          </div>
+
+          <!-- Space Selector Buttons -->
+          <div class="flex flex-wrap items-center bg-[#FAF9F5] p-1.5 rounded-2xl border border-subtle text-xs font-mono-tech gap-1">
+            <button onclick="switchTourSpace('penthouse')" id="btn-tour-penthouse" class="px-4 py-2 rounded-xl bg-black text-white font-bold transition-all">
+              🏢 Penthouse Luxury (380m²)
+            </button>
+            <button onclick="switchTourSpace('office')" id="btn-tour-office" class="px-4 py-2 rounded-xl text-zinc-600 hover:text-black transition-all">
+              🏛️ Sede Oficinas (1.200m²)
+            </button>
+            <button onclick="switchTourSpace('hotel')" id="btn-tour-hotel" class="px-4 py-2 rounded-xl text-zinc-600 hover:text-black transition-all">
+              🛎️ Hotel Boutique &amp; Spa (2.400m²)
+            </button>
+          </div>
+        </div>
+
+        <!-- Mode Selector Bar -->
+        <div class="flex flex-wrap justify-between items-center gap-4">
+          <div class="flex items-center gap-2 text-xs font-mono-tech">
+            <span class="text-zinc-400">Modo de Visualización:</span>
+            <div class="inline-flex bg-[#FAF9F5] p-1 rounded-xl border border-subtle">
+              <button onclick="switchTourMode('tour')" id="btn-mode-tour" class="px-3.5 py-1.5 rounded-lg bg-[#C5A059] text-white font-bold transition-all flex items-center gap-1.5">
+                <span>🔄 Recorrido 360°</span>
+              </button>
+              <button onclick="switchTourMode('dollhouse')" id="btn-mode-dollhouse" class="px-3.5 py-1.5 rounded-lg text-zinc-600 hover:text-black transition-all flex items-center gap-1.5">
+                <span>🏠 Vista Dollhouse 3D</span>
+              </button>
+              <button onclick="switchTourMode('floorplan')" id="btn-mode-floorplan" class="px-3.5 py-1.5 rounded-lg text-zinc-600 hover:text-black transition-all flex items-center gap-1.5">
+                <span>📐 Plano 2D Acotado</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 text-xs font-mono-tech">
+            <button onclick="toggleTourAutoRotate()" id="btn-tour-rotate" class="px-3.5 py-1.5 rounded-xl border border-zinc-200 bg-white hover:border-black text-zinc-700 transition-all flex items-center gap-1.5">
+              <span>▶ Auto-Rotación 360°</span>
+            </button>
+            <span class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-bold">
+              ● MODO VR ACTIVO
+            </span>
+          </div>
+        </div>
+
+        <!-- Interactive Screen Container -->
+        <div class="relative rounded-2xl overflow-hidden bg-stone-900 border border-subtle aspect-[16/9] min-h-[420px] max-h-[580px] group shadow-inner">
+          <!-- Background Image with panning -->
+          <img id="tour-viewport-img" 
+               src="assets/images/virtual_tour_lidar.jpg" 
+               alt="Vista Virtual Inmersiva" 
+               class="w-full h-full object-cover transition-all duration-700 select-none">
+
+          <!-- Overlay gradient -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none"></div>
+
+          <!-- Top Status Bar in Viewport -->
+          <div class="absolute top-4 left-4 right-4 flex justify-between items-center pointer-events-none">
+            <div class="bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-full text-white text-[11px] font-mono-tech border border-white/10 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#C5A059] animate-pulse"></span>
+              <span id="tour-current-label" class="font-bold">PENTHOUSE LUXURY // SALÓN PRINCIPAL &amp; TERRAZA</span>
+            </div>
+            <div class="bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-full text-[#E5C17C] text-[10px] font-mono-tech border border-white/10">
+              LiDAR SCAN 4.6K HDR · ESCALA 1:1
+            </div>
+          </div>
+
+          <!-- Interactive Hotspots Container -->
+          <div id="tour-hotspots-layer" class="absolute inset-0">
+            <!-- Hotspot 1 -->
+            <button onclick="showHotspotDetail(1)" class="absolute top-[48%] left-[28%] -translate-x-1/2 -translate-y-1/2 group/spot focus:outline-none">
+              <span class="relative flex h-8 w-8">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C5A059] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-8 w-8 bg-[#161616]/90 border-2 border-[#C5A059] text-white text-[10px] font-bold items-center justify-center shadow-lg">✦</span>
+              </span>
+              <span class="absolute left-10 top-0 hidden group-hover/spot:flex bg-black/90 text-white text-[11px] font-mono-tech px-3 py-1.5 rounded-lg whitespace-nowrap border border-[#C5A059]/40 shadow-xl">
+                Ver Calidades: Suelo Mármol &amp; Domótica
+              </span>
+            </button>
+
+            <!-- Hotspot 2 -->
+            <button onclick="showHotspotDetail(2)" class="absolute top-[38%] left-[68%] -translate-x-1/2 -translate-y-1/2 group/spot focus:outline-none">
+              <span class="relative flex h-8 w-8">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C5A059] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-8 w-8 bg-[#161616]/90 border-2 border-[#C5A059] text-white text-[10px] font-bold items-center justify-center shadow-lg">✦</span>
+              </span>
+              <span class="absolute left-10 top-0 hidden group-hover/spot:flex bg-black/90 text-white text-[11px] font-mono-tech px-3 py-1.5 rounded-lg whitespace-nowrap border border-[#C5A059]/40 shadow-xl">
+                Ver Ventanales Climalit &amp; Skyline
+              </span>
+            </button>
+
+            <!-- Hotspot 3 -->
+            <button onclick="showHotspotDetail(3)" class="absolute top-[65%] left-[82%] -translate-x-1/2 -translate-y-1/2 group/spot focus:outline-none">
+              <span class="relative flex h-8 w-8">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C5A059] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-8 w-8 bg-[#161616]/90 border-2 border-[#C5A059] text-white text-[10px] font-bold items-center justify-center shadow-lg">✦</span>
+              </span>
+              <span class="absolute right-10 top-0 hidden group-hover/spot:flex bg-black/90 text-white text-[11px] font-mono-tech px-3 py-1.5 rounded-lg whitespace-nowrap border border-[#C5A059]/40 shadow-xl">
+                Mobiliario de Autor &amp; Acústica
+              </span>
+            </button>
+          </div>
+
+          <!-- Bottom Room Selector in Viewport -->
+          <div class="absolute bottom-4 left-4 right-4 flex flex-wrap justify-between items-center gap-2 pointer-events-none">
+            <div class="flex items-center gap-2 pointer-events-auto bg-black/75 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 text-xs font-mono-tech">
+              <button onclick="selectTourRoom(0)" id="btn-room-0" class="px-3 py-1 rounded-xl bg-[#C5A059] text-white font-bold transition-all">01. Salón / Hall</button>
+              <button onclick="selectTourRoom(1)" id="btn-room-1" class="px-3 py-1 rounded-xl text-zinc-300 hover:text-white transition-all">02. Terraza</button>
+              <button onclick="selectTourRoom(2)" id="btn-room-2" class="px-3 py-1 rounded-xl text-zinc-300 hover:text-white transition-all">03. Master Suite</button>
+              <button onclick="selectTourRoom(3)" id="btn-room-3" class="px-3 py-1 rounded-xl text-zinc-300 hover:text-white transition-all">04. Cocina</button>
+            </div>
+            <div class="text-[11px] font-mono-tech text-white/80 bg-black/60 px-3 py-1.5 rounded-xl border border-white/10 hidden sm:inline-block">
+              Haz clic en los puntos dorados ✦ para ver especificaciones
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotspot Detail Modal / Drawer -->
+        <div id="tour-hotspot-modal" class="hidden bg-[#FAF9F5] p-6 rounded-2xl border border-[#C5A059]/30 space-y-3 transition-all">
+          <div class="flex justify-between items-center">
+            <span id="modal-spot-tag" class="text-xs font-mono-tech text-[#8C6D37] font-bold uppercase">ESPECIFICACIÓN TÉCNICA #01</span>
+            <button onclick="closeHotspotModal()" class="text-zinc-400 hover:text-black text-xs font-mono-tech font-bold">✕ Cerrar</button>
+          </div>
+          <h4 id="modal-spot-title" class="font-serif-luxury text-xl font-bold text-black">Suelo de Mármol Calacatta &amp; Climatización Invisible</h4>
+          <p id="modal-spot-desc" class="text-xs text-zinc-600 font-light leading-relaxed">
+            Pavimento continuo de gran formato con aislamiento acústico de impacto de 58dB y sistema de suelo radiante/refrescante zonificado por domótica Lutron.
+          </p>
+        </div>
+      </div>
+
+
+      <!-- ================= 4 SECTORES ESPECIALIZADOS ================= -->
+      <div class="space-y-8">
+        <div class="space-y-2">
+          <span class="text-xs font-mono-tech uppercase tracking-widest text-[#8C6D37] font-bold">// SECTORES DE APLICACIÓN</span>
+          <h2 class="font-serif-luxury text-3xl sm:text-5xl font-normal text-black">Soluciones a Medida por Industria</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Sector 1 -->
+          <div class="bg-white p-7 rounded-3xl border border-subtle space-y-4 hover:border-[#C5A059] transition-all shadow-sm flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-3xl">🏡</span>
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold block w-fit">REAL ESTATE DE LUJO</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Inmobiliarias &amp; Promotoras</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Comercializa pisos y villas de lujo a compradores internacionales (Luxemburgo, Suiza, París, Madrid) eliminando el 70% de visitas no cualificadas.
+              </p>
+              <ul class="text-[11px] font-mono-tech text-zinc-500 space-y-1 pt-2 border-t border-zinc-100">
+                <li>• Integración en Idealista, Athome.lu y MLS</li>
+                <li>• Planos esquemáticos 2D acotados</li>
+              </ul>
+            </div>
+            <button onclick="prefillTourQuote('residential')" class="text-xs font-mono-tech text-[#8C6D37] font-bold hover:text-black text-left pt-2">
+              Calcular Inmueble ➔
+            </button>
+          </div>
+
+          <!-- Sector 2 -->
+          <div class="bg-white p-7 rounded-3xl border border-subtle space-y-4 hover:border-[#C5A059] transition-all shadow-sm flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-3xl">🏢</span>
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold block w-fit">CORPORATE &amp; TECH</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Oficinas &amp; Coworking</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Demuestra la distribución diáfana, salas de reuniones, densidad de puestos y conectividad técnica a fondos de inversión y directivos multinacionales.
+              </p>
+              <ul class="text-[11px] font-mono-tech text-zinc-500 space-y-1 pt-2 border-t border-zinc-100">
+                <li>• Medición de distancias en tiempo real</li>
+                <li>• Vista Dollhouse 3D de plantas completas</li>
+              </ul>
+            </div>
+            <button onclick="prefillTourQuote('office')" class="text-xs font-mono-tech text-[#8C6D37] font-bold hover:text-black text-left pt-2">
+              Calcular Oficinas ➔
+            </button>
+          </div>
+
+          <!-- Sector 3 -->
+          <div class="bg-white p-7 rounded-3xl border border-subtle space-y-4 hover:border-[#C5A059] transition-all shadow-sm flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-3xl">🛎️</span>
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold block w-fit">HOSPITALITY 5★</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Hoteles, Resorts &amp; Spa</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Aumenta las reservas directas hasta un +67%. Los huéspedes pueden recorrer las suites, zona wellness y salones de eventos antes de contratar.
+              </p>
+              <ul class="text-[11px] font-mono-tech text-zinc-500 space-y-1 pt-2 border-t border-zinc-100">
+                <li>• Tags interactivos con botón de reserva</li>
+                <li>• Experiencia inmersiva en Google Street View</li>
+              </ul>
+            </div>
+            <button onclick="prefillTourQuote('hotel')" class="text-xs font-mono-tech text-[#8C6D37] font-bold hover:text-black text-left pt-2">
+              Calcular Hotel ➔
+            </button>
+          </div>
+
+          <!-- Sector 4 -->
+          <div class="bg-white p-7 rounded-3xl border border-subtle space-y-4 hover:border-[#C5A059] transition-all shadow-sm flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-3xl">🏛️</span>
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold block w-fit">ARQUITECTURA &amp; ARTE</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Galerías, Reformas &amp; Retail</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Toma mediciones láser milimétricas sobre el gemelo digital para proyectos de reforma e interiorismo, o vende obras de arte con tags de eCommerce.
+              </p>
+              <ul class="text-[11px] font-mono-tech text-zinc-500 space-y-1 pt-2 border-t border-zinc-100">
+                <li>• Nube de puntos OBJ / CAD exportable</li>
+                <li>• Pasarela de venta virtual integrada</li>
+              </ul>
+            </div>
+            <button onclick="prefillTourQuote('retail')" class="text-xs font-mono-tech text-[#8C6D37] font-bold hover:text-black text-left pt-2">
+              Calcular Proyecto ➔
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ================= ENTREGABLES DEL PACK ================= -->
+      <div class="bg-white p-8 sm:p-12 rounded-3xl border border-subtle space-y-8 shadow-sm">
+        <div class="space-y-2">
+          <span class="text-xs font-mono-tech uppercase tracking-widest text-[#8C6D37] font-bold">// ESTÁNDAR DE EXCELENCIA WELUX</span>
+          <h3 class="font-serif-luxury text-3xl font-bold text-black">¿Qué Incluye Cada Tour Virtual 360°?</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-xs">
+          <div class="p-5 bg-[#FAF9F5] rounded-2xl border border-subtle space-y-2">
+            <div class="text-[#C5A059] font-bold font-mono-tech">01. GEMELO DIGITAL 3D</div>
+            <p class="text-zinc-600 leading-relaxed">Alojamiento en servidor ultra-rápido en la nube con acceso 24/7 sin caducidad y navegación multidispositivo fluida.</p>
+          </div>
+
+          <div class="p-5 bg-[#FAF9F5] rounded-2xl border border-subtle space-y-2">
+            <div class="text-[#C5A059] font-bold font-mono-tech">02. PLANO 2D ESQUEMÁTICO</div>
+            <p class="text-zinc-600 leading-relaxed">Plano arquitectónico acotado con cotas métricas exactas y cálculo de superficie por estancias en PDF y PNG.</p>
+          </div>
+
+          <div class="p-5 bg-[#FAF9F5] rounded-2xl border border-subtle space-y-2">
+            <div class="text-[#C5A059] font-bold font-mono-tech">03. 25+ FOTOS 4K HDR</div>
+            <p class="text-zinc-600 leading-relaxed">Fotografías fijas de alta resolución extraídas directamente del escaneo para tus fichas de catálogo y portales.</p>
+          </div>
+
+          <div class="p-5 bg-[#FAF9F5] rounded-2xl border border-subtle space-y-2">
+            <div class="text-[#C5A059] font-bold font-mono-tech">04. MATTERTAGS MULTIMEDIA</div>
+            <p class="text-zinc-600 leading-relaxed">Puntos interactivos integrados con fotos de detalle, vídeos, PDFs de memoria de calidades o enlaces de reserva.</p>
+          </div>
+
+          <div class="p-5 bg-[#FAF9F5] rounded-2xl border border-subtle space-y-2">
+            <div class="text-[#C5A059] font-bold font-mono-tech">05. CÓDIGO EMBED &amp; ENLACE MLS</div>
+            <p class="text-zinc-600 leading-relaxed">Código iFrame listo para insertar en WordPress, Webflow o portales (Idealista, Fotocasa, Athome.lu).</p>
+          </div>
+
+          <div class="p-5 bg-[#FAF9F5] rounded-2xl border border-subtle space-y-2">
+            <div class="text-[#C5A059] font-bold font-mono-tech">06. MODO VR COMPATIBLE</div>
+            <p class="text-zinc-600 leading-relaxed">Recorrido inmersivo listo para gafas de Realidad Virtual (Apple Vision Pro, Meta Quest) sin instalar apps.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ================= CALCULADORA DE PRESUPUESTO INTERACTIVA ================= -->
+      <div id="tour-calculator-section" class="bg-[#F4F1EA] p-8 sm:p-12 rounded-3xl border border-subtle space-y-8">
+        <div class="max-w-2xl space-y-2">
+          <span class="text-xs font-mono-tech text-[#8C6D37] font-bold uppercase">// ESTIMADOR INSTANTÁNEO EN TIEMPO REAL</span>
+          <h3 class="font-serif-luxury text-3xl font-bold text-black">Calculadora de Presupuesto para Tours 360°</h3>
+          <p class="text-xs text-zinc-600 font-light">Configura las características de tu espacio para calcular el presupuesto orientativo y plazo de entrega llave en mano.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <div class="lg:col-span-7 space-y-5 text-xs font-mono-tech">
+            <!-- Property Type -->
+            <div>
+              <label class="block text-zinc-700 font-bold mb-2">Tipo de Inmueble o Espacio:</label>
+              <select id="tour-calc-type" onchange="updateTourPricing()" class="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3 text-black focus:border-[#C5A059] focus:outline-none font-sans">
+                <option value="residential">Piso / Apartamento Residencial</option>
+                <option value="villa">Ático Dúplex / Villa / Chalet de Lujo</option>
+                <option value="office">Sede de Oficinas / Edificio Corporativo</option>
+                <option value="hotel">Hotel Boutique / Resort / Restaurante</option>
+                <option value="retail">Local Comercial / Galería de Arte</option>
+              </select>
+            </div>
+
+            <!-- Surface Area Slider -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-zinc-700 font-bold">Superficie Total Estimada:</label>
+                <span id="tour-calc-m2-val" class="text-sm font-bold text-[#8C6D37]">150 m²</span>
+              </div>
+              <input type="range" id="tour-calc-m2-slider" min="50" max="2000" step="25" value="150" oninput="updateTourPricing()" class="w-full accent-[#C5A059]">
+              <div class="flex justify-between text-zinc-400 text-[10px] mt-1">
+                <span>50 m²</span>
+                <span>500 m²</span>
+                <span>1.000 m²</span>
+                <span>2.000+ m²</span>
+              </div>
+            </div>
+
+            <!-- Optional Add-ons -->
+            <div class="pt-2 space-y-2.5 border-t border-zinc-300">
+              <span class="block font-bold text-zinc-700">Opciones &amp; Extras Opcionales:</span>
+              <label class="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-subtle cursor-pointer hover:border-[#C5A059] transition-all">
+                <input type="checkbox" id="tour-opt-floorplan" checked onchange="updateTourPricing()" class="accent-[#C5A059] w-4 h-4">
+                <span class="flex-1 text-zinc-700">Plano 2D esquemático acotado profesional (.PDF / .CAD)</span>
+                <span class="text-[#8C6D37] font-bold">+65 €</span>
+              </label>
+              <label class="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-subtle cursor-pointer hover:border-[#C5A059] transition-all">
+                <input type="checkbox" id="tour-opt-tags" checked onchange="updateTourPricing()" class="accent-[#C5A059] w-4 h-4">
+                <span class="flex-1 text-zinc-700">Mattertags interactivos multimedia (fichas técnicas, calidades y enlaces)</span>
+                <span class="text-[#8C6D37] font-bold">+45 €</span>
+              </label>
+              <label class="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-subtle cursor-pointer hover:border-[#C5A059] transition-all">
+                <input type="checkbox" id="tour-opt-video" onchange="updateTourPricing()" class="accent-[#C5A059] w-4 h-4">
+                <span class="flex-1 text-zinc-700">Vídeo teaser 4K guiado vertical (optimizado para Instagram Reels / TikTok)</span>
+                <span class="text-[#8C6D37] font-bold">+120 €</span>
+              </label>
+              <label class="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-subtle cursor-pointer hover:border-[#C5A059] transition-all">
+                <input type="checkbox" id="tour-opt-drone" onchange="updateTourPricing()" class="accent-[#C5A059] w-4 h-4">
+                <span class="flex-1 text-zinc-700">Vuelo de dron FPV cinematográfico interior/exterior en 4K</span>
+                <span class="text-[#8C6D37] font-bold">+220 €</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Total Calculation Card -->
+          <div class="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl border border-subtle text-center space-y-5 shadow-md">
+            <div class="space-y-1">
+              <span class="text-[11px] font-mono-tech text-zinc-400 block uppercase">Presupuesto Estimado</span>
+              <div id="tour-cost-display" class="text-4xl sm:text-5xl font-bold font-serif-luxury text-black">285 €</div>
+              <span class="text-[10px] font-mono-tech text-zinc-500">IVA no incluido · Sin costes mensuales ocultos</span>
+            </div>
+
+            <div class="bg-[#FAF9F5] p-4 rounded-2xl border border-subtle text-left space-y-2 text-xs font-mono-tech">
+              <div class="flex justify-between"><span class="text-zinc-500">• Tiempo de captura:</span><span id="tour-time-estimate" class="font-bold text-black">1.5 Horas</span></div>
+              <div class="flex justify-between"><span class="text-zinc-500">• Plazo de entrega:</span><span class="font-bold text-[#8C6D37]">24–48 Horas</span></div>
+              <div class="flex justify-between"><span class="text-zinc-500">• Cobertura:</span><span class="font-bold text-black">Luxemburgo, Madrid, París</span></div>
+            </div>
+
+            <button onclick="requestTourQuote()" class="w-full py-4 rounded-xl bg-[#161616] hover:bg-[#C5A059] text-white font-semibold text-xs uppercase tracking-widest transition-all shadow-md">
+              Solicitar Escaneado con Estos Datos ➔
+            </button>
+            <p class="text-[10px] text-zinc-400 font-mono-tech">Incluye alojamiento web 3D en la nube y soporte técnico de inserción.</p>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ================= FAQ ESPECÍFICO TOURS ================= -->
+      <div class="bg-white p-8 sm:p-12 rounded-3xl border border-subtle space-y-6 shadow-sm">
+        <div class="space-y-2">
+          <span class="text-xs font-mono-tech uppercase tracking-widest text-[#8C6D37] font-bold">// PREGUNTAS FRECUENTES</span>
+          <h3 class="font-serif-luxury text-3xl font-bold text-black">Dudas Comunes sobre Tours Virtuales 360°</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs leading-relaxed">
+          <div class="p-5 bg-[#FAF9F5] rounded-2xl border border-subtle space-y-2">
+            <h4 class="font-bold text-black font-serif-luxury text-sm">¿Cuánto tiempo lleva escanear una propiedad?</h4>
+            <p class="text-zinc-600 font-light">Para un piso de 100-150 m², la captura con LiDAR toma entre 1 y 2 horas. En sedes de oficinas de más de 1.000 m² se realiza en 3-5 horas, habitualmente fuera de horario laboral para no interrumpir la actividad.</p>
+          </div>
+
+          <div class="p-5 bg-[#FAF9F5] rounded-2xl border border-subtle space-y-2">
+            <h4 class="font-bold text-black font-serif-luxury text-sm">¿Cómo se publica en portales inmobiliarios?</h4>
+            <p class="text-zinc-600 font-light">Te entregamos un enlace directo compatible con Idealista, Fotocasa, Athome.lu, JamesEdition y portales internacionales, además de un código iframe de una línea para incrustar en tu propia web.</p>
+          </div>
+
+          <div class="p-5 bg-[#FAF9F5] rounded-2xl border border-subtle space-y-2">
+            <h4 class="font-bold text-black font-serif-luxury text-sm">¿Qué precisión tienen los planos 2D generados?</h4>
+            <p class="text-zinc-600 font-light">Gracias a los sensores LiDAR de infrarrojos, el margen de error es inferior al 1%, siendo aptos para tasaciones, memorias de venta, proyectos de interiorismo y reformas.</p>
+          </div>
+
+          <div class="p-5 bg-[#FAF9F5] rounded-2xl border border-subtle space-y-2">
+            <h4 class="font-bold text-black font-serif-luxury text-sm">¿Es necesario instalar alguna aplicación para verlo?</h4>
+            <p class="text-zinc-600 font-light">No. La experiencia funciona 100% en el navegador web de cualquier teléfono móvil, tablet u ordenador, además de ser compatible con gafas de Realidad Virtual como Apple Vision Pro o Meta Quest.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+
+  <!-- =================================================================== -->
+  <!-- SUBPAGE 3: ALQUILER DE MATERIAL TÉCNICO & FOTOMATÓN (DETAILED GEAR LIST WITH GENERATED IMAGES) -->
+  <!-- =================================================================== -->
+  <main id="page-rentals" class="page-view relative z-10">
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 pt-16 pb-20">
+      
+      <!-- Section Title -->
+      <div class="max-w-4xl space-y-4 mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-gold font-mono-tech text-xs font-bold">
+          <span>AMCROPA FILMS × WELUX STUDIO // ARSENAL TÉCNICO OFICIAL</span>
+        </div>
+        <h1 class="font-serif-luxury text-4xl sm:text-6xl font-normal text-black">
+          Catálogo Oficial de Alquiler Audiovisual & Fotomatón
+        </h1>
+        <p class="text-zinc-600 text-base font-light leading-relaxed">
+          Ponemos a disposición de productoras, cineastas, marcas y eventos exclusivos nuestro inventario técnico profesional completo de cinematografía digital, sonido de campo, estabilización y cabinas de fotomatón glam con escenografía a medida.
+        </p>
+      </div>
+
+
+      <!-- ================= 1. CINE & CÁMARAS ================= -->
+      <div class="space-y-6 mb-16">
+        <div class="flex items-center gap-3 border-b border-subtle pb-4">
+          <span class="w-3 h-3 rounded-full bg-[#C5A059]"></span>
+          <h2 class="font-serif-luxury text-2xl sm:text-3xl font-bold text-black">1. Cámara de Cine, Óptica & Monitoreo</h2>
+          <span class="text-xs font-mono-tech text-zinc-400 ml-auto">[ 4K / 6K RAW CINE ]</span>
+        </div>
+
+        <!-- Featured Banner for Cinema Kit -->
+        <div class="bg-white p-6 rounded-3xl border border-subtle grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-8 shadow-sm">
+          <div class="lg:col-span-7 relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+            <img src="assets/images/cinema_camera_kit.jpg" 
+                 alt="Blackmagic URSA Mini Pro 4.6K G2 Kit" class="w-full h-full object-cover img-zoom">
+            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono-tech font-bold text-black">
+              ✦ KIT CINE OFICIAL AMCROPA FILMS
+            </div>
+          </div>
+          <div class="lg:col-span-5 space-y-4">
+            <span class="text-xs font-mono-tech text-[#8C6D37] font-bold uppercase">CÁMARA & ÓPTICA PRINCIPAL</span>
+            <h3 class="font-serif-luxury text-3xl font-bold text-black">Blackmagic URSA Mini Pro 4.6K G2 Cine Kit</h3>
+            <p class="text-xs text-zinc-600 font-light leading-relaxed">
+              Equipamiento completo para directores de fotografía: sensor Super 35 HDR, 15 pasos de rango dinámico, óptica Sigma 18-35mm T2 Cine, visor OLED y monitor Video Assist 7".
+            </p>
+            <div class="flex justify-between items-center text-xs font-mono-tech border-t border-subtle pt-4">
+              <span class="text-zinc-500">Tarifa Kit Completo:</span>
+              <span class="text-xl font-bold text-black font-serif-luxury">$425 / día</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Item 1: Blackmagic URSA Mini Pro 4.6K G2 -->
+          <div class="gear-card p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold">CÁMARA PRINCIPAL CINE</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Blackmagic URSA Mini Pro 4.6K G2</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Sensor Super 35 4.6K HDR con 15 pasos de rango dinámico, grabación hasta 300 fps en HD y 120 fps en 4.6K en Blackmagic RAW / ProRes.
+              </p>
+              <ul class="text-[11px] font-mono-tech text-zinc-500 space-y-1 pt-2 border-t border-zinc-100">
+                <li>• Montura EF / Filtros ND integrados</li>
+                <li>• Ranuras dobles CFast 2.0 y SD UHS-II</li>
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+              <span class="text-zinc-400">Tarifa Diaria:</span>
+              <span class="font-bold text-black">$280 / día</span>
+            </div>
+          </div>
+
+          <!-- Item 2: Viewfinder Blackmagic URSA -->
+          <div class="gear-card p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold">VISOR ELECTRÓNICO</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Viewfinder Blackmagic URSA</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Visor electrónico OLED Full HD 1920x1080 con óptica de precisión de vidrio y ajuste de dioptrías, luz de tally integrada y carta de enfoque.
+              </p>
+              <ul class="text-[11px] font-mono-tech text-zinc-500 space-y-1 pt-2 border-t border-zinc-100">
+                <li>• Pantalla OLED color de alta fidelidad</li>
+                <li>• Sensor de proximidad para activar pantalla</li>
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+              <span class="text-zinc-400">Tarifa Diaria:</span>
+              <span class="font-bold text-black">$45 / día</span>
+            </div>
+          </div>
+
+          <!-- Item 3: Objetivo Sigma 18-35mm T2 Highspeed Zoom -->
+          <div class="gear-card p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold">ÓPTICA DE CINE HIGHSPEED</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Sigma 18-35mm T2 Cine Zoom</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Objetivo de cine de alta velocidad con apertura constante T2, montura EF, engranajes estándar de cine 0.8 MOD para follow focus y resolución 6K+.
+              </p>
+              <ul class="text-[11px] font-mono-tech text-zinc-500 space-y-1 pt-2 border-t border-zinc-100">
+                <li>• Diámetro frontal estándar 95mm</li>
+                <li>• Rotación de foco suave de 180°</li>
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+              <span class="text-zinc-400">Tarifa Diaria:</span>
+              <span class="font-bold text-black">$85 / día</span>
+            </div>
+          </div>
+
+          <!-- Item 4: Monitor Blackmagic Video Assist 7" 3G -->
+          <div class="gear-card p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold">MONITOR & GRABADOR</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Blackmagic Video Assist 7" 3G</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Monitor táctil HDR de 7 pulgadas de alto brillo con herramientas de enfoque (Focus Peaking, Zebras, False Color) y grabación continua en tarjetas SD.
+              </p>
+              <ul class="text-[11px] font-mono-tech text-zinc-500 space-y-1 pt-2 border-t border-zinc-100">
+                <li>• Entradas y salidas SDI / HDMI</li>
+                <li>• Dos ranuras de grabación SD</li>
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+              <span class="text-zinc-400">Tarifa Diaria:</span>
+              <span class="font-bold text-black">$60 / día</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ================= 2. ESTABILIZACIÓN, SOPORTES & MATTEBOX ================= -->
+      <div class="space-y-6 mb-16">
+        <div class="flex items-center gap-3 border-b border-subtle pb-4">
+          <span class="w-3 h-3 rounded-full bg-[#C5A059]"></span>
+          <h2 class="font-serif-luxury text-2xl sm:text-3xl font-bold text-black">2. Estabilización, Soporte & Control Óptico</h2>
+          <span class="text-xs font-mono-tech text-zinc-400 ml-auto">[ STEADICAM & GRIP ]</span>
+        </div>
+
+        <!-- Featured Banner for Steadicam & Grip Kit with Generated Image -->
+        <div class="bg-white p-6 rounded-3xl border border-subtle grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-8 shadow-sm">
+          <div class="lg:col-span-7 relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+            <img src="assets/images/steadicam_grip_rig.jpg" 
+                 alt="Flycam Galaxy Steadicam Arm & Vest Rig" class="w-full h-full object-cover img-zoom">
+            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono-tech font-bold text-black">
+              ✦ STEADICAM & GRIP SYSTEM
+            </div>
+          </div>
+          <div class="lg:col-span-5 space-y-4">
+            <span class="text-xs font-mono-tech text-[#8C6D37] font-bold uppercase">ESTABILIZACIÓN & SOPORTE CINE</span>
+            <h3 class="font-serif-luxury text-3xl font-bold text-black">Flycam Galaxy Steadicam & Trípode Cam Gear</h3>
+            <p class="text-xs text-zinc-600 font-light leading-relaxed">
+              Sistema de absorción de movimiento con brazo articulado de doble muelle, chaleco acolchado ergonómico, estabilizador Redking y cabeza fluida Cam Gear TA-2.
+            </p>
+            <div class="flex justify-between items-center text-xs font-mono-tech border-t border-subtle pt-4">
+              <span class="text-zinc-500">Tarifa Kit Completo:</span>
+              <span class="text-xl font-bold text-black font-serif-luxury">$210 / día</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Item 1: Flycam Galaxy Arm & Chaleco Redking -->
+          <div class="gear-card p-6 rounded-2xl space-y-3 flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold">STEADICAM DUAL ARM</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Flycam Galaxy Arm & Chaleco</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Brazo articulado de doble muelle con chaleco ergonómico y estabilizador Redking con zapata rápida.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+              <span class="text-zinc-400">Tarifa Diaria:</span>
+              <span class="font-bold text-black">$120 / día</span>
+            </div>
+          </div>
+
+          <!-- Item 2: Cabeza de Trípode Cam Gear TA-2 -->
+          <div class="gear-card p-6 rounded-2xl space-y-3 flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold">TRÍPODE CINE</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Cam Gear TA-2 & Trípode</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Cabeza fluida con contrabalanceo por pasos y patas de aluminio rígidas de doble tubo con triángulo estabilizador.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+              <span class="text-zinc-400">Tarifa Diaria:</span>
+              <span class="font-bold text-black">$50 / día</span>
+            </div>
+          </div>
+
+          <!-- Item 3: Sachtler Mattebox Ace -->
+          <div class="gear-card p-6 rounded-2xl space-y-3 flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold">PARASOL & FILTROS</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Sachtler Matte Box Ace</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Matte box ligera con viseras laterales/superior y 2 portafiltros para barras de 15mm.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+              <span class="text-zinc-400">Tarifa Diaria:</span>
+              <span class="font-bold text-black">$35 / día</span>
+            </div>
+          </div>
+
+          <!-- Item 4: Sachtler Follow Focus Ace -->
+          <div class="gear-card p-6 rounded-2xl space-y-3 flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold">CONTROL DE FOCO</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Sachtler Follow Focus Ace</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Sistema mecánico con parada dura (*hard stops*) ajustable y dentado 0.8 MOD de máxima precisión.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+              <span class="text-zinc-400">Tarifa Diaria:</span>
+              <span class="font-bold text-black">$30 / día</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ================= 3. AUDIO DE CAMPO & MICROFONÍA ================= -->
+      <div class="space-y-6 mb-16">
+        <div class="flex items-center gap-3 border-b border-subtle pb-4">
+          <span class="w-3 h-3 rounded-full bg-[#C5A059]"></span>
+          <h2 class="font-serif-luxury text-2xl sm:text-3xl font-bold text-black">3. Audio de Campo Profesional & Microfonía Røde / Zoom</h2>
+          <span class="text-xs font-mono-tech text-zinc-400 ml-auto">[ 32-BIT FLOAT SOUND ]</span>
+        </div>
+
+        <!-- Featured Banner for Audio Kit with Generated Image -->
+        <div class="bg-white p-6 rounded-3xl border border-subtle grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-8 shadow-sm">
+          <div class="lg:col-span-7 relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+            <img src="assets/images/audio_field_gear.jpg" 
+                 alt="Zoom F6 and Rode Location Audio Kit" class="w-full h-full object-cover img-zoom">
+            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono-tech font-bold text-black">
+              ✦ SONIDO DIRECTO // 32-BIT FLOAT
+            </div>
+          </div>
+          <div class="lg:col-span-5 space-y-4">
+            <span class="text-xs font-mono-tech text-[#8C6D37] font-bold uppercase">SET DE AUDIO DE CAMPO</span>
+            <h3 class="font-serif-luxury text-3xl font-bold text-black">Zoom F6 32-Bit & Røde NTG-2 Kit</h3>
+            <p class="text-xs text-zinc-600 font-light leading-relaxed">
+              Grabación multicanal sin riesgo de saturación, antiviento Røde Blimp MKII con Deadcat, pértiga ligera y sistema inalámbrico Newsshooter.
+            </p>
+            <div class="flex justify-between items-center text-xs font-mono-tech border-t border-subtle pt-4">
+              <span class="text-zinc-500">Tarifa Kit Completo:</span>
+              <span class="text-xl font-bold text-black font-serif-luxury">$170 / día</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Item 1: Grabadora Zoom F6 + BTA-1 -->
+          <div class="gear-card p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold">GRABADORA 32-BIT FLOAT</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Zoom F6 + Módulo BTA-1</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                6 entradas XLR con tecnología de 32 bits en coma flotante y adaptador Bluetooth BTA-1 para control desde iPad/iPhone.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+              <span class="text-zinc-400">Tarifa Diaria:</span>
+              <span class="font-bold text-black">$75 / día</span>
+            </div>
+          </div>
+
+          <!-- Item 2: Micrófono Røde NTG-2 -->
+          <div class="gear-card p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold">MICRÓFONO CAÑÓN</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Røde NTG-2 Shotgun Mic</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Micrófono direccional de condensador con respuesta amplia, bajo ruido y filtro paso alto conmutable.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+              <span class="text-zinc-400">Tarifa Diaria:</span>
+              <span class="font-bold text-black">$35 / día</span>
+            </div>
+          </div>
+
+          <!-- Item 3: Røde Blimp MKII + Deadcat + Micro Boompole -->
+          <div class="gear-card p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold">SUSPENSIÓN & PÉRTIGA</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Røde Blimp MKII + Pértiga</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Protección antiviento Røde Blimp MKII con Deadcat de pelo denso, suspensión Rycote Lyre y pértiga Røde Micro Boompole.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+              <span class="text-zinc-400">Tarifa Diaria:</span>
+              <span class="font-bold text-black">$40 / día</span>
+            </div>
+          </div>
+
+          <!-- Item 4: Røde Rødelink Newsshooter Kit -->
+          <div class="gear-card p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold">TRANSMISIÓN INALÁMBRICA</span>
+              <h3 class="font-serif-luxury text-xl font-bold text-black">Rødelink Newsshooter Kit</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Transmisión digital 2.4 GHz de 128 bits con transmisor TX-XLR (Phantom 48V) + receptor de cámara RX.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+              <span class="text-zinc-400">Tarifa Diaria:</span>
+              <span class="font-bold text-black">$45 / día</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ================= 4. FOTOMATÓN GLAM & ESCENOGRAFÍAS INSTAGRAMEABLES ================= -->
+      <div class="space-y-6 mb-16">
+        <div class="flex items-center gap-3 border-b border-subtle pb-4">
+          <span class="w-3 h-3 rounded-full bg-[#C5A059]"></span>
+          <h2 class="font-serif-luxury text-2xl sm:text-3xl font-bold text-black">4. Fotomatón Glam, Video Booth 360 & Escenografías a Medida</h2>
+          <span class="text-xs font-mono-tech text-zinc-400 ml-auto">[ EVENTOS & MARCAS ]</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Glam Photobooth Card with Generated Image -->
+          <div class="bg-white p-8 rounded-3xl border border-subtle space-y-6 hover:border-[#C5A059] transition-all shadow-sm">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+              <img src="assets/images/glam_photobooth_set.jpg" 
+                   alt="Fotomatón Glam de Lujo" class="w-full h-full object-cover img-zoom">
+              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono-tech font-bold text-black">
+                ✦ CABINA GLAM & 360 BOOTH
+              </div>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-serif-luxury text-2xl font-bold text-black">Fotomatón Glam de Alta Definición con Beauty Filter</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Cabina con cámara de alta resolución, anillo de luz difusa para retratos perfectos, impresión térmica instantánea en papel de alta gama con el logo de tu marca y galería online privada con código QR para descarga al móvil.
+              </p>
+              <div class="bg-[#FAF9F5] p-4 rounded-xl border border-subtle font-mono-tech text-xs space-y-1 text-zinc-700">
+                <div class="flex justify-between"><span>• Impresiones:</span><span class="font-bold text-black">Ilimitadas durante el evento</span></div>
+                <div class="flex justify-between"><span>• Asistencia:</span><span class="font-bold text-[#8C6D37]">Técnico de montaje y soporte incluido</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl border border-subtle space-y-6 hover:border-[#C5A059] transition-all shadow-sm">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+              <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=800&q=80" alt="Escenografía Instagrameable" class="w-full h-full object-cover img-zoom">
+              <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono-tech font-bold text-black">
+                ✦ SETS DECORATIVOS & NEONES
+              </div>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-serif-luxury text-2xl font-bold text-black">Escenografía Instagrameable & Dirección de Arte</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Diseño y montaje de fondos decorativos personalizados para photocalls, lanzamientos de producto y fiestas de marca. Incluye letreros de neón a medida, estructuras botánicas/arquitectónicas e iluminación ambiental sincronizada.
+              </p>
+              <div class="bg-[#FAF9F5] p-4 rounded-xl border border-subtle font-mono-tech text-xs space-y-1 text-zinc-700">
+                <div class="flex justify-between"><span>• Personalización:</span><span class="font-bold text-black">Logo y tipografía de tu empresa</span></div>
+                <div class="flex justify-between"><span>• Iluminación:</span><span class="font-bold text-[#8C6D37]">Tubos Astera Titan RGBWW</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ================= 5. CALCULADORA DE ALQUILER POR PACKS ================= -->
+      <div class="bg-[#F4F1EA] p-8 sm:p-12 rounded-3xl border border-subtle space-y-8">
+        <div class="max-w-2xl space-y-2">
+          <span class="text-xs font-mono-tech text-[#8C6D37] font-bold uppercase">// CALCULADORA DE TARIFAS & RESERVA INMEDIATA</span>
+          <h3 class="font-serif-luxury text-3xl font-bold text-black">Estimador de Presupuesto de Alquiler</h3>
+          <p class="text-xs text-zinc-600 font-light">Selecciona el pack de material o kit personalizado y ajusta los días para obtener tu tarifa estimada con descuentos aplicados.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-7 space-y-4 text-xs font-mono-tech">
+            <div>
+              <label class="block text-zinc-700 font-bold mb-2">Selecciona el Pack de Equipamiento Amcropa:</label>
+              <select id="rental-pack-select" onchange="updateRentalCalculation()" class="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3 text-black focus:border-[#C5A059] focus:outline-none font-sans">
+                <option value="ursa-cine">Pack 1: Blackmagic URSA 4.6K G2 + Sigma 18-35mm T2 + Video Assist 7" ($425/d)</option>
+                <option value="audio-sound">Pack 2: Audio Pro (Zoom F6 32-bit + Røde NTG-2 + Blimp + Rødelink) ($170/d)</option>
+                <option value="steadicam-grip">Pack 3: Steadicam Flycam Galaxy + Trípode Cam Gear TA-2 + Sachtler Ace ($210/d)</option>
+                <option value="photobooth-glam">Pack 4: Fotomatón Glam HD + Escenografía Instagrameable + Técnico ($450/d)</option>
+                <option value="full-production">Pack 5: Rodaje Master Cine Completo (Cámara 4.6K + Steadicam + Audio + Sachtler) ($750/d)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-zinc-700 font-bold mb-2">Duración del Alquiler (Días):</label>
+              <input type="range" id="rental-days-slider" min="1" max="7" step="1" value="1" oninput="updateRentalCalculation()" class="w-full accent-[#C5A059]">
+              <div class="flex justify-between text-[#8C6D37] mt-1 font-bold">
+                <span>1 Día</span>
+                <span id="rental-days-label" class="text-black text-sm">1 Día</span>
+                <span>7 Días (30% Descuento)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-subtle text-center space-y-4 shadow-sm">
+            <span class="text-[11px] font-mono-tech text-zinc-400 block uppercase">Presupuesto Estimado</span>
+            <div id="rental-cost-display" class="text-4xl font-bold font-serif-luxury text-black">$425 USD</div>
+            <p class="text-[11px] text-zinc-500 font-light">Incluye seguro de equipamiento profesional y revisión de puesta a punto.</p>
+            <button onclick="navigateTo('contact')" class="w-full py-3.5 rounded-xl bg-[#161616] hover:bg-[#C5A059] text-white font-semibold text-xs uppercase tracking-widest transition-all">
+              Reservar Material Técnico ➔
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+
+  <!-- =================================================================== -->
+  <!-- SUBPAGE 4: PORTFOLIO & PROTOTIPOS INTERACTIVOS -->
+  <!-- =================================================================== -->
+  <main id="page-portfolio" class="page-view relative z-10">
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 pt-16 pb-20">
+      <div class="max-w-3xl space-y-4 mb-12">
+        <span class="text-xs font-mono-tech uppercase tracking-widest text-[#8C6D37]">// SUBPÁGINA 03 — PORTFOLIO & PROTOTIPOS INTERACTIVOS</span>
+        <h1 class="font-serif-luxury text-4xl sm:text-6xl font-normal text-black">
+          Laboratorio de Demos & Casos Reales
+        </h1>
+      </div>
+
+      <!-- Device Tester -->
+      <div class="bg-white p-6 sm:p-10 rounded-3xl border border-subtle shadow-xl space-y-6">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 border-b border-subtle pb-6">
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-red-400"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400"></span>
+            <span class="text-xs font-mono-tech text-zinc-400 ml-2">welux-device-tester.v4</span>
+          </div>
+
+          <div class="flex items-center bg-[#FAF9F5] p-1 rounded-xl border border-subtle text-xs font-mono-tech">
+            <button onclick="switchDeviceView('desktop')" id="btn-desktop" class="px-4 py-2 rounded-lg bg-black text-white font-bold transition-all">💻 Desktop</button>
+            <button onclick="switchDeviceView('tablet')" id="btn-tablet" class="px-4 py-2 rounded-lg text-zinc-600 hover:text-black transition-all">📱 Tablet</button>
+            <button onclick="switchDeviceView('mobile')" id="btn-mobile" class="px-4 py-2 rounded-lg text-zinc-600 hover:text-black transition-all">📲 Mobile</button>
+          </div>
+        </div>
+
+        <div class="bg-[#FAF9F5] p-6 rounded-2xl border border-subtle flex justify-center items-center overflow-hidden min-h-[460px]">
+          <div id="device-container-frame" class="device-desktop bg-white rounded-xl shadow-2xl border border-zinc-200 overflow-hidden flex flex-col transition-all duration-500">
+            <div class="bg-zinc-900 text-white p-3 flex justify-between items-center text-[10px] font-mono-tech">
+              <span>https://laurent-realestate.welux.design</span>
+              <span class="text-[#E5C17C]">● LIVE CLIENT PROTOTYPE</span>
+            </div>
+            <div class="p-8 space-y-4 overflow-y-auto bg-stone-50 flex-1">
+              <span class="text-[10px] font-mono-tech text-[#8C6D37]">LUXURY REAL ESTATE & LIVING</span>
+              <h3 class="font-serif-luxury text-3xl font-bold text-black">Laurent Real Estate — Luxembourg</h3>
+              <p class="text-xs text-zinc-600 font-light leading-relaxed">
+                Plataforma web boutique desarrollada por Welux Studio con experiencia inmersiva de visitas virtuales y carga en 1.1 segundos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- =================================================================== -->
+  <!-- SUBPAGE 5: EL ESTUDIO (ABOUT & HERITAGE) -->
+  <!-- =================================================================== -->
+  <main id="page-about" class="page-view relative z-10">
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 pt-16 pb-20">
+      <div class="max-w-3xl space-y-4 mb-16">
+        <span class="text-xs font-mono-tech uppercase tracking-widest text-[#8C6D37]">// SUBPÁGINA 04 — EL ESTUDIO & IDENTIDAD WELUX</span>
+        <h1 class="font-serif-luxury text-4xl sm:text-6xl font-normal text-black">
+          Rigor Europeo, Quiet Luxury & Arte Audiovisual
+        </h1>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-3xl border border-subtle space-y-4 shadow-sm">
+          <span class="text-3xl">🏛️</span>
+          <h3 class="font-serif-luxury text-2xl font-bold text-black">Sede en Luxemburgo</h3>
+          <p class="text-xs text-zinc-600 font-light leading-relaxed">
+            Situados en uno de los centros financieros y creativos más exigentes de Europa, ofreciendo servicios multilingües y estándares del más alto nivel.
+          </p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl border border-subtle space-y-4 shadow-sm">
+          <span class="text-3xl">🎬</span>
+          <h3 class="font-serif-luxury text-2xl font-bold text-black">Alianza Amcropa Films</h3>
+          <p class="text-xs text-zinc-600 font-light leading-relaxed">
+            Nuestra división técnica cuenta con la Blackmagic URSA 4.6K G2, ópticas Sigma Cine T2, Steadicam Flycam Galaxy y sonido Zoom 32-bit Float.
+          </p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl border border-subtle space-y-4 shadow-sm">
+          <span class="text-3xl">⚖️</span>
+          <h3 class="font-serif-luxury text-2xl font-bold text-black">Edición Limitada</h3>
+          <p class="text-xs text-zinc-600 font-light leading-relaxed">
+            Admitimos únicamente un cupo selecto de marcas por trimestre para garantizar la participación directa de los directores creativos.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- =================================================================== -->
+  <!-- SUBPAGE 6: CONTACTO & CALCULADORA ROI -->
+  <!-- =================================================================== -->
+  <main id="page-contact" class="page-view relative z-10">
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 pt-16 pb-20">
+      <div class="max-w-3xl space-y-4 mb-12">
+        <span class="text-xs font-mono-tech uppercase tracking-widest text-[#8C6D37]">// SUBPÁGINA 05 — DIAGNÓSTICO & RESERVAS</span>
+        <h1 class="font-serif-luxury text-4xl sm:text-6xl font-normal text-black">
+          Comencemos a Escalar tu Marca
+        </h1>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-5 bg-[#F4F1EA] p-8 rounded-3xl border border-subtle space-y-6">
+          <span class="text-xs font-mono-tech font-bold text-[#8C6D37] uppercase">CALCULADORA DE PROYECCIÓN</span>
+          <h3 class="font-serif-luxury text-2xl font-bold text-black">Estimador de Alcance & ROAS</h3>
+          
+          <div class="space-y-4 text-xs font-mono-tech">
+            <div>
+              <label class="block text-zinc-700 font-bold mb-2">Presupuesto Mensual de Inversión:</label>
+              <input type="range" id="roi-calc-slider" min="2000" max="15000" step="1000" value="5000" oninput="calculateROISimulator(this.value)" class="w-full accent-[#C5A059]">
+              <div class="flex justify-between text-[#8C6D37] mt-1 font-bold">
+                <span>$2,000</span>
+                <span id="roi-calc-val" class="text-black text-sm">$5,000 / mes</span>
+                <span>$15,000+</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 pt-4 border-t border-zinc-300">
+              <div class="bg-white p-4 rounded-xl border border-subtle text-center">
+                <span class="text-[10px] text-zinc-400 block">Alcance Estimado</span>
+                <span id="roi-calc-reach" class="text-lg font-bold text-black">1.5M - 3.0M</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl border border-subtle text-center">
+                <span class="text-[10px] text-zinc-400 block">ROAS Proyectado</span>
+                <span id="roi-calc-roas" class="text-lg font-bold text-[#8C6D37]">4.8X</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-subtle shadow-sm space-y-6">
+          <h3 class="font-serif-luxury text-2xl font-bold text-black">Formulario de Cualificación Inicial</h3>
+          <form onsubmit="handleContactSubmit(event)" class="space-y-4 text-xs">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-medium text-zinc-700 mb-1">Nombre Completo *</label>
+                <input type="text" required placeholder="Tu nombre" class="w-full bg-[#FAF9F5] border border-zinc-200 rounded-xl px-4 py-3 text-black focus:border-[#C5A059] focus:outline-none">
+              </div>
+              <div>
+                <label class="block font-medium text-zinc-700 mb-1">Empresa / Marca *</label>
+                <input type="text" required placeholder="Nombre de tu marca" class="w-full bg-[#FAF9F5] border border-zinc-200 rounded-xl px-4 py-3 text-black focus:border-[#C5A059] focus:outline-none">
+              </div>
+            </div>
+            <div>
+              <label class="block font-medium text-zinc-700 mb-1">Servicio Principal de Interés</label>
+              <select id="contact-service-select" class="w-full bg-[#FAF9F5] border border-zinc-200 rounded-xl px-4 py-3 text-black focus:border-[#C5A059] focus:outline-none font-sans">
+                <option value="tours-360">Tours Virtuales 360° &amp; Gemelos Digitales 3D (Inmobiliarias / Oficinas / Hoteles)</option>
+                <option value="agency-growth">Ecosistema de Agencia Completo (Social Growth, Web &amp; Ads)</option>
+                <option value="cinema-rentals">Alquiler de Material Técnico Amcropa Gear / Fotomatón Glam</option>
+                <option value="video-production">Producción Cinematográfica 4K &amp; Dirección de Arte</option>
+                <option value="custom">Proyecto a Medida / Asesoramiento</option>
+              </select>
+            </div>
+            <button type="submit" class="w-full py-4 rounded-xl bg-[#161616] hover:bg-[#C5A059] text-white font-semibold text-xs uppercase tracking-widest transition-all duration-300 shadow-md">
+              Enviar Solicitud de Diagnóstico ➔
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ================= FOOTER COMMON ================= -->
+  <footer class="relative z-10 border-t border-subtle bg-[#FAF9F5] py-12 text-zinc-500 text-xs">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <span class="font-cinzel font-bold text-base text-black">WELUX STUDIO</span>
+        <span class="text-[10px] text-zinc-400">© 2026</span>
+      </div>
+      <div class="text-center sm:text-left text-zinc-400 font-mono-tech text-[11px]">
+        Luxemburgo • Madrid • París | Agencia de Crecimiento & Alquiler Técnico Cine
+      </div>
+      <div class="flex gap-6 text-zinc-600 text-[11px] uppercase tracking-wider font-mono-tech">
+        <a href="#" class="hover:text-black font-bold">𝕏</a>
+        <a href="#" class="hover:text-black">Instagram</a>
+        <a href="#" class="hover:text-black">LinkedIn</a>
+        <a href="#" class="hover:text-black">Vimeo</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT MASTER ROUTER & SYSTEMS ================= -->
+  <script>
+    // Subpage Routing Function
+    function navigateTo(pageId) {
+      document.querySelectorAll('.page-view').forEach(view => {
+        view.classList.remove('active-page');
+      });
+
+      const target = document.getElementById(`page-${pageId}`);
+      if (target) {
+        target.classList.add('active-page');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('text-black', 'font-bold');
+        link.classList.add('text-zinc-600');
+      });
+
+      const activeNav = document.getElementById(`nav-${pageId}`);
+      if (activeNav) {
+        activeNav.classList.remove('text-zinc-600');
+        activeNav.classList.add('text-black', 'font-bold');
+      }
+    }
+
+    // Device Mockup Switcher
+    function switchDeviceView(mode) {
+      const frame = document.getElementById('device-container-frame');
+      const btnDesktop = document.getElementById('btn-desktop');
+      const btnTablet = document.getElementById('btn-tablet');
+      const btnMobile = document.getElementById('btn-mobile');
+
+      [btnDesktop, btnTablet, btnMobile].forEach(btn => {
+        btn.className = "px-4 py-2 rounded-lg text-zinc-600 hover:text-black transition-all";
+      });
+
+      if (mode === 'desktop') {
+        frame.className = "device-desktop bg-white rounded-xl shadow-2xl border border-zinc-200 overflow-hidden flex flex-col transition-all duration-500";
+        btnDesktop.className = "px-4 py-2 rounded-lg bg-black text-white font-bold transition-all";
+      } else if (mode === 'tablet') {
+        frame.className = "device-tablet bg-white rounded-xl shadow-2xl border border-zinc-200 overflow-hidden flex flex-col transition-all duration-500";
+        btnTablet.className = "px-4 py-2 rounded-lg bg-black text-white font-bold transition-all";
+      } else if (mode === 'mobile') {
+        frame.className = "device-mobile bg-white rounded-xl shadow-2xl border border-zinc-200 overflow-hidden flex flex-col transition-all duration-500";
+        btnMobile.className = "px-4 py-2 rounded-lg bg-black text-white font-bold transition-all";
+      }
+    }
+
+    // Rental Calculation Function with Real Amcropa Gear
+    function updateRentalCalculation() {
+      const pack = document.getElementById('rental-pack-select').value;
+      const days = parseInt(document.getElementById('rental-days-slider').value);
+      document.getElementById('rental-days-label').innerText = `${days} ${days === 1 ? 'Día' : 'Días'}`;
+
+      let baseCost = 425;
+      if (pack === 'ursa-cine') baseCost = 425;
+      else if (pack === 'audio-sound') baseCost = 170;
+      else if (pack === 'steadicam-grip') baseCost = 210;
+      else if (pack === 'photobooth-glam') baseCost = 450;
+      else if (pack === 'full-production') baseCost = 750;
+
+      let multiplier = days;
+      if (days >= 3) multiplier = days * 0.85;
+      if (days >= 7) multiplier = days * 0.70;
+
+      const total = Math.round(baseCost * multiplier);
+      document.getElementById('rental-cost-display').innerText = `$${total.toLocaleString()} USD`;
+    }
+
+    
+    // ================= TOURS VIRTUALES 360° SYSTEM =================
+    const tourSpacesData = {
+      penthouse: {
+        title: 'PENTHOUSE LUXURY // SALÓN PRINCIPAL & TERRAZA',
+        img: 'assets/images/virtual_tour_lidar.jpg',
+        rooms: [
+          { name: '01. Salón / Hall', img: 'assets/images/virtual_tour_lidar.jpg', label: 'PENTHOUSE LUXURY // SALÓN PRINCIPAL & TERRAZA' },
+          { name: '02. Terraza', img: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80', label: 'PENTHOUSE LUXURY // TERRAZA PANORÁMICA SKYLINE' },
+          { name: '03. Master Suite', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80', label: 'PENTHOUSE LUXURY // MASTER BEDROOM & BAÑO EN SUITE' },
+          { name: '04. Cocina', img: 'https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=1200&q=80', label: 'PENTHOUSE LUXURY // COCINA DE AUTOR ISLA CENTRAL' }
+        ],
+        hotspots: {
+          1: { tag: 'CALIDADES EXCLUSIVAS', title: 'Suelo Mármol Calacatta & Suelo Radiante', desc: 'Mármol natural Calacatta pulido con aislamiento acústico 58dB y climatización invisible por aerotermia zonificada.' },
+          2: { tag: 'ARQUITECTURA & LUZ', title: 'Ventanales Climalit Triple Vidrio & Skyline', desc: 'Acristalamiento de seguridad con control solar térmico y perfilería oculta de suelo a techo con vistas 360°.' },
+          3: { tag: 'DOMÓTICA INTEGRADA', title: 'Sistema Lutron Homeworks & Sonido Bowers & Wilkins', desc: 'Escenas lumínicas automatizadas, persianas motorizadas silenciosas y audio multizona empotrado en falso techo.' }
+        }
+      },
+      office: {
+        title: 'SEDE CORPORATIVA & TECH HUB // ESPACIO DIÁFANO',
+        img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+        rooms: [
+          { name: '01. Open Space', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80', label: 'SEDE CORPORATIVA // OPEN SPACE & PUESTOS FLEXIBLES' },
+          { name: '02. Sala Juntas', img: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80', label: 'SEDE CORPORATIVA // SALA DE CONFERENCIAS & TELEPRESENCIA' },
+          { name: '03. Phone Booths', img: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80', label: 'SEDE CORPORATIVA // CABINAS ACÚSTICAS INDIVIDUALES' },
+          { name: '04. Cafetería', img: 'https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1200&q=80', label: 'SEDE CORPORATIVA // LOUNGE & ZONA DE NETWORKING' }
+        ],
+        hotspots: {
+          1: { tag: 'INFRAESTRUCTURA IT', title: 'Cableado Cat 7A & Fibra Óptica Redundante', desc: 'Canalización técnica bajo suelo técnico elevado con tomas de red dedicadas y racks climatizados.' },
+          2: { tag: 'ACÚSTICA & BIENESTAR', title: 'Paneles Fonoabsorbentes & Iluminación Circadiana', desc: 'Tratamiento acústico NRC 0.90 con luminarias LED regulables que siguen el ciclo solar biológico.' },
+          3: { tag: 'SALA DE CONSEJO', title: 'Pantalla 4K 98\" & Micrófono de Techo Shure', desc: 'Sistema para videoconferencias híbridas con supresión de eco y encuadre facial por IA.' }
+        }
+      },
+      hotel: {
+        title: 'GRAND HOTEL & WELLNESS // ROYAL PRESIDENTIAL SUITE',
+        img: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
+        rooms: [
+          { name: '01. Presidential Suite', img: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80', label: 'GRAND HOTEL // ROYAL PRESIDENTIAL SUITE' },
+          { name: '02. Spa Privado', img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80', label: 'GRAND HOTEL // SPA & PISCINA DE HIDROMASAJE' },
+          { name: '03. Lobby Principal', img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80', label: 'GRAND HOTEL // LOBBY MONUMENTAL & CONSERJERÍA' },
+          { name: '04. Restaurante Gourmet', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80', label: 'GRAND HOTEL // RESTAURANTE GASTRONÓMICO & BODEGA' }
+        ],
+        hotspots: {
+          1: { tag: 'RESERVA DIRECTA', title: 'Suite Presidencial 220 m² con Mayordomía', desc: 'Cama King Size Simmons Black, vestidor independiente y terraza privada con vistas a la catedral.' },
+          2: { tag: 'ZONA WELLNESS', title: 'Sauna Finlandesa & Baño Turco Hammam', desc: 'Circuito hidrotermal privado con aromaterapia y cromoterapia personalizada.' },
+          3: { tag: 'EXPERIENCIA GASTRONÓMICA', title: 'Carta Degustación Estrella Michelin', desc: 'Servicio exclusivo de room service con sumiller privado y vajilla de porcelana francesa.' }
+        }
+      }
+    };
+
+    let currentTourSpace = 'penthouse';
+    let currentTourRoomIndex = 0;
+    let autoRotateInterval = null;
+
+    function switchTourSpace(spaceKey) {
+      currentTourSpace = spaceKey;
+      currentTourRoomIndex = 0;
+      
+      ['penthouse', 'office', 'hotel'].forEach(key => {
+        const btn = document.getElementById('btn-tour-' + key);
+        if (btn) {
+          if (key === spaceKey) {
+            btn.className = 'px-4 py-2 rounded-xl bg-black text-white font-bold transition-all';
+          } else {
+            btn.className = 'px-4 py-2 rounded-xl text-zinc-600 hover:text-black transition-all';
+          }
+        }
+      });
+
+      const data = tourSpacesData[spaceKey];
+      document.getElementById('tour-viewport-img').src = data.img;
+      document.getElementById('tour-current-label').innerText = data.title;
+
+      // Update room buttons
+      for (let i = 0; i < 4; i++) {
+        const roomBtn = document.getElementById('btn-room-' + i);
+        if (roomBtn && data.rooms[i]) {
+          roomBtn.innerText = data.rooms[i].name;
+          if (i === 0) {
+            roomBtn.className = 'px-3 py-1 rounded-xl bg-[#C5A059] text-white font-bold transition-all';
+          } else {
+            roomBtn.className = 'px-3 py-1 rounded-xl text-zinc-300 hover:text-white transition-all';
+          }
+        }
+      }
+
+      closeHotspotModal();
+    }
+
+    function selectTourRoom(roomIdx) {
+      currentTourRoomIndex = roomIdx;
+      const data = tourSpacesData[currentTourSpace];
+      if (!data.rooms[roomIdx]) return;
+
+      document.getElementById('tour-viewport-img').src = data.rooms[roomIdx].img;
+      document.getElementById('tour-current-label').innerText = data.rooms[roomIdx].label;
+
+      for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById('btn-room-' + i);
+        if (btn) {
+          if (i === roomIdx) {
+            btn.className = 'px-3 py-1 rounded-xl bg-[#C5A059] text-white font-bold transition-all';
+          } else {
+            btn.className = 'px-3 py-1 rounded-xl text-zinc-300 hover:text-white transition-all';
+          }
+        }
+      }
+      closeHotspotModal();
+    }
+
+    function switchTourMode(mode) {
+      const btnTour = document.getElementById('btn-mode-tour');
+      const btnDoll = document.getElementById('btn-mode-dollhouse');
+      const btnPlan = document.getElementById('btn-mode-floorplan');
+      const img = document.getElementById('tour-viewport-img');
+      const hotspots = document.getElementById('tour-hotspots-layer');
+
+      [btnTour, btnDoll, btnPlan].forEach(b => {
+        if (b) b.className = 'px-3.5 py-1.5 rounded-lg text-zinc-600 hover:text-black transition-all flex items-center gap-1.5';
+      });
+
+      if (mode === 'tour') {
+        btnTour.className = 'px-3.5 py-1.5 rounded-lg bg-[#C5A059] text-white font-bold transition-all flex items-center gap-1.5';
+        img.src = tourSpacesData[currentTourSpace].rooms[currentTourRoomIndex].img;
+        img.style.transform = 'scale(1)';
+        if (hotspots) hotspots.style.display = 'block';
+      } else if (mode === 'dollhouse') {
+        btnDoll.className = 'px-3.5 py-1.5 rounded-lg bg-[#C5A059] text-white font-bold transition-all flex items-center gap-1.5';
+        img.src = 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80';
+        img.style.transform = 'scale(1.04) perspective(800px) rotateX(8deg)';
+        if (hotspots) hotspots.style.display = 'none';
+      } else if (mode === 'floorplan') {
+        btnPlan.className = 'px-3.5 py-1.5 rounded-lg bg-[#C5A059] text-white font-bold transition-all flex items-center gap-1.5';
+        img.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80';
+        img.style.transform = 'scale(1)';
+        if (hotspots) hotspots.style.display = 'none';
+      }
+      closeHotspotModal();
+    }
+
+    function showHotspotDetail(spotId) {
+      const modal = document.getElementById('tour-hotspot-modal');
+      const data = tourSpacesData[currentTourSpace].hotspots[spotId];
+      if (!data) return;
+
+      document.getElementById('modal-spot-tag').innerText = data.tag;
+      document.getElementById('modal-spot-title').innerText = data.title;
+      document.getElementById('modal-spot-desc').innerText = data.desc;
+      modal.classList.remove('hidden');
+    }
+
+    function closeHotspotModal() {
+      const modal = document.getElementById('tour-hotspot-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function toggleTourAutoRotate() {
+      const img = document.getElementById('tour-viewport-img');
+      const btn = document.getElementById('btn-tour-rotate');
+      if (autoRotateInterval) {
+        clearInterval(autoRotateInterval);
+        autoRotateInterval = null;
+        btn.innerHTML = '<span>▶ Auto-Rotación 360°</span>';
+        img.style.transform = 'scale(1)';
+      } else {
+        let pos = 0;
+        let dir = 1;
+        btn.innerHTML = '<span>⏹ Detener Giro</span>';
+        autoRotateInterval = setInterval(() => {
+          pos += 0.15 * dir;
+          if (pos > 8 || pos < -8) dir *= -1;
+          img.style.transform = 'scale(1.08) translateX(' + pos + 'px)';
+        }, 50);
+      }
+    }
+
+    // ================= TOURS PRICING CALCULATOR =================
+    function updateTourPricing() {
+      const type = document.getElementById('tour-calc-type').value;
+      const m2 = parseInt(document.getElementById('tour-calc-m2-slider').value);
+      document.getElementById('tour-calc-m2-val').innerText = m2 + ' m²';
+
+      let basePrice = 160;
+      let ratePerM2 = 0.85;
+
+      if (type === 'residential') { basePrice = 160; ratePerM2 = 0.85; }
+      else if (type === 'villa') { basePrice = 220; ratePerM2 = 0.95; }
+      else if (type === 'office') { basePrice = 260; ratePerM2 = 0.75; }
+      else if (type === 'hotel') { basePrice = 320; ratePerM2 = 0.80; }
+      else if (type === 'retail') { basePrice = 190; ratePerM2 = 0.80; }
+
+      let total = basePrice + (m2 * ratePerM2);
+
+      // Add-ons
+      if (document.getElementById('tour-opt-floorplan').checked) total += 65;
+      if (document.getElementById('tour-opt-tags').checked) total += 45;
+      if (document.getElementById('tour-opt-video').checked) total += 120;
+      if (document.getElementById('tour-opt-drone').checked) total += 220;
+
+      document.getElementById('tour-cost-display').innerText = Math.round(total) + ' €';
+
+      // Estimate time
+      let hours = (m2 / 100).toFixed(1);
+      if (hours < 1) hours = 1;
+      document.getElementById('tour-time-estimate').innerText = hours + ' Horas aprox.';
+    }
+
+    function prefillTourQuote(typeKey) {
+      navigateTo('tours-360');
+      const typeSelect = document.getElementById('tour-calc-type');
+      if (typeSelect) {
+        typeSelect.value = typeKey;
+        updateTourPricing();
+      }
+      const calcSec = document.getElementById('tour-calculator-section');
+      if (calcSec) {
+        calcSec.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function requestTourQuote() {
+      navigateTo('contact');
+      const serviceSelect = document.getElementById('contact-service-select');
+      if (serviceSelect) {
+        serviceSelect.value = 'tours-360';
+      }
+    }
+
+
+    // ROI Simulator Calculation
+    function calculateROISimulator(val) {
+      const budget = parseInt(val);
+      document.getElementById('roi-calc-val').innerText = `$${budget.toLocaleString()} / mes`;
+      const reachMin = (budget * 260 / 1000000).toFixed(1);
+      const reachMax = (budget * 560 / 1000000).toFixed(1);
+      const roas = (4.2 + (budget / 7500)).toFixed(1);
+
+      document.getElementById('roi-calc-reach').innerText = `${reachMin}M - ${reachMax}M`;
+      document.getElementById('roi-calc-roas').innerText = `${roas}X`;
+    }
+
+    // Language Switcher Indicator
+    function setLang(lang) {
+      ['es', 'en', 'fr'].forEach(l => {
+        const btn = document.getElementById(`lang-${l}`);
+        if (btn) {
+          btn.className = l === lang ? "text-black font-extrabold" : "text-zinc-400 hover:text-black";
+        }
+      });
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      alert("¡Solicitud recibida! Un estratega de Welux Studio se pondrá en contacto en menos de 24 horas.");
+    }
+
+    // Ambient Gold Particles
+    const canvas = document.getElementById('ambient-canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const particles = [];
+    for (let i = 0; i < 35; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2.2 + 1,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        alpha: Math.random() * 0.45 + 0.15
+      });
+    }
+
+    function renderAmbientCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(197, 160, 89, ${p.alpha})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(renderAmbientCanvas);
+    }
+    renderAmbientCanvas();
+  </script>
+</body>
+</html>

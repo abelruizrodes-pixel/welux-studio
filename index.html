@@ -131,19 +131,26 @@
       </a>
 
       <!-- Navigation Menu -->
-      <nav class="hidden lg:flex items-center gap-5 text-xs uppercase tracking-widest font-medium text-zinc-600">
+      <nav class="hidden xl:flex items-center gap-4 text-xs uppercase tracking-widest font-medium text-zinc-600">
         <button onclick="navigateTo('home')" id="nav-home" class="nav-link text-black font-bold hover:text-[#C5A059] transition-colors">Inicio</button>
         <button onclick="navigateTo('services')" id="nav-services" class="nav-link hover:text-black transition-colors">Servicios</button>
         <button onclick="navigateTo('tours-360')" id="nav-tours-360" class="nav-link hover:text-black transition-colors flex items-center gap-1.5">
           <span>Tours 360°</span>
-          <span class="px-1.5 py-0.2 bg-[#C5A059] text-white text-[9px] font-bold rounded">3D / VR</span>
+          <span class="px-1.5 py-0.2 bg-[#C5A059] text-white text-[9px] font-bold rounded">3D/VR</span>
+        </button>
+        <button onclick="navigateTo('talent')" id="nav-talent" class="nav-link hover:text-black transition-colors flex items-center gap-1.5">
+          <span>Videobooks &amp; Talent</span>
+          <span class="px-1.5 py-0.2 bg-purple-600 text-white text-[9px] font-bold rounded">ACTORES/MODA</span>
+        </button>
+        <button onclick="navigateTo('career-accelerator')" id="nav-career-accelerator" class="nav-link hover:text-black transition-colors flex items-center gap-1.5">
+          <span>CV Web &amp; Empleo</span>
+          <span class="px-1.5 py-0.2 bg-emerald-600 text-white text-[9px] font-bold rounded">100% A ÉXITO</span>
         </button>
         <button onclick="navigateTo('rentals')" id="nav-rentals" class="nav-link hover:text-black transition-colors flex items-center gap-1.5">
-          <span>Alquiler</span>
+          <span>Alquiler Cine</span>
           <span class="px-1.5 py-0.2 bg-[#161616] text-white text-[9px] font-bold rounded">AMCROPA</span>
         </button>
         <button onclick="navigateTo('portfolio')" id="nav-portfolio" class="nav-link hover:text-black transition-colors">Portfolio</button>
-        <button onclick="navigateTo('about')" id="nav-about" class="nav-link hover:text-black transition-colors">El Estudio</button>
         <button onclick="navigateTo('contact')" id="nav-contact" class="nav-link hover:text-black transition-colors">Contacto</button>
       </nav>
 
@@ -1179,6 +1186,362 @@
   <!-- =================================================================== -->
   <!-- SUBPAGE 3: ALQUILER DE MATERIAL TÉCNICO & FOTOMATÓN (DETAILED GEAR LIST WITH GENERATED IMAGES) -->
   <!-- =================================================================== -->
+  
+  <!-- =================================================================== -->
+  <!-- SUBPAGE: TALENT LAB — VIDEOBOOKS 4K & BOOKS PARA ACTORES Y MODELOS -->
+  <!-- =================================================================== -->
+  <main id="page-talent" class="page-view relative z-10">
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 pt-16 pb-20 space-y-20">
+      
+      <!-- Section Header -->
+      <div class="max-w-4xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-gold font-mono-tech text-xs font-bold">
+          <span class="w-2 h-2 rounded-full bg-purple-500 animate-ping"></span>
+          <span>WELUX TALENT LAB // PRODUCCIÓN CINEMATOGRÁFICA PARA ARTISTAS</span>
+        </div>
+        <h1 class="font-serif-luxury text-4xl sm:text-6xl font-normal text-black leading-tight">
+          Videobooks Cinematográficos 4K &amp; Books Editoriales de Moda
+        </h1>
+        <p class="text-zinc-600 text-base sm:text-lg font-light leading-relaxed">
+          Ponemos la tecnología de cine de Welux Studio y Amcropa Films al servicio de actores, actrices y modelos. Rodamos tus escenas con cámara de cine **Blackmagic URSA 4.6K G2**, ópticas **Sigma Cine T2**, sonido directo de estudio y dirección actoral profesional para que directores de casting y agencias internacionales te elijan al primer vistazo.
+        </p>
+      </div>
+
+      <!-- 3 Core Talent Services -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Service 1: Videobook Actoral -->
+        <div class="bg-white p-8 rounded-3xl border border-subtle space-y-6 shadow-sm hover:border-[#C5A059] transition-all flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+              <img src="assets/images/art_director_onset.jpg" alt="Videobooks Actorales" class="w-full h-full object-cover img-zoom">
+              <div class="absolute top-3 left-3 bg-white/95 px-2.5 py-0.5 rounded-full text-[10px] font-mono-tech font-bold text-black">
+                4K CINE ACTORAL
+              </div>
+            </div>
+            <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold block w-fit">ACTORES &amp; ACTRICES</span>
+            <h3 class="font-serif-luxury text-2xl font-bold text-black">Videobooks Cinematográficos</h3>
+            <p class="text-xs text-zinc-600 font-light leading-relaxed">
+              Rodaje de 2 a 3 secuencias de ficción guionizadas a medida (drama, comedia o thriller). Iluminación envolvente, etalonaje cinematográfico en DaVinci Resolve y sonido 32-bit Float sin ruidos.
+            </p>
+            <ul class="text-[11px] font-mono-tech text-zinc-500 space-y-1.5 pt-2 border-t border-zinc-100">
+              <li>• Guiones originales adaptados a tu registro</li>
+              <li>• Dirección escénica en plató o localización</li>
+              <li>• Entrega en 4K Master + Clips para Instagram/TikTok</li>
+            </ul>
+          </div>
+          <div class="pt-4 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+            <span class="text-zinc-400">Tarifa desde:</span>
+            <span class="text-xl font-bold font-serif-luxury text-black">190 €</span>
+          </div>
+        </div>
+
+        <!-- Service 2: Book Moda & Fotografía -->
+        <div class="bg-white p-8 rounded-3xl border border-subtle space-y-6 shadow-sm hover:border-[#C5A059] transition-all flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+              <img src="assets/images/glam_photobooth_set.jpg" alt="Book Fotográfico de Moda" class="w-full h-full object-cover img-zoom">
+              <div class="absolute top-3 left-3 bg-white/95 px-2.5 py-0.5 rounded-full text-[10px] font-mono-tech font-bold text-black">
+                EDITORIAL &amp; PASARELA
+              </div>
+            </div>
+            <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold block w-fit">MODELOS &amp; ARTISTAS</span>
+            <h3 class="font-serif-luxury text-2xl font-bold text-black">Book Fotográfico Editorial</h3>
+            <p class="text-xs text-zinc-600 font-light leading-relaxed">
+              Sesiones fotográficas en estudio o exteriores con dirección de poses, estilismo y esquemas de iluminación de alta moda. Generamos tu *composite* digital profesional para agencias.
+            </p>
+            <ul class="text-[11px] font-mono-tech text-zinc-500 space-y-1.5 pt-2 border-t border-zinc-100">
+              <li>• 25+ fotografías retocadas en alta resolución</li>
+              <li>• Retratos beauty, plano americano y cuerpo entero</li>
+              <li>• Composite digital listo para enviar a agencias</li>
+            </ul>
+          </div>
+          <div class="pt-4 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+            <span class="text-zinc-400">Tarifa desde:</span>
+            <span class="text-xl font-bold font-serif-luxury text-black">160 €</span>
+          </div>
+        </div>
+
+        <!-- Service 3: Portfolio Web Artístico -->
+        <div class="bg-white p-8 rounded-3xl border border-subtle space-y-6 shadow-sm hover:border-[#C5A059] transition-all flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-stone-900">
+              <img src="assets/images/social_growth_instagram.jpg" alt="Portfolio Web para Artistas" class="w-full h-full object-cover img-zoom">
+              <div class="absolute top-3 left-3 bg-white/95 px-2.5 py-0.5 rounded-full text-[10px] font-mono-tech font-bold text-black">
+                LANDING PERSONAL
+              </div>
+            </div>
+            <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold block w-fit">PRESENCIA DIGITAL</span>
+            <h3 class="font-serif-luxury text-2xl font-bold text-black">Portfolio Web &amp; Landing Page</h3>
+            <p class="text-xs text-zinc-600 font-light leading-relaxed">
+              Tu propia página web interactiva con reproductor de videobook HD, galería de fotos responsive, CV artístico descargable y botón directo para que los directores de casting te contacten.
+            </p>
+            <ul class="text-[11px] font-mono-tech text-zinc-500 space-y-1.5 pt-2 border-t border-zinc-100">
+              <li>• Dominio personalizado (tunombre.com)</li>
+              <li>• Reproductor de Showreel ultra-rápido</li>
+              <li>• Optimizado para enviar por email y WhatsApp</li>
+            </ul>
+          </div>
+          <div class="pt-4 border-t border-subtle flex justify-between items-center text-xs font-mono-tech">
+            <span class="text-zinc-400">Tarifa desde:</span>
+            <span class="text-xl font-bold font-serif-luxury text-black">140 €</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Interactive Talent Packs Calculator -->
+      <div class="bg-[#F4F1EA] p-8 sm:p-12 rounded-3xl border border-subtle space-y-8">
+        <div class="max-w-2xl space-y-2">
+          <span class="text-xs font-mono-tech text-[#8C6D37] font-bold uppercase">// SELECCIONA TU PACK ARTÍSTICO</span>
+          <h3 class="font-serif-luxury text-3xl font-bold text-black">Calculador de Presupuesto para Artistas</h3>
+          <p class="text-xs text-zinc-600 font-light">Elige tu disciplina y los entregables que necesitas para potenciar tu carrera profesional.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4 text-xs font-mono-tech">
+            <div>
+              <label class="block text-zinc-700 font-bold mb-2">Selecciona tu Pack Principal:</label>
+              <select id="talent-pack-select" onchange="updateTalentCalculation()" class="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3 text-black focus:border-[#C5A059] focus:outline-none font-sans">
+                <option value="actor-essential">Pack Actor/Actriz Esencial (1 Escena 4K + 5 Retratos) (190 €)</option>
+                <option value="actor-master">Pack Videobook Master (3 Escenas 4K + DaVinci Color + Audio Studio) (340 €)</option>
+                <option value="model-book">Pack Modelo Top Book (25 Fotos Retocadas + Composite + Vídeo Pasarela) (280 €)</option>
+                <option value="star-full">Pack Integral Estrella (Videobook 4K + Book Fotos + Web Personal) (450 €)</option>
+              </select>
+            </div>
+
+            <div class="pt-2 space-y-2.5 border-t border-zinc-300">
+              <span class="block font-bold text-zinc-700">Extras Opcionales:</span>
+              <label class="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-subtle cursor-pointer">
+                <input type="checkbox" id="talent-opt-coach" onchange="updateTalentCalculation()" class="accent-[#C5A059] w-4 h-4">
+                <span class="flex-1 text-zinc-700">Sesión de Coaching Actoral / Preparación de Escenas previa</span>
+                <span class="text-[#8C6D37] font-bold">+60 €</span>
+              </label>
+              <label class="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-subtle cursor-pointer">
+                <input type="checkbox" id="talent-opt-web" onchange="updateTalentCalculation()" class="accent-[#C5A059] w-4 h-4">
+                <span class="flex-1 text-zinc-700">Landing Page Web Personal con reproductor y CV descargable</span>
+                <span class="text-[#8C6D37] font-bold">+95 €</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-white p-8 rounded-3xl border border-subtle text-center space-y-4 shadow-sm">
+            <span class="text-[11px] font-mono-tech text-zinc-400 block uppercase">Presupuesto Total Estimado</span>
+            <div id="talent-cost-display" class="text-5xl font-bold font-serif-luxury text-black">190 €</div>
+            <p class="text-[11px] text-zinc-500 font-light">Incluye rodaje con Blackmagic 4.6K G2, edición, etalonaje y derechos de uso comercial sin límites.</p>
+            <button onclick="requestTalentQuote()" class="w-full py-4 rounded-xl bg-[#161616] hover:bg-[#C5A059] text-white font-semibold text-xs uppercase tracking-widest transition-all shadow-md">
+              Reservar Sesión de Rodaje ➔
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+
+
+  <!-- =================================================================== -->
+  <!-- SUBPAGE: PROGRAMA DE ACELERACIÓN LABORAL & CV WEB INTERACTIVO -->
+  <!-- =================================================================== -->
+  <main id="page-career-accelerator" class="page-view relative z-10">
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 pt-16 pb-20 space-y-20">
+      
+      <!-- Section Header -->
+      <div class="max-w-4xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-gold font-mono-tech text-xs font-bold">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          <span>PROGRAMA DE INSERCIÓN &amp; ACELERACIÓN LABORAL // LUXEMBURGO &amp; EUROPA</span>
+        </div>
+        <h1 class="font-serif-luxury text-4xl sm:text-6xl font-normal text-black leading-tight">
+          Tu CV Web Interactivo + Gestión Integral de Postulaciones
+        </h1>
+        <p class="text-zinc-600 text-base sm:text-lg font-light leading-relaxed">
+          El currículum tradicional en PDF es solo la llave; **la rapidez, la visibilidad digital y la postulación activa diaria son las que abren las puertas de las entrevistas en Luxemburgo**. Creamos tu Landing Page profesional multilingüe y nuestro equipo de selección se encarga de postularte a diario en las mejores ofertas.
+        </p>
+      </div>
+
+      <!-- Zero-Risk Success Guarantee Banner -->
+      <div class="bg-[#161616] text-white p-8 sm:p-12 rounded-3xl border border-[#C5A059]/40 relative overflow-hidden shadow-2xl">
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="inline-flex items-center gap-2 bg-[#C5A059]/20 text-[#E5C17C] px-3.5 py-1.5 rounded-full text-xs font-mono-tech font-bold">
+              <span>🤝 COMPROMISO 100% A ÉXITO // RIESGO CERO</span>
+            </div>
+            <h2 class="font-serif-luxury text-3xl sm:text-4xl font-normal text-white">
+              0 € por Adelantado. Solo pagas tras conseguir empleo y cobrar tu 1ª nómina.
+            </h2>
+            <p class="text-zinc-300 text-xs sm:text-sm font-light leading-relaxed">
+              No tienes que pagar absolutamente nada para empezar. Nuestro servicio de Aceleración Laboral tiene un coste único de **150 €**, que solo abonarás una vez que hayas firmado tu contrato laboral y cobrado tu primera nómina en Luxemburgo. Es una contribución que nos permite seguir creciendo y ayudando a más personas a conseguir el empleo de sus sueños. **Si no consigues empleo, no pagas nada.**
+            </p>
+          </div>
+          <div class="lg:col-span-4 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-center space-y-3">
+            <span class="text-xs font-mono-tech text-[#E5C17C] uppercase block">CONTRIBUCIÓN TRAS PRIMERA NÓMINA</span>
+            <div class="text-5xl font-bold font-serif-luxury text-white">150 €</div>
+            <span class="text-[11px] text-zinc-300 font-mono-tech block">Pago único · Sin comisiones ocultas</span>
+            <button onclick="requestCareerProgram()" class="w-full py-3.5 rounded-xl bg-[#C5A059] hover:bg-white hover:text-black text-black font-bold text-xs uppercase tracking-widest transition-all shadow-md font-mono-tech">
+              Quiero Acelerar mi Empleo ➔
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Pilares del Programa de Aceleración -->
+      <div class="space-y-8">
+        <div class="space-y-2">
+          <span class="text-xs font-mono-tech uppercase tracking-widest text-[#8C6D37] font-bold">// ¿QUÉ HACEMOS POR TI?</span>
+          <h2 class="font-serif-luxury text-3xl sm:text-5xl font-normal text-black">Acompañamiento &amp; Trabajo Pesado Delegado</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Pilar 1 -->
+          <div class="bg-white p-8 rounded-3xl border border-subtle space-y-4 shadow-sm hover:border-[#C5A059] transition-all">
+            <span class="text-4xl">🌐</span>
+            <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold block w-fit">01 // VISIBILIDAD DIGITAL TOP</span>
+            <h3 class="font-serif-luxury text-2xl font-bold text-black">CV Web Interactivo Multilingüe</h3>
+            <p class="text-xs text-zinc-600 font-light leading-relaxed">
+              Diseñamos una landing page profesional con tu perfil en **Francés, Inglés y Español**. Métricas de logros, diseño limpio y descarga directa de CV en PDF. Un enlace que puedes incluir en LinkedIn y en tus emails para que los directores de RRHH vean que tu candidatura está a otro nivel.
+            </p>
+          </div>
+
+          <!-- Pilar 2 -->
+          <div class="bg-white p-8 rounded-3xl border border-subtle space-y-4 shadow-sm hover:border-[#C5A059] transition-all">
+            <span class="text-4xl">⚡</span>
+            <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold block w-fit">02 // POSTULACIONES DIARIAS</span>
+            <h3 class="font-serif-luxury text-2xl font-bold text-black">Gestión Total de Inscripciones</h3>
+            <p class="text-xs text-zinc-600 font-light leading-relaxed">
+              Sabemos que buscar empleo consume horas. Nuestro equipo se encarga de darte de alta y postularte a diario en las plataformas clave (**Jobs.lu, Moovijob, LinkedIn, ADEM y bolsas directas de empresas**), adaptando tu candidatura a las ofertas que encajan al 100% con tu perfil.
+            </p>
+          </div>
+
+          <!-- Pilar 3 -->
+          <div class="bg-white p-8 rounded-3xl border border-subtle space-y-4 shadow-sm hover:border-[#C5A059] transition-all">
+            <span class="text-4xl">🎯</span>
+            <span class="text-[10px] font-mono-tech badge-gold px-2.5 py-0.5 rounded-full font-bold block w-fit">03 // COACHING &amp; ASESORÍA</span>
+            <h3 class="font-serif-luxury text-2xl font-bold text-black">Asesoría Salarial &amp; Entrevistas</h3>
+            <p class="text-xs text-zinc-600 font-light leading-relaxed">
+              Te enviamos diariamente las oportunidades filtradas para ti, resolvemos tus dudas sobre bandas salariales y convenios en Luxemburgo y te preparamos para las entrevistas técnicas y de Recursos Humanos en **francés o inglés**.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- LIVE DEMO: Simulador de CV Web Dinámico -->
+      <div class="bg-white p-6 sm:p-10 rounded-3xl border border-subtle shadow-xl space-y-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-subtle pb-6">
+          <div class="space-y-1">
+            <span class="text-xs font-mono-tech text-[#8C6D37] uppercase font-bold">// DEMO INTERACTIVA EN VIVO</span>
+            <h3 class="font-serif-luxury text-2xl font-bold text-black">Así luce tu Landing Page de Candidatura Profesional</h3>
+          </div>
+          <!-- Language selector for CV demo -->
+          <div class="flex items-center gap-2 bg-[#FAF9F5] p-1.5 rounded-xl border border-subtle text-xs font-mono-tech">
+            <span class="text-zinc-400 text-[10px] uppercase ml-2">Idioma CV:</span>
+            <button onclick="setDemoCvLang('fr')" id="btn-cv-fr" class="px-3 py-1.5 rounded-lg bg-black text-white font-bold transition-all">FR Français</button>
+            <button onclick="setDemoCvLang('en')" id="btn-cv-en" class="px-3 py-1.5 rounded-lg text-zinc-600 hover:text-black transition-all">EN English</button>
+            <button onclick="setDemoCvLang('es')" id="btn-cv-es" class="px-3 py-1.5 rounded-lg text-zinc-600 hover:text-black transition-all">ES Español</button>
+          </div>
+        </div>
+
+        <!-- Embedded Interactive CV Frame -->
+        <div class="bg-[#FAF9F5] p-6 sm:p-8 rounded-2xl border border-subtle space-y-6">
+          
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-zinc-200">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-2xl bg-[#161616] text-[#E5C17C] flex items-center justify-center font-cinzel font-bold text-2xl">
+                C
+              </div>
+              <div>
+                <h4 class="font-serif-luxury text-2xl font-bold text-black">Claudia M.</h4>
+                <p id="cv-demo-title" class="text-xs font-mono-tech text-[#8C6D37]">Ingénieur en Maintenance &amp; Énergies Renouvelables · Luxembourg</p>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <span class="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-mono-tech font-bold">● DISPONIBLE IMMÉDIATEMENT</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono-tech text-xs">
+            <div class="bg-white p-4 rounded-xl border border-subtle">
+              <span class="text-zinc-400 block text-[10px] uppercase">EXPÉRIENCE / TRAYECTORIA</span>
+              <span class="text-base font-bold text-black mt-1 block">+6 Années d'Expérience</span>
+            </div>
+            <div class="bg-white p-4 rounded-xl border border-subtle">
+              <span class="text-zinc-400 block text-[10px] uppercase">SECTEUR CIBLÉ</span>
+              <span class="text-base font-bold text-black mt-1 block">Énergie, CVC &amp; Industrie 4.0</span>
+            </div>
+            <div class="bg-white p-4 rounded-xl border border-subtle">
+              <span class="text-zinc-400 block text-[10px] uppercase">LANGUES PROFESSIONNELLES</span>
+              <span class="text-base font-bold text-[#8C6D37] mt-1 block">Français (C1), Anglais (B2), Espagnol</span>
+            </div>
+          </div>
+
+          <p id="cv-demo-bio" class="text-xs text-zinc-600 font-light leading-relaxed bg-white p-4 rounded-xl border border-subtle">
+            « Professionnelle rigoureuse spécialisée dans la maintenance préventive et l'optimisation des systèmes énergétiques durables. Orientée résultats, réactivité et conformité aux normes européennes de sécurité. »
+          </p>
+
+          <div class="flex flex-wrap justify-between items-center gap-4 pt-2">
+            <div class="flex items-center gap-2 text-xs font-mono-tech text-zinc-500">
+              <span>https://claudia-cv.welux.careers</span>
+              <span class="text-zinc-300">|</span>
+              <span class="text-emerald-600 font-bold">QR Code de contact direct</span>
+            </div>
+            <button class="px-5 py-2.5 rounded-full bg-[#161616] text-white text-xs uppercase font-mono-tech font-bold hover:bg-[#C5A059] transition-all">
+              📄 Télécharger le CV en PDF
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Application Form for Career Program -->
+      <div class="bg-white p-8 sm:p-12 rounded-3xl border border-subtle shadow-sm space-y-6">
+        <div class="max-w-2xl space-y-2">
+          <span class="text-xs font-mono-tech uppercase tracking-widest text-[#8C6D37] font-bold">// EMPIEZA ESTA MISMA SEMANA</span>
+          <h3 class="font-serif-luxury text-3xl font-bold text-black">Solicitud de Aceleración Laboral (100% a Éxito)</h3>
+          <p class="text-xs text-zinc-600 font-light">Completa tus datos y nos pondremos en contacto contigo en menos de 24h para revisar tu perfil y activar tu CV Web.</p>
+        </div>
+
+        <form onsubmit="handleCareerSubmit(event)" class="space-y-4 text-xs font-mono-tech">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-zinc-700 font-bold mb-1">Nombre Completo *</label>
+              <input type="text" id="career-name" required placeholder="Tu nombre y apellidos" class="w-full bg-[#FAF9F5] border border-zinc-200 rounded-xl px-4 py-3 text-black focus:border-[#C5A059] focus:outline-none font-sans">
+            </div>
+            <div>
+              <label class="block text-zinc-700 font-bold mb-1">WhatsApp / Teléfono *</label>
+              <input type="tel" id="career-phone" required placeholder="+352 ... / +34 ..." class="w-full bg-[#FAF9F5] border border-zinc-200 rounded-xl px-4 py-3 text-black focus:border-[#C5A059] focus:outline-none font-sans">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-zinc-700 font-bold mb-1">Profesión o Sector Deseado *</label>
+              <input type="text" id="career-field" required placeholder="Ej: Mantenimiento, IT, Finanzas, Hostelería, etc." class="w-full bg-[#FAF9F5] border border-zinc-200 rounded-xl px-4 py-3 text-black focus:border-[#C5A059] focus:outline-none font-sans">
+            </div>
+            <div>
+              <label class="block text-zinc-700 font-bold mb-1">Nivel de Francés / Inglés</label>
+              <select id="career-lang" class="w-full bg-[#FAF9F5] border border-zinc-200 rounded-xl px-4 py-3 text-black focus:border-[#C5A059] focus:outline-none font-sans">
+                <option>Intermedio / Bilingüe (Listo para entrevistas)</option>
+                <option>Básico (Necesito asesoramiento)</option>
+                <option>Solo Español (Buscando puestos multilingües)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <button type="submit" class="w-full py-4 rounded-xl bg-[#161616] hover:bg-[#C5A059] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-md">
+              Solicitar Programa de Aceleración Laboral (0€ Adelantado) ➔
+            </button>
+            <p class="text-[10px] text-zinc-400 text-center mt-2">Condición única: 150 € abonados únicamente tras conseguir empleo y cobrar tu 1ª nómina.</p>
+          </div>
+        </form>
+      </div>
+
+    </section>
+  </main>
+
+
   <main id="page-rentals" class="page-view relative z-10">
     <section class="max-w-7xl mx-auto px-6 sm:px-8 pt-16 pb-20">
       
@@ -1747,10 +2110,11 @@
             <div>
               <label class="block font-medium text-zinc-700 mb-1">Servicio Principal de Interés</label>
               <select id="contact-service-select" class="w-full bg-[#FAF9F5] border border-zinc-200 rounded-xl px-4 py-3 text-black focus:border-[#C5A059] focus:outline-none font-sans">
+                <option value="career-program">Programa Aceleración Laboral &amp; CV Web Interactivo (100% a Éxito - 0€ Adelantado)</option>
+                <option value="talent-videobooks">Videobooks 4K &amp; Books Editoriales (Actores, Actrices &amp; Modelos)</option>
                 <option value="tours-360">Tours Virtuales 360° &amp; Gemelos Digitales 3D (Inmobiliarias / Oficinas / Hoteles)</option>
                 <option value="agency-growth">Ecosistema de Agencia Completo (Social Growth, Web &amp; Ads)</option>
                 <option value="cinema-rentals">Alquiler de Material Técnico Amcropa Gear / Fotomatón Glam</option>
-                <option value="video-production">Producción Cinematográfica 4K &amp; Dirección de Arte</option>
                 <option value="custom">Proyecto a Medida / Asesoramiento</option>
               </select>
             </div>

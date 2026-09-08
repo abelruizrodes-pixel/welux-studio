@@ -49,26 +49,207 @@
 }
 </script>
 
+</head><body class="bg-surface font-body-md text-on-surface min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter-desktop lg:px-margin-desktop flex items-center justify-between"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm" data-path="ecosystem-overview" href="#"><img src="https://lh3.googleusercontent.com/aida/AEtjO1XHoNSaIucOzBU_90sp5CHLYoCW67l6ZarLNOWfl9MlUj7xlFo3YSYEpIrbXGlnXoNB4vNu9IGdT48a4c0JBA_oxCzthBsm4UhUBPSTmYqC5OSBOSb4vjXUY0NuQZkLk1Hw4Yv2BHooHFg2uqahv3leXTny-N0h58NeEheh_0o78zD1-5rjSROsxp9wGLFzJ4kpdaaYa5MHj5zKxQ7UUONvUqxnFY_CJ8X70V9KcIVbNSFEcTpzgJDc0Q" alt="Welux Hub Logo" class="w-8 h-8 rounded-lg shadow-sm shrink-0 object-cover"><span class="font-headline-md text-headline-md tracking-tight text-on-surface">WELUX</span><span class="font-label-code-sm text-label-code-sm uppercase px-space-xs py-space-2xs rounded bg-surface-container-high text-secondary tracking-widest">HUB</span></a><div class="hidden xl:flex items-center gap-space-sm px-space-md py-space-xs rounded bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span><span class="font-label-code-sm text-label-code-sm text-on-surface-variant uppercase">3 Portales Online · Luxembourg · Madrid · Paris</span></div></div><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-surface-container-high text-secondary font-title-md"><a aria-current="page" class="px-space-md py-space-xs rounded transition-colors bg-surface-container-high text-secondary font-title-md" data-path="ecosystem-overview" href="index.html">Hub</a><a class="px-space-md py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="welux-studio" href="studio.html">Studio</a><a class="px-space-md py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="welux-careers" href="careers.html">Careers</a><a class="px-space-md py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="welux-gear" href="films.html">Gear</a><a class="px-space-md py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="infrastructure-nodes" href="#">Nodes</a></nav><div class="flex items-center gap-space-base"><!-- WeLux 6-Language Selector Bar -->
+<div class="welux-lang-bar flex items-center gap-0.5 sm:gap-1 bg-black/85 border border-white/20 px-2.5 py-1 rounded-full font-mono text-[11px] shadow-lg backdrop-blur-md text-white shrink-0">
+  <span class="px-2 py-0.5 rounded bg-white/25 text-white font-bold border border-white/40 shadow-sm">🇪🇸 ES</span> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="en/index.html" onclick="localStorage.setItem('welux_lang','en');localStorage.setItem('welux_preferred_lang','en');document.cookie='welux_lang=en;path=/;max-age=31536000;'" class="welux-lang-btn px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent" data-lang="en">🇬🇧 EN</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="fr/index.html" onclick="localStorage.setItem('welux_lang','fr');localStorage.setItem('welux_preferred_lang','fr');document.cookie='welux_lang=fr;path=/;max-age=31536000;'" class="welux-lang-btn px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent" data-lang="fr">🇫🇷 FR</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="de/index.html" onclick="localStorage.setItem('welux_lang','de');localStorage.setItem('welux_preferred_lang','de');document.cookie='welux_lang=de;path=/;max-age=31536000;'" class="welux-lang-btn px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent" data-lang="de">🇩🇪 DE</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="pt/index.html" onclick="localStorage.setItem('welux_lang','pt');localStorage.setItem('welux_preferred_lang','pt');document.cookie='welux_lang=pt;path=/;max-age=31536000;'" class="welux-lang-btn px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent" data-lang="pt">🇵🇹 PT</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="lu/index.html" onclick="localStorage.setItem('welux_lang','lu');localStorage.setItem('welux_preferred_lang','lu');document.cookie='welux_lang=lu;path=/;max-age=31536000;'" class="welux-lang-btn px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent" data-lang="lu">🇱🇺 LU</a>
+</div><div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded bg-surface-container"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span><span class="font-label-code-sm text-label-code-sm text-secondary uppercase">All Systems Nominal</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full relative overflow-hidden">
+<!-- Dynamic WebGL Cosmos Canvas -->
+<!-- STITCH_SHADER_START:ANIMATION_26 class="absolute inset-0 w-full h-full -z-10 opacity-60 pointer-events-none" -->
+<div class="absolute inset-0 w-full h-full -z-10 opacity-60 pointer-events-none" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_26" style="display:block;width:100%;height:100%" width="1280" height="1788"></canvas>
 <script>
-(function(){
-  var saved = localStorage.getItem('welux_lang');
-  if(!saved){
-    var m = document.cookie.match(/(?:^|; )welux_lang=([^;]*)/);
-    if(m) saved = m[1];
-  }
-  var valid = ['en','fr','de','pt','lu'];
-  var path = window.location.pathname;
-  var file = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-  if(saved && valid.indexOf(saved) !== -1 && !path.includes('/' + saved + '/')){
-    if(!/\/(en|fr|de|pt|lu)\//.test(path)){
-      window.location.replace(saved + '/' + file);
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_26');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
     }
   }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+// Simplex-inspired light noise and subtle luxury chromatic dark aura
+vec3 palette(float t) {
+    vec3 a = vec3(0.05, 0.08, 0.12);
+    vec3 b = vec3(0.15, 0.20, 0.30);
+    vec3 c = vec3(0.8, 0.7, 0.5); // gold / champagne amber glint
+    vec3 d = vec3(0.0, 0.15, 0.3);
+    return a + b * cos(6.28318 * (c * t + d));
+}
+
+void main() {
+    vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / min(u_resolution.x, u_resolution.y);
+    vec2 mouseNorm = (u_mouse.xy * 2.0 - u_resolution.xy) / min(u_resolution.x, u_resolution.y);
+    
+    // Interactive gravity subtle warp
+    float distMouse = length(uv - mouseNorm * 0.4);
+    uv += (uv - mouseNorm * 0.4) * exp(-distMouse * 2.5) * 0.08;
+
+    vec2 uv0 = uv;
+    vec3 finalColor = vec3(0.035, 0.05, 0.08); // Dark luxury slate background
+
+    float d = length(uv);
+    
+    // Ambient slow pulse of energy rings
+    for (float i = 0.0; i < 3.0; i++) {
+        uv = fract(uv * 1.35) - 0.5;
+        float d2 = length(uv) * exp(-length(uv0));
+        vec3 col = palette(length(uv0) + i * 0.35 + u_time * 0.12);
+        d2 = sin(d2 * 7.5 + u_time * 0.35) / 7.5;
+        d2 = abs(d2);
+        d2 = pow(0.012 / max(d2, 0.001), 1.15);
+        finalColor += col * d2 * 0.22;
+    }
+    
+    // Vignette
+    float vig = 1.0 - smoothstep(0.4, 1.4, length(uv0));
+    finalColor *= vig;
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
 })();
 </script>
-</head><body class="bg-surface font-body-md text-on-surface min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter-desktop lg:px-margin-desktop flex items-center justify-between"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm" data-path="ecosystem-overview" href="#"><img src="https://lh3.googleusercontent.com/aida/AEtjO1XHoNSaIucOzBU_90sp5CHLYoCW67l6ZarLNOWfl9MlUj7xlFo3YSYEpIrbXGlnXoNB4vNu9IGdT48a4c0JBA_oxCzthBsm4UhUBPSTmYqC5OSBOSb4vjXUY0NuQZkLk1Hw4Yv2BHooHFg2uqahv3leXTny-N0h58NeEheh_0o78zD1-5rjSROsxp9wGLFzJ4kpdaaYa5MHj5zKxQ7UUONvUqxnFY_CJ8X70V9KcIVbNSFEcTpzgJDc0Q" alt="Welux Hub Logo" class="w-8 h-8 rounded-lg shadow-sm shrink-0 object-cover"><span class="font-headline-md text-headline-md tracking-tight text-on-surface">WELUX</span><span class="font-label-code-sm text-label-code-sm uppercase px-space-xs py-space-2xs rounded bg-surface-container-high text-secondary tracking-widest">HUB</span></a><div class="hidden xl:flex items-center gap-space-sm px-space-md py-space-xs rounded bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span><span class="font-label-code-sm text-label-code-sm text-on-surface-variant uppercase">3 Portales Online · Luxembourg · Madrid · Paris</span></div></div><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-surface-container-high text-secondary font-title-md"><a aria-current="page" class="px-space-md py-space-xs rounded transition-colors bg-surface-container-high text-secondary font-title-md" data-path="ecosystem-overview" href="index.html">Hub</a><a class="px-space-md py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="welux-studio" href="studio.html">Studio</a><a class="px-space-md py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="welux-careers" href="careers.html">Careers</a><a class="px-space-md py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="welux-gear" href="films.html">Gear</a><a class="px-space-md py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="infrastructure-nodes" href="#">Nodes</a></nav><div class="flex items-center gap-space-base"><!-- WeLux Sovereign 6-Language Selector Bar -->
-<div class="welux-lang-bar flex items-center gap-0.5 sm:gap-1 bg-black/85 border border-white/20 px-2.5 py-1 rounded-full font-mono text-[11px] shadow-lg backdrop-blur-md text-white shrink-0">
-  <span class="px-2 py-0.5 rounded bg-white/25 text-white font-bold border border-white/40 shadow-sm">🇪🇸 ES</span> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="en/index.html" onclick="localStorage.setItem('welux_lang','en');document.cookie='welux_lang=en;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇬🇧 EN</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="fr/index.html" onclick="localStorage.setItem('welux_lang','fr');document.cookie='welux_lang=fr;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇫🇷 FR</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="de/index.html" onclick="localStorage.setItem('welux_lang','de');document.cookie='welux_lang=de;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇩🇪 DE</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="pt/index.html" onclick="localStorage.setItem('welux_lang','pt');document.cookie='welux_lang=pt;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇵🇹 PT</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="lu/index.html" onclick="localStorage.setItem('welux_lang','lu');document.cookie='welux_lang=lu;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇱🇺 LU</a>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_26 -->
+<!-- Ambient Light Orbs for Depth -->
+<div class="absolute top-20 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-80 right-1/4 w-[28rem] h-[28rem] bg-tertiary/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute bottom-40 left-1/3 w-80 h-80 bg-primary-container/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<!-- Main Content Flow Container -->
+<div class="w-full max-w-7xl mx-auto px-gutter-mobile lg:px-margin-desktop py-space-xl lg:py-space-2xl flex flex-col gap-space-2xl">
+<!-- HERO SECTION -->
+<header class="flex flex-col items-center text-center relative z-10 max-w-4xl mx-auto">
+<!-- High-Precision Status Slate Indicator -->
+<div class="inline-flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-surface-container-high/70 backdrop-blur-md mb-space-lg shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim animate-ping"></span>
+<span class="font-label-code-sm text-label-code-sm tracking-widest text-secondary uppercase" data-i18n="hub_status_indicator">LUXEMBOURG · PARIS · MADRID GATEWAY / v4.8 ACTIVO</span>
+<span class="text-outline-variant font-label-code-sm text-label-code-sm">/</span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant uppercase">v4.8 ACTIVE</span>
+</div>
+<!-- Headline Typography Hierarchy -->
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight mb-space-sm">
+        WELUX GROUP
+      </h1>
+<p class="font-headline-md text-headline-md text-secondary mb-space-base tracking-normal">
+        Un Ecosistema. Tres Divisiones de Élite.
+      </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-space-xl">
+        De la ingeniería audiovisual en sets de cine a la aceleración ejecutiva en Luxemburgo y el desarrollo web high-end. Elige tu destino corporativo.
+      </p>
+<!-- Global Telemetry Bar / Live Counter Pills -->
+<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-space-sm">
+<div class="flex flex-col items-center justify-center p-space-md rounded bg-surface-container-low/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-space-xs text-secondary font-label-code-lg text-label-code-lg">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="">+65M</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant uppercase text-center mt-space-2xs">Impresiones B2B</span>
+</div>
+<div class="flex flex-col items-center justify-center p-space-md rounded bg-surface-container-low/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-space-xs text-tertiary-fixed-dim font-label-code-lg text-label-code-lg">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+<span class="">0€ RIESGO</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant uppercase text-center mt-space-2xs">Pago 100% a Éxito</span>
+</div>
+<div class="flex flex-col items-center justify-center p-space-md rounded bg-surface-container-low/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-space-xs text-primary font-label-code-lg text-label-code-lg">
+<span class="material-symbols-outlined text-[18px]">videocam</span>
+<span class="">4.6K RAW</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant uppercase text-center mt-space-2xs">Super 35 Cine Gear</span>
+</div>
+<div class="flex flex-col items-center justify-center p-space-md rounded bg-surface-container-low/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-space-xs text-secondary-fixed font-label-code-lg text-label-code-lg">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="">&lt; 12H</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant uppercase text-center mt-space-2xs">SLA Respuesta</span>
+</div>
+</div>
+</header>
+<!-- AUDIENCE ROUTING SELECTOR (Filter Tabs) -->
+<div class="flex flex-col items-center w-full z-10">
+<div class="font-label-code-sm text-label-code-sm text-outline uppercase tracking-widest mb-space-sm text-center" data-i18n="filter_label">Filtrar por Especialidad Operativa</div>
+<div class="inline-flex flex-wrap items-center justify-center gap-space-xs p-space-xs rounded-full bg-surface-container-low/90 backdrop-blur-md shadow-inner" id="filter-container">
+<button class="filter-tab px-space-md py-space-xs rounded-full font-label-code-md text-label-code-md transition-all bg-surface-container-high text-secondary shadow-sm" data-filter="all" type="button">
+          Todos los Portales
+        </button>
+<button class="filter-tab px-space-md py-space-xs rounded-full font-label-code-md text-label-code-md transition-all text-on-surface-variant hover:text-on-surface" data-filter="studio" type="button">
+          Empresas &amp; Real Estate
+        </button>
+<button class="filter-tab px-space-md py-space-xs rounded-full font-label-code-md text-label-code-md transition-all text-on-surface-variant hover:text-on-surface" data-filter="careers" type="button">
+          Candidatos &amp; Talento
+        </button>
+<button class="filter-tab px-space-md py-space-xs rounded-full font-label-code-md text-label-code-md transition-all text-on-surface-variant hover:text-on-surface" data-filter="gear" type="button">
+          Producción &amp; Eventos
+        </button>
+</div>
 </div>
 <!-- THE 3 MASTER PORTALS: INTERACTIVE SHOWCASE GRID -->
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg w-full z-10" id="portal-grid">

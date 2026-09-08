@@ -123,23 +123,6 @@
 }
 </script>
 
-<script>
-(function(){
-  var saved = localStorage.getItem('welux_lang');
-  if(!saved){
-    var m = document.cookie.match(/(?:^|; )welux_lang=([^;]*)/);
-    if(m) saved = m[1];
-  }
-  var valid = ['en','fr','de','pt','lu'];
-  var path = window.location.pathname;
-  var file = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-  if(saved && valid.indexOf(saved) !== -1 && !path.includes('/' + saved + '/')){
-    if(!/\/(en|fr|de|pt|lu)\//.test(path)){
-      window.location.replace(saved + '/' + file);
-    }
-  }
-})();
-</script>
 </head>
 <body class="bg-surface-alabaster font-sans text-[0.9375rem] text-carbon-graphite antialiased selection:bg-gold-aged/20 selection:text-ebony-deep">
 
@@ -191,9 +174,21 @@
 <a class="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-warm-pardo hover:text-ebony-deep transition-colors" href="#protocolo-admision">Private Office</a>
 </nav>
 <!-- Selector Idioma & Botón Ébano Pulido -->
-<div class="flex items-center gap-3"><!-- WeLux Sovereign 6-Language Selector Bar -->
+<div class="flex items-center gap-4">
 <div class="welux-lang-bar flex items-center gap-0.5 sm:gap-1 bg-black/85 border border-white/20 px-2.5 py-1 rounded-full font-mono text-[11px] shadow-lg backdrop-blur-md text-white shrink-0">
-  <span class="px-2 py-0.5 rounded bg-white/25 text-white font-bold border border-white/40 shadow-sm">🇪🇸 ES</span> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="en/studio.html" onclick="localStorage.setItem('welux_lang','en');document.cookie='welux_lang=en;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇬🇧 EN</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="fr/studio.html" onclick="localStorage.setItem('welux_lang','fr');document.cookie='welux_lang=fr;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇫🇷 FR</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="de/studio.html" onclick="localStorage.setItem('welux_lang','de');document.cookie='welux_lang=de;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇩🇪 DE</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="pt/studio.html" onclick="localStorage.setItem('welux_lang','pt');document.cookie='welux_lang=pt;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇵🇹 PT</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="lu/studio.html" onclick="localStorage.setItem('welux_lang','lu');document.cookie='welux_lang=lu;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇱🇺 LU</a>
+  <span class="px-2 py-0.5 rounded bg-white/25 text-white font-bold border border-white/40 shadow-sm">🇪🇸 ES</span> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="en/studio.html" onclick="localStorage.setItem('welux_lang','en');localStorage.setItem('welux_preferred_lang','en');document.cookie='welux_lang=en;path=/;max-age=31536000;'" class="welux-lang-btn px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent" data-lang="en">🇬🇧 EN</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="fr/studio.html" onclick="localStorage.setItem('welux_lang','fr');localStorage.setItem('welux_preferred_lang','fr');document.cookie='welux_lang=fr;path=/;max-age=31536000;'" class="welux-lang-btn px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent" data-lang="fr">🇫🇷 FR</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="de/studio.html" onclick="localStorage.setItem('welux_lang','de');localStorage.setItem('welux_preferred_lang','de');document.cookie='welux_lang=de;path=/;max-age=31536000;'" class="welux-lang-btn px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent" data-lang="de">🇩🇪 DE</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="pt/studio.html" onclick="localStorage.setItem('welux_lang','pt');localStorage.setItem('welux_preferred_lang','pt');document.cookie='welux_lang=pt;path=/;max-age=31536000;'" class="welux-lang-btn px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent" data-lang="pt">🇵🇹 PT</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="lu/studio.html" onclick="localStorage.setItem('welux_lang','lu');localStorage.setItem('welux_preferred_lang','lu');document.cookie='welux_lang=lu;path=/;max-age=31536000;'" class="welux-lang-btn px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent" data-lang="lu">🇱🇺 LU</a>
+</div>
+<a href="index.html" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-pergamino hover:bg-border-fine text-warm-pardo hover:text-ebony-deep border border-border-fine font-mono text-xs font-medium transition-all shadow-sm" title="WeLux Hub">
+  <span class="material-symbols-outlined text-[15px] text-gold-aged-dark">hub</span>
+  <span>WeLux Hub</span>
+</a>
+<a class="inline-flex items-center gap-2 bg-ebony-deep text-surface-alabaster hover:bg-carbon-graphite rounded-full px-5 sm:px-6 py-2.5 transition-all shadow-[0_4px_16px_rgba(17,17,17,0.08)] group border border-carbon-graphite" href="#protocolo-admision">
+<span class="font-mono text-[0.68rem] uppercase tracking-wider font-medium">Agendar Diagnóstico Privado</span>
+<span class="text-gold-aged group-hover:translate-x-0.5 transition-transform text-[0.75rem]">➔</span>
+</a>
+<div class="w-8 h-8 rounded-full bg-surface-pergamino border border-border-fine flex items-center justify-center shrink-0 text-warm-pardo">
+<span class="material-symbols-outlined text-[17px]">account_balance</span>
+</div>
 </div>
 </div>
 </header>

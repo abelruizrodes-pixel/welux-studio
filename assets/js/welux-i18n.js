@@ -1,7 +1,7 @@
 /**
- * WELUX GROUP — MOTOR MULTILINGÜE SOBERANO & URLs LIMPIAS (CLEAN URL ENGINE)
- * Elimina 'index.html' y extensiones '.html' en todas las subpáginas (Studio, Careers, Gear)
- * Mantiene la barra de direcciones impecable: /studio, /careers, /gear, /fr/studio, /en/careers, /
+ * WELUX GROUP — MOTOR MULTILINGÜE SOBERANO & URLs LIMPIAS POR DIRECTORIO
+ * Navegación limpia nativa sin .html ni index.html:
+ * /studio/, /careers/, /gear/, /fr/studio/, /en/careers/, /
  */
 
 (function() {
@@ -23,9 +23,9 @@
           p = '/';
         }
 
-        // Limpiar .html en todas las subpáginas (studio.html -> studio, careers.html -> careers, films.html -> films)
+        // Limpiar .html en todas las subpáginas
         if (p.endsWith('.html')) {
-          p = p.replace(/\.html$/, '');
+          p = p.replace(/\.html$/, '/');
         }
 
         if (p !== original) {
@@ -35,17 +35,26 @@
     }
   }
 
-  // 2. Detección de idioma actual de la página
-  function getPageLang() {
-    const pathMatch = window.location.pathname.match(/\/(en|fr|de|pt|lu)(\/|$)/);
-    return pathMatch ? pathMatch[1] : 'es';
+  // 2. Detección de idioma actual y sección
+  function getPageInfo() {
+    const p = window.location.pathname;
+    const pathMatch = p.match(/\/(en|fr|de|pt|lu)(\/|$)/);
+    const lang = pathMatch ? pathMatch[1] : 'es';
+
+    let route = '';
+    if (p.includes('/studio')) route = 'studio';
+    else if (p.includes('/careers')) route = 'careers';
+    else if (p.includes('/gear') || p.includes('/films')) route = 'gear';
+
+    return { lang, route };
   }
 
   // 3. Sincronización y persistencia
   function syncLanguage() {
     cleanUrl();
 
-    const currentLang = getPageLang();
+    const info = getPageInfo();
+    const currentLang = info.lang;
     const urlParams = new URLSearchParams(window.location.search);
     const queryLang = urlParams.get('lang');
     const storedLang = localStorage.getItem('welux_lang') || localStorage.getItem('welux_preferred_lang');
@@ -58,27 +67,18 @@
       }
     }
 
-    // Redirección inteligente si el usuario guardó preferencia y entra a ruta raíz
+    // Redirección inteligente si el usuario guardó preferencia y entra a ruta de otro idioma
     if (storedLang && SUPPORTED_LANGS.includes(storedLang) && storedLang !== currentLang) {
       const isManualSwitch = sessionStorage.getItem('welux_manual_lang');
       if (!isManualSwitch) {
-        const path = window.location.pathname;
-        let page = path.split('/').pop().replace(/\.html$/, '');
-        
-        let fileTarget = '';
-        if (page === 'studio') fileTarget = 'studio.html';
-        else if (page === 'careers') fileTarget = 'careers.html';
-        else if (page === 'films' || page === 'gear') fileTarget = 'films.html';
-        else if (!page || page === 'index') fileTarget = '';
-
         let targetUrl = '';
         if (storedLang === 'es') {
-          targetUrl = fileTarget ? `/${fileTarget}` : '/';
+          targetUrl = info.route ? `/${info.route}/` : '/';
         } else {
-          targetUrl = fileTarget ? `/${storedLang}/${fileTarget}` : `/${storedLang}/`;
+          targetUrl = info.route ? `/${storedLang}/${info.route}/` : `/${storedLang}/`;
         }
 
-        if (targetUrl && targetUrl !== path) {
+        if (targetUrl && targetUrl !== window.location.pathname) {
           window.location.replace(targetUrl + window.location.search + window.location.hash);
           return;
         }
@@ -107,20 +107,12 @@
     } catch(e) {}
     document.cookie = `welux_lang=${newLang}; path=/; max-age=31536000; SameSite=Lax`;
 
-    const path = window.location.pathname;
-    let page = path.split('/').pop().replace(/\.html$/, '');
-    
-    let fileTarget = '';
-    if (page === 'studio') fileTarget = 'studio.html';
-    else if (page === 'careers') fileTarget = 'careers.html';
-    else if (page === 'films' || page === 'gear') fileTarget = 'films.html';
-    else if (!page || page === 'index') fileTarget = '';
-
+    const info = getPageInfo();
     let dest = '';
     if (newLang === 'es') {
-      dest = fileTarget ? `/${fileTarget}` : '/';
+      dest = info.route ? `/${info.route}/` : '/';
     } else {
-      dest = fileTarget ? `/${newLang}/${fileTarget}` : `/${newLang}/`;
+      dest = info.route ? `/${newLang}/${info.route}/` : `/${newLang}/`;
     }
 
     window.location.href = dest;

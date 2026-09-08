@@ -1,8 +1,22 @@
+# robots.txt for WeLux Hub Ecosystem (https://www.weluxhub.com/)
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
 
-# Sitemaps oficiales WeLux Hub
-Sitemap: https://weluxhub.com/sitemap.xml
+# Crawler-specific directives
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Canonical Sitemaps
+Sitemap: https://www.weluxhub.com/sitemap.xml

@@ -1,20 +1,20 @@
 /**
- * WeLux Ecosystem - Sovereign 6-Language Translation Engine
- * Supported: ES (Español), EN (English), FR (Français), DE (Deutsch), PT (Português), LU (Lëtzebuergesch)
+ * WeLux Ecosystem - Sovereign 6-Language Real-Time Translation Engine
+ * Supported Languages:
+ *  - 🇪🇸 ES (Español)
+ *  - 🇬🇧 EN (English)
+ *  - 🇫🇷 FR (Français)
+ *  - 🇩🇪 DE (Deutsch)
+ *  - 🇵🇹 PT (Português)
+ *  - 🇱🇺 LU (Lëtzebuergesch)
  */
 
 window.WELUX_I18N = {
   currentLang: 'es',
-  languages: [
-    { code: 'es', label: 'Español', flag: '🇪🇸' },
-    { code: 'en', label: 'English', flag: '🇬🇧' },
-    { code: 'fr', label: 'Français', flag: '🇫🇷' },
-    { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
-    { code: 'pt', label: 'Português', flag: '🇵🇹' },
-    { code: 'lu', label: 'Lëtzebuergesch', flag: '🇱🇺' }
-  ],
-  translations: {
-    // GLOBAL HEADER & NAVIGATION
+  languages: ['es', 'en', 'fr', 'de', 'pt', 'lu'],
+
+  dict: {
+    // ----------------- GLOBAL HEADER & NAVIGATION -----------------
     'nav_hub': {
       es: 'Hub', en: 'Hub', fr: 'Hub', de: 'Hub', pt: 'Hub', lu: 'Hub'
     },
@@ -25,12 +25,15 @@ window.WELUX_I18N = {
       es: 'Careers', en: 'Careers', fr: 'Carrières', de: 'Karriere', pt: 'Carreiras', lu: 'Karriären'
     },
     'nav_gear': {
-      es: 'Gear & Cine', en: 'Gear & Cinema', fr: 'Matériel & Cinéma', de: 'Equipment & Kino', pt: 'Equipamento & Cine', lu: 'Material & Kino'
+      es: 'Gear', en: 'Gear', fr: 'Matériel', de: 'Equipment', pt: 'Equipamento', lu: 'Material'
     },
-    'nav_return_hub': {
-      es: '← Volver a WeLux Hub', en: '← Return to WeLux Hub', fr: '← Retour au WeLux Hub', de: '← Zurück zum WeLux Hub', pt: '← Voltar ao WeLux Hub', lu: '← Zréck op WeLux Hub'
+    'nav_back_hub': {
+      es: '← Hub Matriz', en: '← Master Hub', fr: '← Hub Matrice', de: '← Haupt-Hub', pt: '← Hub Matriz', lu: '← Haapt-Hub'
     },
-    'nav_status_online': {
+    'floating_back_hub': {
+      es: 'Volver a WeLux Hub', en: 'Return to WeLux Hub', fr: 'Retour au WeLux Hub', de: 'Zurück zum WeLux Hub', pt: 'Voltar ao WeLux Hub', lu: 'Zréck op WeLux Hub'
+    },
+    'nav_nodes_status': {
       es: '3 Portales Online · Luxembourg · Madrid · Paris',
       en: '3 Online Portals · Luxembourg · Madrid · Paris',
       fr: '3 Portails en ligne · Luxembourg · Madrid · Paris',
@@ -39,16 +42,16 @@ window.WELUX_I18N = {
       lu: '3 Online-Portaler · Lëtzebuerg · Madrid · Paräis'
     },
     'nav_systems_nominal': {
-      es: 'Todos los Sistemas Operativos',
-      en: 'All Systems Operational',
-      fr: 'Tous les systèmes opérationnels',
-      de: 'Alle Systeme betriebsbereit',
-      pt: 'Todos os sistemas operacionais',
-      lu: 'All Systemer operationell'
+      es: 'Sistemas Nominales',
+      en: 'All Systems Nominal',
+      fr: 'Systèmes Nominaux',
+      de: 'Systeme Nominal',
+      pt: 'Sistemas Nominais',
+      lu: 'Systemer Nominal'
     },
 
-    // HERO & HUB OVERVIEW
-    'hub_hero_tag': {
+    // ----------------- INDEX.HTML (MASTER HUB) -----------------
+    'hub_status_indicator': {
       es: 'LUXEMBOURG · PARIS · MADRID GATEWAY / v4.8 ACTIVO',
       en: 'LUXEMBOURG · PARIS · MADRID GATEWAY / v4.8 ACTIVE',
       fr: 'PASSERELLE LUXEMBOURG · PARIS · MADRID / v4.8 ACTIF',
@@ -66,14 +69,12 @@ window.WELUX_I18N = {
     },
     'hub_hero_desc': {
       es: 'De la ingeniería audiovisual en sets de cine a la aceleración ejecutiva en Luxemburgo y el desarrollo web high-end. Elige tu destino corporativo.',
-      en: 'From audiovisual engineering on cinema sets to executive talent acceleration in Luxembourg and high-end boutique web engineering. Choose your corporate destination.',
-      fr: 'De l’ingénierie audiovisuelle sur les plateaux de cinéma à l’accélération exécutive au Luxembourg et au développement web haut de gamme. Choisissez votre destination corporative.',
-      de: 'Von der audiovisuellen Technik am Filmset über die Führungskräfte-Beschleunigung in Luxemburg bis hin zur High-End-Webentwicklung. Wählen Sie Ihr Ziel.',
+      en: 'From audiovisual cinema set engineering to executive talent acceleration in Luxembourg and boutique high-end web development. Select your corporate gateway.',
+      fr: 'De l’ingénierie audiovisuelle sur les plateaux de cinéma à l’accélération exécutive au Luxembourg et au développement web haut de gamme. Choisissez votre destination.',
+      de: 'Von audiovisueller Filmset-Technik über die Führungskräfte-Beschleunigung in Luxemburg bis zum High-End-Web-Development. Wählen Sie Ihr Ziel.',
       pt: 'Da engenharia audiovisual em sets de cinema à aceleração executiva no Luxemburgo e desenvolvimento web de alto padrão. Escolha o seu destino corporativo.',
       lu: 'Vun der audiovisueller Technik um Filmset iwwer d’Exekutiv-Beschleunegung zu Lëtzebuerg bis zur High-End Webentwécklung. Wielt Äert Zil.'
     },
-
-    // STATS TELEMETRY
     'stat_impressions': {
       es: 'Impresiones B2B', en: 'B2B Impressions', fr: 'Impressions B2B', de: 'B2B-Impressionen', pt: 'Impressões B2B', lu: 'B2B Impressiounen'
     },
@@ -86,8 +87,14 @@ window.WELUX_I18N = {
     'stat_sla': {
       es: 'SLA Respuesta', en: 'Response SLA', fr: 'SLA de Réponse', de: 'Reaktions-SLA', pt: 'SLA de Resposta', lu: 'Äntwert-SLA'
     },
-
-    // FILTER TABS
+    'filter_label': {
+      es: 'Filtrar por Especialidad Operativa',
+      en: 'Filter by Operational Specialization',
+      fr: 'Filtrer par Spécialité Opérationnelle',
+      de: 'Nach Fachbereich filtern',
+      pt: 'Filtrar por Especialidade Operacional',
+      lu: 'No Fachberäich filteren'
+    },
     'filter_all': {
       es: 'Todos los Portales', en: 'All Portals', fr: 'Tous les Portails', de: 'Alle Portale', pt: 'Todos os Portais', lu: 'All Portaler'
     },
@@ -101,25 +108,191 @@ window.WELUX_I18N = {
       es: 'Producción & Eventos', en: 'Production & Events', fr: 'Production & Événements', de: 'Produktion & Events', pt: 'Produção & Eventos', lu: 'Produktioun & Evenementer'
     },
 
-    // CARDS
-    'btn_enter_studio': {
+    // Card 1 Studio
+    'card1_badge': {
+      es: 'LUXURY B2B & TECH', en: 'LUXURY B2B & TECH', fr: 'LUXE B2B & TECH', de: 'LUXUS B2B & TECH', pt: 'LUXO B2B & TECH', lu: 'LUXUS B2B & TECH'
+    },
+    'card1_title': {
+      es: 'WELUX STUDIO', en: 'WELUX STUDIO', fr: 'WELUX STUDIO', de: 'WELUX STUDIO', pt: 'WELUX STUDIO', lu: 'WELUX STUDIO'
+    },
+    'card1_subtitle': {
+      es: 'Autoridad Digital, Gemelos LiDAR & Cine de Autor',
+      en: 'Digital Authority, LiDAR Digital Twins & Cinema Art',
+      fr: 'Autorité Digitale, Jumeaux LiDAR & Cinéma d’Auteur',
+      de: 'Digitale Autorität, LiDAR-Zwillinge & Autorenkino',
+      pt: 'Autoridade Digital, Gémeos LiDAR & Cinema de Autor',
+      lu: 'Digital Autoritéit, LiDAR-Zwillingen & Autorenkino'
+    },
+    'card1_f1': {
+      es: 'Producción Audiovisual 4.6K RAW de Alta Gama para Marcas High-End.',
+      en: 'High-End 4.6K RAW Audiovisual Production for Prestige Brands.',
+      fr: 'Production Audiovisuelle 4.6K RAW Haut de Gamme pour Marques de Prestige.',
+      de: 'High-End 4.6K RAW Audiovisuelle Produktion für Premium-Marken.',
+      pt: 'Produção Audiovisual 4.6K RAW de Alta Gama para Marcas High-End.',
+      lu: 'High-End 4.6K RAW Audiovisuell Produktioun fir Prestige Marken.'
+    },
+    'card1_f2': {
+      es: 'Tours Virtuales Matterport Pro3 & Escaneo Métrico Inmobiliario.',
+      en: 'Matterport Pro3 Virtual Tours & Metric Architectural Scanning.',
+      fr: 'Visites Virtuelles Matterport Pro3 & Scan Métrique Immobilier.',
+      de: 'Matterport Pro3 Virtuelle Touren & Metrisches Gebäude-Scanning.',
+      pt: 'Tours Virtuais Matterport Pro3 & Escaneamento Métrico Imobiliário.',
+      lu: 'Matterport Pro3 Virtuell Touren & Metrescht Gebaier-Scanning.'
+    },
+    'card1_f3': {
+      es: 'Sitios Web Boutique con Carga <1.2s & PageSpeed 98/100 verificado.',
+      en: 'Boutique Websites with <1.2s Load Time & Verified 98/100 PageSpeed.',
+      fr: 'Sites Web Boutique avec Vitesse <1.2s & PageSpeed 98/100 vérifié.',
+      de: 'Boutique-Websites mit <1.2s Ladezeit & 98/100 PageSpeed.',
+      pt: 'Websites Boutique com Carregamento <1.2s & PageSpeed 98/100 verificado.',
+      lu: 'Boutique-Websäiten mat <1.2s Luedzäit & 98/100 PageSpeed.'
+    },
+    'card1_f4': {
+      es: 'Admisión estricta: 4 marcas por trimestre bajo NDA.',
+      en: 'Strict Admission: 4 brands per quarter under bilateral NDA.',
+      fr: 'Admission stricte: 4 marques par trimestre sous accord NDA.',
+      de: 'Strenge Aufnahme: 4 Marken pro Quartal unter NDA.',
+      pt: 'Admissão estrita: 4 marcas por trimestre sob NDA.',
+      lu: 'Strenge Opnam: 4 Marken pro Trimester ënner NDA.'
+    },
+    'card1_audience': {
+      es: 'AUDIENCIA DIANA: Family Offices · Real Estate',
+      en: 'TARGET AUDIENCE: Family Offices · Real Estate',
+      fr: 'PUBLIC CIBLE: Family Offices · Immobilier de Luxe',
+      de: 'ZIELGRUPPE: Family Offices · Real Estate',
+      pt: 'PÚBLICO-ALVO: Family Offices · Imobiliário',
+      lu: 'ZIELGRUPP: Family Offices · Immobilien'
+    },
+    'card1_btn': {
       es: 'Entrar a Studio ➔', en: 'Enter Studio ➔', fr: 'Accéder à Studio ➔', de: 'Studio betreten ➔', pt: 'Entrar no Studio ➔', lu: 'Gitt an de Studio ➔'
     },
-    'btn_enter_careers': {
-      es: 'Acelerar Mi Empleo ➔', en: 'Accelerate My Career ➔', fr: 'Accélérer Ma Carrière ➔', de: 'Karriere beschleunigen ➔', pt: 'Acelerar Minha Carreira ➔', lu: 'Meng Karriär beschleunegen ➔'
+
+    // Card 2 Careers
+    'card2_badge': {
+      es: '0€ ADELANTADO · ÉXITO', en: '0€ UPFRONT · SUCCESS ONLY', fr: '0€ D’AVANCE · SUCCÈS PUR', de: '0€ VORSCHUSS · NUR ERFOLG', pt: '0€ ADIANTADO · SUCESSO', lu: '0€ VIRSOSS · NËMMEN ERFOLLEG'
     },
-    'btn_enter_gear': {
-      es: 'Explorar Arsenal ➔', en: 'Explore Arsenal ➔', fr: 'Explorer l’Arsenal ➔', de: 'Equipment entdecken ➔', pt: 'Explorar Arsenal ➔', lu: 'Material entdecken ➔'
+    'card2_title': {
+      es: 'WELUX CAREERS', en: 'WELUX CAREERS', fr: 'WELUX CARRIÈRES', de: 'WELUX KARRIERE', pt: 'WELUX CARREIRAS', lu: 'WELUX KARRIÄREN'
+    },
+    'card2_subtitle': {
+      es: 'CV Web Interactivo & Postulaciones Diarias 100% a Éxito',
+      en: 'Interactive Web CV & Daily Job Applications 100% Success-Based',
+      fr: 'CV Web Interactif & Candidatures Quotidiennes 100% au Succès',
+      de: 'Interaktiver Web-Lebenslauf & Tägliche Bewerbungen zu 100% auf Erfolgsbasis',
+      pt: 'CV Web Interativo & Candidaturas Diárias 100% por Sucesso',
+      lu: 'Interaktiven Web-CV & Deeglech Bewerbungen 100% op Erfollegsbasis'
+    },
+    'card2_f1': {
+      es: '<strong>0 € de coste inicial</strong> — Solo abonas 150€ tras cobrar tu 1ª nómina.',
+      en: '<strong>0 € upfront cost</strong> — You only pay €150 after receiving your 1st salary.',
+      fr: '<strong>0 € de coût initial</strong> — Vous ne réglez 150€ qu’après votre premier salaire.',
+      de: '<strong>0 € Vorauszahlung</strong> — Sie zahlen nur 150€ nach Erhalt des 1. Gehalts.',
+      pt: '<strong>0 € de custo inicial</strong> — Só paga 150€ após receber o seu 1º salário.',
+      lu: '<strong>0 € Virkäschten</strong> — Dir bezuelt eréischt 150€ no Ärem 1. Gehalt.'
+    },
+    'card2_f2': {
+      es: 'Postulación activa delegada en Jobs.lu, ADEM, Moovijob y LinkedIn.',
+      en: 'Automated daily submissions across Jobs.lu, ADEM, Moovijob & LinkedIn.',
+      fr: 'Candidatures actives quotidiennes sur Jobs.lu, ADEM, Moovijob et LinkedIn.',
+      de: 'Tägliche Bewerbungen auf Jobs.lu, ADEM, Moovijob und LinkedIn.',
+      pt: 'Candidatura ativa delegada no Jobs.lu, ADEM, Moovijob e LinkedIn.',
+      lu: 'Deeglech Bewerbungen op Jobs.lu, ADEM, Moovijob a LinkedIn.'
+    },
+    'card2_f3': {
+      es: 'Landing Page de candidatura multilingüe de alta velocidad (FR, EN, ES, DE, PT, LU).',
+      en: 'High-conversion multilingual candidate landing page (FR, EN, ES, DE, PT, LU).',
+      fr: 'Page web de candidature multilingue à haute conversion (FR, EN, ES, DE, PT, LU).',
+      de: 'Mehrsprachige Bewerbungs-Landingpage (FR, EN, ES, DE, PT, LU).',
+      pt: 'Landing Page de candidatura multilingue de alta velocidade (FR, EN, ES, DE, PT, LU).',
+      lu: 'Méisproocheg Bewerbungs-Landingpage (FR, EN, ES, DE, PT, LU).'
+    },
+    'card2_f4': {
+      es: 'Auditoría salarial, preparación contractual y simulación de entrevistas.',
+      en: 'Salary benchmarking, contract guidance & interview simulations.',
+      fr: 'Audit salarial luxembourgeois, préparation contractuelle et simulation d’entretiens.',
+      de: 'Gehaltsprüfung nach Luxemburger SSM, Vertragsprüfung und Vorbereitung.',
+      pt: 'Auditoria salarial, preparação contratual e simulação de entrevistas.',
+      lu: 'Gehaltsaudit no Lëtzebuerger SSM, Kontraktberodung an Interview-Training.'
+    },
+    'card2_audience': {
+      es: 'AUDIENCIA DIANA: Expats · Ingenieros · FinTech',
+      en: 'TARGET AUDIENCE: Expats · Engineers · FinTech Executives',
+      fr: 'PUBLIC CIBLE: Expats · Ingénieurs · Cadres FinTech',
+      de: 'ZIELGRUPPE: Expats · Ingenieure · FinTech & Banking',
+      pt: 'PÚBLICO-ALVO: Expats · Engenheiros · Profissionais FinTech',
+      lu: 'ZIELGRUPP: Expats · Ingenieuren · FinTech & Banking'
+    },
+    'card2_btn': {
+      es: 'Acelerar Mi Empleo ➔', en: 'Accelerate My Career ➔', fr: 'Accélérer Ma Carrière ➔', de: 'Karriere starten ➔', pt: 'Acelerar Carreira ➔', lu: 'Karriär starten ➔'
     },
 
-    // SOVEREIGNTY / FOOTER
+    // Card 3 Gear & Films
+    'card3_badge': {
+      es: '• REC LIVE · ARSENAL', en: '• REC LIVE · ARSENAL', fr: '• REC LIVE · ARSENAL', de: '• REC LIVE · ARSENAL', pt: '• REC LIVE · ARSENAL', lu: '• REC LIVE · ARSENAL'
+    },
+    'card3_title': {
+      es: 'WELUX GEAR × AMCROPA', en: 'WELUX GEAR × AMCROPA', fr: 'WELUX GEAR × AMCROPA', de: 'WELUX GEAR × AMCROPA', pt: 'WELUX GEAR × AMCROPA', lu: 'WELUX GEAR × AMCROPA'
+    },
+    'card3_subtitle': {
+      es: 'Equipamiento Cinematográfico, Fotomatón Glam & Videobooks',
+      en: 'Cinema Hardware Arsenal, Glam Photobooth & Actor Videobooks',
+      fr: 'Arsenal Cinéma, Photobooth Glam & Videobooks d’Acteurs',
+      de: 'Kino-Equipment, Glam Photobooth & Schauspieler-Videobooks',
+      pt: 'Equipamento Cinematográfico, Fotomatão Glam & Videobooks',
+      lu: 'Kino-Ausrüstung, Glam Fotobox & Schauspiller-Videobooks'
+    },
+    'card3_f1': {
+      es: 'Blackmagic URSA Mini Pro 4.6K G2 + Set Ópticas Sigma Cine High-Speed T2.',
+      en: 'Blackmagic URSA Mini Pro 4.6K G2 + Sigma High-Speed Cine T2 Prime Set.',
+      fr: 'Blackmagic URSA Mini Pro 4.6K G2 + Kit Optiques Sigma Cine High-Speed T2.',
+      de: 'Blackmagic URSA Mini Pro 4.6K G2 + Sigma Cine High-Speed T2 Zoom Set.',
+      pt: 'Blackmagic URSA Mini Pro 4.6K G2 + Set Ópticas Sigma Cine High-Speed T2.',
+      lu: 'Blackmagic URSA Mini Pro 4.6K G2 + Sigma Cine High-Speed T2 Set.'
+    },
+    'card3_f2': {
+      es: 'Steadicam Flycam Galaxy, Grabador Zoom F6 32-Bit Float & Microfonía Røde.',
+      en: 'Steadicam Flycam Galaxy, Zoom F6 32-Bit Float Audio & Røde Wireless.',
+      fr: 'Steadicam Flycam Galaxy, Enregistreur Zoom F6 32-Bit Float & Micros Røde.',
+      de: 'Steadicam Flycam Galaxy, Zoom F6 32-Bit Audio & Røde Wireless.',
+      pt: 'Steadicam Flycam Galaxy, Gravador Zoom F6 32-Bit Float & Microfones Røde.',
+      lu: 'Steadicam Flycam Galaxy, Zoom F6 32-Bit Toun & Røde Funk.'
+    },
+    'card3_f3': {
+      es: 'Cabinas de Fotomatón Glam HD con Beauty Filter e impresión al instante.',
+      en: 'Glam HD Photobooth Kiosks with Hollywood Beauty Filter & Instant Print.',
+      fr: 'Cabines Photobooth Glam HD avec Beauty Filter & Impression Immédiate.',
+      de: 'Glam HD Fotobox mit Hollywood-Beauty-Filter und Sofortdruck.',
+      pt: 'Cabines de Fotomatão Glam HD com Beauty Filter e impressão instantânea.',
+      lu: 'Glam HD Fotobox mat Hollywood Beauty Filter a Sofortdrock.'
+    },
+    'card3_f4': {
+      es: '<strong>Welux Talent Lab:</strong> Creación de Videobooks 4K para actores y modelos.',
+      en: '<strong>Welux Talent Lab:</strong> 4K Actor Videobooks & Model Portfolios.',
+      fr: '<strong>Welux Talent Lab:</strong> Création de Videobooks 4K pour comédiens et mannequins.',
+      de: '<strong>Welux Talent Lab:</strong> 4K Videobooks für Schauspieler & Models.',
+      pt: '<strong>Welux Talent Lab:</strong> Criação de Videobooks 4K para atores e modelos.',
+      lu: '<strong>Welux Talent Lab:</strong> 4K Videobooks fir Schauspiller & Modeller.'
+    },
+    'card3_audience': {
+      es: 'AUDIENCIA DIANA: DoPs · Eventos · Actores',
+      en: 'TARGET AUDIENCE: DoPs · VIP Events · Actors',
+      fr: 'PUBLIC CIBLE: Directeurs Photo · Événements VIP · Acteurs',
+      de: 'ZIELGRUPPE: Kameraleute · VIP-Events · Schauspieler',
+      pt: 'PÚBLICO-ALVO: Diretores de Fotografia · Eventos · Atores',
+      lu: 'ZIELGRUPP: Kameramänner · VIP Eventer · Schauspiller'
+    },
+    'card3_btn': {
+      es: 'Explorar Arsenal ➔', en: 'Explore Arsenal ➔', fr: 'Explorer l’Arsenal ➔', de: 'Arsenal ansehen ➔', pt: 'Explorar Arsenal ➔', lu: 'Material kucken ➔'
+    },
+
+    // ----------------- FOOTER -----------------
     'footer_sovereignty': {
       es: 'AUDITORÍA Y SOBERANÍA JURÍDICA: Todos los contratos, acuerdos de éxito y filmaciones se gestionan bajo las directivas del Gran Ducado de Luxemburgo.',
-      en: 'AUDIT & LEGAL SOVEREIGNTY: All contracts, success agreements, and film productions operate strictly under Grand Duchy of Luxembourg regulations.',
+      en: 'AUDIT & LEGAL SOVEREIGNTY: All contracts, success agreements, and film productions operate under the sovereign legal directives of the Grand Duchy of Luxembourg.',
       fr: 'AUDIT & SOUVERAINETÉ JURIDIQUE: Tous les contrats, accords de succès et tournages sont régis selon les directives du Grand-Duché de Luxembourg.',
-      de: 'AUDIT & RECHTLICHE SOUVERÄNITÄT: Alle Verträge, Erfolgsvereinbarungen und Filmproduktionen unterliegen den Richtlinien des Großherzogtums Luxemburg.',
+      de: 'AUDIT & RECHTLICHE SOUVERÄNITÄT: Alle Verträge, Erfolgsvereinbarungen und Produktionen unterliegen den Bestimmungen des Großherzogtums Luxemburg.',
       pt: 'AUDITORIA E SOBERANIA JURÍDICA: Todos os contratos, acordos de sucesso e filmagens são geridos sob as diretrizes do Grão-Ducado do Luxemburgo.',
-      lu: 'AUDIT & JURIDISCH SOUVERÄNITÉIT: All Verträg, Erfollegsaccorden a Filmproduktioune ginn ënner de Richtlinne vum Groussherzogtum Lëtzebuerg geréiert.'
+      lu: 'AUDIT & JURIDISCH SOUVERÄNITÉIT: All Verträg, Erfollegsaccorden a Produktioune ginn ënner de Richtlinne vum Groussherzogtum Lëtzebuerg geréiert.'
     }
   },
 
@@ -128,85 +301,50 @@ window.WELUX_I18N = {
     const urlParams = new URLSearchParams(window.location.search);
     const urlLang = urlParams.get('lang');
     
-    let targetLang = 'es';
-    if (urlLang && this.isValidLang(urlLang)) {
-      targetLang = urlLang;
-    } else if (saved && this.isValidLang(saved)) {
-      targetLang = saved;
+    let target = 'es';
+    if (urlLang && this.languages.includes(urlLang.toLowerCase())) {
+      target = urlLang.toLowerCase();
+    } else if (saved && this.languages.includes(saved)) {
+      target = saved;
     } else {
-      const browser = (navigator.language || 'es').substring(0, 2).toLowerCase();
-      targetLang = this.isValidLang(browser) ? browser : 'es';
+      const bLang = (navigator.language || 'es').substring(0, 2).toLowerCase();
+      if (this.languages.includes(bLang)) target = bLang;
     }
-    
-    this.setLanguage(targetLang);
-    this.renderSelector();
-  },
 
-  isValidLang: function(code) {
-    return this.languages.some(l => l.code === code);
+    this.setLanguage(target);
   },
 
   setLanguage: function(code) {
-    if (!this.isValidLang(code)) return;
+    if (!this.languages.includes(code)) return;
     this.currentLang = code;
     localStorage.setItem('welux_lang', code);
     document.documentElement.lang = code;
 
-    // Translate all elements with data-i18n attribute
+    // Translate elements with data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if (this.translations[key] && this.translations[key][code]) {
-        el.innerHTML = this.translations[key][code];
+      if (this.dict[key] && this.dict[key][code]) {
+        el.innerHTML = this.dict[key][code];
       }
     });
 
-    // Update active state in selectors
-    document.querySelectorAll('.lang-option').forEach(btn => {
-      if (btn.getAttribute('data-lang') === code) {
-        btn.classList.add('bg-white/20', 'text-white', 'font-bold');
-        btn.classList.remove('text-neutral-400');
+    // Update active style on language buttons
+    document.querySelectorAll('.welux-lang-btn').forEach(btn => {
+      const btnLang = btn.getAttribute('data-lang');
+      if (btnLang === code) {
+        btn.classList.add('bg-white/25', 'text-white', 'font-bold', 'shadow-sm', 'border-white/40');
+        btn.classList.remove('text-neutral-400', 'border-transparent');
       } else {
-        btn.classList.remove('bg-white/20', 'text-white', 'font-bold');
-        btn.classList.add('text-neutral-400');
+        btn.classList.remove('bg-white/25', 'text-white', 'font-bold', 'shadow-sm', 'border-white/40');
+        btn.classList.add('text-neutral-400', 'border-transparent');
       }
-    });
-
-    const activeFlagEl = document.getElementById('current-lang-flag');
-    const activeCodeEl = document.getElementById('current-lang-code');
-    const currentObj = this.languages.find(l => l.code === code);
-    if (activeFlagEl && currentObj) activeFlagEl.textContent = currentObj.flag;
-    if (activeCodeEl && currentObj) activeCodeEl.textContent = currentObj.code.toUpperCase();
-  },
-
-  renderSelector: function() {
-    const containers = document.querySelectorAll('.welux-lang-selector-container');
-    containers.forEach(container => {
-      const currentObj = this.languages.find(l => l.code === this.currentLang) || this.languages[0];
-      let html = `
-        <div class="relative inline-block text-left group" id="welux-lang-dropdown">
-          <button type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neutral-900/80 hover:bg-neutral-800 border border-white/15 font-mono text-xs font-semibold text-white transition-all shadow-sm">
-            <span id="current-lang-flag">${currentObj.flag}</span>
-            <span id="current-lang-code">${currentObj.code.toUpperCase()}</span>
-            <span class="text-[9px] text-neutral-400 group-hover:rotate-180 transition-transform">▼</span>
-          </button>
-          <div class="hidden group-hover:block absolute right-0 mt-1 w-44 rounded-xl bg-[#14161d]/98 backdrop-blur-2xl border border-white/20 shadow-2xl p-1.5 z-[99999] transition-all">
-            <div class="text-[10px] font-mono text-neutral-400 px-2.5 py-1 uppercase tracking-wider border-b border-white/10 mb-1">Idioma / Language</div>
-      `;
-      this.languages.forEach(l => {
-        const isActive = l.code === this.currentLang;
-        html += `
-          <button type="button" onclick="window.WELUX_I18N.setLanguage('${l.code}')" data-lang="${l.code}" class="lang-option w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-mono transition-colors text-left hover:bg-white/10 ${isActive ? 'bg-white/20 text-white font-bold' : 'text-neutral-300'}">
-            <span class="flex items-center gap-2"><span>${l.flag}</span><span>${l.label}</span></span>
-            <span class="text-[10px] text-neutral-500 uppercase">${l.code}</span>
-          </button>
-        `;
-      });
-      html += `</div></div>`;
-      container.innerHTML = html;
     });
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+// Auto-run on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => window.WELUX_I18N.init());
+} else {
   window.WELUX_I18N.init();
-});
+}

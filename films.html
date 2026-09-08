@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Amcropa Films × Welux Gear // Cinema Equipment Rental & Talent Lab</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;background-color:#0d0e12;color:#f3f4f6;}}
+::-webkit-scrollbar{display:none;}
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "cinema-black": "#0d0e12",
+          "cinema-dark": "#14161d",
+          "cinema-charcoal": "#1a1d24",
+          "slate-card": "#1f232d",
+          "amber-tungsten": "#f59e0b",
+          "rec-red": "#e53935",
+          "spec-code-green": "#10B981"
+        },
+        fontFamily: {
+          mono: ["JetBrains Mono", "monospace"],
+          serif: ["Playfair Display", "serif"],
+          sans: ["Plus Jakarta Sans", "sans-serif"]
+        }
+      }
+    }
+}
+</script>
+</head>
+<body class="bg-[#0d0e12] font-sans text-slate-200 antialiased selection:bg-amber-tungsten selection:text-black">
+
+<!-- HUB GLOBAL NAV BAR -->
+<div class="bg-[#090a0d] text-slate-300 text-xs font-mono py-2 px-4 border-b border-neutral-800 flex flex-wrap items-center justify-between gap-2 z-50 relative">
+  <div class="flex items-center gap-3">
+    <a href="index.html" class="flex items-center gap-1.5 text-amber-tungsten hover:text-white font-bold tracking-widest uppercase text-[11px]">
+      <span class="w-2 h-2 rounded-full bg-rec-red animate-pulse"></span>
+      WELUX HUB // ECOSISTEMA
+    </a>
+    <span class="text-neutral-700 hidden sm:inline">|</span>
+    <span class="text-neutral-400 text-[10px] hidden md:inline">CINEMA RENTAL DEPOT & TALENT LAB</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <a href="studio.html" class="px-2.5 py-0.5 rounded-full bg-neutral-800 text-neutral-300 hover:text-white text-[10px] uppercase transition-colors">🏛️ Studio B2B</a>
+    <a href="films.html" class="px-2.5 py-0.5 rounded-full bg-amber-tungsten text-black font-bold text-[10px] uppercase">🎬 Amcropa Films</a>
+    <a href="careers.html" class="px-2.5 py-0.5 rounded-full bg-neutral-800 text-emerald-400 text-[10px] uppercase hover:text-white transition-colors">🚀 Careers (0€)</a>
+  </div>
+</div>
+
+<header class="sticky top-0 left-0 right-0 z-40 bg-[#0d0e12]/95 backdrop-blur-md border-b border-neutral-800 shadow-2xl">
+<div class="max-w-[84rem] mx-auto px-5 lg:px-10 h-20 flex items-center justify-between gap-4">
+  <a class="flex flex-col" href="#">
+    <div class="flex items-center gap-2">
+      <span class="font-serif text-xl font-bold text-white">AMCROPA FILMS</span>
+      <span class="font-mono text-amber-tungsten font-bold text-xs">×</span>
+      <span class="font-serif text-xl font-bold text-white">WELUX GEAR</span>
+    </div>
+    <span class="font-mono text-[10px] uppercase text-neutral-400 tracking-widest">// Cinema Equipment Rental & Talent Lab</span>
+  </a>
+  <nav class="hidden lg:flex items-center gap-6 font-mono text-xs uppercase">
+    <a href="#catalogo" class="text-neutral-400 hover:text-white">Arsenal Cine</a>
+    <a href="#fotomaton-glam" class="text-neutral-400 hover:text-white">Fotomatón Glam</a>
+    <a href="#talent-lab" class="text-neutral-400 hover:text-white">Videobooks Actores</a>
+    <a href="#calculadora" class="text-neutral-400 hover:text-white">Calculadora</a>
+  </nav>
+  <a href="#calculadora" class="px-5 py-2.5 rounded-full bg-[#e53935] hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-lg">
+    Reservar Material ➔
+  </a>
+</div>
+</header>
+
+<main class="w-full bg-[#0d0e12] min-h-screen">
+<!-- HERO SECTION -->
+<section class="w-full py-16 lg:py-24 max-w-[84rem] mx-auto px-5 lg:px-10">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div class="lg:col-span-7 space-y-5">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1a1d24] border border-neutral-800 text-amber-tungsten font-mono text-xs font-bold uppercase">
+        // INVENTARIO TÉCNICO OFICIAL & TALENT LAB
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-tight">
+        Arsenal de Cine de Alta Gama &amp; <span class="italic text-amber-tungsten font-normal">Producción Escénica</span>.
+      </h1>
+      <p class="font-serif italic text-lg text-neutral-400 max-w-2xl">
+        Alquiler de cámaras Super 35, ópticas de cine T2, estabilización Steadicam, sonido 32-bit float, cabinas de fotomatón glam y producción de videobooks 4K para actores y modelos.
+      </p>
+      <div class="flex flex-wrap gap-3 pt-2">
+        <a href="#catalogo" class="px-6 py-3 rounded-full bg-amber-tungsten hover:bg-amber-400 text-black font-mono text-xs font-bold uppercase tracking-wider transition-all">
+          Explorar Catálogo Técnico ➔
+        </a>
+        <a href="#talent-lab" class="px-6 py-3 rounded-full bg-[#1a1d24] border border-neutral-700 text-white font-mono text-xs font-bold uppercase hover:bg-neutral-800 transition-all">
+          🎭 Reservar Videobook 4K
+        </a>
+      </div>
+    </div>
+    <div class="lg:col-span-5">
+      <div class="rounded-2xl overflow-hidden border border-neutral-800 bg-[#14161d] p-4 shadow-2xl">
+        <div class="aspect-video rounded-xl overflow-hidden relative">
+          <img src="assets/images/cinema_camera_kit.jpg" alt="Cinema Camera Kit" class="w-full h-full object-cover">
+          <div class="absolute top-3 left-3 bg-black/80 px-2.5 py-1 rounded font-mono text-xs text-rec-red flex items-center gap-1.5 font-bold">
+            <span class="w-2 h-2 rounded-full bg-rec-red animate-ping"></span> REC 4.6K RAW
+          </div>
+          <div class="absolute bottom-3 left-3 text-white font-mono text-xs">
+            <span class="text-amber-tungsten block font-bold">FLAGSHIP RIG</span>
+            Blackmagic URSA 4.6K G2 + Sigma T2
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATÁLOGO GEAR -->
+<section class="w-full py-16 bg-[#14161d] border-t border-neutral-800" id="catalogo">
+<div class="max-w-[84rem] mx-auto px-5 lg:px-10 space-y-12">
+  <div class="flex justify-between items-end">
+    <div>
+      <span class="font-mono text-xs text-amber-tungsten uppercase font-bold">// 01 // CATÁLOGO OFICIAL DE ALQUILER</span>
+      <h2 class="font-serif text-3xl sm:text-4xl text-white">Equipamiento Cinematográfico Calibrado</h2>
+    </div>
+    <span class="font-mono text-xs text-neutral-400 hidden sm:inline">-30% por semanas completas</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Gear 1 -->
+    <div class="bg-[#1f232d] p-6 rounded-2xl border border-neutral-800 space-y-4 flex flex-col justify-between">
+      <div class="space-y-3">
+        <div class="aspect-video rounded-xl overflow-hidden bg-black">
+          <img src="assets/images/cinema_camera_kit.jpg" alt="URSA Kit" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-serif text-xl font-bold text-white">URSA Mini Pro 4.6K G2 Cine Kit</h3>
+        <p class="text-xs text-neutral-400">Sensor Super 35, 15 pasos de rango dinámico, montura EF, Video Assist 7" y CFast 512GB.</p>
+      </div>
+      <div class="pt-4 border-t border-neutral-800 flex justify-between items-center font-mono">
+        <span class="text-xl font-bold text-white">$425 <span class="text-xs text-neutral-400 font-normal">/día</span></span>
+        <button onclick="alert('Equipo añadido a la reserva')" class="px-4 py-2 rounded-full bg-amber-tungsten text-black font-bold text-xs uppercase">+ Añadir</button>
+      </div>
+    </div>
+
+    <!-- Gear 2 -->
+    <div class="bg-[#1f232d] p-6 rounded-2xl border border-neutral-800 space-y-4 flex flex-col justify-between">
+      <div class="space-y-3">
+        <div class="aspect-video rounded-xl overflow-hidden bg-black">
+          <img src="assets/images/steadicam_grip_rig.jpg" alt="Steadicam Kit" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-serif text-xl font-bold text-white">Steadicam Flycam Galaxy + Chaleco</h3>
+        <p class="text-xs text-neutral-400">Brazo articulado de doble muelle, chaleco ergonómico y poste Redking hasta 10 kg de carga útil.</p>
+      </div>
+      <div class="pt-4 border-t border-neutral-800 flex justify-between items-center font-mono">
+        <span class="text-xl font-bold text-white">$120 <span class="text-xs text-neutral-400 font-normal">/día</span></span>
+        <button onclick="alert('Equipo añadido a la reserva')" class="px-4 py-2 rounded-full bg-amber-tungsten text-black font-bold text-xs uppercase">+ Añadir</button>
+      </div>
+    </div>
+
+    <!-- Gear 3 -->
+    <div class="bg-[#1f232d] p-6 rounded-2xl border border-neutral-800 space-y-4 flex flex-col justify-between">
+      <div class="space-y-3">
+        <div class="aspect-video rounded-xl overflow-hidden bg-black">
+          <img src="assets/images/audio_field_gear.jpg" alt="Audio Kit" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-serif text-xl font-bold text-white">Kit Audio Zoom F6 (32-Bit Float) + NTG-2</h3>
+        <p class="text-xs text-neutral-400">Grabador 32-bit float sin clipeo con micro cañón Røde NTG-2 y Blimp paravientos Rycote.</p>
+      </div>
+      <div class="pt-4 border-t border-neutral-800 flex justify-between items-center font-mono">
+        <span class="text-xl font-bold text-white">$170 <span class="text-xs text-neutral-400 font-normal">/día</span></span>
+        <button onclick="alert('Equipo añadido a la reserva')" class="px-4 py-2 rounded-full bg-amber-tungsten text-black font-bold text-xs uppercase">+ Añadir</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOTOMATÓN GLAM -->
+<section class="w-full py-16 bg-[#0d0e12] border-t border-neutral-800" id="fotomaton-glam">
+<div class="max-w-[84rem] mx-auto px-5 lg:px-10 space-y-8">
+  <div>
+    <span class="font-mono text-xs text-amber-tungsten uppercase font-bold">// 02 // EVENTOS VIP & BODAS DE LUJO</span>
+    <h2 class="font-serif text-3xl sm:text-4xl text-white">Fotomatón Glam HD & Escenografías de Autor</h2>
+    <p class="text-sm text-neutral-400 max-w-2xl mt-1">Estética de las galas de los Oscar con Beauty Soft Filter, impresión perlada ilimitada y tubos Astera Titan RGB.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="bg-[#1f232d] p-6 rounded-2xl border border-neutral-800 space-y-4">
+      <img src="assets/images/glam_photobooth_set.jpg" alt="Glam Photobooth" class="w-full h-56 object-cover rounded-xl">
+      <h3 class="font-serif text-xl font-bold text-white">Cabina Glam HD con Beauty Filter</h3>
+      <p class="text-xs text-neutral-400">Impresión térmica instantánea ilimitada y entrega digital por QR / AirDrop.</p>
+      <div class="font-mono text-amber-tungsten font-bold text-lg">$650 (3 Horas)</div>
+    </div>
+    <div class="bg-[#1f232d] p-6 rounded-2xl border border-neutral-800 space-y-4">
+      <img src="assets/images/master_cinema_studio_gear.jpg" alt="Escenografías" class="w-full h-56 object-cover rounded-xl">
+      <h3 class="font-serif text-xl font-bold text-white">Escenografía Integral + Tubos Astera Titan</h3>
+      <p class="text-xs text-neutral-400">Fondos botánicos/arquitectónicos hechos a medida con rótulo de neón LED personalizado.</p>
+      <div class="font-mono text-amber-tungsten font-bold text-lg">$1.150 (5 Horas)</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TALENT LAB: VIDEOBOOKS -->
+<section class="w-full py-16 bg-[#14161d] border-t border-neutral-800" id="talent-lab">
+<div class="max-w-[84rem] mx-auto px-5 lg:px-10 space-y-8">
+  <div>
+    <span class="font-mono text-xs text-amber-tungsten uppercase font-bold">// 03 // WELUX TALENT LAB</span>
+    <h2 class="font-serif text-3xl sm:text-4xl text-white">Videobooks Cinematográficos 4K para Actores & Modelos</h2>
+    <p class="text-sm text-neutral-400 max-w-2xl mt-1">Rodamos tus secuencias de casting con Blackmagic 4.6K, ópticas de cine y dirección actoral profesional.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+    <div class="bg-[#1f232d] p-6 rounded-2xl border border-neutral-800 space-y-3">
+      <span class="text-amber-tungsten font-bold text-sm block">PACK ACTOR ESENCIAL</span>
+      <h4 class="text-lg font-serif text-white font-bold">190 €</h4>
+      <p class="text-neutral-400">1 Secuencia 4K en plató + 5 fotografías de retrato editorial.</p>
+    </div>
+    <div class="bg-[#1f232d] p-6 rounded-2xl border border-amber-500/50 space-y-3 shadow-lg">
+      <span class="text-amber-tungsten font-bold text-sm block">PACK VIDEOBOOK MASTER</span>
+      <h4 class="text-lg font-serif text-white font-bold">340 €</h4>
+      <p class="text-neutral-400">3 Secuencias 4K completas (drama/comedia) + DaVinci Color + Audio 32-bit.</p>
+    </div>
+    <div class="bg-[#1f232d] p-6 rounded-2xl border border-neutral-800 space-y-3">
+      <span class="text-amber-tungsten font-bold text-sm block">PACK INTEGRAL ESTRELLA</span>
+      <h4 class="text-lg font-serif text-white font-bold">450 €</h4>
+      <p class="text-neutral-400">Videobook 4K + Book de 25 Fotos de Moda + Landing Web Personal.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CALCULADORA DE ALQUILER -->
+<section class="w-full py-16 bg-[#0d0e12] border-t border-neutral-800" id="calculadora">
+<div class="max-w-2xl mx-auto px-5 bg-[#1f232d] p-8 rounded-2xl border border-neutral-800 shadow-2xl space-y-6">
+  <div class="text-center">
+    <span class="font-mono text-xs text-amber-tungsten uppercase font-bold">// RESERVA ONLINE INMEDIATA</span>
+    <h3 class="font-serif text-2xl font-bold text-white mt-1">Solicitar Disponibilidad de Equipos / Rodaje</h3>
+  </div>
+  <form onsubmit="alert('Solicitud de reserva enviada a Amcropa Films. Te responderemos en &lt;2h.'); return false;" class="space-y-4 font-mono text-xs">
+    <div>
+      <label class="block text-neutral-300 mb-1">Nombre / Productora *</label>
+      <input type="text" required placeholder="Tu nombre o empresa" class="w-full p-3 rounded-lg bg-[#14161d] border border-neutral-700 text-white focus:outline-none focus:border-amber-tungsten font-sans">
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-neutral-300 mb-1">WhatsApp / Teléfono *</label>
+        <input type="tel" required placeholder="+352... / +34..." class="w-full p-3 rounded-lg bg-[#14161d] border border-neutral-700 text-white focus:outline-none focus:border-amber-tungsten font-sans">
+      </div>
+      <div>
+        <label class="block text-neutral-300 mb-1">Fecha Prevista de Rodaje</label>
+        <input type="date" class="w-full p-3 rounded-lg bg-[#14161d] border border-neutral-700 text-white focus:outline-none focus:border-amber-tungsten font-sans">
+      </div>
+    </div>
+    <div>
+      <label class="block text-neutral-300 mb-1">Equipamiento o Servicio de Interés</label>
+      <select class="w-full p-3 rounded-lg bg-[#14161d] border border-neutral-700 text-white focus:outline-none focus:border-amber-tungsten font-sans">
+        <option>Pack Blackmagic URSA 4.6K G2 Cine Kit</option>
+        <option>Pack Steadicam Flycam Galaxy + Chaleco</option>
+        <option>Pack Sonido Directo 32-bit Float Zoom F6</option>
+        <option>Fotomatón Glam HD para Evento</option>
+        <option>Videobook para Actores / Modelo (Talent Lab)</option>
+      </select>
+    </div>
+    <button type="submit" class="w-full py-4 rounded-xl bg-amber-tungsten hover:bg-amber-400 text-black font-bold uppercase tracking-wider transition-all">
+      Confirmar Solicitud de Reserva ➔
+    </button>
+  </form>
+</div>
+</section>
+
+</main>
+
+<footer class="w-full bg-[#090a0d] text-neutral-500 py-12 px-5 lg:px-10 text-xs font-mono border-t border-neutral-800">
+  <div class="max-w-[84rem] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <div>© 2026 Amcropa Films × Welux Gear. Todos los derechos reservados.</div>
+    <div class="flex gap-6">
+      <a href="studio.html" class="hover:text-white">Welux Studio ➔</a>
+      <a href="careers.html" class="hover:text-white">Welux Careers ➔</a>
+      <a href="index.html" class="hover:text-white">Portal Hub ➔</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -2,6 +2,7 @@
  * WELUX GROUP — ARQUITECTURA TÉCNICA MULTILINGÜE & PERSISTENCIA DE IDIOMA
  * Ecosistema: weluxhub.com | studio.weluxhub.com | careers.weluxhub.com | gear.weluxhub.com
  * Soporte soberano: ES, EN, FR, PT, DE, LB/LU
+ * Clean URL Engine: Elimina 'index.html' de la barra de direcciones para URLs limpias (/fr/, /en/, /)
  */
 
 const WELUX_DICTIONARY = {
@@ -106,10 +107,28 @@ const WELUX_I18N = {
     let target = paramLang || pathLang || cookieLang || storedLang || 'es';
     if (!this.supported.includes(target)) target = 'es';
     
+    this.cleanAddressBar();
     this.setLanguage(target, false);
   },
+
+  cleanAddressBar() {
+    // Limpia 'index.html' de la URL visual en el navegador
+    if (window.history && window.history.replaceState) {
+      try {
+        let p = window.location.pathname;
+        if (p.endsWith('/index.html')) {
+          p = p.replace(/\/index\.html$/, '/');
+        } else if (p === '/index.html') {
+          p = '/';
+        }
+        if (p !== window.location.pathname) {
+          window.history.replaceState({}, '', p + window.location.search + window.location.hash);
+        }
+      } catch(e) {}
+    }
+  },
   
-  setLanguage(lang, updateUrl = true) {
+  setLanguage(lang, updateUrl = false) {
     if (!this.supported.includes(lang)) return;
     this.current = lang;
     const normalized = (lang === 'lu') ? 'lb' : lang;
@@ -145,25 +164,7 @@ const WELUX_I18N = {
       }
     });
     
-    // Inyectar ?lang=XX a todos los enlaces del ecosistema Welux
-    document.querySelectorAll('a[href]').forEach(a => {
-      const href = a.getAttribute('href');
-      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.startsWith('javascript:')) {
-        try {
-          const url = new URL(a.href, window.location.origin);
-          url.searchParams.set('lang', lang);
-          a.href = url.toString();
-        } catch (e) {}
-      }
-    });
-    
-    if (updateUrl && window.history && window.history.replaceState) {
-      try {
-        const url = new URL(window.location);
-        url.searchParams.set('lang', lang);
-        window.history.replaceState({}, '', url);
-      } catch(e) {}
-    }
+    this.cleanAddressBar();
   },
   
   getCookie(name) {

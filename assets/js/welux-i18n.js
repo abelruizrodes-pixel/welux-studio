@@ -1,7 +1,7 @@
 /**
- * WELUX GROUP — MOTOR MULTILINGÜE SOBERANO & URLs LIMPIAS
- * Sincronización automática de idioma en todo el ecosistema (ES, EN, FR, DE, PT, LU)
- * Limpieza instantánea de 'index.html' en la barra de navegación del navegador
+ * WELUX GROUP — MOTOR MULTILINGÜE SOBERANO & URLs LIMPIAS (CLEAN URL ENGINE)
+ * Elimina 'index.html' y extensiones '.html' en todas las subpáginas (Studio, Careers, Gear)
+ * Mantiene la barra de direcciones impecable: /studio, /careers, /gear, /fr/studio, /en/careers, /
  */
 
 (function() {
@@ -9,16 +9,27 @@
 
   const SUPPORTED_LANGS = ['es', 'en', 'fr', 'de', 'pt', 'lu'];
 
-  // 1. Limpieza instantánea de la barra de direcciones (URLs elegantes sin /index.html)
+  // 1. Limpieza instantánea y elegante de la barra de direcciones en todas las subpáginas
   function cleanUrl() {
     if (window.history && window.history.replaceState) {
       try {
         let p = window.location.pathname;
+        let original = p;
+
+        // Limpiar index.html
         if (p.endsWith('/index.html')) {
           p = p.replace(/\/index\.html$/, '/');
-          window.history.replaceState({}, '', p + window.location.search + window.location.hash);
         } else if (p === '/index.html') {
-          window.history.replaceState({}, '', '/' + window.location.search + window.location.hash);
+          p = '/';
+        }
+
+        // Limpiar .html en todas las subpáginas (studio.html -> studio, careers.html -> careers, films.html -> films)
+        if (p.endsWith('.html')) {
+          p = p.replace(/\.html$/, '');
+        }
+
+        if (p !== original) {
+          window.history.replaceState({}, '', p + window.location.search + window.location.hash);
         }
       } catch (e) {}
     }
@@ -47,19 +58,24 @@
       }
     }
 
-    // Si el usuario ya tenía un idioma preferido guardado (ej. 'fr') y entra a una página con idioma diferente
+    // Redirección inteligente si el usuario guardó preferencia y entra a ruta raíz
     if (storedLang && SUPPORTED_LANGS.includes(storedLang) && storedLang !== currentLang) {
       const isManualSwitch = sessionStorage.getItem('welux_manual_lang');
       if (!isManualSwitch) {
         const path = window.location.pathname;
-        let page = path.split('/').pop();
-        if (!page || page === 'index.html') page = '';
+        let page = path.split('/').pop().replace(/\.html$/, '');
+        
+        let fileTarget = '';
+        if (page === 'studio') fileTarget = 'studio.html';
+        else if (page === 'careers') fileTarget = 'careers.html';
+        else if (page === 'films' || page === 'gear') fileTarget = 'films.html';
+        else if (!page || page === 'index') fileTarget = '';
 
         let targetUrl = '';
         if (storedLang === 'es') {
-          targetUrl = page ? `/${page}` : '/';
+          targetUrl = fileTarget ? `/${fileTarget}` : '/';
         } else {
-          targetUrl = page ? `/${storedLang}/${page}` : `/${storedLang}/`;
+          targetUrl = fileTarget ? `/${storedLang}/${fileTarget}` : `/${storedLang}/`;
         }
 
         if (targetUrl && targetUrl !== path) {
@@ -79,7 +95,7 @@
     sessionStorage.removeItem('welux_manual_lang');
   }
 
-  // 4. Función global para cambio de idioma al hacer click en el selector
+  // 4. Función global para cambio de idioma en toda la navegación
   window.setWeluxLanguage = function(newLang) {
     if (!SUPPORTED_LANGS.includes(newLang)) return;
 
@@ -92,20 +108,26 @@
     document.cookie = `welux_lang=${newLang}; path=/; max-age=31536000; SameSite=Lax`;
 
     const path = window.location.pathname;
-    let page = path.split('/').pop();
-    if (!page || page === 'index.html') page = '';
+    let page = path.split('/').pop().replace(/\.html$/, '');
+    
+    let fileTarget = '';
+    if (page === 'studio') fileTarget = 'studio.html';
+    else if (page === 'careers') fileTarget = 'careers.html';
+    else if (page === 'films' || page === 'gear') fileTarget = 'films.html';
+    else if (!page || page === 'index') fileTarget = '';
 
     let dest = '';
     if (newLang === 'es') {
-      dest = page ? `/${page}` : '/';
+      dest = fileTarget ? `/${fileTarget}` : '/';
     } else {
-      dest = page ? `/${newLang}/${page}` : `/${newLang}/`;
+      dest = fileTarget ? `/${newLang}/${fileTarget}` : `/${newLang}/`;
     }
 
     window.location.href = dest;
   };
 
-  // Inicializar al cargar
+  // Inicializar inmediatamente y al cargar DOM
+  cleanUrl();
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', syncLanguage);
   } else {

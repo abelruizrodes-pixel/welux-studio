@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Sitemaps oficiales WeLux Ecosystem
+Sitemap: https://abelruizrodes-pixel.github.io/welux-studio/sitemap.xml

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<html class="scroll-smooth" lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;font-family:'Plus Jakarta Sans',sans-serif;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"navy":{"950":"#070F1E","900":"#0B192C","850":"#0F1E36","800":"#162846","700":"#1E3A5F"},"cobalt":{"50":"#eff6ff","100":"#dbeafe","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8"},"emerald":{"50":"#ecfdf5","100":"#d1fae5","500":"#10b981","600":"#059669","700":"#047857"},"slate":{"50":"#f8fafc","100":"#f1f5f9","200":"#e2e8f0","300":"#cbd5e1","400":"#94a3b8","500":"#64748b","600":"#475569","700":"#334155","800":"#1e293b","900":"#0f172a"}},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","2xl":"1rem","full":"9999px"},"spacing":{"gutter-desktop":"2rem","space-4xl":"6rem","space-3xl":"4.5rem","space-lg":"1.5rem","gutter-mobile":"1.25rem","container-max":"84rem","space-section":"8rem","space-2xs":"0.25rem","space-xs":"0.5rem","space-2xl":"3rem","space-md":"1rem","space-sm":"0.75rem","space-xl":"2rem"},"fontFamily":{"sans":["Plus Jakarta Sans","sans-serif"],"mono":["JetBrains Mono","monospace"]},"fontSize":{"body-sm":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"0.005em"}],"body-md":["0.9375rem",{"lineHeight":"1.6","letterSpacing":"0em"}],"body-lg":["1.125rem",{"lineHeight":"1.65","letterSpacing":"-0.005em"}],"headline-sm":["1.375rem",{"lineHeight":"1.3","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["1.875rem",{"lineHeight":"1.25","letterSpacing":"-0.015em","fontWeight":"700"}],"headline-lg":["2.5rem",{"lineHeight":"1.15","letterSpacing":"-0.02em","fontWeight":"700"}],"display-hero":["3.75rem",{"lineHeight":"1.08","letterSpacing":"-0.025em","fontWeight":"800"}]}}}}</script><link rel="icon" type="image/svg+xml" href="https://lh3.googleusercontent.com/aida/AEtjO1XHoNSaIucOzBU_90sp5CHLYoCW67l6ZarLNOWfl9MlUj7xlFo3YSYEpIrbXGlnXoNB4vNu9IGdT48a4c0JBA_oxCzthBsm4UhUBPSTmYqC5OSBOSb4vjXUY0NuQZkLk1Hw4Yv2BHooHFg2uqahv3leXTny-N0h58NeEheh_0o78zD1-5rjSROsxp9wGLFzJ4kpdaaYa5MHj5zKxQ7UUONvUqxnFY_CJ8X70V9KcIVbNSFEcTpzgJDc0Q">
 
 <!-- SEO & Open Graph Meta Tags -->
@@ -30,55 +30,39 @@
 }
 </script>
 
-<script>
-(function(){
-  var saved = localStorage.getItem('welux_lang');
-  if(!saved){
-    var m = document.cookie.match(/(?:^|; )welux_lang=([^;]*)/);
-    if(m) saved = m[1];
-  }
-  var valid = ['en','fr','de','pt','lu'];
-  var path = window.location.pathname;
-  var file = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-  if(saved && valid.indexOf(saved) !== -1 && !path.includes('/' + saved + '/')){
-    if(!/\/(en|fr|de|pt|lu)\//.test(path)){
-      window.location.replace(saved + '/' + file);
-    }
-  }
-})();
-</script>
+
 </head><body class="bg-white font-sans text-slate-800 antialiased selection:bg-cobalt-100 selection:text-navy-900">
 
-<header class="fixed top-0 left-0 right-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm"><div class="h-20 max-w-container-max mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><a class="flex flex-col group" data-path="landing-satelite" href="#"><div class="flex items-center gap-space-xs"><span class="text-xl tracking-tight text-navy-900 font-extrabold flex items-center gap-1.5"><span class="inline-block w-2.5 h-2.5 rounded-full bg-cobalt-600"></span>WELUX</span><span class="font-mono text-[11px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-md bg-navy-900 text-white">CAREERS</span></div><span class="font-mono text-[10px] uppercase text-slate-500 tracking-wider group-hover:text-cobalt-600 transition-colors">European Talent Acceleration • Luxembourg</span></a><div class="hidden xl:flex items-center gap-space-sm pl-space-md"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono text-[11px] font-semibold uppercase tracking-wider"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>0 € Adelantado</span><span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-100 text-slate-600 font-mono text-[11px] font-medium uppercase tracking-wider border border-slate-200">Garantía RGPD &amp; Confidencialidad</span></div></div><nav class="hidden lg:flex items-center gap-space-lg"><a class="text-body-sm font-medium text-slate-600 hover:text-navy-900 hover:border-b-2 hover:border-cobalt-600 transition-all py-1" data-path="como-funciona" href="#como-funciona">¿Cómo Funciona?</a><a class="text-body-sm font-medium text-slate-600 hover:text-navy-900 hover:border-b-2 hover:border-cobalt-600 transition-all py-1" data-path="modelo-exito" href="#modelo-exito">Modelo 100% a Éxito (0€)</a><a class="text-body-sm font-medium text-slate-600 hover:text-navy-900 hover:border-b-2 hover:border-cobalt-600 transition-all py-1" data-path="demo-cv-web" href="#demo-cv-interactivo">Demo CV Web</a><a class="text-body-sm font-medium text-slate-600 hover:text-navy-900 hover:border-b-2 hover:border-cobalt-600 transition-all py-1" data-path="postulaciones-diarias" href="#como-funciona">Postulaciones Diarias</a><a class="text-body-sm font-medium text-slate-600 hover:text-navy-900 hover:border-b-2 hover:border-cobalt-600 transition-all py-1" data-path="preguntas-frecuentes" href="#faq">FAQ</a></nav><div class="flex items-center gap-space-md"><!-- WeLux Sovereign 6-Language Selector Bar -->
+<header class="fixed top-0 left-0 right-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm"><div class="h-20 max-w-container-max mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><a class="flex flex-col group" data-path="landing-satelite" href="#"><div class="flex items-center gap-space-xs"><span class="text-xl tracking-tight text-navy-900 font-extrabold flex items-center gap-1.5"><span class="inline-block w-2.5 h-2.5 rounded-full bg-cobalt-600"></span>WELUX</span><span class="font-mono text-[11px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-md bg-navy-900 text-white">CAREERS</span></div><span class="font-mono text-[10px] uppercase text-slate-500 tracking-wider group-hover:text-cobalt-600 transition-colors">European Talent Acceleration • Luxembourg</span></a><div class="hidden xl:flex items-center gap-space-sm pl-space-md"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono text-[11px] font-semibold uppercase tracking-wider"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>0 € d’Avance</span><span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-100 text-slate-600 font-mono text-[11px] font-medium uppercase tracking-wider border border-slate-200">Garantie RGPD &amp; Confidentialité</span></div></div><nav class="hidden lg:flex items-center gap-space-lg"><a class="text-body-sm font-medium text-slate-600 hover:text-navy-900 hover:border-b-2 hover:border-cobalt-600 transition-all py-1" data-path="como-funciona" href="#como-funciona">Comment Ça Marche ?</a><a class="text-body-sm font-medium text-slate-600 hover:text-navy-900 hover:border-b-2 hover:border-cobalt-600 transition-all py-1" data-path="modelo-exito" href="#modelo-exito">Modèle 100% au Succès (0€)</a><a class="text-body-sm font-medium text-slate-600 hover:text-navy-900 hover:border-b-2 hover:border-cobalt-600 transition-all py-1" data-path="demo-cv-web" href="#demo-cv-interactivo">Démo CV Web</a><a class="text-body-sm font-medium text-slate-600 hover:text-navy-900 hover:border-b-2 hover:border-cobalt-600 transition-all py-1" data-path="postulaciones-diarias" href="#como-funciona">Candidatures Quotidiennes</a><a class="text-body-sm font-medium text-slate-600 hover:text-navy-900 hover:border-b-2 hover:border-cobalt-600 transition-all py-1" data-path="preguntas-frecuentes" href="#faq">FAQ</a></nav><div class="flex items-center gap-space-md"><!-- WeLux Sovereign 6-Language Selector Bar -->
 <div class="welux-lang-bar flex items-center gap-0.5 sm:gap-1 bg-black/85 border border-white/20 px-2.5 py-1 rounded-full font-mono text-[11px] shadow-lg backdrop-blur-md text-white shrink-0">
-  <span class="px-2 py-0.5 rounded bg-white/25 text-white font-bold border border-white/40 shadow-sm">🇪🇸 ES</span> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="en/careers.html" onclick="localStorage.setItem('welux_lang','en');document.cookie='welux_lang=en;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇬🇧 EN</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="fr/careers.html" onclick="localStorage.setItem('welux_lang','fr');document.cookie='welux_lang=fr;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇫🇷 FR</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="de/careers.html" onclick="localStorage.setItem('welux_lang','de');document.cookie='welux_lang=de;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇩🇪 DE</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="pt/careers.html" onclick="localStorage.setItem('welux_lang','pt');document.cookie='welux_lang=pt;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇵🇹 PT</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="lu/careers.html" onclick="localStorage.setItem('welux_lang','lu');document.cookie='welux_lang=lu;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇱🇺 LU</a>
+  <a href="../careers.html" onclick="localStorage.setItem('welux_lang','es');document.cookie='welux_lang=es;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇪🇸 ES</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="../en/careers.html" onclick="localStorage.setItem('welux_lang','en');document.cookie='welux_lang=en;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇬🇧 EN</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <span class="px-2 py-0.5 rounded bg-white/25 text-white font-bold border border-white/40 shadow-sm">🇫🇷 FR</span> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="../de/careers.html" onclick="localStorage.setItem('welux_lang','de');document.cookie='welux_lang=de;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇩🇪 DE</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="../pt/careers.html" onclick="localStorage.setItem('welux_lang','pt');document.cookie='welux_lang=pt;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇵🇹 PT</a> <span class="text-white/20 text-[10px] hidden sm:inline">|</span> <a href="../lu/careers.html" onclick="localStorage.setItem('welux_lang','lu');document.cookie='welux_lang=lu;path=/;max-age=31536000;'" class="px-2 py-0.5 rounded text-white/75 hover:text-white hover:bg-white/10 transition-colors border border-transparent">🇱🇺 LU</a>
 </div>
 </div>
 <!-- Columna Lateral Bento de Métricas -->
 <div class="lg:col-span-4 flex flex-col gap-3 lg:pt-1">
 <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 shadow-sm flex flex-col gap-1.5">
 <div class="flex items-center justify-between">
-<span class="font-mono text-[11px] font-bold text-slate-500 uppercase tracking-wider">Ritmo de Respuesta</span>
+<span class="font-mono text-[11px] font-bold text-slate-500 uppercase tracking-wider">Rythme de Réponse</span>
 <span class="px-2 py-0.5 rounded bg-cobalt-50 text-cobalt-700 border border-cobalt-200 font-mono text-[11px] font-semibold">Radar 2026</span>
 </div>
-<span class="text-3xl font-extrabold text-navy-900">14 — 21 Días</span>
-<p class="text-xs text-slate-600">Tiempo promedio registrado hasta la 1ª ronda de entrevistas técnicas directas en corporaciones luxemburguesas.</p>
+<span class="text-3xl font-extrabold text-navy-900">14 — 21 Jours</span>
+<p class="text-xs text-slate-600">Délai moyen enregistré jusqu’au 1er tour d’entretiens techniques directs dans les entreprises luxembourgeoises.</p>
 </div>
 <div class="grid grid-cols-2 gap-3">
 <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-sm flex flex-col gap-1">
-<span class="font-mono text-[10px] font-bold text-slate-500 uppercase tracking-wider">Atención RRHH</span>
+<span class="font-mono text-[10px] font-bold text-slate-500 uppercase tracking-wider">Attention RH</span>
 <span class="text-2xl font-extrabold text-navy-900">4.8x</span>
-<span class="text-[11px] text-slate-600 leading-tight">Mayor tasa de apertura vs un PDF adjunto simple.</span>
+<span class="text-[11px] text-slate-600 leading-tight">Taux d’ouverture supérieur vs un simple PDF joint.</span>
 </div>
 <div class="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200 shadow-sm flex flex-col gap-1">
-<span class="font-mono text-[10px] font-bold text-emerald-700 uppercase tracking-wider">Alineación</span>
+<span class="font-mono text-[10px] font-bold text-emerald-700 uppercase tracking-wider">Alignement</span>
 <span class="text-2xl font-extrabold text-emerald-600">100%</span>
-<span class="text-[11px] text-emerald-900/80 leading-tight font-medium">Cobro condicionado a firma efectiva de nómina.</span>
+<span class="text-[11px] text-emerald-900/80 leading-tight font-medium">Paiement conditionné à la signature effective du premier salaire.</span>
 </div>
 </div>
 <!-- Canales Conectados -->
 <div class="p-4 rounded-xl bg-navy-900 text-white flex flex-col gap-2 shadow-sm">
-<span class="font-mono text-[11px] font-bold text-slate-300 uppercase tracking-wider">Canales de Despliegue Diario</span>
+<span class="font-mono text-[11px] font-bold text-slate-300 uppercase tracking-wider">Canaux de Déploiement Quotidien</span>
 <div class="flex flex-wrap gap-1.5">
 <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-200 border border-navy-700 font-mono text-[11px]">Jobs.lu</span>
 <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-200 border border-navy-700 font-mono text-[11px]">Moovijob.com</span>
@@ -97,7 +81,7 @@
 <div class="flex flex-col gap-2 max-w-3xl">
 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 font-mono text-[11px] font-semibold uppercase tracking-widest self-start">
 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-<span>CONTRATO DE ÉXITO ESTRICTO // CERO ADELANTOS</span>
+<span>CONTRAT DE SUCCÈS STRICT // ZÉRO AVANCE</span>
 </div>
 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
             0 € por Adelantado. Solo abonas tras firmar contrato y cobrar tu 1ª nómina.
@@ -144,7 +128,7 @@
 </div>
 <div class="flex items-center justify-between p-3 rounded-lg bg-navy-950/70 border border-navy-800">
 <div class="flex flex-col">
-<span class="text-sm font-semibold text-white">Postulaciones Diarias Activas</span>
+<span class="text-sm font-semibold text-white">Candidatures Quotidiennes Activas</span>
 <span class="font-mono text-[11px] text-slate-400">Envío cualificado en Jobs.lu, Moovijob &amp; LinkedIn</span>
 </div>
 <span class="text-base font-bold text-emerald-400 font-mono">0 €</span>
@@ -220,7 +204,7 @@
 <span class="material-symbols-outlined text-[22px]">send_time_extension</span>
 </div>
 </div>
-<h3 class="text-xl font-bold text-navy-900">Gestión Total de Postulaciones Diarias</h3>
+<h3 class="text-xl font-bold text-navy-900">Gestión Total de Candidatures Quotidiennes</h3>
 <p class="text-sm text-slate-600 leading-relaxed">
             Ahorra más de 20 horas de prospección semanal. Cada mañana rastreamos vacantes verificadas en Jobs.lu, Moovijob, LinkedIn Recruiter y bolsas corporativas directas del Gran Ducado, aplicando por ti con cover letters calibradas a cada requerimiento lingüístico.
           </p>
@@ -485,7 +469,7 @@
 </li>
 <li class="flex items-start gap-2.5">
 <span class="material-symbols-outlined text-emerald-400 text-[18px] shrink-0 mt-0.5">check</span>
-<span><strong class="text-white">Alineación económica ética:</strong> 0 € de inversión previa. Solo un pago de 150 € cuando cobres tu primera nómina en el puesto obtenido.</span>
+<span><strong class="text-white">Alignement económica ética:</strong> 0 € de inversión previa. Solo un pago de 150 € cuando cobres tu primera nómina en el puesto obtenido.</span>
 </li>
 </ul>
 </div>
@@ -684,7 +668,7 @@
 </div>
 <!-- Botón de Envío -->
 <button class="w-full py-3.5 px-6 rounded-lg bg-cobalt-600 hover:bg-cobalt-700 text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all" id="form-submit-btn" type="submit">
-<span>Solicitar Programa de Aceleración Laboral (0 € Adelantado) ➔</span>
+<span>Solicitar Programa de Aceleración Laboral (0 € d’Avance) ➔</span>
 </button>
 <div class="hidden p-3 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-800 font-mono text-xs text-center font-medium" id="form-feedback">
             ✓ Solicitud recibida con éxito. Un consultor de Welux Careers en Luxemburgo se pondrá en contacto contigo por WhatsApp en menos de 24 horas laborables.
@@ -920,5 +904,5 @@
   </a>
 </div>
 
-<script src="assets/js/welux-i18n.js"></script>
+<script src="../assets/js/welux-i18n.js"></script>
 </body></html>

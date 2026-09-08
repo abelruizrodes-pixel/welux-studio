@@ -6,324 +6,184 @@
 window.WELUX_I18N = (function() {
   const languages = ['es', 'en', 'fr', 'de', 'pt', 'lu'];
   const dict = {
-  "Todos los Portales": {
-    "en": "All Portals",
-    "fr": "Tous les Portails",
-    "de": "Alle Portale",
-    "pt": "Todos os Portais",
-    "lu": "All Portaler"
+  "Diseñamos la": {
+    "en": "We Engineer",
+    "fr": "Nous Concevons l’",
+    "de": "Wir gestalten die",
+    "pt": "Desenhamos a",
+    "lu": "Mir gestalten d’"
   },
-  "Empresas &amp; Real Estate": {
-    "en": "Enterprises &amp; Real Estate",
-    "fr": "Entreprises &amp; Immobilier",
-    "de": "Unternehmen &amp; Immobilien",
-    "pt": "Empresas &amp; Imobiliário",
-    "lu": "Betriber &amp; Immobilien"
+  "Autoridad Digital": {
+    "en": "Digital Authority",
+    "fr": "Autorité Digitale",
+    "de": "Digitale Autorität",
+    "pt": "Autoridade Digital",
+    "lu": "Digital Autoritéit"
   },
-  "Empresas & Real Estate": {
-    "en": "Enterprises & Real Estate",
-    "fr": "Entreprises & Immobilier",
-    "de": "Unternehmen & Immobilien",
-    "pt": "Empresas & Imobiliário",
-    "lu": "Betriber & Immobilien"
+  "& el Estatus Visual de Marcas de Élite.": {
+    "en": "& the Visual Status of Elite Brands.",
+    "fr": "& le Statut Visuel des Marques d’Élite.",
+    "de": "& den visuellen Status von Elite-Marken.",
+    "pt": "& o Estatuto Visual de Marcas de Elite.",
+    "lu": "& de visuelle Status vun Elite-Marken."
   },
-  "Candidatos &amp; Talento": {
-    "en": "Candidates &amp; Talent",
-    "fr": "Candidats &amp; Talents",
-    "de": "Kandidaten &amp; Talente",
-    "pt": "Candidatos &amp; Talento",
-    "lu": "Kandidaten &amp; Talenter"
+  "&amp; el Estatus Visual de Marcas de Élite.": {
+    "en": "&amp; the Visual Status of Elite Brands.",
+    "fr": "&amp; le Statut Visuel des Marques d’Élite.",
+    "de": "&amp; den visuellen Status von Elite-Marken.",
+    "pt": "&amp; o Estatuto Visual de Marcas de Elite.",
+    "lu": "&amp; de visuelle Status vun Elite-Marken."
   },
-  "Candidatos & Talento": {
-    "en": "Candidates & Talent",
-    "fr": "Candidats & Talents",
-    "de": "Kandidaten & Talente",
-    "pt": "Candidatos & Talento",
-    "lu": "Kandidaten & Talenter"
+  "Combinamos ciencia algorítmica de retención, cinematografía de autor con sensor Super 35 y gemelos digitales LiDAR Matterport Pro3 para fondos de inversión, promotoras prime y firmas de prestigio global.": {
+    "en": "We fuse retention algorithmic science, Super 35 auteur cinematography, and Matterport Pro3 LiDAR digital twins for investment funds, prime real estate developers, and global prestige firms.",
+    "fr": "Nous combinons science algorithmique de rétention, cinématographie d’auteur Super 35 et jumeaux numériques LiDAR Matterport Pro3 pour fonds d’investissement, promoteurs prime et firmes de prestige mondial.",
+    "de": "Wir verbinden algorithmische Retentions-Wissenschaft, Super 35 Autoren-Kinematographie und Matterport Pro3 LiDAR-Zwillinge für Investmentfonds, Prime-Bauträger und renommierte Unternehmen.",
+    "pt": "Combinamos ciência algorítmica de retenção, cinematografia de autor com sensor Super 35 e gémeos digitais LiDAR Matterport Pro3 para fundos de investimento, promotoras prime e marcas de prestígio.",
+    "lu": "Mir verbannen algorithmesch Retentiouns-Wëssenschaft, Super 35 Autoren-Kino a Matterport Pro3 LiDAR-Zwillinge fir Investitiounsfongen, Prime-Bauträger a renomméiert Entreprisen."
   },
-  "Producción &amp; Eventos": {
-    "en": "Production &amp; Events",
-    "fr": "Production &amp; Événements",
-    "de": "Produktion &amp; Events",
-    "pt": "Produção &amp; Eventos",
-    "lu": "Produktioun &amp; Evenementer"
+  "SOLICITAR DIAGNÓSTICO PRIVADO": {
+    "en": "REQUEST PRIVATE DIAGNOSTIC",
+    "fr": "DEMANDER UN DIAGNOSTIC PRIVÉ",
+    "de": "PRIVATE DIAGNOSE ANFORDERN",
+    "pt": "SOLICITAR DIAGNÓSTICO PRIVADO",
+    "lu": "PRIVAT DIAGNOSTIK UFROEN"
   },
-  "Producción & Eventos": {
-    "en": "Production & Events",
-    "fr": "Production & Événements",
-    "de": "Produktion & Events",
-    "pt": "Produção & Eventos",
-    "lu": "Produktioun & Evenementer"
+  "EXPLORAR SHOWREEL & METODOLOGÍA": {
+    "en": "EXPLORE SHOWREEL & METHODOLOGY",
+    "fr": "EXPLORER LE SHOWREEL & MÉTHODOLOGIE",
+    "de": "SHOWREEL & METHODIK ENTDECKEN",
+    "pt": "EXPLORAR SHOWREEL & METODOLOGIA",
+    "lu": "SHOWREEL & METHODIK ENTDECKEN"
   },
-  "Filtrar por Especialidad Operativa": {
-    "en": "Filter by Operational Specialization",
-    "fr": "Filtrer par Spécialité Opérationnelle",
-    "de": "Nach Fachbereich filtern",
-    "pt": "Filtrar por Especialidade Operacional",
-    "lu": "No Fachberäich filteren"
+  "EXPLORAR SHOWREEL &amp; METODOLOGÍA": {
+    "en": "EXPLORE SHOWREEL &amp; METHODOLOGY",
+    "fr": "EXPLORER LE SHOWREEL &amp; MÉTHODOLOGIE",
+    "de": "SHOWREEL &amp; METHODIK ENTDECKEN",
+    "pt": "EXPLORAR SHOWREEL &amp; METODOLOGIA",
+    "lu": "SHOWREEL &amp; METHODIK ENTDECKEN"
   },
-  "Volver a WeLux Hub": {
-    "en": "Return to WeLux Hub",
-    "fr": "Retour au WeLux Hub",
-    "de": "Zurück zum WeLux Hub",
-    "pt": "Voltar ao WeLux Hub",
-    "lu": "Zréck op WeLux Hub"
+  "ACUERDO NDA PREVIO Y GARANTIZADO": {
+    "en": "GUARANTEED PRIOR NDA AGREEMENT",
+    "fr": "ACCORD NDA PRÉALABLE & GARANTI",
+    "de": "GARANTIERTE VORHERIGE NDA-VEREINBARUNG",
+    "pt": "ACORDO NDA PRÉVIO E GARANTIDO",
+    "lu": "GARANTÉIERT VIRSCHRËFTLECH NDA-VEREINBARUNG"
   },
-  "Hub Matriz": {
-    "en": "Master Hub",
-    "fr": "Hub Matrice",
-    "de": "Haupt-Hub",
-    "pt": "Hub Matriz",
-    "lu": "Haapt-Hub"
+  "AUDIENCIA DIRECTIVA": {
+    "en": "EXECUTIVE AUDIENCE",
+    "fr": "AUDIENCE DE DIRECTION",
+    "de": "FÜHRUNGSAUDIENZ",
+    "pt": "AUDIÊNCIA DIRETIVA",
+    "lu": "DIREKTIOUNSAUDIENZ"
   },
-  "3 Portales Online · Luxembourg · Madrid · Paris": {
-    "en": "3 Online Portals · Luxembourg · Madrid · Paris",
-    "fr": "3 Portails en ligne · Luxembourg · Madrid · Paris",
-    "de": "3 Online-Portale · Luxemburg · Madrid · Paris",
-    "pt": "3 Portais Online · Luxemburgo · Madrid · Paris",
-    "lu": "3 Online-Portaler · Lëtzebuerg · Madrid · Paräis"
+  "Impresiones cualificadas generadas en directivos y family offices.": {
+    "en": "Qualified impressions generated among C-level executives and family offices.",
+    "fr": "Impressions qualifiées générées auprès des dirigeants et family offices.",
+    "de": "Qualifizierte Impressionen bei Führungskräften und Family Offices.",
+    "pt": "Impressões qualificadas geradas em executivos e family offices.",
+    "lu": "Qualifizéiert Impressiounen bei Direkteren a Family Offices."
   },
-  "All Systems Nominal": {
-    "en": "All Systems Nominal",
-    "fr": "Systèmes Nominaux",
-    "de": "Systeme Nominal",
-    "pt": "Sistemas Nominais",
-    "lu": "Systemer Nominal"
+  "ROAS medio auditado en captación de tickets de inversión prime.": {
+    "en": "Average audited ROAS in prime investment ticket acquisition.",
+    "fr": "ROAS moyen audité dans l’acquisition de tickets d’investissement prime.",
+    "de": "Durchschnittlich geprüfter ROAS bei der Akquise von Prime-Investitionen.",
+    "pt": "ROAS médio auditado na captação de tickets de investimento prime.",
+    "lu": "Duerchschnëttlech gepréiften ROAS bei der Akquisitioun vu Prime-Investitiounen."
   },
-  "LUXEMBOURG · PARIS · MADRID GATEWAY / v4.8 ACTIVO": {
-    "en": "LUXEMBOURG · PARIS · MADRID GATEWAY / v4.8 ACTIVE",
-    "fr": "PASSERELLE LUXEMBOURG · PARIS · MADRID / v4.8 ACTIF",
-    "de": "GATEWAY LUXEMBURG · PARIS · MADRID / v4.8 AKTIV",
-    "pt": "PORTAL LUXEMBURGO · PARIS · MADRID / v4.8 ATIVO",
-    "lu": "LUXEMBUERG · PARÄIS · MADRID PORTAL / v4.8 AKTIV"
+  "Tolerancia métrica milimétrica con sensor Matterport Pro3.": {
+    "en": "Millimetric metric tolerance with Matterport Pro3 sensor.",
+    "fr": "Tolérance métrique millimétrique avec capteur Matterport Pro3.",
+    "de": "Millimetergenaue Toleranz mit Matterport Pro3 Sensor.",
+    "pt": "Tolerância métrica milimétrica com sensor Matterport Pro3.",
+    "lu": "Millimetergenau Toleranz mat Matterport Pro3 Sensor."
   },
-  "Un Ecosistema. Tres Divisiones de Élite.": {
-    "en": "One Ecosystem. Three Elite Divisions.",
-    "fr": "Un Écosystème. Trois Divisions d’Élite.",
-    "de": "Ein Ökosystem. Drei Elite-Divisionen.",
-    "pt": "Um Ecossistema. Três Divisões de Elite.",
-    "lu": "Een Ökosystem. Dräi Elite-Divisiounen."
+  "Google PageSpeed score y renderizado de activos en <1.2s.": {
+    "en": "Google PageSpeed score and asset rendering in <1.2s.",
+    "fr": "Score Google PageSpeed et rendu des actifs en <1.2s.",
+    "de": "Google PageSpeed Score und Asset-Rendering in <1.2s.",
+    "pt": "Pontuação Google PageSpeed e renderização de ativos em <1.2s.",
+    "lu": "Google PageSpeed Score an Asset-Rendering an <1.2s."
   },
-  "De la ingeniería audiovisual en sets de cine a la aceleración ejecutiva en Luxemburgo y el desarrollo web high-end. Elige tu destino corporativo.": {
-    "en": "From cinema-grade audiovisual engineering to executive career acceleration in Luxembourg and high-end web development. Select your destination.",
-    "fr": "De l’ingénierie audiovisuelle sur plateaux de cinéma à l’accélération exécutive au Luxembourg et au développement web haut de gamme. Choisissez votre destination.",
-    "de": "Von Filmset-Technik über die Führungskräfte-Beschleunigung in Luxemburg bis zum High-End-Web-Development. Wählen Sie Ihr Ziel.",
-    "pt": "Da engenharia audiovisual em sets de cinema à aceleração executiva no Luxemburgo e desenvolvimento web de alto padrão. Escolha o seu destino corporativo.",
-    "lu": "Vun Filmset-Technik iwwer d’Exekutiv-Beschleunegung zu Lëtzebuerg bis zur High-End Webentwécklung. Wielt Äert Zil."
+  "Google PageSpeed score y renderizado de activos en &lt;1.2s.": {
+    "en": "Google PageSpeed score and asset rendering in &lt;1.2s.",
+    "fr": "Score Google PageSpeed et rendu des actifs en &lt;1.2s.",
+    "de": "Google PageSpeed Score und Asset-Rendering in &lt;1.2s.",
+    "pt": "Pontuação Google PageSpeed e renderização de ativos em &lt;1.2s.",
+    "lu": "Google PageSpeed Score an Asset-Rendering an &lt;1.2s."
   },
-  "Impresiones B2B": {
-    "en": "B2B Impressions",
-    "fr": "Impressions B2B",
-    "de": "B2B-Impressionen",
-    "pt": "Impressões B2B",
-    "lu": "B2B Impressiounen"
+  "FILOSOFÍA": {
+    "en": "PHILOSOPHY",
+    "fr": "PHILOSOPHIE",
+    "de": "PHILOSOPHIE",
+    "pt": "FILOSOFIA",
+    "lu": "PHILOSOPHIE"
   },
-  "0€ RIESGO": {
-    "en": "0€ RISK",
-    "fr": "0€ RISQUE",
-    "de": "0€ RISIKO",
-    "pt": "0€ RISCO",
-    "lu": "0€ RISIKO"
+  "SERVICIOS TRONCALES": {
+    "en": "CORE SERVICES",
+    "fr": "SERVICES FONDAMENTAUX",
+    "de": "KERNLEISTUNGEN",
+    "pt": "SERVIÇOS PRINCIPAIS",
+    "lu": "KERNLEESCHTUNGEN"
   },
-  "Pago 100% a Éxito": {
-    "en": "100% Success-Based Fee",
-    "fr": "Paiement 100% au Succès",
-    "de": "100% Erfolgsbasiert",
-    "pt": "Pagamento 100% por Sucesso",
-    "lu": "100% Erfollegs-baséiert"
+  "ÉTUDES DE CAS": {
+    "en": "CASE STUDIES",
+    "fr": "ÉTUDES DE CAS",
+    "de": "FALLSTUDIEN",
+    "pt": "CASOS DE ESTUDO",
+    "lu": "FALLSTUDIEN"
   },
-  "4.6K RAW": {
-    "en": "4.6K RAW",
-    "fr": "4.6K RAW",
-    "de": "4.6K RAW",
-    "pt": "4.6K RAW",
-    "lu": "4.6K RAW"
+  "MATTERPORT LIDAR 3D": {
+    "en": "MATTERPORT LIDAR 3D",
+    "fr": "MATTERPORT LIDAR 3D",
+    "de": "MATTERPORT LIDAR 3D",
+    "pt": "MATTERPORT LIDAR 3D",
+    "lu": "MATTERPORT LIDAR 3D"
   },
-  "Super 35 Cine Gear": {
-    "en": "Super 35 Cine Gear",
-    "fr": "Matériel Cinéma Super 35",
-    "de": "Super 35 Kino-Equipment",
-    "pt": "Equipamento Cine Super 35",
-    "lu": "Super 35 Kino-Material"
+  "PRIVATE OFFICE": {
+    "en": "PRIVATE OFFICE",
+    "fr": "PRIVATE OFFICE",
+    "de": "PRIVATE OFFICE",
+    "pt": "PRIVATE OFFICE",
+    "lu": "PRIVATE OFFICE"
   },
-  "SLA Respuesta": {
-    "en": "Response SLA",
-    "fr": "SLA de Réponse",
-    "de": "Reaktions-SLA",
-    "pt": "SLA de Resposta",
-    "lu": "Äntwert-SLA"
+  "AGENDAR DIAGNÓSTICO PRIVADO": {
+    "en": "SCHEDULE PRIVATE DIAGNOSTIC",
+    "fr": "RÉSERVER DIAGNOSTIC PRIVÉ",
+    "de": "PRIVATE BERATUNG BUCHEN",
+    "pt": "AGENDAR DIAGNÓSTICO PRIVADO",
+    "lu": "PRIVAT BERODUNG BUCHEN"
   },
-  "Entrar a Studio": {
-    "en": "Enter Studio",
-    "fr": "Accéder à Studio",
-    "de": "Studio betreten",
-    "pt": "Entrar no Studio",
-    "lu": "Gitt an de Studio"
-  },
-  "Acelerar Mi Empleo": {
-    "en": "Accelerate My Career",
-    "fr": "Accélérer Ma Carrière",
-    "de": "Karriere beschleunigen",
-    "pt": "Acelerar Carreira",
-    "lu": "Karriär beschleunegen"
-  },
-  "Explorar Arsenal": {
-    "en": "Explore Arsenal",
-    "fr": "Explorer l’Arsenal",
-    "de": "Arsenal ansehen",
-    "pt": "Explorar Arsenal",
-    "lu": "Material kucken"
-  },
-  "Concierge Inteligente de Derivación": {
-    "en": "Intelligent Routing Concierge",
-    "fr": "Concierge Intelligent d’Orientation",
-    "de": "Intelligenter Routing-Concierge",
-    "pt": "Concierge Inteligente de Direcionamento",
-    "lu": "Intelligente Routing-Concierge"
-  },
-  "¿No estás seguro de cuál es tu portal óptimo? Selecciona tu perfil y te dirigiremos de inmediato al entorno adecuado.": {
-    "en": "Unsure which portal fits your needs? Select your profile and we will instantly direct you to the right division.",
-    "fr": "Vous hésitez sur le portail adapté ? Choisissez votre profil et nous vous orienterons immédiatement.",
-    "de": "Unsicher, welches Portal das richtige ist? Wählen Sie Ihr Profil für eine sofortige Weiterleitung.",
-    "pt": "Não tem a certeza de qual é o portal ideal? Selecione o seu perfil e encaminharemos de imediato.",
-    "lu": "Net sécher wat dat richtegt Portal ass? Wielt Äre Profil fir direkt weidergeleet ze ginn."
-  },
-  "Empresa o Marca": {
-    "en": "Enterprise or Brand",
-    "fr": "Entreprise ou Marque",
-    "de": "Unternehmen oder Marke",
-    "pt": "Empresa ou Marca",
-    "lu": "Betrib oder Mark"
-  },
-  "Busco vídeo comercial, gemelos virtuales o portal web.": {
-    "en": "Looking for cinema production, digital twins or web platform.",
-    "fr": "Je recherche production vidéo, jumeaux virtuels ou site web.",
-    "de": "Suche Werbefilm, digitale Zwillinge oder Web-Portal.",
-    "pt": "Procuro vídeo comercial, gémeos virtuais ou portal web.",
-    "lu": "Sichen no Reklammfilm, digitale Zwillingen oder Websäit."
-  },
-  "Candidato / Expat": {
-    "en": "Candidate / Expat",
-    "fr": "Candidat / Expatrié",
-    "de": "Kandidat / Expat",
-    "pt": "Candidato / Expat",
-    "lu": "Kandidat / Expat"
-  },
-  "Deseo trabajar en Luxemburgo a 0€ de riesgo inicial.": {
-    "en": "I want to accelerate my career in Luxembourg at zero initial risk.",
-    "fr": "Je souhaite travailler au Luxembourg à 0€ de risque initial.",
-    "de": "Möchte in Luxemburg mit 0€ Anfangsrisiko arbeiten.",
-    "pt": "Desejo trabalhar no Luxemburgo a 0€ de risco inicial.",
-    "lu": "Wëll zu Lëtzebuerg mat 0€ Ufanksrisiko schaffen."
-  },
-  "Audiovisual o Talento": {
-    "en": "Audiovisual or Talent",
-    "fr": "Audiovisuel ou Talent",
-    "de": "Audiovisuell oder Talent",
-    "pt": "Audiovisual ou Talento",
-    "lu": "Audiovisuell oder Talent"
-  },
-  "Alquiler de cámaras, fotomatón o videobook actor.": {
-    "en": "Cinema gear rental, glam photobooth or actor videobook.",
-    "fr": "Location de caméras, photobooth ou videobook comédien.",
-    "de": "Kameraverleih, Fotobox oder Schauspieler-Videobook.",
-    "pt": "Aluguer de câmaras, fotomatão ou videobook de ator.",
-    "lu": "Kamera-Locatioun, Fotobox oder Schauspiller-Videobook."
-  },
-  "Portal Recomendado": {
-    "en": "Recommended Portal",
-    "fr": "Portail Recommandé",
-    "de": "Empfohlenes Portal",
-    "pt": "Portal Recomendado",
-    "lu": "Recommandéiert Portal"
-  },
-  "Acceder Ahora ➔": {
-    "en": "Access Now ➔",
-    "fr": "Accéder Maintenant ➔",
-    "de": "Jetzt öffnen ➔",
-    "pt": "Aceder Agora ➔",
-    "lu": "Elo opmaachen ➔"
-  },
-  "AUDITORÍA Y SOBERANÍA JURÍDICA: Todos los contratos, acuerdos de éxito y filmaciones se gestionan bajo las directivas del Gran Ducado de Luxemburgo.": {
-    "en": "AUDIT & LEGAL SOVEREIGNTY: All contracts, success agreements, and film productions operate under the legal directives of the Grand Duchy of Luxembourg.",
-    "fr": "AUDIT & SOUVERAINETÉ JURIDIQUE: Tous les contrats, accords de succès et tournages sont régis selon les directives du Grand-Duché de Luxembourg.",
-    "de": "AUDIT & RECHTLICHE SOUVERÄNITÄT: Alle Verträge, Erfolgsvereinbarungen und Produktionen unterliegen den Richtlinien des Großherzogtums Luxemburg.",
-    "pt": "AUDITORIA E SOBERANIA JURÍDICA: Todos os contratos, acordos de sucesso e filmagens são geridos sob as diretrizes do Grão-Ducado do Luxemburgo.",
-    "lu": "AUDIT & JURIDISCH SOUVERÄNITÉIT: All Verträg, Erfollegsaccorden a Filmproduktioune ginn ënner de Richtlinne vum Groussherzogtum Lëtzebuerg geréiert."
-  },
-  "100% CONFIDENCIALIDAD NDA": {
-    "en": "100% BILATERAL NDA",
-    "fr": "100% CONFIDENTIALITÉ NDA",
-    "de": "100% NDA-VERTRAULICHKEIT",
-    "pt": "100% CONFIDENCIALIDADE NDA",
-    "lu": "100% NDA-VERTRAULECHKEET"
-  },
-  "EMPRESA HOLDING REGISTRADA": {
-    "en": "REGISTERED HOLDING ENTITY",
-    "fr": "SOCIÉTÉ HOLDING ENREGISTRÉE",
-    "de": "EINGETRAGENE HOLDING-GESELLSCHAFT",
-    "pt": "EMPRESA HOLDING REGISTADA",
-    "lu": "AGEDROEEN HOLDING-GESELLSCHAFT"
-  },
-  "STATUS ACTIVO // AUDITORÍA PRIVADA Q1/Q2": {
-    "en": "ACTIVE STATUS // PRIVATE AUDIT Q1/Q2",
-    "fr": "STATUT ACTIF // AUDIT PRIVÉ Q1/Q2",
-    "de": "STATUS AKTIV // PRIVATE AUDIT Q1/Q2",
-    "pt": "ESTADO ATIVO // AUDITORIA PRIVADA Q1/Q2",
-    "lu": "STATUS AKTIV // PRIVAT AUDIT Q1/Q2"
-  },
-  "CUPO LIMITADO A 4 MARCAS / TRIMESTRE": {
-    "en": "LIMITED TO 4 BRANDS / QUARTER",
-    "fr": "LIMITÉ À 4 MARQUES / TRIMESTRE",
-    "de": "LIMITIERT AUF 4 MARKEN / QUARTAL",
-    "pt": "LIMITADO A 4 MARCAS / TRIMESTRE",
-    "lu": "LIMITÉIERT OP 4 MARKEN / TRIMESTER"
-  },
-  "Servicios B2B": {
-    "en": "B2B Services",
-    "fr": "Services B2B",
-    "de": "B2B-Services",
-    "pt": "Serviços B2B",
-    "lu": "B2B Déngschtleeschtungen"
-  },
-  "Casos de Estudio": {
-    "en": "Case Studies",
-    "fr": "Études de Cas",
-    "de": "Fallstudien",
-    "pt": "Casos de Estudo",
-    "lu": "Fallstudien"
-  },
-  "Garantías": {
-    "en": "Guarantees",
-    "fr": "Garanties",
-    "de": "Garantien",
-    "pt": "Garantias",
-    "lu": "Garantien"
-  },
-  "Consultoría Privada": {
-    "en": "Private Consultation",
-    "fr": "Consultation Privée",
-    "de": "Private Beratung",
-    "pt": "Consultoria Privada",
-    "lu": "Privat Berodung"
+  "Tu CV Web Interactivo & Gestión Integral de Postulaciones Diarias en Luxemburgo.": {
+    "en": "Your Interactive Web CV & Full Daily Job Application Management in Luxembourg.",
+    "fr": "Votre CV Web Interactif & Gestion Complète des Candidatures Quotidiennes au Luxembourg.",
+    "de": "Ihr interaktiver Web-Lebenslauf & Tägliches Bewerbungsmanagement in Luxemburg.",
+    "pt": "O seu CV Web Interativo & Gestão Integral de Candidaturas Diárias no Luxemburgo.",
+    "lu": "Ären interaktiven Web-CV & Deeglecht Bewerbungsmanagement zu Lëtzebuerg."
   },
   "Tu CV Web Interactivo &amp; Gestión Integral de Postulaciones Diarias en Luxemburgo.": {
-    "en": "Your Interactive Web CV &amp; Full Daily Application Management in Luxembourg.",
+    "en": "Your Interactive Web CV &amp; Full Daily Job Application Management in Luxembourg.",
     "fr": "Votre CV Web Interactif &amp; Gestion Complète des Candidatures Quotidiennes au Luxembourg.",
     "de": "Ihr interaktiver Web-Lebenslauf &amp; Tägliches Bewerbungsmanagement in Luxemburg.",
     "pt": "O seu CV Web Interativo &amp; Gestão Integral de Candidaturas Diárias no Luxemburgo.",
     "lu": "Ären interaktiven Web-CV &amp; Deeglecht Bewerbungsmanagement zu Lëtzebuerg."
   },
-  "0 € por Adelantado": {
-    "en": "€0 Upfront",
-    "fr": "0 € d'Avance",
-    "de": "0 € Vorschuss",
-    "pt": "0 € Adiantado",
-    "lu": "0 € Virkouschten"
+  "El currículum tradicional en PDF es solo la llave; la rapidez, la visibilidad digital y la postulación activa diaria son las que abren las puertas de las entrevistas en Luxemburgo. Construimos tu candidatura web de élite y postulamos diariamente por ti.": {
+    "en": "The traditional PDF CV is just the key; speed, digital visibility, and active daily submissions open the interview doors in Luxembourg. We engineer your elite candidate web page and apply daily on your behalf.",
+    "fr": "Le CV PDF traditionnel n’est que la clé ; la rapidité, la visibilité digitale et les candidatures actives quotidiennes ouvrent les portes des entretiens au Luxembourg. Nous construisons votre page web de candidature d’élite et postulons quotidiennement pour vous.",
+    "de": "Der traditionelle PDF-Lebenslauf ist nur der Schlüssel; Schnelligkeit, digitale Sichtbarkeit und tägliche Bewerbungen öffnen die Türen zu Vorstellungsgesprächen in Luxemburg. Wir erstellen Ihre Elite-Bewerbungswebseite und bewerben uns täglich für Sie.",
+    "pt": "O currículo tradicional em PDF é apenas a chave; a rapidez, a visibilidade digital e as candidaturas diárias ativas abrem as portas das entrevistas no Luxemburgo. Construímos a sua página web de candidatura de elite e candidatamo-nos diariamente por si.",
+    "lu": "Den traditionelle PDF-CV ass nëmmen de Schlëssel; Schnellegkeet, digital Visibilitéit an deeglech Bewerbungen maachen d’Dieren zu Interviewen zu Lëtzebuerg op. Mir bauen Är Elite-Websäit a bewerben eis deeglech fir Iech."
+  },
+  "Solicitar Acceso al Programa (0 € por Adelantado)": {
+    "en": "Apply for Program Access (€0 Upfront)",
+    "fr": "Demander l’Accès au Programme (0 € d’Avance)",
+    "de": "Programm-Zugang beantragen (0 € Vorschuss)",
+    "pt": "Solicitar Acesso ao Programa (0 € Adiantado)",
+    "lu": "Programm-Zougang ufroen (0 € Virkouschten)"
   },
   "Solicitar Acceso al Programa (0 € por Adelantado)": {
     "en": "Apply for Program Access (€0 Upfront)",
-    "fr": "Demander l'Accès au Programme (0 € d'Avance)",
+    "fr": "Demander l’Accès au Programme (0 € d’Avance)",
     "de": "Programm-Zugang beantragen (0 € Vorschuss)",
     "pt": "Solicitar Acesso ao Programa (0 € Adiantado)",
     "lu": "Programm-Zougang ufroen (0 € Virkouschten)"
@@ -335,54 +195,82 @@ window.WELUX_I18N = (function() {
     "pt": "Ver Demo Interativa em Direto ↓",
     "lu": "Live Interaktiv Demo kucken ↓"
   },
-  "Arsenal de Cine de Alta Gama": {
-    "en": "High-End Cinema Arsenal",
-    "fr": "Arsenal Cinéma Haut de Gamme",
-    "de": "High-End Kino-Arsenal",
-    "pt": "Arsenal de Cinema de Alta Gama",
-    "lu": "High-End Kino-Arsenal"
+  "Contrato vinculante de riesgo cero": {
+    "en": "Zero-risk binding agreement",
+    "fr": "Contrat sans risque engageant",
+    "de": "Verbindlicher Null-Risiko-Vertrag",
+    "pt": "Contrato vinculativo de risco zero",
+    "lu": "Verbindleche Null-Risiko-Kontrakt"
   },
-  "Arsenal Técnico Cine": {
-    "en": "Cinema Technical Arsenal",
-    "fr": "Arsenal Technique Cinéma",
-    "de": "Kino-Technik-Arsenal",
-    "pt": "Arsenal Técnico de Cinema",
-    "lu": "Kino-Technik-Arsenal"
+  "Sin anticipos ni tarjetas de crédito": {
+    "en": "No upfront fees or credit cards required",
+    "fr": "Sans avance ni carte bancaire",
+    "de": "Keine Vorauszahlung oder Kreditkarte",
+    "pt": "Sem adiantamentos nem cartões de crédito",
+    "lu": "Keng Virausbezuelung oder Kreditkaart"
   },
-  "Fotomatón Glam &amp; Escenografías": {
-    "en": "Glam Photobooth &amp; Sets",
-    "fr": "Photobooth Glam &amp; Décors",
-    "de": "Glam Fotobox &amp; Kulissen",
-    "pt": "Fotomatão Glam &amp; Cenários",
-    "lu": "Glam Fotobox &amp; Kulissen"
+  "Garantía Ética 0 €": {
+    "en": "0 € Ethical Guarantee",
+    "fr": "Garantie Éthique 0 €",
+    "de": "0 € Ethische Garantie",
+    "pt": "Garantia Ética 0 €",
+    "lu": "0 € Ethesch Garantie"
   },
-  "Talent Lab (Videobooks)": {
-    "en": "Talent Lab (Videobooks)",
-    "fr": "Talent Lab (Videobooks)",
-    "de": "Talent Lab (Videobooks)",
-    "pt": "Talent Lab (Videobooks)",
-    "lu": "Talent Lab (Videobooks)"
+  "Garantía Ética 0 €": {
+    "en": "0 € Ethical Guarantee",
+    "fr": "Garantie Éthique 0 €",
+    "de": "0 € Ethische Garantie",
+    "pt": "Garantia Ética 0 €",
+    "lu": "0 € Ethesch Garantie"
   },
-  "Condiciones &amp; Seguros": {
-    "en": "Terms &amp; Insurance",
-    "fr": "Conditions &amp; Assurances",
-    "de": "Bedingungen &amp; Versicherung",
-    "pt": "Condições &amp; Seguros",
-    "lu": "Konditiounen &amp; Versécherung"
+  "Arsenal de Cine de Alta Gama & Producción Escénica para Creadores de Élite.": {
+    "en": "High-End Cinema Hardware Arsenal & Stage Production for Elite Creators.",
+    "fr": "Arsenal Cinéma Haut de Gamme & Production Scénique pour Créateurs d’Élite.",
+    "de": "High-End Kino-Hardware & Bühnenproduktion für Elite-Filmschaffende.",
+    "pt": "Arsenal de Cinema de Alta Gama & Produção Cénica para Criadores de Elite.",
+    "lu": "High-End Kino-Ausrüstung & Büneproduktioun fir Elite-Filmemacher."
   },
-  "Calculadora de Alquiler": {
-    "en": "Rental Calculator",
-    "fr": "Calculateur de Location",
-    "de": "Mietpreis-Rechner",
-    "pt": "Calculadora de Aluguer",
-    "lu": "Locatiouns-Rechner"
+  "Arsenal de Cine de Alta Gama &amp; Producción Escénica para Creadores de Élite.": {
+    "en": "High-End Cinema Hardware Arsenal &amp; Stage Production for Elite Creators.",
+    "fr": "Arsenal Cinéma Haut de Gamme &amp; Production Scénique pour Créateurs d’Élite.",
+    "de": "High-End Kino-Hardware &amp; Bühnenproduktion für Elite-Filmschaffende.",
+    "pt": "Arsenal de Cinema de Alta Gama &amp; Produção Cénica para Criadores de Elite.",
+    "lu": "High-End Kino-Ausrüstung &amp; Büneproduktioun fir Elite-Filmemacher."
   },
-  "Reservar Material / Rodaje": {
-    "en": "Book Equipment / Shoot",
-    "fr": "Réserver Matériel / Tournage",
-    "de": "Ausrüstung reservieren",
-    "pt": "Reservar Material / Rodagem",
-    "lu": "Material reservéieren"
+  "Alquiler de cámaras de cine Super 35, ópticas de alta velocidad T2, estabilización Steadicam, sonido 32-bit float, cabinas de fotomatón glam para marcas y producción integral de videobooks 4K para actores y modelos.": {
+    "en": "Super 35 cinema camera rentals, T2 high-speed optics, Steadicam stabilization, 32-bit float direct sound, glam photobooths for prestige brands, and full 4K videobook production for actors and models.",
+    "fr": "Location de caméras cinéma Super 35, optiques T2 grande vitesse, stabilisation Steadicam, son 32-bit float, photobooths glam pour marques de prestige et production intégrale de videobooks 4K.",
+    "de": "Verleih von Super 35 Kinokameras, T2 High-Speed-Objektiven, Steadicam, 32-Bit Float Sound, Glamour-Fotokabinen und 4K-Videobook-Produktion für Schauspieler und Models.",
+    "pt": "Aluguer de câmaras de cinema Super 35, óticas T2 de alta velocidade, estabilização Steadicam, som 32-bit float, cabines de fotomatão glam e produção integral de videobooks 4K.",
+    "lu": "Locatioun vu Super 35 Kinokameraen, T2 High-Speed-Lënsen, Steadicam, 32-Bit Float Toun, Glamour-Fotoboxen a 4K Videobook-Produktioun fir Schauspiller a Modeller."
+  },
+  "EXPLORAR ARSENAL TÉCNICO ➔": {
+    "en": "EXPLORE TECHNICAL ARSENAL ➔",
+    "fr": "EXPLORER L’ARSENAL TECHNIQUE ➔",
+    "de": "TECHNISCHES ARSENAL ENTDECKEN ➔",
+    "pt": "EXPLORAR ARSENAL TÉCNICO ➔",
+    "lu": "TECHNISCHT MATERIAL ENTDECKEN ➔"
+  },
+  "CALCULADORA DE ALQUILER": {
+    "en": "RENTAL CALCULATOR",
+    "fr": "CALCULATEUR DE LOCATION",
+    "de": "MIETPREIS-RECHNER",
+    "pt": "CALCULADORA DE ALUGUER",
+    "lu": "LOCATIOUNS-RECHNER"
+  },
+  "RESERVAR VIDEOBOOK 4K": {
+    "en": "BOOK 4K VIDEOBOOK",
+    "fr": "RÉSERVER VIDEOBOOK 4K",
+    "de": "4K VIDEOBOOK BUCHEN",
+    "pt": "RESERVAR VIDEOBOOK 4K",
+    "lu": "4K VIDEOBOOK BUCHEN"
+  },
+  "Equipos Listos para Rodaje": {
+    "en": "Production-Ready Equipment",
+    "fr": "Équipements Prêts pour Tournage",
+    "de": "Drehfertige Ausrüstung",
+    "pt": "Equipamentos Prontos para Rodagem",
+    "lu": "Dréifäerdeg Ausrüstung"
   }
 };
 

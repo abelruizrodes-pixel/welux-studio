@@ -115,49 +115,6 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- JSON-LD Structured Data: Product & Rental Catalog -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Blackmagic URSA Mini Pro 4.6K G2 Cinema Kit",
-  "image": "https://weluxhub.com/assets/images/blackmagic_ursa_pro_g2.jpg",
-  "description": "Cámara cinematográfica Super 35 con 15 pasos de rango dinámico, grabación Blackmagic RAW hasta 300 fps, montura EF/PL y visores OLED para producciones de alta gama.",
-  "brand": {
-    "@type": "Brand",
-    "name": "Blackmagic Design"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "425.00",
-    "priceCurrency": "EUR",
-    "priceValidUntil": "2026-12-31",
-    "availability": "https://schema.org/InStock",
-    "itemCondition": "https://schema.org/NewCondition",
-    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Sigma 18-35mm T2 High-Speed Cine Zoom Lens",
-  "image": "https://weluxhub.com/assets/images/sigma_18_35_cine_lens.jpg",
-  "description": "Óptica cinematográfica de alta luminosidad T2 constante con engranajes dentados estándar 0.8 MOD para resolución 6K/8K.",
-  "brand": {
-    "@type": "Brand",
-    "name": "Sigma Cine"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "85.00",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut"
-  }
-}
-</script>
-
 <link rel="canonical" href="https://www.weluxhub.com/gear/"/>
 <meta name="keywords" content="Amcropa Gear, WeLux Films, alquiler camaras cine, Blackmagic URSA Mini Pro 4.6K G2, Sigma Cine T2, Steadicam M-2, sonido 32 bit float, photobooth glam HD, videobooks actores Madrid Paris Luxemburgo"/>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
@@ -189,46 +146,135 @@
   "@graph": [
     {
       "@type": "Store",
-      "@id": "https://www.weluxhub.com/gear/#rental",
+      "@id": "https://www.weluxhub.com/gear/#store",
       "name": "Amcropa Gear × Films",
       "url": "https://www.weluxhub.com/gear/",
+      "image": "https://www.weluxhub.com/assets/images/blackmagic_ursa_pro_g2.jpg",
+      "description": "Rental de equipo cinematográfico Super 35, ópticas Sigma Cine High-Speed T2, estabilización Steadicam M-2 y sonido 32-bit Float en Luxemburgo, París y Madrid.",
+      "priceRange": "€€€",
       "parentOrganization": {
         "@type": "Organization",
         "name": "WeLux Group",
         "url": "https://www.weluxhub.com/"
       },
-      "image": "https://lh3.googleusercontent.com/aida/AEtjO1XHoNSaIucOzBU_90sp5CHLYoCW67l6ZarLNOWfl9MlUj7xlFo3YSYEpIrbXGlnXoNB4vNu9IGdT48a4c0JBA_oxCzthBsm4UhUBPSTmYqC5OSBOSb4vjXUY0NuQZkLk1Hw4Yv2BHooHFg2uqahv3leXTny-N0h58NeEheh_0o78zD1-5rjSROsxp9wGLFzJ4kpdaaYa5MHj5zKxQ7UUONvUqxnFY_CJ8X70V9KcIVbNSFEcTpzgJDc0Q",
-      "description": "Rental de equipo cinematográfico Super 35, ópticas Sigma Cine High-Speed T2, estabilización Steadicam M-2 y sonido 32-bit Float en Madrid, París y Luxemburgo.",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Arsenal Cinematográfico",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Product",
-              "name": "Blackmagic URSA Mini Pro 4.6K G2 Cinema Kit",
-              "description": "Cámara de cine Super 35 con 15 pasos de rango dinámico, grabación Blackmagic RAW hasta 300 fps y visor OLED."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Product",
-              "name": "Set Ópticas Sigma Cine High-Speed T2 (18-35mm & 50-100mm)",
-              "description": "Ópticas de cine de apertura continua T2 constante con engranajes 0.8 MOD para resolución 6K/8K."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Product",
-              "name": "Steadicam M-2 con Brazo Iso-Elastic & Chaleco",
-              "description": "Sistema de estabilización profesional para planos secuencia cinematográficos."
-            }
-          }
-        ]
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Boulevard Royal",
+          "addressLocality": "Luxembourg-City",
+          "postalCode": "L-2449",
+          "addressCountry": "LU"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Paseo de la Castellana",
+          "addressLocality": "Madrid",
+          "postalCode": "28046",
+          "addressCountry": "ES"
+        }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "https://www.weluxhub.com/gear/#ursa-mini-pro",
+      "name": "Blackmagic URSA Mini Pro 4.6K G2 Cinema Kit",
+      "image": "https://www.weluxhub.com/assets/images/blackmagic_ursa_pro_g2.jpg",
+      "description": "Cámara cinematográfica Super 35 con 15 pasos de rango dinámico, grabación Blackmagic RAW hasta 300 fps, montura EF/PL y visores OLED para producciones de alta gama.",
+      "sku": "BMD-URSA-46K-G2",
+      "brand": {
+        "@type": "Brand",
+        "name": "Blackmagic Design"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.weluxhub.com/gear/",
+        "price": "425.00",
+        "priceCurrency": "EUR",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "18"
       }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://www.weluxhub.com/gear/#sigma-cine-t2",
+      "name": "Sigma 18-35mm T2 High-Speed Cine Zoom Lens",
+      "image": "https://www.weluxhub.com/assets/images/sigma_18_35_cine_lens.jpg",
+      "description": "Óptica cinematográfica de alta luminosidad T2 constante con engranajes dentados estándar 0.8 MOD para resolución 6K/8K.",
+      "sku": "SIGMA-CINE-18-35-T2",
+      "brand": {
+        "@type": "Brand",
+        "name": "Sigma Cine"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.weluxhub.com/gear/",
+        "price": "85.00",
+        "priceCurrency": "EUR",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "14"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://www.weluxhub.com/gear/#steadicam-m2",
+      "name": "Steadicam M-2 con Brazo Iso-Elastic & Chaleco",
+      "image": "https://www.weluxhub.com/assets/images/steadicam_grip_rig.jpg",
+      "description": "Sistema de estabilización profesional de referencia en la industria del cine para movimientos fluidos en planos secuencia de alta complejidad.",
+      "sku": "STEADICAM-M2-RIG",
+      "brand": {
+        "@type": "Brand",
+        "name": "Steadicam"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.weluxhub.com/gear/",
+        "price": "190.00",
+        "priceCurrency": "EUR",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "12"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cómo funciona el alquiler de cámaras y equipos de cine en Luxemburgo, Madrid y París?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Puedes reservar cámaras Super 35, ópticas Sigma Cine T2 y kits de sonido online con recogida local en Kirchberg (Luxemburgo), Madrid o París, con seguro a todo riesgo incluido."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué incluye el seguro de los equipos de alquiler?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Todos los alquileres de Amcropa Gear incluyen cobertura de seguro profesional contra daños accidentales y robo durante el rodaje con cobertura hasta 45.000€."
+          }
+        }
+      ]
     }
   ]
 }

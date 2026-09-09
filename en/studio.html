@@ -100,48 +100,6 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- JSON-LD Structured Data: ProfessionalService & RealEstateAgent -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["ProfessionalService", "RealEstateAgent"],
-  "name": "WeLux Studio",
-  "url": "https://weluxhub.com/studio.html",
-  "priceRange": "€€€€",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Luxembourg / Madrid",
-    "addressCountry": "LU"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Servicios B2B High-End",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Gemelos Digitales LiDAR Matterport Pro3 & Escaneo Métrico"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Producción Audiovisual 4.6K RAW para Marcas de Lujo"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Sitios Web Boutique con Carga Ultrarrápida (<1.2s)"
-        }
-      }
-    ]
-  }
-}
-</script>
-
 <link rel="canonical" href="https://www.weluxhub.com/studio/"/>
 <meta name="keywords" content="WeLux Studio, Matterport Pro3 LiDAR, gemelos virtuales, escaneo 3D, cine publicitario Super 35, ópticas T2, desarrollo web boutique, arquitectura digital, luxury tech Luxemburgo Madrid"/>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
@@ -176,44 +134,51 @@
       "@id": "https://www.weluxhub.com/studio/#service",
       "name": "WeLux Studio",
       "url": "https://www.weluxhub.com/studio/",
+      "image": "https://www.weluxhub.com/assets/images/virtual_tour_lidar.jpg",
+      "description": "Private B2B studio for digital architecture, Matterport Pro3 LiDAR spatial surveying, 4.6K RAW cinema production, and boutique ultra-fast web development.",
+      "priceRange": "$$$$",
       "parentOrganization": {
         "@type": "Organization",
         "name": "WeLux Group",
         "url": "https://www.weluxhub.com/"
       },
-      "image": "https://lh3.googleusercontent.com/aida/AEtjO1XHoNSaIucOzBU_90sp5CHLYoCW67l6ZarLNOWfl9MlUj7xlFo3YSYEpIrbXGlnXoNB4vNu9IGdT48a4c0JBA_oxCzthBsm4UhUBPSTmYqC5OSBOSb4vjXUY0NuQZkLk1Hw4Yv2BHooHFg2uqahv3leXTny-N0h58NeEheh_0o78zD1-5rjSROsxp9wGLFzJ4kpdaaYa5MHj5zKxQ7UUONvUqxnFY_CJ8X70V9KcIVbNSFEcTpzgJDc0Q",
-      "priceRange": "$$$$",
-      "description": "Private B2B studio for digital architecture, Matterport Pro3 LiDAR spatial surveying, 4.6K RAW cinema production, and boutique ultra-fast web development.",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Servicios WeLux Studio",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Matterport Pro3 LiDAR Digital Twins & Modelos BIM",
-              "description": "Escaneo métrico volumétrico de ultra-precisión para villas prime, fondos de inversión, yates y sedes corporativas."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Producción Cinemática 4.6K RAW Super 35",
-              "description": "Rodajes comerciales de autor con ópticas anamórficas T2, estabilización Steadicam y sonido 32-bit Float."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Boutique Web Development Ultra-Rápido",
-              "description": "Sitios web SPA de código a medida con puntuación 98+/100 PageSpeed y tipografía editorial suiza."
-            }
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Boulevard Royal",
+          "addressLocality": "Luxembourg-City",
+          "postalCode": "L-2449",
+          "addressCountry": "LU"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Paseo de la Castellana",
+          "addressLocality": "Madrid",
+          "postalCode": "28046",
+          "addressCountry": "ES"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué precisión tienen los gemelos digitales Matterport Pro3 LiDAR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nuestros escaneos con LiDAR Matterport Pro3 ofrecen tolerancia milimétrica certificada de ±20mm a 10m de distancia, exportables a formatos BIM, OBJ, E57 y CAD."
           }
-        ]
-      }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué diferencia al desarrollo web boutique de WeLux Studio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Desarrollamos código a medida sin plantillas pesadas, alcanzando puntuaciones 98+/100 en Google PageSpeed y tiempos de carga inferiores a 1.2 segundos."
+          }
+        }
+      ]
     }
   ]
 }

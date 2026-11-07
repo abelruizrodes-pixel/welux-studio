@@ -43,7 +43,7 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   /* Parallax ligero del vídeo / imagen del hero */
-  var heroMedia = document.querySelector('.welux-hero-video, .welux-video, header video, header img');
+  var heroMedia = document.querySelector('.welux-hero-video, .welux-video, main header video, main header img');
   function parallax() {
     if (!heroMedia || window.innerWidth < 768) return;
     var y = Math.min(window.scrollY * 0.18, 120);

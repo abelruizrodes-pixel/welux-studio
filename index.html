@@ -85,7 +85,12 @@
   body { background: #fdf7ee !important; color: #43301f !important; }
   main { background: #fdf7ee !important; }
   #shader-canvas-ANIMATION_26 { display: none !important; }
+  main > div { position: relative; }
   main > div > header { background: radial-gradient(closest-side, #f9e7c8, rgba(249, 231, 200, 0) 78%); }
+
+  /* Hueco de vídeo de fondo del hero (el dueño enviará el archivo) */
+  .welux-hero-video { position: absolute; top: 0; left: 0; right: 0; height: 680px; overflow: hidden; pointer-events: none; }
+  .welux-hero-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   /* Header claro y cálido */
   body > header { background: rgba(253, 247, 238, .94) !important; border-bottom: 1px solid #eadfc8 !important; box-shadow: 0 6px 24px rgba(120, 72, 20, .08) !important; }
@@ -96,10 +101,15 @@
   body > header nav a:hover { background: #f6e8d2 !important; color: #2e1f12 !important; }
   body > header a[href^="mailto:"] { background: #c65d21 !important; color: #fff !important; border-color: #c65d21 !important; }
   body > header a[href^="mailto:"]:hover { background: #a34d1a !important; }
-  .welux-lang-bar { background: #fffdf8 !important; border-color: #e5d6ba !important; box-shadow: 0 4px 14px rgba(120, 72, 20, .08) !important; }
-  .welux-lang-bar [class*="text-white"] { color: #6b4a2a !important; }
-  .welux-lang-bar > span:first-child { background: #c65d21 !important; color: #fff !important; border-color: transparent !important; }
-  .welux-lang-bar a:hover { background: #f6e8d2 !important; color: #2e1f12 !important; }
+
+  /* Botón flotante de idiomas: el único selector de idioma de la página */
+  .welux-idioma-flotante { position: fixed; right: 18px; bottom: 18px; z-index: 60; display: inline-flex; align-items: center; gap: 6px; padding: 11px 16px; border-radius: 9999px; background: #fffdf8; color: #8a4b1f; border: 1px solid #e0cba6; box-shadow: 0 10px 28px rgba(120, 72, 20, .25); font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; cursor: pointer; }
+  .welux-idioma-flotante:hover { background: #c65d21; color: #fff; border-color: #c65d21; }
+  .welux-idioma-menu { position: fixed; right: 18px; bottom: 78px; z-index: 60; display: none; flex-direction: column; min-width: 190px; padding: 6px; border-radius: 18px; background: #fffdf8; border: 1px solid #ead9bd; box-shadow: 0 18px 40px rgba(120, 72, 20, .25); }
+  .welux-idioma-menu.welux-abierto { display: flex; }
+  .welux-idioma-menu a { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 12px; color: #6b4a2a; font-family: 'JetBrains Mono', monospace; font-size: 13px; text-decoration: none; }
+  .welux-idioma-menu a:hover { background: #f6e8d2; color: #2e1f12; }
+  .welux-idioma-menu a.welux-activo { background: #c65d21; color: #fff; font-weight: 700; }
 
   /* Superficies oscuras de la home -> crema */
   main [class*="bg-[#0d141d]"], main [class*="bg-[#080f17]"], main [class*="bg-[#151c25]"], main [class*="bg-[#192029]"], main [class*="bg-[#232a34]"] { background-color: #fffdf8 !important; }
@@ -161,10 +171,7 @@
     #portal-grid { max-width: 100%; }
     #filter-container { border-radius: 18px !important; }
     .portal-card { border-radius: 24px !important; }
-  }
-  @media (max-width: 520px) {
-    .welux-lang-bar { max-width: 52vw; overflow-x: auto; }
-    .welux-lang-bar a[data-lang="de"], .welux-lang-bar a[data-lang="pt"], .welux-lang-bar a[data-lang="lu"] { display: none; }
+    .welux-hero-video { height: 960px; }
   }
   @media (prefers-reduced-motion: reduce) {
     #portal-grid .portal-card.welux-deck-activa { animation: none; }
@@ -280,11 +287,8 @@
       <a class="px-3.5 py-1.5 rounded-lg text-white/70 hover:bg-[#232a34] hover:text-white transition-colors text-sm font-medium" href="/gear/">Gear</a>
     </nav>
 
-    <!-- Selector de Idiomas + Botón de Contacto por correo -->
+    <!-- Botón de Contacto por correo (el selector de idioma es ahora un único botón flotante) -->
     <div class="flex items-center gap-3">
-      <div class="welux-lang-bar flex items-center gap-1.5 bg-black/70 border border-white/15 px-3 py-1 rounded-full font-mono text-xs shadow-lg backdrop-blur-md text-white shrink-0">
-  <span class="px-2.5 py-1 rounded-full bg-white/20 text-white font-bold border border-white/30 text-xs">🇪🇸 ES</span> <span class="text-white/20 text-xs hidden sm:inline">|</span> <a href="/en/" onclick="setWeluxLanguage('en'); return false;" class="welux-lang-btn px-2 py-1 rounded text-white/70 hover:text-white hover:bg-white/10 transition-colors text-xs font-mono" data-lang="en">🇬🇧 EN</a> <span class="text-white/20 text-xs hidden sm:inline">|</span> <a href="/fr/" onclick="setWeluxLanguage('fr'); return false;" class="welux-lang-btn px-2 py-1 rounded text-white/70 hover:text-white hover:bg-white/10 transition-colors text-xs font-mono" data-lang="fr">🇫🇷 FR</a> <span class="text-white/20 text-xs hidden sm:inline">|</span> <a href="/de/" onclick="setWeluxLanguage('de'); return false;" class="welux-lang-btn px-2 py-1 rounded text-white/70 hover:text-white hover:bg-white/10 transition-colors text-xs font-mono" data-lang="de">🇩🇪 DE</a> <span class="text-white/20 text-xs hidden sm:inline">|</span> <a href="/pt/" onclick="setWeluxLanguage('pt'); return false;" class="welux-lang-btn px-2 py-1 rounded text-white/70 hover:text-white hover:bg-white/10 transition-colors text-xs font-mono" data-lang="pt">🇵🇹 PT</a> <span class="text-white/20 text-xs hidden sm:inline">|</span> <a href="/lu/" onclick="setWeluxLanguage('lu'); return false;" class="welux-lang-btn px-2 py-1 rounded text-white/70 hover:text-white hover:bg-white/10 transition-colors text-xs font-mono" data-lang="lu">🇱🇺 LU</a>
-</div>
       <a href="mailto:info@weluxhub.com" class="hidden lg:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#c65d21] hover:bg-[#a34d1a] text-white border border-[#c65d21] font-mono text-xs font-semibold transition-all shadow-sm" title="Escríbenos a info@weluxhub.com">
         <span class="material-symbols-outlined text-[15px]">mail</span>
         <span>info@weluxhub.com</span>
@@ -303,6 +307,11 @@
 <main class="w-full pt-20 bg-[#fdf7ee] min-h-screen relative overflow-hidden">
 
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 flex flex-col gap-14">
+
+    <!-- Hueco de vídeo de fondo del hero: el dueño enviará el archivo; de momento queda preparado sin reproducir nada -->
+    <div class="welux-hero-video" aria-hidden="true">
+      <video id="welux-hero-video" muted loop playsinline autoplay preload="none" data-video-fondo="hero"></video>
+    </div>
 
     <!-- 2. HERO SECTION -->
     <header class="flex flex-col items-center text-center relative z-10 max-w-4xl mx-auto">
@@ -388,6 +397,7 @@
               <span class="font-mono text-[11px] tracking-wider uppercase font-bold">DIVISIÓN INMOBILIARIA &amp; TECH B2B</span>
             </div>
           </div>
+          <!-- Hueco de imagen: sustituir por la imagen realista que enviará el dueño -->
           <!-- Image Accent -->
           <div class="relative w-full h-48 rounded-xl overflow-hidden mb-6 bg-[#080f17]">
             <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="WeLux Studio Luxury Digital Interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQUBqEKsQteAypmmlvxve8vVdFHF3Zrr_5rFPLGB0nVTx3F_8_M4-QvTXH1juNsyYVXEXsVUb14_KQzqcahC6f6Vx-ZK3bxKocl0eKLKfsfq-LpSPBapCtNI1WdQFUSnOB_KVc8MS2zsGTEBhf75P-b6CP47vvVHx-2ifn4QkWu7qI3eQsqVVneYkqT1WNO2-Wu5J3XUp2B4XNVsiNU4UuqxJzIbTdX4M8X8eTCwb_UWgVpjvgzUK7"/>
@@ -445,6 +455,7 @@
               <span class="font-mono text-[11px] tracking-wider uppercase font-bold">DIVISIÓN TALENTO &amp; ACELERACIÓN LABORAL</span>
             </div>
           </div>
+          <!-- Hueco de imagen: sustituir por la imagen realista que enviará el dueño -->
           <!-- Image Accent -->
           <div class="relative w-full h-48 rounded-xl overflow-hidden mb-6 bg-[#080f17]">
             <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="WeLux Careers Talent Lab" src="/assets/images/art_director_onset.jpg"/>
@@ -502,6 +513,7 @@
               <span class="font-mono text-[11px] tracking-wider uppercase font-bold">DIVISIÓN CINEMATOGRÁFICA &amp; ARSENAL</span>
             </div>
           </div>
+          <!-- Hueco de imagen: sustituir por la imagen realista que enviará el dueño -->
           <!-- Image Accent -->
           <div class="relative w-full h-48 rounded-xl overflow-hidden mb-6 bg-[#080f17]">
             <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Blackmagic URSA Mini Pro Cinema Kit" src="/assets/images/blackmagic_ursa_pro_g2.jpg"/>
@@ -857,14 +869,16 @@
   });
 
   var inicioX = null;
+  Array.prototype.forEach.call(grid.querySelectorAll('img'), function (img) { img.draggable = false; });
+  grid.addEventListener('dragstart', function (e) { e.preventDefault(); });
   grid.addEventListener('pointerdown', function (e) { inicioX = e.clientX; });
-  grid.addEventListener('pointerup', function (e) {
+  window.addEventListener('pointerup', function (e) {
     if (inicioX === null) return;
     var dx = e.clientX - inicioX;
     inicioX = null;
     if (Math.abs(dx) > 50) paso(dx < 0 ? 1 : -1);
   });
-  grid.addEventListener('pointercancel', function () { inicioX = null; });
+  window.addEventListener('pointercancel', function () { inicioX = null; });
 
   /* Los filtros pasan a elegir la tarjeta del deck (se sustituyen los
      botones para desactivar el filtrado anterior, que ocultaba tarjetas). */
@@ -886,6 +900,51 @@
   });
 
   mostrar(0);
+})();
+</script>
+
+<!-- Botón flotante de idiomas: el único selector de idioma de la página -->
+<button type="button" class="welux-idioma-flotante" id="welux-idioma-boton" aria-haspopup="true" aria-expanded="false" aria-controls="welux-idioma-menu" aria-label="Cambiar de idioma">
+  <span class="material-symbols-outlined text-[18px]">language</span>
+  <span id="welux-idioma-actual">ES</span>
+</button>
+<div class="welux-idioma-menu" id="welux-idioma-menu" role="menu" aria-label="Idiomas">
+  <a href="/" role="menuitem" class="welux-activo" onclick="setWeluxLanguage('es'); return false;" data-lang="es" title="Español">🇪🇸 ES · Español</a>
+  <a href="/en/" role="menuitem" onclick="setWeluxLanguage('en'); return false;" data-lang="en" title="English">🇬🇧 EN · English</a>
+  <a href="/fr/" role="menuitem" onclick="setWeluxLanguage('fr'); return false;" data-lang="fr" title="Français">🇫🇷 FR · Français</a>
+  <a href="/de/" role="menuitem" onclick="setWeluxLanguage('de'); return false;" data-lang="de" title="Deutsch">🇩🇪 DE · Deutsch</a>
+  <a href="/pt/" role="menuitem" onclick="setWeluxLanguage('pt'); return false;" data-lang="pt" title="Português">🇵🇹 PT · Português</a>
+  <a href="/lu/" role="menuitem" onclick="setWeluxLanguage('lu'); return false;" data-lang="lu" title="Lëtzebuergesch">🇱🇺 LU · Lëtzebuergesch</a>
+</div>
+<script>
+(function () {
+  var boton = document.getElementById('welux-idioma-boton');
+  var menu = document.getElementById('welux-idioma-menu');
+  if (!boton || !menu) return;
+  function cerrar() {
+    menu.classList.remove('welux-abierto');
+    boton.setAttribute('aria-expanded', 'false');
+  }
+  boton.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var abierto = menu.classList.toggle('welux-abierto');
+    boton.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+  });
+  document.addEventListener('click', function (e) {
+    if (!menu.contains(e.target) && e.target !== boton) cerrar();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { cerrar(); boton.focus(); }
+  });
+  menu.addEventListener('click', function (e) {
+    var enlace = e.target.closest ? e.target.closest('a[data-lang]') : null;
+    if (!enlace) return;
+    menu.querySelectorAll('a').forEach(function (a) { a.classList.remove('welux-activo'); });
+    enlace.classList.add('welux-activo');
+    var actual = document.getElementById('welux-idioma-actual');
+    if (actual) actual.textContent = enlace.getAttribute('data-lang').toUpperCase();
+    cerrar();
+  });
 })();
 </script>
 </body>

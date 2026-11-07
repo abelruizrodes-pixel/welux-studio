@@ -1,86 +1,73 @@
 /* WeLux Hub — rediseño v2 (estilo Airbnb: limpio, cálido y profesional).
    Tipografía: Fraunces (títulos) + Manrope (texto). Carga junto a los estilos
-   de cada página y unifica ES / EN / FR / DE / PT / LU. */
+   de cada página y unifica ES / EN / FR / DE / PT / LU.
+   PALETAS PROVISIONALES: por defecto se usa la paleta actual de la web.
+   El selector del footer (welux-v2.js) pone data-welux-palette="1".."5" en <html>
+   y la elección se guarda en localStorage. */
 :root{
-  --welux-cream:#fdf7ee; --welux-cream-2:#fffaf1; --welux-ink:#43301f;
-  --welux-ink-soft:#6f5a44; --welux-gold:#b98a3c; --welux-gold-deep:#9a6f2b;
-  --welux-terra:#c96f3f; --welux-card:#fffdf8;
-  --welux-shadow-sm:0 1px 2px rgba(67,48,31,.08),0 4px 14px rgba(67,48,31,.08);
-  --welux-shadow-md:0 2px 6px rgba(67,48,31,.10),0 14px 34px rgba(67,48,31,.16);
-  --welux-shadow-lg:0 4px 10px rgba(67,48,31,.12),0 24px 48px rgba(67,48,31,.20);
+  --welux-shadow-sm:0 1px 2px rgba(30,28,24,.08),0 4px 14px rgba(30,28,24,.08);
+  --welux-shadow-md:0 2px 6px rgba(30,28,24,.10),0 14px 34px rgba(30,28,24,.16);
+  --welux-shadow-lg:0 4px 10px rgba(30,28,24,.12),0 24px 48px rgba(30,28,24,.20);
+  --p-bg:#fdf7ee; --p-bg2:#fffaf1; --p-card:#fffdf8; --p-ink:#43301f; --p-ink-soft:#6f5a44;
+  --p-heading:#43301f; --p-accent:#b98a3c; --p-accent-deep:#9a6f2b; --p-accent-soft:#f0e3c8;
+  --p-gold:#b98a3c; --p-btn-from:#e8c37a; --p-btn-to:#b98a3c; --p-btn-text:#fff;
+  --p-header-bg:rgba(253,247,238,.92); --p-border:#eadfc8;
 }
-html,body{background:var(--welux-cream)!important;color:var(--welux-ink)!important}
+html[data-welux-palette="1"]{--p-bg:#F7F3EB;--p-bg2:#fcf9f2;--p-card:#fffdf6;--p-ink:#141414;--p-ink-soft:#55524c;--p-heading:#141414;--p-accent:#B08D30;--p-accent-deep:#8a6d1f;--p-accent-soft:#e9dcbc;--p-gold:#B08D30;--p-btn-from:#c9a94a;--p-btn-to:#8a6d1f;--p-header-bg:rgba(247,243,235,.94);--p-border:#ddd3bd}
+html[data-welux-palette="2"]{--p-bg:#F6F1E7;--p-bg2:#fbf8ef;--p-card:#fffdf6;--p-ink:#2c332d;--p-ink-soft:#5a665e;--p-heading:#1F4D3A;--p-accent:#1F4D3A;--p-accent-deep:#16382a;--p-accent-soft:#d5e2d8;--p-gold:#B08D30;--p-btn-from:#2a6a4f;--p-btn-to:#1F4D3A;--p-header-bg:rgba(246,241,231,.94);--p-border:#d8d2bd}
+html[data-welux-palette="3"]{--p-bg:#F8F2E9;--p-bg2:#fdf9f1;--p-card:#fffdf6;--p-ink:#3a2a26;--p-ink-soft:#6b564f;--p-heading:#7A1F1F;--p-accent:#7A1F1F;--p-accent-deep:#5c1818;--p-accent-soft:#eed9d2;--p-gold:#B08D30;--p-btn-from:#9a2f2f;--p-btn-to:#7A1F1F;--p-header-bg:rgba(248,242,233,.94);--p-border:#e0d2c2}
+html[data-welux-palette="4"]{--p-bg:#F5F1E8;--p-bg2:#faf7ef;--p-card:#fffdf6;--p-ink:#2c3540;--p-ink-soft:#5a636e;--p-heading:#0E1E2E;--p-accent:#0E1E2E;--p-accent-deep:#0a1622;--p-accent-soft:#d7dee6;--p-gold:#B08D30;--p-btn-from:#1d3a56;--p-btn-to:#0E1E2E;--p-header-bg:rgba(245,241,232,.94);--p-border:#d5d0c2}
+html[data-welux-palette="5"]{--p-bg:#F7F4EC;--p-bg2:#fcfaf3;--p-card:#fffdf6;--p-ink:#3f3b37;--p-ink-soft:#6e6a66;--p-heading:#4a4642;--p-accent:#6E6A66;--p-accent-deep:#55514d;--p-accent-soft:#e4e0d8;--p-gold:#B08D30;--p-btn-from:#8a857e;--p-btn-to:#6E6A66;--p-header-bg:rgba(247,244,236,.94);--p-border:#ddd8cc}
+html,body{background:var(--p-bg)!important;color:var(--p-ink)!important}
 body{font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
-h1,h2,h3,.font-headline{font-family:'Fraunces',Georgia,serif!important;letter-spacing:-.01em}
+h1,h2,h3,.font-headline{font-family:'Fraunces',Georgia,serif!important;letter-spacing:-.01em;color:var(--p-heading)!important}
 .font-mono{font-family:'JetBrains Mono',ui-monospace,monospace!important}
-/* Quitar el aspecto oscuro heredado fuera del hero (el hero mantiene su vídeo/foto) */
-html.dark,html.dark body{background:var(--welux-cream)!important}
+html.dark,html.dark body{background:var(--p-bg)!important}
 main,section,footer{background-color:transparent}
-main [class*="bg-[#0d141d]"],main [class*="bg-[#080f17]"],main [class*="bg-[#151c25]"],
-main [class*="bg-[#192029]"],main [class*="bg-[#232a34]"],main [class*="bg-[#1a1527]"],
-main [class*="bg-[#251a0e]"],footer [class*="bg-[#0d141d]"],footer [class*="bg-[#080f17]"]{background-color:var(--welux-card)!important;border-color:#eadfc8!important}
-main .text-white,main [class*="text-[#dce3f0]"],main [class*="text-[#f5e8d3]"]{color:var(--welux-ink)!important}
-main [class*="text-[#ffb95f]"],main [class*="text-[#ffcf85]"]{color:var(--welux-gold-deep)!important}
-main [class*="border-[#2c3646]"],main [class*="border-[#3a5268]"]{border-color:#eadfc8!important}
-/* Header flotante tipo Airbnb: píldora de cristal, sombra al bajar */
-header{transition:box-shadow .35s ease,background-color .35s ease,border-radius .35s ease}
-header.welux-scrolled{box-shadow:0 10px 30px rgba(67,48,31,.16)!important}
+main [class*="bg-[#0d141d]"],main [class*="bg-[#080f17]"],main [class*="bg-[#151c25]"],main [class*="bg-[#192029]"],main [class*="bg-[#232a34]"],main [class*="bg-[#1a1527]"],main [class*="bg-[#251a0e]"],footer [class*="bg-[#0d141d]"],footer [class*="bg-[#080f17]"]{background-color:var(--p-card)!important;border-color:var(--p-border)!important}
+main .text-white,main [class*="text-[#dce3f0]"],main [class*="text-[#f5e8d3]"]{color:var(--p-ink)!important}
+main [class*="text-[#ffb95f]"],main [class*="text-[#ffcf85]"],main [class*="text-[#c96f3f]"]{color:var(--p-accent-deep)!important}
+main [class*="border-[#2c3646]"],main [class*="border-[#3a5268]"]{border-color:var(--p-border)!important}
+header{background:var(--p-header-bg)!important;transition:box-shadow .35s ease,background-color .35s ease,border-radius .35s ease}
+header.welux-scrolled{box-shadow:0 10px 30px rgba(30,28,24,.16)!important}
 header a{transition:color .25s ease}
-header a:hover{color:var(--welux-gold-deep)!important}
-/* Botones con profundidad real: degradado, sombras en capas, elevación y pulsado */
-.welux-hero-button,.welux-hero-button--primary,.welux-hero-button--secondary,
-a.welux-hero-button,button.welux-hero-button{
-  border-radius:999px!important;
-  box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 -2px 0 rgba(67,48,31,.18) inset,0 6px 16px rgba(120,72,20,.28),0 18px 32px rgba(120,72,20,.18)!important;
-  transition:transform .25s ease,box-shadow .25s ease,filter .25s ease!important;
-  will-change:transform;
-}
-.welux-hero-button:hover,.welux-hero-button--primary:hover,.welux-hero-button--secondary:hover{
-  transform:translateY(-3px) scale(1.02)!important;
-  box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 -2px 0 rgba(67,48,31,.16) inset,0 10px 22px rgba(120,72,20,.32),0 26px 44px rgba(120,72,20,.22)!important;
-}
-.welux-hero-button:active,.welux-hero-button--primary:active,.welux-hero-button--secondary:active{transform:translateY(1px) scale(.98)!important;box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 3px 10px rgba(120,72,20,.28)!important}
-.welux-hero-button--primary,.welux-hero-button--secondary{color:#fff!important}
-/* Tarjetas con profundidad (deck tipo Tinder, tarjetas de servicio y de medios) */
-.welux-deck-card,.welux-cinematic-card,.welux-media-card,main article,main section [class*="rounded"]{
-  transition:transform .35s ease,box-shadow .35s ease!important;
-}
-.welux-deck-card,.welux-cinematic-card{border-radius:26px!important;box-shadow:var(--welux-shadow-md)!important;border:1px solid #efe3cb!important}
+header a:hover{color:var(--p-accent-deep)!important}
+.welux-hero-button,.welux-hero-button--primary,.welux-hero-button--secondary,a.welux-hero-button,button.welux-hero-button{border-radius:999px!important;box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 -2px 0 rgba(30,28,24,.18) inset,0 6px 16px rgba(30,28,24,.28),0 18px 32px rgba(30,28,24,.18)!important;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease,background .3s ease!important;will-change:transform}
+.welux-hero-button--primary{background:linear-gradient(180deg,var(--p-btn-from),var(--p-btn-to))!important;border-color:transparent!important;color:var(--p-btn-text)!important}
+.welux-hero-button--secondary{background:linear-gradient(180deg,var(--p-card),var(--p-accent-soft))!important;border:1px solid var(--p-border)!important;color:var(--p-accent-deep)!important}
+.welux-hero-button:hover,.welux-hero-button--primary:hover,.welux-hero-button--secondary:hover{transform:translateY(-3px) scale(1.02)!important;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 -2px 0 rgba(30,28,24,.16) inset,0 10px 22px rgba(30,28,24,.32),0 26px 44px rgba(30,28,24,.22)!important}
+.welux-hero-button:active,.welux-hero-button--primary:active,.welux-hero-button--secondary:active{transform:translateY(1px) scale(.98)!important;box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 3px 10px rgba(30,28,24,.28)!important}
+main [class*="bg-[#c96f3f]"],main [class*="bg-[#b7791f]"]{background:linear-gradient(180deg,var(--p-btn-from),var(--p-btn-to))!important}
+.welux-deck-card,.welux-cinematic-card,.welux-media-card,main article{transition:transform .35s ease,box-shadow .35s ease,background-color .3s ease,border-color .3s ease!important}
+.welux-deck-card,.welux-cinematic-card{background:var(--p-card)!important;border-radius:26px!important;box-shadow:var(--welux-shadow-md)!important;border:1px solid var(--p-border)!important}
 .welux-deck-card:hover,.welux-cinematic-card:hover,.welux-media-card:hover{transform:translateY(-6px)!important;box-shadow:var(--welux-shadow-lg)!important}
-.welux-media-card{border-radius:22px!important;overflow:hidden;box-shadow:var(--welux-shadow-sm)!important;border:1px solid #efe3cb!important}
-/* Imágenes con tratamiento cinematográfico: cálidas, algo más oscuras, viñeta y degradado para el texto */
-.welux-hero-image img,.welux-hero-image,.welux-cinematic-card img,.welux-media-card img,.welux-deck-card img{
-  filter:saturate(1.08) contrast(1.06) brightness(.93) sepia(.16)!important;
-}
+.welux-media-card{background:var(--p-card)!important;border-radius:22px!important;overflow:hidden;box-shadow:var(--welux-shadow-sm)!important;border:1px solid var(--p-border)!important}
+.welux-hero-image img,.welux-hero-image,.welux-cinematic-card img,.welux-media-card img,.welux-deck-card img{filter:saturate(1.08) contrast(1.06) brightness(.93) sepia(.16)!important}
 .welux-hero-image,.welux-cinematic-card,.welux-media-card{position:relative}
-.welux-hero-image::after,.welux-cinematic-card::after,.welux-media-card::after{
-  content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
-  background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(43,28,12,.28) 100%),linear-gradient(180deg,rgba(43,28,12,0) 55%,rgba(43,28,12,.38) 100%);
-}
+.welux-hero-image::after,.welux-cinematic-card::after,.welux-media-card::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(43,28,12,.28) 100%),linear-gradient(180deg,rgba(43,28,12,0) 55%,rgba(43,28,12,.38) 100%)}
 .welux-cinematic-card img,.welux-media-card img{transition:transform .6s ease,filter .6s ease}
 .welux-cinematic-card:hover img,.welux-media-card:hover img{transform:scale(1.04)}
-/* Vídeo del hero: cubre el hero, con reserva de imagen si no carga */
 .welux-hero-video,.welux-video{width:100%;height:100%;object-fit:cover;display:block}
 .welux-hero-video--error{display:none!important}
-/* Animación de aparición al hacer scroll */
 .welux-reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
 .welux-reveal.is-visible{opacity:1;transform:none}
-/* Botón flotante único de idiomas */
-.welux-idioma-flotante .welux-idioma-btn{border-radius:999px!important;box-shadow:0 2px 6px rgba(67,48,31,.18),0 12px 28px rgba(67,48,31,.22)!important;transition:transform .25s ease,box-shadow .25s ease!important}
+.welux-idioma-flotante .welux-idioma-btn{border-radius:999px!important;box-shadow:0 2px 6px rgba(30,28,24,.18),0 12px 28px rgba(30,28,24,.22)!important;transition:transform .25s ease,box-shadow .25s ease!important}
 .welux-idioma-flotante .welux-idioma-btn:hover{transform:translateY(-2px)}
-/* Footer: enlaces y botones sociales */
+footer{background:linear-gradient(180deg,var(--p-bg),var(--p-bg2))!important}
 footer a{transition:color .25s ease}
-footer a:hover{color:var(--welux-gold-deep)!important}
-.welux-social-btn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;background:#fff;border:1px solid #eadfc8;box-shadow:var(--welux-shadow-sm);font-weight:800;color:var(--welux-ink);text-decoration:none;transition:transform .25s ease,box-shadow .25s ease}
+footer a:hover{color:var(--p-accent-deep)!important}
+.welux-social-btn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;background:var(--p-card);border:1px solid var(--p-border);box-shadow:var(--welux-shadow-sm);font-weight:800;color:var(--p-ink);text-decoration:none;transition:transform .25s ease,box-shadow .25s ease}
 .welux-social-btn:hover{transform:translateY(-2px);box-shadow:var(--welux-shadow-md)}
-/* Sección de invitaciones digitales */
-.welux-invitations{border-radius:28px;box-shadow:var(--welux-shadow-md);background:linear-gradient(180deg,#fffdf8,#fbf1dd);border:1px solid #efe3cb}
-.welux-invitations .welux-invite-chip{display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;background:#fff;border:1px solid #eadfc8;padding:.35rem .8rem;font-size:.8rem;box-shadow:var(--welux-shadow-sm)}
-@media (max-width:640px){
-  .welux-deck-card,.welux-cinematic-card{border-radius:20px!important}
-  .welux-hero-button{width:100%;justify-content:center}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{transition:none!important;animation:none!important}
-  .welux-reveal{opacity:1;transform:none}
-}
+.welux-palette-picker{border-top:1px solid var(--p-border);margin-top:1.2rem;padding:1.2rem .5rem .4rem;text-align:center}
+.welux-palette-picker h3{font-size:.95rem;margin:0 0 .2rem}
+.welux-palette-picker p{font-size:.8rem;color:var(--p-ink-soft);margin:.2rem 0 .8rem}
+.welux-palette-opt{display:inline-flex;flex-direction:column;align-items:center;gap:.4rem;margin:.3rem .45rem;padding:.65rem .75rem;border-radius:16px;border:2px solid transparent;background:var(--p-card);cursor:pointer;box-shadow:var(--welux-shadow-sm);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;font-family:inherit}
+.welux-palette-opt:hover{transform:translateY(-2px);box-shadow:var(--welux-shadow-md)}
+.welux-palette-opt[aria-pressed="true"]{border-color:var(--p-accent);box-shadow:var(--welux-shadow-md)}
+.welux-palette-dots{display:flex;gap:4px}
+.welux-palette-dots i{width:16px;height:16px;border-radius:50%;border:1px solid rgba(0,0,0,.18);display:block}
+.welux-palette-name{font-size:.72rem;font-weight:700;color:var(--p-ink-soft);max-width:6.5rem;line-height:1.25}
+.welux-invitations{border-radius:28px;box-shadow:var(--welux-shadow-md);background:linear-gradient(180deg,var(--p-card),var(--p-bg2));border:1px solid var(--p-border)}
+.welux-invitations .welux-invite-chip{display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;background:var(--p-card);border:1px solid var(--p-border);padding:.35rem .8rem;font-size:.8rem;box-shadow:var(--welux-shadow-sm)}
+@media (max-width:640px){.welux-deck-card,.welux-cinematic-card{border-radius:20px!important}.welux-hero-button{width:100%;justify-content:center}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.welux-reveal{opacity:1;transform:none}}

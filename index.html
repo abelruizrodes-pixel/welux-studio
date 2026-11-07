@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="es">
+<html lang="es">
 <head>
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"/>
@@ -14,7 +14,7 @@
 <meta name="keywords" content="WeLux Group, WeLux Studio, WeLux Careers, Amcropa Films, Matterport Pro3 LiDAR, empleo Luxemburgo, trabajo en Luxemburgo, CV web interactivo, rental cine Super 35, Sigma Cine T2, Luxemburgo Madrid Paris, arquitectura digital B2B"/>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
 <meta name="author" content="WeLux Group Holding"/>
-<meta name="theme-color" content="#0d141d"/>
+<meta name="theme-color" content="#fdf7ee"/>
 
 <!-- Multilingual SEO Hreflang Matrix -->
 <link rel="alternate" hreflang="es" href="https://www.weluxhub.com/"/>
@@ -52,13 +52,16 @@
   html, body {
     margin: 0;
     padding: 0;
-    background: #0d141d;
-    color: #dce3f0;
+    background: #fdf7ee;
+    color: #43301f;
     font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
+  html { scroll-behavior: smooth; }
+  body { overflow-x: hidden; }
+  img { max-width: 100%; }
   .font-headline { font-family: 'Bodoni Moda', serif; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
-  
+
   .material-symbols-outlined {
     font-family: 'Material Symbols Outlined' !important;
     font-weight: normal;
@@ -76,6 +79,97 @@
     vertical-align: middle;
   }
   ::-webkit-scrollbar { display: none; }
+
+  /* Paleta cálida (referencia de estilo: Cuba with Yoyo):
+     crema #fdf7ee · arena #f6e8d2 · terracota #c65d21 · marrón #43301f */
+  body { background: #fdf7ee !important; color: #43301f !important; }
+  main { background: #fdf7ee !important; }
+  #shader-canvas-ANIMATION_26 { display: none !important; }
+  main > div > header { background: radial-gradient(closest-side, #f9e7c8, rgba(249, 231, 200, 0) 78%); }
+
+  /* Header claro y cálido */
+  body > header { background: rgba(253, 247, 238, .94) !important; border-bottom: 1px solid #eadfc8 !important; box-shadow: 0 6px 24px rgba(120, 72, 20, .08) !important; }
+  body > header .font-headline { color: #2e1f12 !important; }
+  body > header [class*="bg-[#232a34]"] { background: #f3e5cf !important; }
+  body > header [class*="text-[#ffb95f]"] { color: #b45309 !important; }
+  body > header nav a { color: #6b4a2a !important; }
+  body > header nav a:hover { background: #f6e8d2 !important; color: #2e1f12 !important; }
+  body > header a[href^="mailto:"] { background: #c65d21 !important; color: #fff !important; border-color: #c65d21 !important; }
+  body > header a[href^="mailto:"]:hover { background: #a34d1a !important; }
+  .welux-lang-bar { background: #fffdf8 !important; border-color: #e5d6ba !important; box-shadow: 0 4px 14px rgba(120, 72, 20, .08) !important; }
+  .welux-lang-bar [class*="text-white"] { color: #6b4a2a !important; }
+  .welux-lang-bar > span:first-child { background: #c65d21 !important; color: #fff !important; border-color: transparent !important; }
+  .welux-lang-bar a:hover { background: #f6e8d2 !important; color: #2e1f12 !important; }
+
+  /* Superficies oscuras de la home -> crema */
+  main [class*="bg-[#0d141d]"], main [class*="bg-[#080f17]"], main [class*="bg-[#151c25]"], main [class*="bg-[#192029]"], main [class*="bg-[#232a34]"] { background-color: #fffdf8 !important; }
+  main [class*="border-[#232a34]"] { border-color: #e7d7bd !important; }
+  main [class*="border-white"] { border-color: #e7d7bd !important; }
+  main [class*="text-white"] { color: #2e1f12 !important; }
+  main [class*="text-white/70"] { color: #6b543d !important; }
+  main [class*="text-white/60"] { color: #7a6248 !important; }
+  main [class*="text-white/50"] { color: #8a6d4b !important; }
+  main [class*="text-[#ffb95f]"] { color: #b45309 !important; }
+  main [class*="text-[#4cd7f6]"] { color: #0f766e !important; }
+  main [class*="text-[#ffb4ac]"] { color: #be5a38 !important; }
+  main [class*="text-[#ffddb8]"] { color: #b45309 !important; }
+  main [class*="bg-[#ffb95f]"] { background-color: #c65d21 !important; color: #fff !important; }
+  main [class*="bg-[#4cd7f6]"] { background-color: #0f766e !important; color: #fff !important; }
+  main [class*="bg-[#ffb4ac]"] { background-color: #be5a38 !important; color: #fff !important; }
+  main [class*="hover:bg-[#ffddb8]"]:hover { background-color: #ea580c !important; }
+  main [class*="hover:bg-[#80e5fb]"]:hover { background-color: #0d9488 !important; }
+  main [class*="hover:bg-[#ffd2cd]"]:hover { background-color: #a34a2e !important; }
+  main [class*="ring-[#ffb95f]"] { --tw-ring-color: #c65d21 !important; }
+  main [class*="ring-[#4cd7f6]"] { --tw-ring-color: #0f766e !important; }
+  main [class*="ring-[#ffb4ac]"] { --tw-ring-color: #be5a38 !important; }
+
+  /* Tarjetas de división */
+  .portal-card { background: #fffdf8 !important; border: 1px solid #ead9bd !important; border-radius: 28px !important; box-shadow: 0 18px 40px rgba(120, 72, 20, .12) !important; overflow: hidden; }
+  .portal-card > div:last-child { background: #fbf0dc !important; }
+
+  /* Pie en marrón cálido */
+  footer { background: #2e1f12 !important; color: #f3e5cf !important; }
+  footer [class*="bg-[#080f17]"], footer [class*="bg-[#151c25]"], footer [class*="bg-[#192029]"] { background-color: #3d2716 !important; }
+  footer [class*="border-[#232a34]"] { border-color: #57402a !important; }
+  footer [class*="text-white"] { color: #fdf7ee !important; }
+  footer [class*="text-white/70"] { color: #d9c3a5 !important; }
+  footer [class*="text-white/60"] { color: #cbb28e !important; }
+  footer [class*="text-white/40"] { color: #a68d68 !important; }
+  footer [class*="text-[#ffb95f]"] { color: #f0b25e !important; }
+  footer a[href^="mailto:"] { background: #c65d21 !important; color: #fff !important; border-color: transparent !important; }
+
+  /* Deck tipo Tinder: una división cada vez */
+  #portal-grid { display: block !important; max-width: 620px; margin-inline: auto; touch-action: pan-y; }
+  #portal-grid:focus-visible { outline: 2px solid #c65d21; outline-offset: 6px; border-radius: 28px; }
+  #portal-grid .portal-card { display: none; margin: 0 auto; }
+  #portal-grid .portal-card.welux-deck-activa { display: flex !important; animation: welux-deck-entra .45s ease both; }
+  #portal-grid img { user-select: none; }
+  @keyframes welux-deck-entra { from { opacity: 0; transform: translateY(14px) scale(.985); } to { opacity: 1; transform: none; } }
+  .welux-deck-pista { text-align: center; color: #8a6d4b; font-size: 13px; margin: 0 0 14px; }
+  .welux-deck-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 20px; }
+  .welux-deck-btn { width: 52px; height: 52px; flex: 0 0 auto; border-radius: 9999px; border: 1px solid #e0cba6; background: #fffdf8; color: #8a4b1f; font-size: 26px; line-height: 1; cursor: pointer; box-shadow: 0 6px 18px rgba(120, 72, 20, .15); }
+  .welux-deck-btn:hover { background: #c65d21; color: #fff; border-color: #c65d21; }
+  .welux-deck-btn:disabled { opacity: .35; cursor: default; }
+  .welux-deck-puntos { display: flex; align-items: center; gap: 8px; }
+  .welux-deck-punto { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 9999px; background: #e0cba6; cursor: pointer; }
+  .welux-deck-punto[aria-current="true"] { width: 28px; background: #c65d21; }
+  .welux-deck-contador { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8a6d4b; min-width: 42px; text-align: center; }
+  .welux-filtro-activo { background: #c65d21 !important; color: #fff !important; }
+
+  @media (max-width: 1023px) { main { padding-top: 7.5rem !important; } }
+  @media (max-width: 640px) {
+    #portal-grid { max-width: 100%; }
+    #filter-container { border-radius: 18px !important; }
+    .portal-card { border-radius: 24px !important; }
+  }
+  @media (max-width: 520px) {
+    .welux-lang-bar { max-width: 52vw; overflow-x: auto; }
+    .welux-lang-bar a[data-lang="de"], .welux-lang-bar a[data-lang="pt"], .welux-lang-bar a[data-lang="lu"] { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #portal-grid .portal-card.welux-deck-activa { animation: none; }
+    html { scroll-behavior: auto; }
+  }
 </style>
 
 <!-- Schema.org Multi-Entity JSON-LD Structured Data for Google Rich Snippets -->
@@ -91,22 +185,6 @@
       "url": "https://www.weluxhub.com/",
       "logo": "https://www.weluxhub.com/assets/images/welux_logo.png",
       "description": "Ecosistema corporativo privado de élite con 3 divisiones: WeLux Studio (Ingeniería digital, gemelos Matterport LiDAR y cine B2B), WeLux Careers (Aceleración de talento y empleo en Luxemburgo) y Amcropa Gear × Films (Arsenal de cine Super 35 y ópticas T2).",
-      "address": [
-        {
-          "@type": "PostalAddress",
-          "streetAddress": "Boulevard Royal",
-          "addressLocality": "Luxembourg-City",
-          "postalCode": "L-2449",
-          "addressCountry": "LU"
-        },
-        {
-          "@type": "PostalAddress",
-          "streetAddress": "Paseo de la Castellana",
-          "addressLocality": "Madrid",
-          "postalCode": "28046",
-          "addressCountry": "ES"
-        }
-      ],
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "corporate concierge",
@@ -196,35 +274,36 @@
     </a>
 
     <!-- Navegación Principal -->
-    <nav class="hidden lg:flex items-center gap-2">
-      <a class="px-3.5 py-1.5 rounded-lg bg-[#232a34] text-[#ffb95f] font-mono text-xs font-semibold shadow-sm" href="/">Hub</a>
+    <nav class="hidden lg:flex items-center gap-2" aria-label="Divisiones">
       <a class="px-3.5 py-1.5 rounded-lg text-white/70 hover:bg-[#232a34] hover:text-white transition-colors text-sm font-medium" href="/studio/">Studio</a>
       <a class="px-3.5 py-1.5 rounded-lg text-white/70 hover:bg-[#232a34] hover:text-white transition-colors text-sm font-medium" href="/careers/">Careers</a>
       <a class="px-3.5 py-1.5 rounded-lg text-white/70 hover:bg-[#232a34] hover:text-white transition-colors text-sm font-medium" href="/gear/">Gear</a>
-      <a class="px-3.5 py-1.5 rounded-lg text-white/70 hover:bg-[#232a34] hover:text-white transition-colors text-sm font-medium" href="#concierge">Concierge</a>
     </nav>
 
-    <!-- Selector de Idiomas + Botón de Contacto -->
+    <!-- Selector de Idiomas + Botón de Contacto por correo -->
     <div class="flex items-center gap-3">
       <div class="welux-lang-bar flex items-center gap-1.5 bg-black/70 border border-white/15 px-3 py-1 rounded-full font-mono text-xs shadow-lg backdrop-blur-md text-white shrink-0">
   <span class="px-2.5 py-1 rounded-full bg-white/20 text-white font-bold border border-white/30 text-xs">🇪🇸 ES</span> <span class="text-white/20 text-xs hidden sm:inline">|</span> <a href="/en/" onclick="setWeluxLanguage('en'); return false;" class="welux-lang-btn px-2 py-1 rounded text-white/70 hover:text-white hover:bg-white/10 transition-colors text-xs font-mono" data-lang="en">🇬🇧 EN</a> <span class="text-white/20 text-xs hidden sm:inline">|</span> <a href="/fr/" onclick="setWeluxLanguage('fr'); return false;" class="welux-lang-btn px-2 py-1 rounded text-white/70 hover:text-white hover:bg-white/10 transition-colors text-xs font-mono" data-lang="fr">🇫🇷 FR</a> <span class="text-white/20 text-xs hidden sm:inline">|</span> <a href="/de/" onclick="setWeluxLanguage('de'); return false;" class="welux-lang-btn px-2 py-1 rounded text-white/70 hover:text-white hover:bg-white/10 transition-colors text-xs font-mono" data-lang="de">🇩🇪 DE</a> <span class="text-white/20 text-xs hidden sm:inline">|</span> <a href="/pt/" onclick="setWeluxLanguage('pt'); return false;" class="welux-lang-btn px-2 py-1 rounded text-white/70 hover:text-white hover:bg-white/10 transition-colors text-xs font-mono" data-lang="pt">🇵🇹 PT</a> <span class="text-white/20 text-xs hidden sm:inline">|</span> <a href="/lu/" onclick="setWeluxLanguage('lu'); return false;" class="welux-lang-btn px-2 py-1 rounded text-white/70 hover:text-white hover:bg-white/10 transition-colors text-xs font-mono" data-lang="lu">🇱🇺 LU</a>
 </div>
-      <a href="#contacto" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#192029] hover:bg-[#232a34] text-white border border-white/10 font-mono text-xs font-semibold transition-all shadow-sm">
-        <span class="material-symbols-outlined text-[15px] text-[#ffb95f]">mail</span>
-        <span>Contacto</span>
+      <a href="mailto:info@weluxhub.com" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#c65d21] hover:bg-[#a34d1a] text-white border border-[#c65d21] font-mono text-xs font-semibold transition-all shadow-sm" title="Escríbenos a info@weluxhub.com">
+        <span class="material-symbols-outlined text-[15px]">mail</span>
+        <span>info@weluxhub.com</span>
       </a>
     </div>
   </div>
+  <!-- Navegación móvil: las tres divisiones y el contacto, siempre a mano -->
+  <nav class="lg:hidden flex items-center justify-center gap-1 px-3 py-2 border-t border-[#ead9bd] bg-[#fff8ec]" aria-label="Divisiones">
+    <a class="px-3 py-1.5 rounded-full text-sm font-medium text-[#6b4a2a] hover:bg-[#f6e8d2]" href="/studio/">Studio</a>
+    <a class="px-3 py-1.5 rounded-full text-sm font-medium text-[#6b4a2a] hover:bg-[#f6e8d2]" href="/careers/">Careers</a>
+    <a class="px-3 py-1.5 rounded-full text-sm font-medium text-[#6b4a2a] hover:bg-[#f6e8d2]" href="/gear/">Gear</a>
+    <a class="px-3 py-1.5 rounded-full text-sm font-semibold text-[#c65d21]" href="mailto:info@weluxhub.com">info@weluxhub.com</a>
+  </nav>
 </header>
 
-<main class="w-full pt-20 bg-[#0d141d] min-h-screen relative overflow-hidden">
-  <!-- Dynamic WebGL Cosmos Canvas Background -->
-  <div class="absolute inset-0 w-full h-full -z-10 opacity-45 pointer-events-none" style="display:block;">
-    <canvas id="shader-canvas-ANIMATION_26" style="display:block;width:100%;height:100%"></canvas>
-  </div>
+<main class="w-full pt-20 bg-[#fdf7ee] min-h-screen relative overflow-hidden">
 
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 flex flex-col gap-14">
-    
+
     <!-- 2. HERO SECTION -->
     <header class="flex flex-col items-center text-center relative z-10 max-w-4xl mx-auto">
       <!-- High-Prestige Status Pill -->
@@ -285,20 +364,20 @@
           Todos los Portales
         </button>
         <button class="filter-tab px-4 py-2 rounded-full font-mono text-xs transition-all bg-[#192029] text-white/70 hover:text-white hover:bg-[#232a34] font-medium border border-transparent cursor-pointer" data-filter="studio" type="button">
-          Empresas & Real Estate
+          Empresas &amp; Real Estate
         </button>
         <button class="filter-tab px-4 py-2 rounded-full font-mono text-xs transition-all bg-[#192029] text-white/70 hover:text-white hover:bg-[#232a34] font-medium border border-transparent cursor-pointer" data-filter="careers" type="button">
-          Candidatos & Talento
+          Candidatos &amp; Talento
         </button>
         <button class="filter-tab px-4 py-2 rounded-full font-mono text-xs transition-all bg-[#192029] text-white/70 hover:text-white hover:bg-[#232a34] font-medium border border-transparent cursor-pointer" data-filter="gear" type="button">
-          Producción & Eventos
+          Producción &amp; Eventos
         </button>
       </div>
     </div>
 
     <!-- 4. THE 3 MASTER PORTALS -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full z-10" id="portal-grid">
-      
+
       <!-- PORTAL 01: WELUX STUDIO -->
       <article class="portal-card flex flex-col justify-between rounded-2xl bg-[#151c25]/90 backdrop-blur-xl p-6 md:p-8 transition-all duration-300 hover:bg-[#192029]/95 hover:-translate-y-1 shadow-2xl border border-[#232a34] group" data-division="studio">
         <div>
@@ -306,7 +385,7 @@
           <div class="flex items-center justify-between gap-2 mb-4">
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ffb95f]/15 text-[#ffb95f] border border-[#ffb95f]/30">
               <span class="material-symbols-outlined text-[16px]">domain</span>
-              <span class="font-mono text-[11px] tracking-wider uppercase font-bold">DIVISIÓN INMOBILIARIA & TECH B2B</span>
+              <span class="font-mono text-[11px] tracking-wider uppercase font-bold">DIVISIÓN INMOBILIARIA &amp; TECH B2B</span>
             </div>
           </div>
           <!-- Image Accent -->
@@ -321,7 +400,7 @@
           <div class="mb-4">
             <h2 class="font-headline text-2xl text-white mb-1 font-bold">WELUX STUDIO</h2>
             <p class="text-sm text-white/70 font-medium">
-              Autoridad Digital, Gemelos LiDAR & Cine de Autor
+              Autoridad Digital, Gemelos LiDAR &amp; Cine de Autor
             </p>
           </div>
           <!-- Value Props -->
@@ -332,11 +411,11 @@
             </li>
             <li class="flex items-start gap-2.5 text-white/80 text-sm">
               <span class="material-symbols-outlined text-[#ffb95f] text-[18px] shrink-0 mt-0.5">check_circle</span>
-              <span>Tours Virtuales Matterport Pro3 & Escaneo Métrico Inmobiliario.</span>
+              <span>Tours Virtuales Matterport Pro3 &amp; Escaneo Métrico Inmobiliario.</span>
             </li>
             <li class="flex items-start gap-2.5 text-white/80 text-sm">
               <span class="material-symbols-outlined text-[#ffb95f] text-[18px] shrink-0 mt-0.5">check_circle</span>
-              <span>Sitios Web Boutique con Carga <1.2s & PageSpeed 98/100 verificado.</span>
+              <span>Sitios Web Boutique con Carga &lt;1.2s &amp; PageSpeed 98/100 verificado.</span>
             </li>
             <li class="flex items-start gap-2.5 text-white/80 text-sm">
               <span class="material-symbols-outlined text-[#ffb95f] text-[18px] shrink-0 mt-0.5">verified_user</span>
@@ -363,7 +442,7 @@
           <div class="flex items-center justify-between gap-2 mb-4">
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4cd7f6]/15 text-[#4cd7f6] border border-[#4cd7f6]/30">
               <span class="material-symbols-outlined text-[16px]">work</span>
-              <span class="font-mono text-[11px] tracking-wider uppercase font-bold">DIVISIÓN TALENTO & ACELERACIÓN LABORAL</span>
+              <span class="font-mono text-[11px] tracking-wider uppercase font-bold">DIVISIÓN TALENTO &amp; ACELERACIÓN LABORAL</span>
             </div>
           </div>
           <!-- Image Accent -->
@@ -378,7 +457,7 @@
           <div class="mb-4">
             <h2 class="font-headline text-2xl text-white mb-1 font-bold">WELUX CAREERS</h2>
             <p class="text-sm text-white/70 font-medium">
-              CV Web Interactivo & Postulaciones Diarias 100% a Éxito
+              CV Web Interactivo &amp; Postulaciones Diarias 100% a Éxito
             </p>
           </div>
           <!-- Value Props -->
@@ -420,7 +499,7 @@
           <div class="flex items-center justify-between gap-2 mb-4">
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ffb4ac]/15 text-[#ffb4ac] border border-[#ffb4ac]/30">
               <span class="material-symbols-outlined text-[16px]">movie_filter</span>
-              <span class="font-mono text-[11px] tracking-wider uppercase font-bold">DIVISIÓN CINEMATOGRÁFICA & ARSENAL</span>
+              <span class="font-mono text-[11px] tracking-wider uppercase font-bold">DIVISIÓN CINEMATOGRÁFICA &amp; ARSENAL</span>
             </div>
           </div>
           <!-- Image Accent -->
@@ -435,7 +514,7 @@
           <div class="mb-4">
             <h2 class="font-headline text-2xl text-white mb-1 font-bold">WELUX GEAR × AMCROPA</h2>
             <p class="text-sm text-white/70 font-medium">
-              Equipamiento Cinematográfico, Fotomatón Glam & Videobooks
+              Equipamiento Cinematográfico, Fotomatón Glam &amp; Videobooks
             </p>
           </div>
           <!-- Value Props -->
@@ -446,7 +525,7 @@
             </li>
             <li class="flex items-start gap-2.5 text-white/80 text-sm">
               <span class="material-symbols-outlined text-[#ffb4ac] text-[18px] shrink-0 mt-0.5">mic</span>
-              <span>Steadicam Flycam Galaxy, Grabador Zoom F6 32-Bit Float & Microfonía Røde.</span>
+              <span>Steadicam Flycam Galaxy, Grabador Zoom F6 32-Bit Float &amp; Microfonía Røde.</span>
             </li>
             <li class="flex items-start gap-2.5 text-white/80 text-sm">
               <span class="material-symbols-outlined text-[#ffb4ac] text-[18px] shrink-0 mt-0.5">photo_camera</span>
@@ -522,7 +601,7 @@
           </div>
           <div>
             <span class="font-mono text-xs text-white/50 uppercase block font-semibold">Portal Recomendado</span>
-            <span class="text-base text-white font-bold" id="concierge-title">WELUX STUDIO — Arquitectura Digital & Cine</span>
+            <span class="text-base text-white font-bold" id="concierge-title">WELUX STUDIO — Arquitectura Digital &amp; Cine</span>
           </div>
         </div>
         <a class="px-6 py-3 rounded-xl bg-[#ffb95f] text-[#0d141d] font-mono text-xs uppercase tracking-wider font-bold whitespace-nowrap shadow-md hover:bg-[#ffddb8] transition-colors shrink-0" href="/studio/" id="concierge-link">
@@ -582,7 +661,7 @@
 
       <!-- Col 3: Governance & Compliance -->
       <div>
-        <span class="font-mono text-xs text-white uppercase block mb-4 tracking-wider font-bold">Gobernanza & Cumplimiento</span>
+        <span class="font-mono text-xs text-white uppercase block mb-4 tracking-wider font-bold">Gobernanza &amp; Cumplimiento</span>
         <div class="space-y-2 text-xs text-white/70">
           <div class="bg-[#151c25] p-4 rounded-xl font-mono text-xs text-white/70 leading-relaxed border border-[#232a34]">
             <strong class='text-[#ffb95f] block mb-1'>Protocolo de Confidencialidad</strong>Todos los acuerdos comerciales, búsquedas ejecutivas y contratos de producción están protegidos por acuerdos bilaterales de no divulgación y estándares RGPD de la UE.
@@ -590,13 +669,11 @@
         </div>
       </div>
 
-      <!-- Col 4: Contact & Locations -->
+      <!-- Col 4: Contact -->
       <div>
-        <span class="font-mono text-xs text-white uppercase block mb-4 tracking-wider font-bold">Contacto & Sedes</span>
+        <span class="font-mono text-xs text-white uppercase block mb-4 tracking-wider font-bold">Contacto</span>
         <div class="p-4 rounded-xl bg-[#151c25] space-y-2 font-mono text-xs text-white/70 border border-[#232a34]">
-          <p><strong>Luxembourg:</strong> Kirchberg Financial Center</p>
-          <p><strong>Madrid:</strong> Barrio de Salamanca</p>
-          <p><strong>Paris:</strong> 8e Arrondissement</p>
+          <p>Escríbenos y te respondemos en menos de 12 h.</p>
           <div class="pt-2">
             <a href="mailto:info@weluxhub.com" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#192029] text-[#ffb95f] hover:text-white font-semibold text-xs transition-colors border border-white/5">
               <span class="material-symbols-outlined text-[14px]">outgoing_mail</span>
@@ -612,7 +689,7 @@
       <span class="text-white/40">© 2026 WELUX GROUP HOLDING S.À R.L. TODOS LOS DERECHOS RESERVADOS.</span>
       <div class="flex items-center gap-4 text-white/60">
         <a class="hover:text-white transition-colors" href="#">Aviso Legal</a>
-        <a class="hover:text-white transition-colors" href="#">Privacidad & RGPD</a>
+        <a class="hover:text-white transition-colors" href="#">Privacidad &amp; RGPD</a>
         <a class="hover:text-white transition-colors" href="#">Términos y Condiciones</a>
       </div>
     </div>
@@ -676,7 +753,7 @@
   conciergeOptions.forEach(opt => {
     opt.addEventListener('click', () => {
       conciergeOptions.forEach(o => o.classList.remove('ring-2', 'ring-[#ffb95f]', 'ring-[#4cd7f6]', 'ring-[#ffb4ac]'));
-      
+
       const target = opt.getAttribute('data-target');
       const data = portalData[target];
 
@@ -694,120 +771,122 @@
 })();
 </script>
 
-<!-- WebGL Shader Canvas Script -->
+<script src="/assets/js/welux-i18n.js"></script>
+
+<!-- Deck tipo Tinder para las 3 divisiones: flechas, puntos, deslizamiento y teclado -->
 <script>
-(function() {
-  const canvas = document.getElementById('shader-canvas-ANIMATION_26');
-  if (!canvas) return;
+(function () {
+  var grid = document.getElementById('portal-grid');
+  if (!grid) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.portal-card'));
+  if (cards.length < 2) return;
 
-  function syncSize() {
-    const w = canvas.clientWidth || 1280;
-    const h = canvas.clientHeight || 720;
-    if (canvas.width !== w || canvas.height !== h) {
-      canvas.width = w;
-      canvas.height = h;
-    }
-  }
-  if (typeof ResizeObserver !== 'undefined') {
-    new ResizeObserver(syncSize).observe(canvas);
-  }
-  syncSize();
+  grid.setAttribute('tabindex', '0');
+  grid.setAttribute('role', 'region');
+  grid.setAttribute('aria-roledescription', 'carrusel');
+  grid.setAttribute('aria-label', 'Divisiones de WeLux: Studio, Careers y Gear');
 
-  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-  if (!gl) return;
+  var pista = document.createElement('p');
+  pista.className = 'welux-deck-pista';
+  pista.textContent = 'Desliza o usa las flechas para recorrer las tres divisiones, una a una.';
+  grid.parentNode.insertBefore(pista, grid);
 
-  const vs = `attribute vec2 a_position;
-varying vec2 v_texCoord;
-void main() {
-  v_texCoord = a_position * 0.5 + 0.5;
-  gl_Position = vec4(a_position, 0.0, 1.0);
-}`;
+  var nav = document.createElement('div');
+  nav.className = 'welux-deck-nav';
+  nav.innerHTML = '<button type="button" class="welux-deck-btn welux-deck-anterior" aria-label="Ver la división anterior">‹</button>' +
+    '<div class="welux-deck-puntos" role="tablist" aria-label="Divisiones"></div>' +
+    '<span class="welux-deck-contador" aria-live="polite"></span>' +
+    '<button type="button" class="welux-deck-btn welux-deck-siguiente" aria-label="Ver la siguiente división">›</button>';
+  grid.parentNode.insertBefore(nav, grid.nextSibling);
 
-  const fs = `precision highp float;
-uniform float u_time;
-uniform vec2 u_resolution;
-uniform vec2 u_mouse;
+  var puntosCaja = nav.querySelector('.welux-deck-puntos');
+  var contador = nav.querySelector('.welux-deck-contador');
+  var btnAnterior = nav.querySelector('.welux-deck-anterior');
+  var btnSiguiente = nav.querySelector('.welux-deck-siguiente');
 
-vec3 palette(float t) {
-    vec3 a = vec3(0.05, 0.08, 0.12);
-    vec3 b = vec3(0.15, 0.20, 0.30);
-    vec3 c = vec3(0.8, 0.7, 0.5);
-    vec3 d = vec3(0.0, 0.15, 0.3);
-    return a + b * cos(6.28318 * (c * t + d));
-}
-
-void main() {
-    vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / min(u_resolution.x, u_resolution.y);
-    vec2 mouseNorm = (u_mouse.xy * 2.0 - u_resolution.xy) / min(u_resolution.x, u_resolution.y);
-    
-    float distMouse = length(uv - mouseNorm * 0.4);
-    uv += (uv - mouseNorm * 0.4) * exp(-distMouse * 2.5) * 0.08;
-
-    vec2 uv0 = uv;
-    vec3 finalColor = vec3(0.035, 0.05, 0.08);
-
-    for (float i = 0.0; i < 3.0; i++) {
-        uv = fract(uv * 1.35) - 0.5;
-        float d2 = length(uv) * exp(-length(uv0));
-        vec3 col = palette(length(uv0) + i * 0.35 + u_time * 0.12);
-        d2 = sin(d2 * 7.5 + u_time * 0.35) / 7.5;
-        d2 = abs(d2);
-        d2 = pow(0.012 / d2, 1.15);
-        finalColor += col * d2;
-    }
-
-    gl_FragColor = vec4(finalColor, 1.0);
-}`;
-
-  function cs(type, src) {
-    const s = gl.createShader(type);
-    gl.shaderSource(s, src);
-    gl.compileShader(s);
-    return s;
-  }
-
-  const prog = gl.createProgram();
-  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
-  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
-  gl.linkProgram(prog);
-  gl.useProgram(prog);
-
-  const buf = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
-
-  const pos = gl.getAttribLocation(prog, 'a_position');
-  gl.enableVertexAttribArray(pos);
-  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
-
-  const uTime = gl.getUniformLocation(prog, 'u_time');
-  const uRes = gl.getUniformLocation(prog, 'u_resolution');
-  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
-
-  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
-  window.addEventListener('mousemove', (event) => {
-    const rect = canvas.getBoundingClientRect();
-    if (rect.width && rect.height) {
-      const nx = (event.clientX - rect.left) / rect.width;
-      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
-      mouse.x = nx * canvas.width;
-      mouse.y = ny * canvas.height;
-    }
+  var puntos = cards.map(function (card, i) {
+    var titulo = card.querySelector('h2');
+    var punto = document.createElement('button');
+    punto.type = 'button';
+    punto.className = 'welux-deck-punto';
+    punto.setAttribute('role', 'tab');
+    punto.setAttribute('aria-label', 'Ver ' + (titulo ? titulo.textContent.trim() : 'división ' + (i + 1)));
+    punto.addEventListener('click', function () { mostrar(i); });
+    puntosCaja.appendChild(punto);
+    return punto;
   });
 
-  function render(t) {
-    if (typeof ResizeObserver === 'undefined') syncSize();
-    gl.viewport(0, 0, canvas.width, canvas.height);
-    if (uTime) gl.uniform1f(uTime, t * 0.001);
-    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
-    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    requestAnimationFrame(render);
+  var permitidas = cards.map(function (_, i) { return i; });
+  var actual = 0;
+
+  function mostrar(indice) {
+    var pos = permitidas.indexOf(indice);
+    if (pos === -1) { indice = permitidas[0]; pos = 0; }
+    actual = indice;
+    cards.forEach(function (card, i) {
+      var activa = i === indice;
+      card.classList.toggle('welux-deck-activa', activa);
+      card.style.display = activa ? 'flex' : 'none';
+      card.style.opacity = activa ? '1' : '0';
+      card.setAttribute('aria-hidden', activa ? 'false' : 'true');
+    });
+    puntos.forEach(function (punto, i) {
+      var visible = permitidas.indexOf(i) !== -1;
+      punto.style.display = visible ? '' : 'none';
+      punto.setAttribute('aria-current', i === indice ? 'true' : 'false');
+    });
+    contador.textContent = (pos + 1) + ' / ' + permitidas.length;
+    var soloUna = permitidas.length < 2;
+    btnAnterior.disabled = soloUna;
+    btnSiguiente.disabled = soloUna;
   }
-  render(0);
+
+  function paso(direccion) {
+    if (permitidas.length < 2) return;
+    var pos = permitidas.indexOf(actual);
+    var siguiente = (pos + direccion + permitidas.length) % permitidas.length;
+    mostrar(permitidas[siguiente]);
+  }
+
+  btnAnterior.addEventListener('click', function () { paso(-1); });
+  btnSiguiente.addEventListener('click', function () { paso(1); });
+
+  grid.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); paso(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); paso(1); }
+  });
+
+  var inicioX = null;
+  grid.addEventListener('pointerdown', function (e) { inicioX = e.clientX; });
+  grid.addEventListener('pointerup', function (e) {
+    if (inicioX === null) return;
+    var dx = e.clientX - inicioX;
+    inicioX = null;
+    if (Math.abs(dx) > 50) paso(dx < 0 ? 1 : -1);
+  });
+  grid.addEventListener('pointercancel', function () { inicioX = null; });
+
+  /* Los filtros pasan a elegir la tarjeta del deck (se sustituyen los
+     botones para desactivar el filtrado anterior, que ocultaba tarjetas). */
+  var mapaFiltros = { all: [0, 1, 2], studio: [0], careers: [1], gear: [2] };
+  Array.prototype.slice.call(document.querySelectorAll('.filter-tab')).forEach(function (btn) {
+    var copia = btn.cloneNode(true);
+    if (copia.getAttribute('data-filter') === 'all') copia.classList.add('welux-filtro-activo');
+    btn.parentNode.replaceChild(copia, btn);
+    copia.addEventListener('click', function () {
+      Array.prototype.slice.call(document.querySelectorAll('.filter-tab')).forEach(function (b) {
+        b.classList.remove('welux-filtro-activo', 'bg-[#ffb95f]', 'text-[#0d141d]', 'font-bold');
+        b.classList.add('bg-[#192029]', 'text-white/70', 'font-medium');
+      });
+      copia.classList.add('welux-filtro-activo');
+      copia.classList.remove('bg-[#192029]', 'text-white/70', 'font-medium');
+      permitidas = mapaFiltros[copia.getAttribute('data-filter')] || [0, 1, 2];
+      mostrar(permitidas[0]);
+    });
+  });
+
+  mostrar(0);
 })();
 </script>
-
-<script src="/assets/js/welux-i18n.js"></script>
 </body>
 </html>

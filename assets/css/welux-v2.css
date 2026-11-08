@@ -193,3 +193,15 @@ html main .welux-widget-row{background:transparent!important;border-color:transp
 
 /* El pie también sigue a la home: claro, no tinta oscura, con la paleta elegida. */
 html[data-welux-palette] footer{background:linear-gradient(180deg,var(--p-bg),var(--p-bg2))!important}
+
+/* WeLux — colores propios de las páginas de división (tailwind.config de Gear/Careers/Studio):
+   cinema-black, surface, slate-card, rec-red, on-surface, amber-tungsten, champagne-gold…
+   Sin estas reglas, el hero y las tarjetas seguían oscuros aunque cargaran el CSS compartido. */
+html main [class*="bg-cinema-"],html main [class*="bg-surface"],html main [class*="bg-slate-card"],html main [class*="bg-slate-elevated"],html main [class*="bg-charcoal-"],html header [class*="bg-cinema-"],html header [class*="bg-surface"],html footer [class*="bg-cinema-"],html footer [class*="bg-surface"]{background-color:var(--p-card)!important}
+html main [class*="text-on-surface"]{color:var(--p-ink)!important}
+html main [class*="text-on-surface-variant"],html main [class*="text-spec-code-"]{color:var(--p-ink-soft)!important}
+html main [class*="text-amber-tungsten"],html main [class*="text-champagne-"]{color:var(--p-gold)!important}
+html main [class*="text-rec-"],html main [class*="text-outline-"]{color:var(--p-accent-deep)!important}
+html main [class*="border-slate-border"],html main [class*="border-outline-"],html main [class*="border-cinema-"]{border-color:var(--p-border)!important}
+html main [class*="bg-rec-"],html header [class*="bg-rec-"]{background:linear-gradient(180deg,var(--p-btn-from),var(--p-btn-to))!important;color:var(--p-btn-text)!important;border-color:transparent!important}
+html main [class*="bg-amber-tungsten"],html main [class*="bg-champagne-"]{background:linear-gradient(180deg,var(--p-btn-from),var(--p-btn-to))!important;color:var(--p-btn-text)!important}

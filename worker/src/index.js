@@ -62,7 +62,7 @@ function json(body, status, origin) {
 }
 
 function clean(v, max) {
-  return String(v === undefined || v === null ? '' : v).trim().slice(0, max);
+  return String(v === undefined || v === null ? '' : v).trim().replace(/[<>]/g, '').slice(0, max);
 }
 
 function textoCorreo(d) {

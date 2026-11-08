@@ -62,6 +62,118 @@
   var poster = '/assets/images/master_cinema_studio_gear.jpg';
   var videoSrc = '/assets/videos/welux-hero-estudio.mp4';
   var video = document.getElementById('welux-hero-video') || document.querySelector('.welux-hero-video');
+
+/* WeLux — simplificación radical: home, Studio, Gear y Careers con textos mínimos.
+   Solo en la página principal de cada división y en la home: hero corto + cláusulas
+   importantes en frases cortas + tarjetas simples (título, una línea, botón con su
+   llamada a la acción). El detalle queda oculto y se muestra al pulsar la tarjeta.
+   Servicios empresariales (marketing, redes, web, vídeo, Google Business, chatbot/CRM)
+   en la home y en Studio, en los 6 idiomas. Sin teléfono ni WhatsApp. */
+(function(){
+'use strict';
+try{
+var path=(location.pathname||'/').replace(/\/+$/,'')||'/';
+var parts=path.split('/').filter(function(s){return s;});
+var LANGS=['en','fr','de','pt','lu'];
+var lang='es';var rest=parts.slice();
+if(LANGS.indexOf(parts[0])>=0){lang=parts[0];rest=parts.slice(1);}
+var slug=(rest[0]||'').replace(/\.html$/,'');
+var isHome=rest.length===0||slug==='index';
+var isDiv=['studio','careers','gear'].indexOf(slug)>=0&&rest.length===1;
+if(!isHome&&!isDiv)return;
+var main=document.querySelector('main');if(!main)return;
+var DATA={
+es:{svcT:'Servicios empresariales',svcL:'Para empresas que quieren crecer en Europa.',ctaP:'Pedir propuesta',ctaW:'Escríbenos',home:{studio:'Ver Studio',careers:'Ver empleo',gear:'Ver Gear'},svc:[['Marketing digital','Campañas claras, medibles y sin humo.'],['Redes sociales','Contenido constante, con tu tono.'],['Diseño web','Webs rápidas, claras y que venden.'],['Vídeo','Vídeo corto que explica y convence.'],['Google Business','Tu ficha de Google, siempre al día.'],['Chatbot y CRM','Respuestas rápidas, clientes ordenados.']],div:{studio:{hero:'Studio',line:'Producción audiovisual para empresas.',cl:['Confidencialidad (NDA)','Producción bajo acuerdo'],cards:[['Producción','Producción audiovisual B2B.','Ver Studio'],['Proyectos','Ideas que se convierten en vídeo.','Ver proyectos'],['Contacto','Cuéntanos tu proyecto.','Escríbenos']]},careers:{hero:'Careers',line:'Trabaja en Europa, sin coste inicial.',cl:['0 € de coste inicial','Pago solo tras cobrar la 1ª nómina'],cards:[['Ofertas','Empleo en Europa, sin intermediarios.','Ver ofertas'],['Aplicar','Tu CV, revisado por personas.','Aplicar'],['Proceso','Transparente, paso a paso.','Cómo funciona']]},gear:{hero:'Gear',line:'Cámaras y ópticas de cine, listas para rodar.',cl:['Alquiler por días','Set completo','Entrega segura'],cards:[['Arsenal','Cámaras y ópticas de cine.','Reservar equipo'],['Sets','Sets completos, listos para rodar.','Ver sets'],['Glam','Imagen y glamour para tu rodaje.','Ver Glam']]}}},
+en:{svcT:'Business services',svcL:'For companies growing in Europe.',ctaP:'Request a proposal',ctaW:'Write to us',home:{studio:'View Studio',careers:'See jobs',gear:'View Gear'},svc:[['Digital marketing','Clear, measurable campaigns.'],['Social media','Steady content, in your voice.'],['Web design','Fast, clear websites that sell.'],['Video','Short video that explains and convinces.'],['Google Business','Your Google listing, always up to date.'],['Chatbot & CRM','Fast replies, tidy customers.']],div:{studio:{hero:'Studio',line:'Audiovisual production for companies.',cl:['Confidentiality (NDA)','Production under agreement'],cards:[['Production','Audiovisual production, B2B.','View Studio'],['Projects','Ideas that become video.','View projects'],['Contact','Tell us about your project.','Write to us']]},careers:{hero:'Careers',line:'Work in Europe, with no upfront cost.',cl:['€0 upfront','Pay only after your first salary'],cards:[['Jobs','Jobs in Europe, with no middlemen.','View jobs'],['Apply','Your CV, reviewed by people.','Apply'],['Process','Transparent, step by step.','How it works']]},gear:{hero:'Gear',line:'Cinema cameras and lenses, ready to shoot.',cl:['Daily rental','Complete set','Secure delivery'],cards:[['Arsenal','Cinema cameras and lenses.','Book gear'],['Sets','Complete sets, ready to shoot.','View sets'],['Glam','Image and glamour for your shoot.','View Glam']]}}},
+fr:{svcT:'Services aux entreprises',svcL:'Pour les entreprises qui veulent grandir en Europe.',ctaP:'Demander une proposition',ctaW:'Écrivez-nous',home:{studio:'Voir Studio',careers:'Voir les emplois',gear:'Voir Gear'},svc:[['Marketing digital','Des campagnes claires et mesurables.'],['Réseaux sociaux','Du contenu régulier, avec votre ton.'],['Conception web','Des sites rapides, clairs et qui vendent.'],['Vidéo','Des vidéos courtes qui expliquent et convainquent.'],['Fiche Google','Votre fiche Google, toujours à jour.'],['Chatbot et CRM','Des réponses rapides, des clients bien suivis.']],div:{studio:{hero:'Studio',line:'Production audiovisuelle pour entreprises.',cl:['Confidentialité (NDA)','Production sous contrat'],cards:[['Production','Production audiovisuelle B2B.','Voir Studio'],['Projets','Des idées qui deviennent vidéo.','Voir les projets'],['Contact','Parlez-nous de votre projet.','Écrivez-nous']]},careers:{hero:'Careers',line:'Travaillez en Europe, sans frais initiaux.',cl:['0 € de frais initiaux','Paiement après le 1er salaire'],cards:[['Offres','Un emploi en Europe, sans intermédiaire.','Voir les offres'],['Postuler','Votre CV, relu par des humains.','Postuler'],['Processus','Transparent, étape par étape.','Comment ça marche']]},gear:{hero:'Gear',line:'Caméras et optiques cinéma, prêtes à tourner.',cl:['Location par jour','Kit complet','Livraison sécurisée'],cards:[['Arsenal','Caméras et optiques cinéma.','Réserver le matériel'],['Sets','Des sets complets, prêts à tourner.','Voir les sets'],['Glam','Image et glamour pour votre tournage.','Voir Glam']]}}},
+de:{svcT:'Services für Unternehmen',svcL:'Für Unternehmen, die in Europa wachsen wollen.',ctaP:'Angebot anfragen',ctaW:'Schreiben Sie uns',home:{studio:'Studio ansehen',careers:'Jobs ansehen',gear:'Gear ansehen'},svc:[['Digitales Marketing','Klare, messbare Kampagnen.'],['Soziale Medien','Regelmässige Inhalte, in Ihrem Ton.'],['Webdesign','Schnelle, klare Websites, die verkaufen.'],['Video','Kurze Videos, die erklären und überzeugen.'],['Google Business','Ihr Google-Profil, immer aktuell.'],['Chatbot & CRM','Schnelle Antworten, geordnete Kunden.']],div:{studio:{hero:'Studio',line:'Audiovisuelle Produktion für Unternehmen.',cl:['Vertraulichkeit (NDA)','Produktion mit Vertrag'],cards:[['Produktion','Audiovisuelle Produktion B2B.','Studio ansehen'],['Projekte','Ideen, die zu Video werden.','Projekte ansehen'],['Kontakt','Erzählen Sie uns von Ihrem Projekt.','Schreiben Sie uns']]},careers:{hero:'Careers',line:'Arbeiten in Europa, ohne Vorkosten.',cl:['0 € Vorkosten','Zahlung erst nach dem 1. Gehalt'],cards:[['Stellen','Jobs in Europa, ohne Zwischenhändler.','Stellen ansehen'],['Bewerben','Ihr Lebenslauf, von Menschen geprüft.','Bewerben'],['Ablauf','Transparent, Schritt für Schritt.','So funktioniert es']]},gear:{hero:'Gear',line:'Kinokameras und Objektive, bereit zum Drehen.',cl:['Tagesmiete','Komplettes Set','Sichere Lieferung'],cards:[['Arsenal','Kinokameras und Objektive.','Ausrüstung buchen'],['Sets','Komplette Sets, bereit zum Drehen.','Sets ansehen'],['Glam','Bild und Glamour für Ihren Dreh.','Glam ansehen']]}}},
+pt:{svcT:'Serviços empresariais',svcL:'Para empresas que querem crescer na Europa.',ctaP:'Pedir proposta',ctaW:'Escreva-nos',home:{studio:'Ver Studio',careers:'Ver empregos',gear:'Ver Gear'},svc:[['Marketing digital','Campanhas claras e mensuráveis.'],['Redes sociais','Conteúdo constante, com o seu tom.'],['Design web','Sites rápidos, claros e que vendem.'],['Vídeo','Vídeos curtos que explicam e convencem.'],['Ficha Google','A sua ficha Google, sempre atualizada.'],['Chatbot e CRM','Respostas rápidas, clientes organizados.']],div:{studio:{hero:'Studio',line:'Produção audiovisual para empresas.',cl:['Confidencialidade (NDA)','Produção sob contrato'],cards:[['Produção','Produção audiovisual B2B.','Ver Studio'],['Projetos','Ideias que se tornam vídeo.','Ver projetos'],['Contacto','Conte-nos o seu projeto.','Escreva-nos']]},careers:{hero:'Careers',line:'Trabalhe na Europa, sem custo inicial.',cl:['0 € de custo inicial','Pagamento só após o 1.º salário'],cards:[['Ofertas','Emprego na Europa, sem intermediários.','Ver ofertas'],['Candidatar-se','O seu CV, revisto por pessoas.','Candidatar-se'],['Processo','Transparente, passo a passo.','Como funciona']]},gear:{hero:'Gear',line:'Câmaras e objetivas de cinema, prontas a rodar.',cl:['Aluguer por dia','Kit completo','Entrega segura'],cards:[['Arsenal','Câmaras e objetivas de cinema.','Reservar equipamento'],['Sets','Sets completos, prontos a rodar.','Ver sets'],['Glam','Imagem e glamour para a sua rodagem.','Ver Glam']]}}},
+lu:{svcT:'Services fir Entreprisen',svcL:'Fir Entreprisen, déi an Europa wuessen wëllen.',ctaP:'Propositioun ufroen',ctaW:'Schreift eis',home:{studio:'Studio kucken',careers:'Jobs kucken',gear:'Gear kucken'},svc:[['Digital Marketing','Kloer, moossbar Campagnen.'],['Sozial Medien','Reegelméissegen Inhalt, an Ärem Toun.'],['Webdesign','Schnell, kloer Websäiten, déi verkafen.'],['Video','Kuerz Videoen, déi erklären an iwwerzeegen.'],['Google Business','Är Google-Fiche, ëmmer aktuell.'],['Chatbot & CRM','Schnell Äntwerten, uerdentlech Clienten.']],div:{studio:{hero:'Studio',line:'Audiovisuell Produktioun fir Entreprisen.',cl:['Vertraulechkeet (NDA)','Produktioun mat Kontrakt'],cards:[['Produktioun','Audiovisuell Produktioun B2B.','Studio kucken'],['Projeten','Iddien, déi Video ginn.','Projeten kucken'],['Kontakt','Zielt eis Äre Projet.','Schreift eis']]},careers:{hero:'Careers',line:'Schafft an Europa, ouni Virkäschten.',cl:['0 € Virkäschten','Bezuelung eréischt nom 1. Gehalt'],cards:[['Offren','Aarbecht an Europa, ouni Intermédiairen.','Offren kucken'],['Bewerben','Äre CV, vu Mënsche gepréift.','Bewerben'],['Prozess','Transparent, Schrëtt fir Schrëtt.','Wéi et funktionéiert']]},gear:{hero:'Gear',line:'Kino-Kameraen an Objektiver, prett ze dréinen.',cl:['Lount pro Dag','Komplette Set','Sécher Liwwerung'],cards:[['Arsenal','Kino-Kameraen an Objektiver.','Equipement reservéieren'],['Sets','Komplett Sets, prett ze dréinen.','Sets kucken'],['Glam','Bild a Glamour fir Ären Dréi.','Glam kucken']]}}}
+};
+var KEYS={gear:[['arsenal','camera','cámara','kamera','caméra'],['set','disponib','availab','verfüg'],['glam','imagen','image','bild']],careers:[['oferta','job','offre','angebot','emprego','stelle'],['aplic','apply','postul','bewerb','candidat'],['proceso','roadmap','process','prozess','ablauf']],studio:[['producci','production','produktion'],['proyecto','project','projet','projekt'],['contact','kontakt']]};
+var D=DATA[lang]||DATA.es;
+var st=document.createElement('style');
+st.textContent='.welux-min-hero{padding:88px 24px 56px!important;text-align:center;max-width:820px;margin:0 auto!important}.welux-min-hero h1{font-size:clamp(34px,5vw,54px)!important;line-height:1.08!important;letter-spacing:-.02em!important;font-weight:600!important;margin:0 0 16px!important}.welux-min-hero p{font-size:18px!important;line-height:1.55!important;color:#5b564e!important;max-width:640px;margin:0 auto 28px!important}.welux-min-hero img,.welux-min-hero video{border-radius:20px}.welux-clauses{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:920px;margin:0 auto 64px;padding:0 24px}.welux-clauses span{border:1px solid #e6e1d8;background:#fff;border-radius:999px;padding:9px 16px;font-size:14px;color:#44413c}.welux-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:1080px;margin:0 auto 88px;padding:0 24px}@media(max-width:820px){.welux-cards{grid-template-columns:1fr}}.welux-card{background:#fff;border:1px solid #ece7de;border-radius:20px;padding:28px 26px}.welux-card h3{font-size:19px!important;margin:0 0 8px!important}.welux-card p{font-size:15px!important;line-height:1.55!important;color:#5b564e!important;margin:0 0 22px!important}.welux-card a,.welux-card button{display:inline-block;background:#111;color:#fff!important;border:0;border-radius:999px;padding:11px 22px;font-size:14px;cursor:pointer;text-decoration:none}.welux-services{max-width:1080px;margin:72px auto 96px;padding:0 24px}.welux-services>h2{font-size:30px!important;text-align:center;margin:0 0 10px!important;letter-spacing:-.01em}.welux-services-sub{text-align:center;color:#5b564e;font-size:16px;margin:0 0 36px!important}.welux-detail-open{max-width:960px;margin:0 auto 88px!important;padding:0 24px}';
+document.head.appendChild(st);
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function prefix(){return lang==='es'?'':'/'+lang;}
+function studioUrl(){return prefix()+'/studio/';}
+function contactHref(){var f=document.querySelector('main form');if(f&&f.id)return '#'+f.id;var a=document.querySelector('main a[href^="#"]');if(a&&a.getAttribute('href').length>1)return a.getAttribute('href');return studioUrl();}
+Array.prototype.slice.call(document.querySelectorAll('a[href^="tel:"],a[href*="wa.me"],a[href*="whatsapp"]')).forEach(function(a){var li=a.closest('li,div,span');if(li)li.style.display='none';else a.style.display='none';});
+function buildServices(){
+var sec=el('section','welux-services');sec.id='welux-servicios';
+sec.appendChild(el('h2',null,D.svcT));
+sec.appendChild(el('p','welux-services-sub',D.svcL));
+var grid=el('div','welux-cards');
+D.svc.forEach(function(c,i){
+var card=el('article','welux-card');
+card.appendChild(el('h3',null,c[0]));card.appendChild(el('p',null,c[1]));
+var a=el('a',null,i===D.svc.length-1?D.ctaW:D.ctaP);
+a.href=isHome?studioUrl():contactHref();
+card.appendChild(a);grid.appendChild(card);});
+sec.appendChild(grid);return sec;}
+if(isHome){
+document.documentElement.classList.add('welux-home-min');
+var map=D.home;
+Object.keys(map).forEach(function(k){
+var a=main.querySelector('a[href*="/'+k+'"],a[href*="'+k+'.html"]');
+if(a)a.textContent=map[k];});
+var dlink=main.querySelector('a[href*="/studio"],a[href*="studio.html"]');
+var blk=dlink;while(blk&&blk.parentElement!==main)blk=blk.parentElement;
+var svc=buildServices();
+if(blk&&blk.parentNode)blk.parentNode.insertBefore(svc,blk.nextSibling);else main.appendChild(svc);
+return;}
+/* Páginas principales de Studio, Careers y Gear */
+document.documentElement.classList.add('welux-div-min');
+var divD=(D.div&&D.div[slug])||D.div.studio;
+var h1=document.querySelector('main h1');if(!h1)return;
+var hero=h1;while(hero.parentElement&&hero.parentElement!==main)hero=hero.parentElement;
+var inv=document.querySelector('.welux-invitations');if(inv)inv.style.display='none';
+Array.prototype.slice.call(document.querySelectorAll('footer ul')).forEach(function(ul){if(ul.classList.contains('welux-palette-grid'))return;if(ul.querySelectorAll('a').length>4)ul.style.display='none';});
+Array.prototype.slice.call(hero.querySelectorAll('p')).forEach(function(p,i){if(i>0)p.style.display='none';});
+Array.prototype.slice.call(hero.querySelectorAll('ul,ol')).forEach(function(u){u.style.display='none';});
+var hlinks=Array.prototype.slice.call(hero.querySelectorAll('a,button'));
+hlinks.forEach(function(a,i){if(i>0)a.style.display='none';});
+var firstP=hero.querySelector('p');
+if(firstP)firstP.textContent=divD.line;else h1.parentNode.insertBefore(el('p',null,divD.line),h1.nextSibling);
+h1.textContent=divD.hero;
+if(hlinks[0]){hlinks[0].textContent=divD.cards[0][2];if(hlinks[0].tagName==='A')hlinks[0].setAttribute('href','#welux-cards');else hlinks[0].addEventListener('click',function(){var g=document.getElementById('welux-cards');if(g)g.scrollIntoView();});}
+hero.classList.add('welux-min-hero');
+Array.prototype.slice.call(main.children).forEach(function(ch){if(ch!==hero)ch.style.display='none';});
+var clauses=el('div','welux-clauses');
+divD.cl.forEach(function(s){clauses.appendChild(el('span',null,s));});
+main.appendChild(clauses);
+var targets=[];
+function findTarget(words){
+var kids=Array.prototype.slice.call(main.children);
+for(var i=0;i<kids.length;i++){
+if(kids[i]===hero||kids[i]===clauses)continue;
+var hs=kids[i].querySelectorAll('h1,h2,h3');
+for(var j=0;j<hs.length;j++){
+var t=(hs[j].textContent||'').toLowerCase();
+for(var k=0;k<words.length;k++){if(t.indexOf(words[k])>=0)return kids[i];}}}
+return null;}
+var grid=el('div','welux-cards');grid.id='welux-cards';
+var keys=KEYS[slug]||KEYS.studio;
+divD.cards.forEach(function(c,idx){
+var card=el('article','welux-card');
+card.appendChild(el('h3',null,c[0]));card.appendChild(el('p',null,c[1]));
+var target=findTarget(keys[idx]||[]);
+if(target){
+targets.push(target);
+var b=el('button',null,c[2]);b.type='button';
+b.addEventListener('click',function(){
+var shown=target.style.display==='block';
+targets.forEach(function(t2){t2.style.display='none';t2.classList.remove('welux-detail-open');});
+if(!shown){target.style.display='block';target.classList.add('welux-detail-open');target.scrollIntoView({behavior:'smooth',block:'start'});}});
+card.appendChild(b);
+}else{
+var a=el('a',null,c[2]);a.href=studioUrl();card.appendChild(a);}
+grid.appendChild(card);});
+main.appendChild(grid);
+if(slug==='studio')main.appendChild(buildServices());
+}catch(e){}
+})();
   if (!video && header) {
     video = document.createElement('video');
     video.id = 'welux-hero-video';
@@ -664,4 +776,48 @@
     document.addEventListener('DOMContentLoaded', arrancar);
   } else { arrancar(); }
   window.addEventListener('load', function () { quitarDuplicados(); asegurar(); });
+})();
+
+/* WeLux — Nuestros productos: chat widget, chatbot de WhatsApp, automatización con IA,
+   transición con IA para empresas y CRM dinámicos. Sección corta, en la home y en Studio,
+   en los 6 idiomas. El producto de WhatsApp se describe como producto, sin publicar
+   ningún número de teléfono ni enlace wa.me. */
+(function(){
+'use strict';
+try{
+var path=(location.pathname||'/').replace(/\/+$/,'')||'/';
+var parts=path.split('/').filter(function(s){return s;});
+var LANGS=['en','fr','de','pt','lu'];
+var lang='es';var rest=parts.slice();
+if(LANGS.indexOf(parts[0])>=0){lang=parts[0];rest=parts.slice(1);}
+var slug=(rest[0]||'').replace(/\.html$/,'');
+var isHome=rest.length===0||slug==='index';
+var isStudio=slug==='studio'&&rest.length===1;
+if(!isHome&&!isStudio)return;
+var main=document.querySelector('main');if(!main)return;
+function prefix(){return lang==='es'?'':'/'+lang;}
+var P={
+es:{t:'Nuestros productos',l:'Productos digitales, listos para usar.',cta:'Pedir propuesta',items:[['Chat widget','Chat en tu web que atiende siempre.'],['Chatbot de WhatsApp','Respuestas automáticas en WhatsApp.'],['Automatización con IA','Tareas repetidas, hechas solas.'],['Transición con IA','Tu empresa, trabajando con IA.'],['CRM dinámicos','Tus clientes, siempre ordenados.']]},
+en:{t:'Our products',l:'Digital products, ready to use.',cta:'Request a proposal',items:[['Chat widget','Chat on your site, always on.'],['WhatsApp chatbot','Automatic replies on WhatsApp.'],['AI automation','Repetitive tasks, done alone.'],['AI transition','Your company, working with AI.'],['Dynamic CRMs','Your customers, always in order.']]},
+fr:{t:'Nos produits',l:'Des produits numériques, prêts à l\'emploi.',cta:'Demander une proposition',items:[['Chat widget','Le chat de votre site, toujours actif.'],['Chatbot WhatsApp','Des réponses automatiques sur WhatsApp.'],['Automatisation IA','Les tâches répétées, faites seules.'],['Transition IA','Votre entreprise, au travail avec l\'IA.'],['CRM dynamiques','Vos clients, toujours bien suivis.']]},
+de:{t:'Unsere Produkte',l:'Digitale Produkte, einsatzbereit.',cta:'Angebot anfragen',items:[['Chat-Widget','Chat auf Ihrer Website, immer aktiv.'],['WhatsApp-Chatbot','Automatische Antworten auf WhatsApp.'],['KI-Automatisierung','Wiederkehrende Aufgaben, von selbst erledigt.'],['KI-Übergang','Ihr Unternehmen, mit KI im Einsatz.'],['Dynamische CRMs','Ihre Kunden, immer im Blick.']]},
+pt:{t:'Os nossos produtos',l:'Produtos digitais, prontos a usar.',cta:'Pedir proposta',items:[['Chat widget','Chat no seu site, sempre ativo.'],['Chatbot de WhatsApp','Respostas automáticas no WhatsApp.'],['Automação com IA','Tarefas repetidas, feitas sozinhas.'],['Transição com IA','A sua empresa, a trabalhar com IA.'],['CRM dinâmicos','Os seus clientes, sempre organizados.']]},
+lu:{t:'Eis Produkter',l:'Digital Produkter, prett ze benotzen.',cta:'Propositioun ufroen',items:[['Chat-Widget','Chat op Ärer Websäit, ëmmer aktiv.'],['WhatsApp-Chatbot','Automatesch Äntwerten op WhatsApp.'],['Automatiséierung mat KI','Widderhuelend Aufgaben, eleng gemaach.'],['KI-Transitioun','Är Entreprise, schafft mat KI.'],['Dynamesch CRMen','Är Clienten, ëmmer uerdentlech.']]}
+};
+var D=P[lang]||P.es;
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+var sec=el('section','welux-services');sec.id='welux-productos';
+sec.appendChild(el('h2',null,D.t));
+sec.appendChild(el('p','welux-services-sub',D.l));
+var grid=el('div','welux-cards');
+D.items.forEach(function(c){
+var card=el('article','welux-card');
+card.appendChild(el('h3',null,c[0]));card.appendChild(el('p',null,c[1]));
+var a=el('a',null,D.cta);a.href=prefix()+'/studio/';
+card.appendChild(a);grid.appendChild(card);});
+sec.appendChild(grid);
+var anchor=document.getElementById('welux-servicios');
+if(anchor&&anchor.parentNode)anchor.parentNode.insertBefore(sec,anchor.nextSibling);
+else main.appendChild(sec);
+}catch(e){}
 })();

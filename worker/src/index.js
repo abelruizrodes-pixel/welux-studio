@@ -190,7 +190,7 @@ export default {
       } else {
         await env.DB.prepare(
           'INSERT INTO leads (id, created_at, nombre, email, telefono, origen, pagina, idioma, datos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'
-        ).bind(d.id, d.created_at, d.nombre, d.email, d.telefono, clean(data.origen || tipo, 100), d.pagina, d.idioma, JSON.stringify(data).slice(0, 8000)).run();
+        ).bind(d.id, d.created_at, d.nombre, d.email, d.telefono, clean(data.origen || tipo, 100), d.pagina, d.idioma, clean(JSON.stringify(data), 8000)).run();
       }
     } catch (e) {
       return json({ ok: false, error: 'No se pudo guardar en la base de datos' }, 500, origin);

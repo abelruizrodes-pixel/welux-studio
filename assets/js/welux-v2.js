@@ -919,3 +919,44 @@ if(isDark(el)){el.classList.add('welux-widget');}
 mark();setTimeout(mark,800);
 }catch(e){}
 })();
+
+/* WeLux — barrido de paleta: cualquier fondo oscuro que quede en las páginas que no son la home
+   (clases propias, estilos en línea, gradientes oscuros) pasa a la paleta clara de la home.
+   El texto claro sobre fondo ahora claro pasa a tinta; el texto sobre vídeo o foto se respeta,
+   y los botones y el selector de paleta conservan su estilo. */
+(function(){
+'use strict';
+try{
+var path=(location.pathname||'/').replace(/\/+$/,'')||'/';
+var parts=path.split('/').filter(function(s){return s;});
+var LANGS=['en','fr','de','pt','lu'];
+var rest=parts.slice();
+if(LANGS.indexOf(parts[0])>=0)rest=parts.slice(1);
+var slug=(rest[0]||'').replace(/\.html$/,'');
+if(rest.length===0||slug==='index')return;
+var SKIP='.welux-card,.welux-widget,.welux-clauses,.welux-hero-button,.welux-palette-picker,.welux-palette-grid,.welux-idioma-flotante,#welux-footer-v2';
+function lum(c){var m=c.match(/rgba?\((\d+)\D+(\d+)\D+(\d+)(?:\D+([\d.]+))?/);if(!m)return null;var a=m[4]===undefined?1:parseFloat(m[4]);return {sum:(+m[1])+(+m[2])+(+m[3]),a:a};}
+function sweep(){
+Array.prototype.slice.call(document.querySelectorAll('main video,main img')).forEach(function(m){var p=m.closest('div');if(p)p.setAttribute('data-welux-media','1');});
+var all=Array.prototype.slice.call(document.body.querySelectorAll('*'));
+all.forEach(function(el){
+if(el.closest(SKIP))return;
+if(el.tagName==='A'||el.tagName==='BUTTON'||el.tagName==='VIDEO'||el.tagName==='IMG')return;
+var cs=getComputedStyle(el);
+var bg=lum(cs.backgroundColor);
+if(bg&&bg.a>0.5&&bg.sum<380){el.style.setProperty('background-color','var(--p-card)','important');}
+var bi=cs.backgroundImage;
+if(bi&&bi.indexOf('gradient')>=0&&bi.indexOf('url(')<0){el.style.setProperty('background-image','none','important');}
+});
+all.forEach(function(el){
+if(el.closest(SKIP))return;
+if(el.closest('[data-welux-media]'))return;
+if(el.tagName==='A'||el.tagName==='BUTTON'||el.tagName==='VIDEO'||el.tagName==='IMG')return;
+var cs=getComputedStyle(el);
+var col=lum(cs.color);
+if(col&&col.a>0.5&&col.sum>500){el.style.setProperty('color','var(--p-ink)','important');}
+});
+}
+sweep();setTimeout(sweep,800);
+}catch(e){}
+})();

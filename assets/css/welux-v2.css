@@ -136,3 +136,26 @@ main h2{font-size:clamp(1.8rem,3.2vw,2.5rem)}
 main h3{font-size:clamp(1.25rem,2vw,1.5rem)}
 main h2.font-headline,main h3.font-headline{background:linear-gradient(115deg,var(--p-heading) 15%,var(--p-accent) 50%,var(--p-heading) 85%);-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent}
 @media (prefers-reduced-motion:reduce){.welux-marquee-pista,.welux-deck-card,.welux-cinematic-card{animation:none!important}.welux-reveal{opacity:1;transform:none}}
+/* Paletas en las páginas de plantilla: reglas con más peso que el <style>
+   en línea de cada página (que fija los colores con !important), para que
+   fondo, textos, tarjetas, filtros, cabecera y pie cambien de verdad al
+   elegir una paleta. Los colores de identidad de cada división y el texto
+   blanco del hero sobre el vídeo se respetan. */
+html[data-welux-palette] body{background:var(--p-bg)!important;color:var(--p-ink)!important}
+html[data-welux-palette] main{background-color:var(--p-bg)!important}
+html[data-welux-palette] body > header.fixed{background:var(--p-header-bg)!important}
+html[data-welux-palette] body > header.fixed .font-headline{color:var(--p-heading)!important}
+html[data-welux-palette] body > header.fixed nav a{color:var(--p-ink)!important}
+html[data-welux-palette] body > header.fixed a[href^="mailto:"]{background:var(--p-accent)!important;color:#fff!important}
+html[data-welux-palette] main [class*="bg-[#0d141d]"],html[data-welux-palette] main [class*="bg-[#080f17]"],html[data-welux-palette] main [class*="bg-[#151c25]"],html[data-welux-palette] main [class*="bg-[#192029]"],html[data-welux-palette] main [class*="bg-[#232a34]"],html[data-welux-palette] main [class*="bg-[#1a1527]"],html[data-welux-palette] main [class*="bg-[#251a0e]"]{background:linear-gradient(180deg,var(--p-card),var(--p-bg2))!important}
+html[data-welux-palette] main [class*="text-white"]{color:var(--p-ink)!important}
+html[data-welux-palette] main [class*="text-white/70"]{color:var(--p-ink-soft)!important}
+html[data-welux-palette] main [class*="text-white/60"]{color:var(--p-ink-soft)!important}
+html[data-welux-palette] main [class*="text-white/50"]{color:var(--p-ink-soft)!important}
+html[data-welux-palette] .welux-hero-video + header h1{color:#fff!important}
+html[data-welux-palette] .welux-hero-video + header [class*="text-white"]{color:#fff!important}
+html[data-welux-palette] .welux-hero-video + header [class*="text-[#ffb95f]"]{color:#ffb95f!important}
+html[data-welux-palette] .portal-card{background:var(--p-card)!important;border-color:var(--p-border)!important}
+html[data-welux-palette] .portal-card > div:last-child{background:var(--p-bg2)!important}
+html[data-welux-palette] .welux-palette-picker{background:var(--p-card)!important}
+html[data-welux-palette] footer{background:var(--p-ink)!important}

@@ -60,8 +60,8 @@
     }
     function pick(obj, keys) { for (var i = 0; i < keys.length; i++) { if (obj[keys[i]] !== undefined && obj[keys[i]] !== null && String(obj[keys[i]]).trim() !== '') return String(obj[keys[i]]).trim(); } return ''; }
     function collect(form) {
-      var fd = new FormData(form); var raw = {};
-      fd.forEach(function (v, k) { if (raw[k] === undefined) raw[k] = v; else raw[k] = raw[k] + ', ' + v; });
+      var raw = {}; /* Se lee por id o por name: los formularios del sitio usan id (form-name...) y no siempre name, y FormData ignora los campos sin name. */
+      form.querySelectorAll('input, select, textarea').forEach(function (el) { var k = el.name || el.id || ''; if (!k) return; if (el.type === 'checkbox' || el.type === 'radio') { if (el.checked) raw[k] = el.value || 'sí'; return; } if (raw[k] === undefined) raw[k] = el.value; else raw[k] = raw[k] + ', ' + el.value; });
       var tipo = form.getAttribute('data-welux-tipo') || '';
       var id = (form.id || '') + ' ' + (form.getAttribute('name') || '');
       if (!tipo) { if (/candidat|career|formulario/i.test(id)) tipo = 'candidatura'; else if (/contact/i.test(id)) tipo = 'contacto'; else tipo = 'lead'; }
@@ -175,7 +175,7 @@
       var hero = h1 ? (h1.closest('header, section') || h1.parentElement) : null;
       if (hero) {
         hero.classList.add('welux-careers-hero');
-        hero.setAttribute('data-welux-media', '1');
+        hero.setAttribute('data-welux-media', '1'); /* Contraste de los botones del hero: el barrido de paleta fija el color en linea y lo deja ilegible sobre la foto; se corrige segun la luminosidad del fondo de cada boton. */ hero.querySelectorAll('a').forEach(function (a) { var c = getComputedStyle(a).backgroundColor; if (c.indexOf('rgba(0, 0, 0, 0)') === 0) return; var m = c.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/); var s = m ? (+m[1]) + (+m[2]) + (+m[3]) : 0; a.style.setProperty('color', s >= 500 ? '#16232e' : '#fff', 'important'); });
         document.querySelectorAll('main section').forEach(function (s) { if (s.style.display === 'none' && s.querySelector('form')) s.style.display = ''; });
       }
       var main = document.querySelector('main');

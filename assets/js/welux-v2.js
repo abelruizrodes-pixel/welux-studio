@@ -15,27 +15,7 @@
   var t = T[lang] || T.es;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.documentElement.classList.remove('dark');
-  /* Selector de paleta provisional */
-  var PALETTES = [
-    { id: '0', names: { es: 'Actual', en: 'Current', fr: 'Actuelle', de: 'Aktuell', pt: 'Atual', lu: 'Aktuell' }, colors: ['#fdf7ee', '#b98a3c', '#43301f'], bg: '#fdf7ee' },
-    { id: '1', names: { es: 'Hueso y dorado', en: 'Bone & gold', fr: 'Os et doré', de: 'Knochen & Gold', pt: 'Osso e dourado', lu: 'Knach a Gold' }, colors: ['#F7F3EB', '#B08D30', '#141414'], bg: '#F7F3EB' },
-    { id: '2', names: { es: 'Bosque', en: 'Forest', fr: 'Forêt', de: 'Wald', pt: 'Floresta', lu: 'Bësch' }, colors: ['#F6F1E7', '#1F4D3A', '#B08D30'], bg: '#F6F1E7' },
-    { id: '3', names: { es: 'Vino', en: 'Wine', fr: 'Vin', de: 'Wein', pt: 'Vinho', lu: 'Wäin' }, colors: ['#F8F2E9', '#7A1F1F', '#B08D30'], bg: '#F8F2E9' },
-    { id: '4', names: { es: 'Azul noche', en: 'Midnight blue', fr: 'Bleu nuit', de: 'Nachtblau', pt: 'Azul-noite', lu: 'Nuechtblo' }, colors: ['#F5F1E8', '#0E1E2E', '#B08D30'], bg: '#F5F1E8' },
-    { id: '5', names: { es: 'Ceniza', en: 'Ash', fr: 'Cendre', de: 'Asche', pt: 'Cinza', lu: 'Äschen' }, colors: ['#F7F4EC', '#6E6A66', '#B08D30'], bg: '#F7F4EC' }
-  ];
-  function applyPalette(id) {
-    id = String(id || '0');
-    if (id === '0') { document.documentElement.removeAttribute('data-welux-palette'); try { localStorage.removeItem('welux-palette'); } catch (e) {} }
-    else { document.documentElement.setAttribute('data-welux-palette', id); try { localStorage.setItem('welux-palette', id); } catch (e) {} }
-    var pal = null;
-    PALETTES.forEach(function (p) { if (p.id === id) pal = p; });
-    var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta && pal) meta.setAttribute('content', pal.bg);
-    document.querySelectorAll('.welux-palette-opt').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-palette') === id)); });
-  }
-  try { var savedPal = localStorage.getItem('welux-palette'); if (savedPal) applyPalette(savedPal); } catch (e) {}
-  /* Header con sombra al hacer scroll */
+    /* Header con sombra al hacer scroll */
   var header = document.querySelector('header');
   function onScroll() {
     if (header) header.classList.toggle('welux-scrolled', window.scrollY > 24);
@@ -223,27 +203,7 @@ if(slug==='studio')main.appendChild(buildServices());
     div.innerHTML = '<p style="margin:.4rem 0"><strong>' + t.follow + '</strong> &nbsp;<a class="welux-social-btn" href="https://www.facebook.com/weluxhub" target="_blank" rel="noopener" aria-label="Facebook Welux">f</a> <a class="welux-social-btn" href="https://www.instagram.com/weluxhub" target="_blank" rel="noopener" aria-label="Instagram Welux">◎</a></p><p style="margin:.4rem 0">✉️ <a href="mailto:info@weluxhub.com">info@weluxhub.com</a> · <a href="https://www.concompas.com/" target="_blank" rel="noopener">ConCompás</a> · <a href="#invitaciones">' + t.inv + '</a></p><p style="margin:.4rem 0;font-size:.85rem"><a href="/legal/aviso-legal.html">' + t.legal + '</a> · <a href="/legal/privacidad.html">' + t.priv + '</a> · <a href="/legal/terminos.html">' + t.terms + '</a> · <a href="/legal/cookies.html">' + t.cook + '</a></p><p style="margin:.4rem 0;font-size:.8rem;color:#8a755c">WeLux Digital Services S.à r.l - S · Luxemburgo — ' + t.rights + '</p>';
     footerEl.appendChild(div);
   }
-  /* Selector de paleta provisional en el footer */
-  if (footerEl && !document.getElementById('welux-palette-picker')) {
-    var picker = document.createElement('div');
-    picker.className = 'welux-palette-picker'; picker.id = 'welux-palette-picker';
-    var h = document.createElement('h3'); h.textContent = '🎨 ' + t.palTitle; picker.appendChild(h);
-    var sub = document.createElement('p'); sub.textContent = t.palSub; picker.appendChild(sub);
-    PALETTES.forEach(function (pal) {
-      var b = document.createElement('button');
-      b.type = 'button'; b.className = 'welux-palette-opt'; b.setAttribute('data-palette', pal.id);
-      b.setAttribute('aria-pressed', 'false');
-      var dots = document.createElement('span'); dots.className = 'welux-palette-dots';
-      pal.colors.forEach(function (c) { var i = document.createElement('i'); i.style.background = c; dots.appendChild(i); });
-      var nm = document.createElement('span'); nm.className = 'welux-palette-name'; nm.textContent = pal.names[lang] || pal.names.es;
-      b.appendChild(dots); b.appendChild(nm);
-      b.addEventListener('click', function () { applyPalette(pal.id); });
-      picker.appendChild(b);
-    });
-    footerEl.appendChild(picker);
-    try { var cur = localStorage.getItem('welux-palette') || '0'; applyPalette(cur); } catch (e) { applyPalette('0'); }
-  }
-  /* Arreglar enlaces legales con href="#" del footer heredado */
+    /* Arreglar enlaces legales con href="#" del footer heredado */
   var legalMap = [[/aviso|legal notice|mentions|impressum/i, '/legal/aviso-legal.html'], [/privac|privacy|confidentialit|datenschutz|privatsph/i, '/legal/privacidad.html'], [/t.rminos|terms|conditions|agb|termos|bedingung/i, '/legal/terminos.html'], [/cookies/i, '/legal/cookies.html']];
   document.querySelectorAll('footer a[href="#"]').forEach(function (a) {
     legalMap.forEach(function (pair) { if (pair[0].test(a.textContent)) a.setAttribute('href', pair[1]); });

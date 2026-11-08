@@ -880,3 +880,42 @@ Array.prototype.slice.call(document.querySelectorAll('footer h4')).forEach(funct
 /* WeLux — corrección de contraste: títulos de las tarjetas simples y de las
    secciones nuevas en oscuro, porque las páginas de división usan tema oscuro. */
 (function(){'use strict';try{var s=document.createElement('style');s.textContent='.welux-card h3{color:#141310!important}.welux-services>h2{color:#141310!important}';document.head.appendChild(s);}catch(e){}})();
+
+/* WeLux — cargar el CSS compartido (paleta de la home) en las páginas que no lo enlazan
+   y convertir franjas de cifras, tarjetas oscuras y bloques destacados en widgets claros.
+   Aplica en todo el sitio (home, Studio, Careers, Gear, Films, legales y todos los idiomas):
+   sin el CSS, las páginas de división no tenían las variables --p-* ni las reglas de paleta,
+   así que el selector persistente del footer no les afectaba. */
+(function(){
+'use strict';
+try{
+if(!document.querySelector('link[href*="welux-v2.css"]')){
+var l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/welux-v2.css';document.head.appendChild(l);
+}
+function mark(){
+var main=document.querySelector('main');if(!main)return;
+var h1=main.querySelector('h1');
+function isDark(el){var c;try{c=getComputedStyle(el).backgroundColor;}catch(e){return false;}if(!c)return false;var m=c.match(/rgba?\((\d+)\D+(\d+)\D+(\d+)/);if(!m)return false;if(m.length>4&&parseFloat(m[4])<0.5)return false;return (+m[1])+(+m[2])+(+m[3])<380;}
+function bigNum(k){var els=[k].concat(Array.prototype.slice.call(k.querySelectorAll('*')));for(var i=0;i<els.length;i++){var fs=parseFloat(getComputedStyle(els[i]).fontSize);if(fs>=18&&/\d/.test(els[i].textContent||''))return true;}return false;}
+Array.prototype.slice.call(main.querySelectorAll('div,section')).forEach(function(p){
+if(p.classList.contains('welux-widget-row')||p.closest('.welux-cards,.welux-services,.welux-widget-row'))return;
+if(p.closest('form'))return;
+if(h1&&p.contains(h1))return;
+var kids=Array.prototype.slice.call(p.children).filter(function(k){return k.nodeType===1&&!k.querySelector('video');});
+if(kids.length<3||kids.length>6)return;
+var ok=kids.every(function(k){var t=(k.textContent||'').replace(/\s+/g,' ').trim();return t.length>0&&t.length<=90&&bigNum(k);});
+if(!ok)return;
+p.classList.add('welux-widget-row');
+kids.forEach(function(k){k.classList.add('welux-widget');});
+});
+Array.prototype.slice.call(main.querySelectorAll('div,section')).forEach(function(el){
+if(el.classList.contains('welux-widget')||el.closest('.welux-cards,.welux-services,.welux-widget,.welux-widget-row'))return;
+if(el.closest('form')||el.querySelector('video'))return;
+if(h1&&el.contains(h1))return;
+if(!el.querySelector('h2,h3,h4'))return;
+if(isDark(el)){el.classList.add('welux-widget');}
+});
+}
+mark();setTimeout(mark,800);
+}catch(e){}
+})();

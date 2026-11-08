@@ -232,3 +232,238 @@
   wireSectionVideos();
   window.addEventListener('load', wireSectionVideos);
 })();
+
+/* Home ligera y concisa, paletas, botón de idiomas y efectos (2026-11-08).
+   - Las paletas se aplican además como variables en línea en <html>, para que
+     el cambio se note al instante en toda la página (fondo, títulos, botones,
+     cabecera, tarjetas) y se mantenga al recargar (localStorage).
+   - La home queda en: hero con vídeo, titular corto, una frase corta, cuatro
+     botones concisos y las tarjetas de las divisiones limpias; el FAQ pesado de
+     invitaciones, el concierge, las listas de checks, los filtros, los KPIs y
+     la pista de desplazamiento quedan fuera de la vista en las homes.
+   - El botón flotante de idiomas queda siempre visible abajo a la derecha,
+     en todas las páginas que cargan este script.
+   - Animación de aparición al hacer scroll (con red de seguridad) y banda
+     marquee suave bajo el hero de las homes. */
+(function () {
+  var VARS = ['--p-bg', '--p-bg2', '--p-card', '--p-ink', '--p-ink-soft', '--p-heading', '--p-accent', '--p-accent-deep', '--p-accent-soft', '--p-gold', '--p-btn-from', '--p-btn-to', '--p-btn-text', '--p-header-bg', '--p-border'];
+
+  function syncPaletteVars() {
+    var cs = getComputedStyle(document.documentElement);
+    var root = document.documentElement.style;
+    VARS.forEach(function (k) { var v = cs.getPropertyValue(k); if (v) root.setProperty(k, v.trim()); });
+  }
+
+  function fixPaletteNote() {
+    var sec = document.querySelector('.welux-palette-picker');
+    if (!sec) return;
+    var best = null;
+    var nodes = sec.querySelectorAll('p, div, span');
+    for (var i = 0; i < nodes.length; i++) {
+      var t = nodes[i].textContent || '';
+      if (t.indexOf('Sin aplicar') !== -1 && nodes[i].children.length === 0) {
+        if (!best || t.length < best.textContent.length) best = nodes[i];
+      }
+    }
+    if (best) best.textContent = 'Se aplica al instante en toda la página y se guarda en este navegador.';
+  }
+
+  function isHome() {
+    var p = location.pathname.replace(/\/+$/, '');
+    return p === '' || p === '/en' || p === '/fr' || p === '/de' || p === '/pt' || p === '/lu';
+  }
+
+  function langPrefix() {
+    var p = location.pathname;
+    if (p.indexOf('/en/') === 0 || p === '/en') return '/en';
+    if (p.indexOf('/fr/') === 0 || p === '/fr') return '/fr';
+    if (p.indexOf('/de/') === 0 || p === '/de') return '/de';
+    if (p.indexOf('/pt/') === 0 || p === '/pt') return '/pt';
+    if (p.indexOf('/lu/') === 0 || p === '/lu') return '/lu';
+    return '';
+  }
+
+  /* Oculta el bloque (sección o contenedor de nivel superior) de un titular. */
+  function hideBlock(el) {
+    if (!el) return;
+    var n = el;
+    while (n && n.parentElement) {
+      if (n.tagName === 'SECTION' || n.tagName === 'ARTICLE') break;
+      var p = n.parentElement;
+      if (p.tagName === 'MAIN' || (p.className && String(p.className).indexOf('max-w-7xl') !== -1)) break;
+      n = p;
+    }
+    if (!n || n.tagName === 'MAIN') return;
+    if (n.className && String(n.className).indexOf('max-w-7xl') !== -1) return;
+    n.style.display = 'none';
+  }
+
+  function lightenHome() {
+    if (!isHome()) return;
+    var hero = document.querySelector('.welux-hero-video');
+    var heroHeader = hero && hero.nextElementSibling;
+    if (heroHeader && heroHeader.tagName !== 'HEADER') heroHeader = null;
+    /* Invitaciones / ConCompás con su FAQ pesado: fuera de la home. */
+    var inv = document.getElementById('welux-invitaciones');
+    if (inv) inv.style.display = 'none';
+    /* Concierge y orientación: fuera de la home. */
+    var heads = document.querySelectorAll('h2, h3');
+    for (var i = 0; i < heads.length; i++) {
+      if (/concierge/i.test(heads[i].textContent)) hideBlock(heads[i]);
+    }
+    if (heroHeader) {
+      /* Sin la cuadrícula de KPIs. */
+      var grids = heroHeader.querySelectorAll('.grid');
+      for (var g = 0; g < grids.length; g++) {
+        if (/Proyect|Project|Projet|Entreg|Event|vén|Fond|Deliver|Livr|Veranstaltung/i.test(grids[g].textContent)) grids[g].style.display = 'none';
+      }
+      /* Sin la barra de filtros ni sus píldoras. */
+      var filterDivs = heroHeader.querySelectorAll('div');
+      for (var l = 0; l < filterDivs.length; l++) {
+        if (/FILTR|FILTER/i.test(filterDivs[l].textContent) && filterDivs[l].textContent.length < 80) {
+          filterDivs[l].style.display = 'none';
+          if (filterDivs[l].nextElementSibling) filterDivs[l].nextElementSibling.style.display = 'none';
+        }
+      }
+      /* Sin el párrafo largo: queda la frase corta del titular. */
+      var paras = heroHeader.querySelectorAll('p');
+      for (var q = 0; q < paras.length; q++) {
+        if (paras[q].className.indexOf('text-white/70') !== -1) paras[q].style.display = 'none';
+      }
+      /* Botones concisos con estilo, justo bajo la frase corta. */
+      if (!heroHeader.querySelector('.welux-hero-ctas')) {
+        var lang = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
+        var pre = langPrefix();
+        var ctaLabels = {
+          es: ['Ver Studio', 'Buscar trabajo', 'Ver equipo', 'Escríbenos'],
+          en: ['View Studio', 'Find work', 'See gear', 'Write to us'],
+          fr: ['Voir le Studio', 'Trouver un emploi', 'Voir le matériel', 'Écrivez-nous'],
+          de: ['Studio ansehen', 'Job finden', 'Ausrüstung ansehen', 'Schreiben Sie uns'],
+          pt: ['Ver Studio', 'Procurar trabalho', 'Ver equipamento', 'Escreva-nos'],
+          lu: ['Studio kucken', 'Aarbecht sichen', 'Ausrüstung kucken', 'Schreift eis']
+        };
+        var t = ctaLabels[lang] || ctaLabels.es;
+        var hrefs = [pre + '/studio/', pre + '/careers/', pre + '/gear/', 'mailto:info@weluxhub.com'];
+        var box = document.createElement('div');
+        box.className = 'welux-hero-ctas';
+        box.style.cssText = 'display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:1.5rem;position:relative;z-index:2';
+        for (var k = 0; k < 4; k++) {
+          var a = document.createElement('a');
+          a.className = 'welux-hero-button ' + (k === 0 ? 'welux-hero-button--primary' : 'welux-hero-button--secondary');
+          a.href = hrefs[k];
+          a.textContent = t[k];
+          box.appendChild(a);
+        }
+        var anchor = heroHeader.querySelector('p');
+        if (anchor && anchor.nextSibling) heroHeader.insertBefore(box, anchor.nextSibling);
+        else heroHeader.appendChild(box);
+      }
+    }
+    /* Sin las filas de checks en las tarjetas de las divisiones. */
+    var icons = document.querySelectorAll('main .material-symbols-outlined, main [class*="material"]');
+    for (var m = 0; m < icons.length; m++) {
+      if (icons[m].textContent.indexOf('check_circle') !== -1) {
+        var row = icons[m].parentElement;
+        if (row) row.style.display = 'none';
+      }
+    }
+    /* Sin las notas de admisión ni de audiencia en las tarjetas. */
+    var cards = document.querySelectorAll('main .welux-deck-card, main .welux-cinematic-card');
+    for (var s = 0; s < cards.length; s++) {
+      var els = cards[s].querySelectorAll('*');
+      for (var e = 0; e < els.length; e++) {
+        if (/Admisión selectiva|Admission sélective|AUDIENCIA DIANA|TARGET AUDIENCE/i.test(els[e].textContent) && els[e].children.length === 0) els[e].style.display = 'none';
+      }
+    }
+    /* Sin la pista de desplazamiento bajo el carrusel. */
+    var hints = document.querySelectorAll('main div, main p, main span');
+    for (var h = 0; h < hints.length; h++) {
+      var ht = hints[h].textContent || '';
+      if (ht.length < 120 && /Desliza|Swipe|Faites défiler|Wischen|Deslize/i.test(ht) && hints[h].children.length === 0) hints[h].style.display = 'none';
+    }
+    /* Banda marquee suave bajo el hero (solo una vez). */
+    if (heroHeader && !document.querySelector('.welux-marquee')) {
+      var items = ['Luxembourg', 'Madrid', 'Paris', 'Studio B2B', 'Careers', 'Cine Gear', 'ConCompás', 'Fotomatón'];
+      var band = document.createElement('div');
+      band.className = 'welux-marquee';
+      band.setAttribute('aria-hidden', 'true');
+      band.style.cssText = 'padding:.7rem 0;border-top:1px solid var(--p-border);border-bottom:1px solid var(--p-border);color:var(--p-accent-deep);opacity:.75';
+      var pista = document.createElement('div');
+      pista.className = 'welux-marquee-pista';
+      var half = items.map(function (w) { return '<span style="font-family:JetBrains Mono,monospace;font-size:11px;letter-spacing:.25em;text-transform:uppercase">' + w + '</span>'; }).join('<span>·</span>');
+      pista.innerHTML = half + '<span>·</span>' + half + '<span>·</span>';
+      band.appendChild(pista);
+      heroHeader.parentElement.insertBefore(band, heroHeader.nextSibling);
+    }
+  }
+
+  function initReveal() {
+    var els = document.querySelectorAll('main section, main article, .welux-deck-card, .welux-cinematic-card, .welux-media-card');
+    for (var i = 0; i < els.length; i++) if (!els[i].classList.contains('welux-reveal')) els[i].classList.add('welux-reveal');
+    function showAll() {
+      var r = document.querySelectorAll('.welux-reveal');
+      for (var j = 0; j < r.length; j++) r[j].classList.add('is-visible');
+    }
+    if (!('IntersectionObserver' in window)) { showAll(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    var rev = document.querySelectorAll('.welux-reveal');
+    for (var k = 0; k < rev.length; k++) io.observe(rev[k]);
+    setTimeout(showAll, 4000);
+  }
+
+  function ensureLangButton() {
+    var fab = document.querySelector('.welux-idioma-flotante');
+    var lang = ((document.documentElement.lang || 'es').slice(0, 2)).toLowerCase();
+    var created = false;
+    if (!fab) {
+      fab = document.createElement('div');
+      fab.className = 'welux-idioma-flotante';
+      fab.innerHTML = '<button class="welux-idioma-btn" type="button" aria-label="Idioma / Language" aria-expanded="false">🌐 <span>' + lang.toUpperCase() + '</span></button><div class="welux-idioma-menu" hidden><a href="/">ES</a><a href="/en/">EN</a><a href="/fr/">FR</a><a href="/de/">DE</a><a href="/pt/">PT</a><a href="/lu/">LU</a></div>';
+      document.body.appendChild(fab);
+      created = true;
+    }
+    if (fab.parentNode !== document.body) document.body.appendChild(fab);
+    fab.style.position = 'fixed'; fab.style.right = '16px'; fab.style.bottom = '16px'; fab.style.zIndex = '99999'; fab.style.display = 'flex'; fab.style.visibility = 'visible'; fab.style.opacity = '1';
+    var btn = fab.querySelector('.welux-idioma-btn');
+    var menu = fab.querySelector('.welux-idioma-menu');
+    if (menu) {
+      menu.style.position = 'absolute'; menu.style.bottom = 'calc(100% + 10px)'; menu.style.right = '0'; menu.style.flexDirection = 'column'; menu.style.gap = '4px'; menu.style.background = 'var(--p-card, #fffdf8)'; menu.style.border = '1px solid var(--p-border, #eadfc8)'; menu.style.borderRadius = '14px'; menu.style.padding = '6px'; menu.style.boxShadow = '0 12px 28px rgba(30,28,24,.22)'; menu.style.minWidth = '120px';
+      var links = menu.querySelectorAll('a');
+      for (var i = 0; i < links.length; i++) { links[i].style.display = 'block'; links[i].style.padding = '8px 12px'; links[i].style.borderRadius = '8px'; links[i].style.color = 'var(--p-ink, #43301f)'; links[i].style.textDecoration = 'none'; }
+    }
+    /* Solo cablea el botón cuando lo crea este bloque; si el botón ya existe,
+       conserva su propio cableado original (no duplicar el toggle). */
+    if (created && btn && menu) {
+      btn.addEventListener('click', function (ev) { ev.stopPropagation(); var open = menu.hidden; menu.hidden = !open; btn.setAttribute('aria-expanded', String(open)); });
+    }
+    if (btn && menu && !fab.getAttribute('data-welux-close-wired')) {
+      fab.setAttribute('data-welux-close-wired', '1');
+      document.addEventListener('click', function (ev) { if (!fab.contains(ev.target)) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+      document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+    }
+    /* Marca el idioma activo dentro del menú. */
+    var actLinks = fab.querySelectorAll('.welux-idioma-menu a');
+    for (var j = 0; j < actLinks.length; j++) {
+      var href = actLinks[j].getAttribute('href');
+      if (href === '/' + lang + '/' || (lang === 'es' && href === '/')) actLinks[j].setAttribute('aria-current', 'true');
+    }
+  }
+
+  /* Limpia el vídeo que el bloque del hero inyecta dentro de la cabecera de
+     navegación en las páginas sin hueco de vídeo propio (no debe verse una
+     tira de vídeo dentro de la barra de navegación). */
+  var stray = document.querySelector('body > header > video');
+  if (stray) stray.remove();
+
+  document.querySelectorAll('.welux-palette-opt').forEach(function (b) {
+    b.addEventListener('click', function () { setTimeout(syncPaletteVars, 0); });
+  });
+  fixPaletteNote();
+  syncPaletteVars();
+  lightenHome();
+  initReveal();
+  ensureLangButton();
+  window.addEventListener('load', function () { syncPaletteVars(); lightenHome(); ensureLangButton(); });
+})();

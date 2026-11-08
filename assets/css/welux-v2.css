@@ -159,3 +159,37 @@ html[data-welux-palette] .portal-card{background:var(--p-card)!important;border-
 html[data-welux-palette] .portal-card > div:last-child{background:var(--p-bg2)!important}
 html[data-welux-palette] .welux-palette-picker{background:var(--p-card)!important}
 html[data-welux-palette] footer{background:var(--p-ink)!important}
+
+/* WeLux — unificación de paleta en TODAS las páginas (Gear, Careers, Studio, Films, legales y todos los idiomas).
+   Las páginas de división usaban colores oscuros propios de Tailwind (zinc/negro/rojo) y no cargaban
+   este CSS compartido, por eso no seguían la paleta de la home ni el selector del footer, que es persistente.
+   Estas reglas mapean esos colores a las variables de paleta --p-* (que cambian con el selector). */
+html main [class*="bg-zinc-950"],html main [class*="bg-zinc-900"],html main [class*="bg-zinc-800"],html main [class*="bg-neutral-950"],html main [class*="bg-neutral-900"],html main [class*="bg-neutral-800"],html main [class*="bg-slate-950"],html main [class*="bg-slate-900"],html main [class*="bg-stone-950"],html main [class*="bg-stone-900"],html main [class*="bg-black"],html header [class*="bg-zinc-950"],html header [class*="bg-zinc-900"],html header [class*="bg-neutral-900"],html header [class*="bg-black"],html footer [class*="bg-zinc-950"],html footer [class*="bg-zinc-900"],html footer [class*="bg-neutral-900"],html footer [class*="bg-black"]{background-color:var(--p-card)!important}
+html main [class*="bg-zinc-700"],html main [class*="bg-neutral-700"],html main [class*="bg-slate-800"]{background-color:var(--p-bg2)!important}
+html main [class*="text-white"],html main [class*="text-zinc-100"],html main [class*="text-zinc-200"],html main [class*="text-zinc-300"],html main [class*="text-zinc-400"],html main [class*="text-neutral-100"],html main [class*="text-neutral-200"],html main [class*="text-neutral-300"],html main [class*="text-slate-100"],html main [class*="text-slate-200"],html main [class*="text-slate-300"],html header [class*="text-white"],html header [class*="text-zinc-300"],html footer [class*="text-white"],html footer [class*="text-zinc-300"],html footer [class*="text-zinc-400"]{color:var(--p-ink)!important}
+html main [class*="text-zinc-500"],html main [class*="text-zinc-600"],html main [class*="text-neutral-500"],html main [class*="text-slate-400"],html main [class*="text-slate-500"]{color:var(--p-ink-soft)!important}
+html main [class*="text-red-"],html main [class*="text-rose-"],html header [class*="text-red-"]{color:var(--p-accent-deep)!important}
+html main [class*="text-amber-"],html main [class*="text-yellow-"]{color:var(--p-gold)!important}
+html main [class*="text-blue-"],html main [class*="text-sky-"],html main [class*="text-indigo-"]{color:var(--p-accent-deep)!important}
+html main [class*="text-green-"],html main [class*="text-emerald-"]{color:var(--p-accent)!important}
+html main [class*="border-zinc-"],html main [class*="border-neutral-"],html main [class*="border-slate-"],html main [class*="border-white"]{border-color:var(--p-border)!important}
+html main [class*="bg-red-"],html main [class*="bg-rose-"],html header [class*="bg-red-"],html header [class*="bg-rose-"]{background:linear-gradient(180deg,var(--p-btn-from),var(--p-btn-to))!important;color:var(--p-btn-text)!important;border-color:transparent!important}
+html main [class*="bg-amber-"],html main [class*="bg-yellow-"]{background-color:var(--p-gold)!important;color:#fff!important}
+html main [class*="bg-blue-"],html main [class*="bg-sky-"],html main [class*="bg-indigo-"]{background:linear-gradient(180deg,var(--p-btn-from),var(--p-btn-to))!important;color:var(--p-btn-text)!important}
+html main [class*="bg-green-"],html main [class*="bg-emerald-"]{background-color:var(--p-accent)!important;color:#fff!important}
+/* El texto sobre un vídeo conserva el color claro para seguir legible. */
+html main div:has(>video) [class*="text-white"],html main div:has(>video) [class*="text-zinc-"],html main div:has(>video) [class*="text-neutral-"],html main div:has(>video) [class*="text-slate-"]{color:#fff!important}
+html main div:has(>video){background-color:transparent!important}
+
+/* WeLux — estilo widget: franjas de cifras, tarjetas oscuras y bloques destacados.
+   Tarjeta clara y profesional, con sombra y profundidad, igual que las tarjetas de la home. */
+.welux-widget{background:var(--p-card)!important;border:1px solid var(--p-border)!important;border-radius:18px!important;box-shadow:var(--welux-shadow-md)!important;padding:22px 24px!important;color:var(--p-ink)!important}
+.welux-widget h1,.welux-widget h2,.welux-widget h3,.welux-widget h4{color:var(--p-heading)!important}
+.welux-widget-row{display:flex!important;flex-wrap:wrap!important;gap:16px!important;margin:32px auto!important}
+html main .welux-widget-row{background:transparent!important;border-color:transparent!important;box-shadow:none!important}
+.welux-widget-row>.welux-widget{flex:1 1 160px!important}
+.welux-widget [class*="text-2xl"],.welux-widget [class*="text-3xl"],.welux-widget [class*="text-4xl"]{font-family:'Fraunces',Georgia,serif!important;color:var(--p-heading)!important}
+.welux-card{box-shadow:var(--welux-shadow-md)!important}
+
+/* El pie también sigue a la home: claro, no tinta oscura, con la paleta elegida. */
+html[data-welux-palette] footer{background:linear-gradient(180deg,var(--p-bg),var(--p-bg2))!important}

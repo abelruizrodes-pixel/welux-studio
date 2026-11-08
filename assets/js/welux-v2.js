@@ -382,7 +382,7 @@
       if (ht.length < 120 && /Desliza|Swipe|Faites défiler|Wischen|Deslize/i.test(ht) && hints[h].children.length === 0) hints[h].style.display = 'none';
     }
     /* Banda marquee suave bajo el hero (solo una vez). */
-    if (heroHeader && !document.querySelector('.welux-marquee')) {
+    if (heroHeader) { var existingMarquee = document.querySelector('.welux-marquee'); if (existingMarquee) { heroHeader.parentElement.insertBefore(existingMarquee, heroHeader.nextSibling); } else {
       var items = ['Luxembourg', 'Madrid', 'Paris', 'Studio B2B', 'Careers', 'Cine Gear', 'ConCompás', 'Fotomatón'];
       var band = document.createElement('div');
       band.className = 'welux-marquee';
@@ -393,7 +393,7 @@
       var half = items.map(function (w) { return '<span style="font-family:JetBrains Mono,monospace;font-size:11px;letter-spacing:.25em;text-transform:uppercase">' + w + '</span>'; }).join('<span>·</span>');
       pista.innerHTML = half + '<span>·</span>' + half + '<span>·</span>';
       band.appendChild(pista);
-      heroHeader.parentElement.insertBefore(band, heroHeader.nextSibling);
+      heroHeader.parentElement.insertBefore(band, heroHeader.nextSibling); }
     }
   }
 

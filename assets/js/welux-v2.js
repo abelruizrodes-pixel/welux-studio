@@ -501,3 +501,33 @@
   fixPaletteNote();
   window.addEventListener('load', function () { if (isHome()) hideInvitations(); fixPaletteNote(); });
 })();
+
+/* Corrección de la home ligera: las etiquetas reales de la plantilla usan
+   «Impresiones / Pago / 4.6K RAW / SLA» (no «Proyectos / Entregas»), las
+   listas de prestaciones de las tarjetas usan otros iconos además de
+   check_circle, y el rótulo de filtros en alemán es «FILTERN». */
+(function () {
+  function isHome() {
+    var p = location.pathname.replace(/\/+$/, '');
+    return p === '' || p === '/en' || p === '/fr' || p === '/de' || p === '/pt' || p === '/lu';
+  }
+  function fix() {
+    var hero = document.querySelector('.welux-hero-video');
+    var hh = hero && hero.nextElementSibling;
+    if (hh && hh.tagName === 'HEADER') {
+      var grids = hh.querySelectorAll('.grid');
+      for (var g = 0; g < grids.length; g++) grids[g].style.display = 'none';
+      var divs = hh.querySelectorAll('div');
+      for (var d = 0; d < divs.length; d++) {
+        if (/FILT/i.test(divs[d].textContent) && divs[d].textContent.length < 80) {
+          divs[d].style.display = 'none';
+          if (divs[d].nextElementSibling) divs[d].nextElementSibling.style.display = 'none';
+        }
+      }
+    }
+    var uls = document.querySelectorAll('main .portal-card ul, main .welux-deck-card ul, main .welux-cinematic-card ul');
+    for (var u = 0; u < uls.length; u++) uls[u].style.display = 'none';
+  }
+  if (isHome()) fix();
+  window.addEventListener('load', function () { if (isHome()) fix(); });
+})();

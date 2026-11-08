@@ -920,3 +920,88 @@ if(col&&col.a>0.5&&col.sum>500){el.style.setProperty('color','var(--p-ink)','imp
 sweep();setTimeout(sweep,800);var _w=document.createElement('script');_w.src='/assets/js/welux-backend.js';document.head.appendChild(_w); /* Carga welux-backend.js: backend Cloudflare + D1, botones, idiomas y casita (2026-11-08). */
 }catch(e){}
 })();
+
+/* WeLux — Widgets de reseñas (Google, Editus y Trustpilot) en la home y en Studio, en los 6 idiomas.
+Datos verificados el 8 nov 2026: Google Business «Welux Digital Services», 4,9★, 8 reseñas
+(citas literales de sus reseñas); Editus, ficha «WeLux Digital Services SARLS» (id 2168458),
+sin valoración publicada aquí porque Editus bloquea esta red (DataDome) y no se inventa ninguna
+cifra; Trustpilot aún no tiene perfil de WeLux (búsqueda vacía y 404 en /review/weluxhub.com),
+así que el perfil hay que crearlo en Trustpilot Business. Google, Editus y Trustpilot NO
+comparten reseñas: cada plataforma guarda la suya, así que una misma reseña no se publica sola
+en las tres. El formulario propio guarda la reseña en el backend (Worker + D1) y guía al cliente
+a publicarla en cada plataforma. */
+(function(){
+'use strict';
+try{
+var path=(location.pathname||'/').replace(/\/+$/,'')||'/';
+var parts=path.split('/').filter(function(s){return s;});
+var LANGS=['en','fr','de','pt','lu'];
+var lang='es';var rest=parts.slice();
+if(LANGS.indexOf(parts[0])>=0){lang=parts[0];rest=parts.slice(1);}
+var slug=(rest[0]||'').replace(/\.html$/,'');
+var isHome=rest.length===0||slug==='index';
+var isStudio=slug==='studio'&&rest.length===1;
+if(!isHome&&!isStudio)return;
+if(document.getElementById('resenas'))return;
+var GOOGLE_URL='https://www.google.com/maps/search/?api=1&query=Welux+Digital+Services';
+var EDITUS_URL='https://www.editus.lu/en/welux-digital-services-sarls-luxembourg-2168458';
+var TRUST_URL='https://www.trustpilot.com/search?query=weluxhub';
+var RV={
+es:{t:'Lo que dicen de WeLux',l:'4,9★ en Google con 8 reseñas. Cada plataforma guarda su propia reseña: una misma opinión no se publica sola en las tres. Déjala aquí y te guiamos a publicarla en cada una.',g:'Google',gN:'4,9★ · 8 reseñas',gQ:'«Hemos hecho la documentación de un evento, fotos y vídeos: un equipo muy profesional, simpático y dinámico.»',gA:'Abel Rhodes Kane · 5★',gQ2:'«Muy buena.»',gA2:'Carlos Mario Rondon · 5★',e:'Editus',eN:'Ficha en el directorio de empresas de Luxemburgo',eB:'Ver ficha y opiniones en Editus',tp:'Trustpilot',tpN:'Aún no estamos en Trustpilot',tpL:'Sé la primera persona en opinar en Trustpilot.',tpB:'Añadir la empresa en Trustpilot',w:'Escribe tu reseña',v:'Ver en Google',fT:'Deja tu reseña',fN:'Tu nombre y tu correo solo se usan para guardar tu reseña y responderte. Sin spam.',nP:'Tu nombre',eP:'Tu correo',mP:'Tu reseña',sL:'Tu valoración',sB:'Guardar mi reseña',okT:'¡Gracias! Ahora publícala en cada plataforma',okL:'Google, Editus y Trustpilot no comparten reseñas entre sí: cada una pide su propia publicación. Tu reseña ya quedó guardada con nosotros.',pG:'Publicar en Google',pE:'Publicar en Editus',pT:'Publicar en Trustpilot'},
+en:{t:'What they say about WeLux',l:'4.9★ on Google with 8 reviews. Each platform keeps its own review: one opinion does not publish itself on all three. Leave yours here and we will guide you to post it on each one.',g:'Google',gN:'4.9★ · 8 reviews',gQ:'«Hemos hecho la documentación de un evento, fotos y vídeos: un equipo muy profesional, simpático y dinámico.»',gA:'Abel Rhodes Kane · 5★',gQ2:'«Muy buena.»',gA2:'Carlos Mario Rondon · 5★',e:'Editus',eN:'Listing in Luxembourg’s business directory',eB:'See listing and reviews on Editus',tp:'Trustpilot',tpN:'We are not on Trustpilot yet',tpL:'Be the first person to review us on Trustpilot.',tpB:'Add the company on Trustpilot',w:'Write your review',v:'View on Google',fT:'Leave your review',fN:'Your name and email are only used to save your review and reply to you. No spam.',nP:'Your name',eP:'Your email',mP:'Your review',sL:'Your rating',sB:'Save my review',okT:'Thank you! Now post it on each platform',okL:'Google, Editus and Trustpilot do not share reviews with each other: each one asks for its own post. Your review is already saved with us.',pG:'Post on Google',pE:'Post on Editus',pT:'Post on Trustpilot'},
+fr:{t:'Ce qu’on dit de WeLux',l:'4,9★ sur Google avec 8 avis. Chaque plateforme garde son propre avis : un même avis ne se publie pas tout seul sur les trois. Laissez le vôtre ici et nous vous guiderons pour le publier sur chacune.',g:'Google',gN:'4,9★ · 8 avis',gQ:'«Hemos hecho la documentación de un evento, fotos y vídeos: un equipo muy profesional, simpático y dinámico.»',gA:'Abel Rhodes Kane · 5★',gQ2:'«Muy buena.»',gA2:'Carlos Mario Rondon · 5★',e:'Editus',eN:'Fiche dans l’annuaire des entreprises du Luxembourg',eB:'Voir la fiche et les avis sur Editus',tp:'Trustpilot',tpN:'Nous ne sommes pas encore sur Trustpilot',tpL:'Soyez la première personne à donner votre avis sur Trustpilot.',tpB:'Ajouter l’entreprise sur Trustpilot',w:'Écrire un avis',v:'Voir sur Google',fT:'Laissez votre avis',fN:'Votre nom et votre e-mail servent seulement à enregistrer votre avis et à vous répondre. Pas de spam.',nP:'Votre nom',eP:'Votre e-mail',mP:'Votre avis',sL:'Votre note',sB:'Enregistrer mon avis',okT:'Merci ! Publiez-le maintenant sur chaque plateforme',okL:'Google, Editus et Trustpilot ne partagent pas leurs avis entre eux : chacun demande sa propre publication. Votre avis est déjà enregistré chez nous.',pG:'Publier sur Google',pE:'Publier sur Editus',pT:'Publier sur Trustpilot'},
+de:{t:'Das sagen andere über WeLux',l:'4,9★ bei Google mit 8 Bewertungen. Jede Plattform hat ihre eigenen Bewertungen: Eine Meinung veröffentlicht sich nicht von allein auf allen dreien. Hinterlassen Sie Ihre hier und wir zeigen Ihnen, wie Sie sie auf jeder veröffentlichen.',g:'Google',gN:'4,9★ · 8 Bewertungen',gQ:'«Hemos hecho la documentación de un evento, fotos y vídeos: un equipo muy profesional, simpático y dinámico.»',gA:'Abel Rhodes Kane · 5★',gQ2:'«Muy buena.»',gA2:'Carlos Mario Rondon · 5★',e:'Editus',eN:'Eintrag im Unternehmensverzeichnis von Luxemburg',eB:'Eintrag und Bewertungen auf Editus ansehen',tp:'Trustpilot',tpN:'Wir sind noch nicht auf Trustpilot',tpL:'Seien Sie die erste Person, die uns auf Trustpilot bewertet.',tpB:'Unternehmen auf Trustpilot hinzufügen',w:'Bewertung schreiben',v:'Auf Google ansehen',fT:'Hinterlassen Sie Ihre Bewertung',fN:'Ihr Name und Ihre E-Mail werden nur verwendet, um Ihre Bewertung zu speichern und Ihnen zu antworten. Kein Spam.',nP:'Ihr Name',eP:'Ihre E-Mail',mP:'Ihre Bewertung',sL:'Ihre Bewertung',sB:'Meine Bewertung speichern',okT:'Danke! Veröffentlichen Sie sie jetzt auf jeder Plattform',okL:'Google, Editus und Trustpilot teilen ihre Bewertungen nicht miteinander: Jede verlangt ihre eigene Veröffentlichung. Ihre Bewertung ist bei uns bereits gespeichert.',pG:'Auf Google veröffentlichen',pE:'Auf Editus veröffentlichen',pT:'Auf Trustpilot veröffentlichen'},
+pt:{t:'O que dizem da WeLux',l:'4,9★ no Google com 8 avaliações. Cada plataforma guarda a sua própria avaliação: uma mesma opinião não se publica sozinha nas três. Deixe a sua aqui e guiamos você para a publicar em cada uma.',g:'Google',gN:'4,9★ · 8 avaliações',gQ:'«Hemos hecho la documentación de un evento, fotos y vídeos: un equipo muy profesional, simpático y dinâmico.»',gA:'Abel Rhodes Kane · 5★',gQ2:'«Muy buena.»',gA2:'Carlos Mario Rondon · 5★',e:'Editus',eN:'Ficha no diretório de empresas do Luxemburgo',eB:'Ver ficha e avaliações no Editus',tp:'Trustpilot',tpN:'Ainda não estamos no Trustpilot',tpL:'Seja a primeira pessoa a avaliar-nos no Trustpilot.',tpB:'Adicionar a empresa no Trustpilot',w:'Escrever avaliação',v:'Ver no Google',fT:'Deixe a sua avaliação',fN:'O seu nome e o seu e-mail só servem para guardar a sua avaliação e responder-lhe. Sem spam.',nP:'O seu nome',eP:'O seu e-mail',mP:'A sua avaliação',sL:'A sua classificação',sB:'Guardar a minha avaliação',okT:'Obrigado! Agora publique-a em cada plataforma',okL:'O Google, o Editus e o Trustpilot não partilham avaliações entre si: cada um pede a sua própria publicação. A sua avaliação já ficou guardada connosco.',pG:'Publicar no Google',pE:'Publicar no Editus',pT:'Publicar no Trustpilot'},
+lu:{t:'Wat anerer iwwer WeLux soen',l:'4,9★ op Google mat 8 Bewäertungen. Jidd Plattform huet hir eege Bewäertungen: Eng Meenung verëffentlecht sech net vun eleng op allen dräi. Loosst Är hei a mir weisen Iech, wéi Dir se op jiddwer verëffentlecht.',g:'Google',gN:'4,9★ · 8 Bewäertungen',gQ:'«Hemos hecho la documentación de un evento, fotos y vídeos: un equipo muy profesional, simpático y dinámico.»',gA:'Abel Rhodes Kane · 5★',gQ2:'«Muy buena.»',gA2:'Carlos Mario Rondon · 5★',e:'Editus',eN:'Androung am Entrepriseverzeichnis vu Lëtzebuerg',eB:'Androung a Bewäertungen op Editus kucken',tp:'Trustpilot',tpN:'Mir sinn nach net op Trustpilot',tpL:'Sidd déi éischt Persoun, déi eis op Trustpilot bewäert.',tpB:'Entreprise op Trustpilot derbäisetzen',w:'Bewäertung schreiwen',v:'Op Google kucken',fT:'Loosst Är Bewäertung',fN:'Ären Numm an Är E-Mail gi just benotzt, fir Är Bewäertung ze späicheren an Iech ze äntweren. Kee Spam.',nP:'Ären Numm',eP:'Är E-Mail',mP:'Är Bewäertung',sL:'Är Bewäertung',sB:'Meng Bewäertung späicheren',okT:'Merci! Verëffentlecht se elo op jiddwer Plattform',okL:'Google, Editus an Trustpilot deelen hir Bewäertungen net mateneen: Jidd freet hir eege Verëffentlechung. Är Bewäertung ass bei eis scho gespäichert.',pG:'Op Google verëffentlechen',pE:'Op Editus verëffentlechen',pT:'Op Trustpilot verëffentlechen'}
+};
+var D=RV[lang]||RV.es;
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+var st=document.createElement('style');
+st.textContent='.welux-resenas{max-width:72rem;margin:0 auto;padding:2.5rem 1.5rem;text-align:center}.welux-resenas h2{color:#16232e}.welux-resenas .welux-services-sub{color:#33414e}.welux-resenas .welux-card{text-align:left;background:#fffdf8;border:1px solid rgba(22,35,46,.18);border-radius:14px}.welux-resenas .welux-card h3{color:#16232e}.welux-resenas .welux-card p{color:#33414e}.welux-resena-stars{font-size:1.15rem;color:#c9a227;letter-spacing:.1em}.welux-resena-cita{font-style:italic}.welux-resena-form{max-width:36rem;margin:1.5rem auto 0;text-align:left;background:#fffdf8;border:1px solid rgba(22,35,46,.18);border-radius:14px;padding:1.25rem}.welux-resena-form input,.welux-resena-form textarea{display:block;width:100%;box-sizing:border-box;margin:.5rem 0;padding:.6rem .7rem;border:1px solid rgba(22,35,46,.35);border-radius:8px;font:inherit;color:#16232e;background:#fff}.welux-resena-form textarea{min-height:5rem;resize:vertical}.welux-resena-form button[type=submit]{display:inline-block;margin-top:.5rem;padding:.7rem 1.2rem;border:0;border-radius:999px;background:#d9a441;color:#16232e;font-weight:800;cursor:pointer}.welux-resena-guia{max-width:36rem;margin:1.5rem auto 0;text-align:left;background:#eef3e6;border:1px solid #9db38a;border-radius:14px;padding:1.25rem;color:#16232e}.welux-resena-guia a{display:inline-block;margin:.35rem .5rem .35rem 0;padding:.6rem 1rem;border-radius:999px;background:#16232e;color:#fdf7ee;text-decoration:none;font-weight:700}.welux-resena-priv{font-size:.85rem;color:#5a6b7a}.welux-resena-rate{display:flex;gap:.25rem;align-items:center;margin:.5rem 0}.welux-resena-rate label{font-size:1.7rem;line-height:1;cursor:pointer;color:#c9c2b4}.welux-resena-rate label.on{color:#c9a227}.welux-resena-rate input{position:absolute;opacity:0;pointer-events:none}';
+document.head.appendChild(st);
+var sec=el('section','welux-services welux-resenas');sec.id='resenas';
+sec.appendChild(el('h2',null,D.t));
+sec.appendChild(el('p','welux-services-sub',D.l));
+var grid=el('div','welux-cards');
+var c1=el('article','welux-card');
+c1.appendChild(el('h3',null,D.g));
+c1.appendChild(el('p','welux-resena-stars','★★★★★'));
+c1.appendChild(el('p',null,D.gN));
+c1.appendChild(el('p','welux-resena-cita',D.gQ));
+c1.appendChild(el('p',null,D.gA));
+c1.appendChild(el('p','welux-resena-cita',D.gQ2));
+c1.appendChild(el('p',null,D.gA2));
+var a1=el('a',null,D.v);a1.href=GOOGLE_URL;a1.target='_blank';a1.rel='noopener';c1.appendChild(a1);
+grid.appendChild(c1);
+var c2=el('article','welux-card');
+c2.appendChild(el('h3',null,D.e));
+c2.appendChild(el('p',null,D.eN));
+var a2=el('a',null,D.eB);a2.href=EDITUS_URL;a2.target='_blank';a2.rel='noopener';c2.appendChild(a2);
+var a2b=el('a',null,D.w);a2b.href=EDITUS_URL;a2b.target='_blank';a2b.rel='noopener';c2.appendChild(a2b);
+grid.appendChild(c2);
+var c3=el('article','welux-card');
+c3.appendChild(el('h3',null,D.tp));
+c3.appendChild(el('p',null,D.tpN));
+c3.appendChild(el('p',null,D.tpL));
+var a3=el('a',null,D.tpB);a3.href=TRUST_URL;a3.target='_blank';a3.rel='noopener';c3.appendChild(a3);
+grid.appendChild(c3);
+sec.appendChild(grid);
+var form=document.createElement('form');
+form.id='welux-resena-form';form.className='welux-resena-form';form.method='post';form.action='#resenas';
+form.innerHTML='<h3>'+D.fT+'</h3><label>'+D.sL+'</label><div class="welux-resena-rate"><label><input type="radio" name="valoracion" value="5" checked>★</label><label><input type="radio" name="valoracion" value="4">★</label><label><input type="radio" name="valoracion" value="3">★</label><label><input type="radio" name="valoracion" value="2">★</label><label><input type="radio" name="valoracion" value="1">★</label></div><input type="text" name="nombre" required placeholder="'+D.nP+'"><input type="email" name="email" required placeholder="'+D.eP+'"><textarea name="mensaje" required placeholder="'+D.mP+'"></textarea><input type="hidden" name="tipo" value="resena"><input type="hidden" name="origen" value="resena-web"><button type="submit">'+D.sB+'</button><p class="welux-resena-priv">'+D.fN+'</p>';
+sec.appendChild(form);
+var guia=el('div','welux-resena-guia');guia.hidden=true;
+guia.innerHTML='<h3>'+D.okT+'</h3><p>'+D.okL+'</p>';
+var g1=el('a',null,D.pG);g1.href=GOOGLE_URL;g1.target='_blank';g1.rel='noopener';guia.appendChild(g1);
+var g2=el('a',null,D.pE);g2.href=EDITUS_URL;g2.target='_blank';g2.rel='noopener';guia.appendChild(g2);
+var g3=el('a',null,D.pT);g3.href=TRUST_URL;g3.target='_blank';g3.rel='noopener';guia.appendChild(g3);
+sec.appendChild(guia);
+var footer=document.querySelector('footer');
+if(footer&&footer.parentNode)footer.parentNode.insertBefore(sec,footer);else document.body.appendChild(sec);
+var labels=form.querySelectorAll('.welux-resena-rate label');
+function paint(){labels.forEach(function(lb){var inp=lb.querySelector('input');if(inp.checked){var n=+inp.value;labels.forEach(function(lb2,j){lb2.classList.toggle('on',j<=(5-n));});}});}
+labels.forEach(function(lb){lb.addEventListener('click',function(){setTimeout(paint,0);});});
+paint();
+form.addEventListener('submit',function(){if(!form.checkValidity())return;setTimeout(function(){guia.hidden=false;guia.scrollIntoView({block:'nearest'});},2500);});
+}catch(e){}
+})();

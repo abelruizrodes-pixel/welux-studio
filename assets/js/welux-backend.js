@@ -61,20 +61,20 @@
     function pick(obj, keys) { for (var i = 0; i < keys.length; i++) { if (obj[keys[i]] !== undefined && obj[keys[i]] !== null && String(obj[keys[i]]).trim() !== '') return String(obj[keys[i]]).trim(); } return ''; }
     function collect(form) {
       var raw = {}; /* Se lee por id o por name: los formularios del sitio usan id (form-name...) y no siempre name, y FormData ignora los campos sin name. */
-      form.querySelectorAll('input, select, textarea').forEach(function (el) { var k = el.name || el.id || ''; if (!k) return; if (el.type === 'checkbox' || el.type === 'radio') { if (el.checked) raw[k] = el.value || 'sí'; return; } if (raw[k] === undefined) raw[k] = el.value; else raw[k] = raw[k] + ', ' + el.value; });
+      form.querySelectorAll('input, select, textarea').forEach(function (el) { var k = el.name || el.id || ''; if (!k) { var _lb = el.closest('div') ? el.closest('div').querySelector('label') : null; var _lt = _lb ? _lb.textContent.trim().toLowerCase().replace(/[áàäâ]/g, 'a').replace(/[éèëê]/g, 'e').replace(/[íìïî]/g, 'i').replace(/[óòöô]/g, 'o').replace(/[úùüû]/g, 'u').replace(/ñ/g, 'n').replace(/ç/g, 'c').replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '') : ''; k = _lt || (el.getAttribute('placeholder') || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '_'); if (!k) return; } if (el.type === 'checkbox' || el.type === 'radio') { if (el.checked) raw[k] = el.value || 'sí'; return; } if (raw[k] === undefined) raw[k] = el.value; else raw[k] = raw[k] + ', ' + el.value; });
       var tipo = form.getAttribute('data-welux-tipo') || '';
       var id = (form.id || '') + ' ' + (form.getAttribute('name') || '');
-      if (!tipo) { if (/candidat|career|formulario|solicitud-alta/i.test(id)) tipo = 'candidatura'; else if (/contact/i.test(id)) tipo = 'contacto'; else tipo = 'lead'; }
+      if (!tipo) { if (/booking|reserva/i.test(id + ' ' + (form.getAttribute('onsubmit') || '')) || form.querySelector('#booking-success')) tipo = 'reserva'; else if (/candidat|career|formulario|solicitud-alta/i.test(id)) tipo = 'candidatura'; else if (/contact/i.test(id)) tipo = 'contacto'; else tipo = 'lead'; }
       return {
-        tipo: tipo,
-        nombre: pick(raw, ['nombre', 'name', 'fullName', 'form-name']),
-        email: pick(raw, ['email', 'correo', 'form-email']),
-        telefono: pick(raw, ['telefono', 'phone', 'tel', 'form-phone']),
+        tipo: tipo, origen: tipo === 'reserva' ? 'reserva' : undefined,
+        nombre: pick(raw, ['nombre', 'name', 'fullName', 'form-name', 'nombre_y_apellidos', 'nombre_completo', 'full_name', 'nom_complet', 'nome_completo', 'vollstandiger_name']),
+        email: pick(raw, ['email', 'correo', 'form-email', 'email_de_contacto', 'contact_email', 'adresse_e_mail']),
+        telefono: pick(raw, ['telefono', 'phone', 'tel', 'form-phone', 'telefono_movil', 'mobile_phone', 'telephone', 'telefon']),
         sector: pick(raw, ['sector', 'form-sector']),
         idiomas: pick(raw, ['idiomas', 'languages', 'form-languages']),
         oferta: pick(raw, ['oferta', 'posicion', 'position']),
         cv_url: pick(raw, ['cv_url', 'cv', 'enlace_cv', 'form-cv']),
-        mensaje: pick(raw, ['mensaje', 'message', 'notas', 'notes', 'form-message']),
+        mensaje: pick(raw, ['mensaje', 'message', 'notas', 'notes', 'form-message']), servicio: pick(raw, ['servicio', 'service', 'servicio_requerido', 'required_service']), hub: pick(raw, ['hub', 'hub_de_retira_o_destino', 'hub_de_recogida', 'pickup_hub']), fecha_inicio: pick(raw, ['fecha_inicio', 'fecha_de_inicio', 'start_date', 'date_de_debut', 'startdatum']), fecha_fin: pick(raw, ['fecha_fin', 'fecha_de_fin', 'end_date', 'date_de_fin', 'enddatum']), empresa: pick(raw, ['empresa', 'productora', 'productora_agencia_proyecto', 'agencia', 'company']),
         pagina: location.href,
         idioma: currentLang(),
         honeypot: pick(raw, ['website', 'url'])
@@ -98,7 +98,7 @@
         .then(function (json) {
           form.removeAttribute('data-welux-enviando');
           if (btn) { btn.disabled = false; if (btn.tagName === 'BUTTON') btn.textContent = btnTxt; }
-          if (json && json.ok) { form.reset(); feedback(data.tipo === 'candidatura' ? 'Candidatura enviada. La hemos recibido y el equipo te escribirá pronto.' : 'Mensaje enviado. Gracias, te escribiremos pronto.', true); }
+          if (json && json.ok) { form.reset(); feedback(data.tipo === 'reserva' ? 'Reserva enviada. Te confirmamos por email en menos de 24 horas.' : data.tipo === 'candidatura' ? 'Candidatura enviada. La hemos recibido y el equipo te escribirá pronto.' : 'Mensaje enviado. Gracias, te escribiremos pronto.', true); if (data.tipo === 'reserva') { var _sb = form.querySelector('#booking-success'); if (_sb) { _sb.classList.remove('hidden'); _sb.style.display = 'block'; setTimeout(function () { _sb.classList.add('hidden'); _sb.style.display = 'none'; }, 7000); } } }
           else { feedback('No se pudo enviar. Inténtalo de nuevo o escríbenos a info@weluxhub.com.', false); }
         })
         .catch(function () {
@@ -108,7 +108,7 @@
         });
       return false;
     }
-    window.handleFormSubmission = enviarFormulario;
+    window.handleFormSubmission = enviarFormulario; window.handleBookingSubmit = function (ev) { if (ev && ev.preventDefault) ev.preventDefault(); var f = ev && ev.target && ev.target.tagName === 'FORM' ? ev.target : document.querySelector('form[onsubmit*="handleBookingSubmit"]'); if (f) enviarFormulario({ target: f, currentTarget: f, preventDefault: function () {} }); };
     document.querySelectorAll('form').forEach(function (form) {
       if (form.getAttribute('data-welux-wired')) return;
       form.setAttribute('data-welux-wired', '1');

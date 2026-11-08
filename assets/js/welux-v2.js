@@ -531,3 +531,25 @@
   if (isHome()) fix();
   window.addEventListener('load', function () { if (isHome()) fix(); });
 })();
+
+/* Seguro anti-duplicados al conectar este archivo con las plantillas: si la
+   plantilla ya trae su propio selector de paletas, quita el que crea el
+   primer bloque (solo debe quedar uno); y en las homes, quita de la
+   navegación el enlace a Invitaciones, porque esa sección queda fuera de
+   la vista en la home ligera. */
+(function () {
+  var pickers = document.querySelectorAll('.welux-palette-picker');
+  for (var i = 1; i < pickers.length; i++) pickers[i].remove();
+  function isHome() {
+    var p = location.pathname.replace(/\/+$/, '');
+    return p === '' || p === '/en' || p === '/fr' || p === '/de' || p === '/pt' || p === '/lu';
+  }
+  if (isHome()) {
+    var a = document.querySelector('header nav a[href="#invitaciones"]');
+    if (a) a.remove();
+  }
+  window.addEventListener('load', function () {
+    var pk = document.querySelectorAll('.welux-palette-picker');
+    for (var j = 1; j < pk.length; j++) pk[j].remove();
+  });
+})();

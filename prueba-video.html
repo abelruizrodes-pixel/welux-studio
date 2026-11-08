@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prueba vídeo hero</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/assets/css/welux-v2.css">
 <style>
 .welux-hero-video{position:absolute;top:0;left:0;right:0;height:680px;overflow:hidden;pointer-events:none}
@@ -24,7 +25,8 @@ window.addEventListener('load', function () {
   var v = document.getElementById('welux-hero-video');
   var p = document.getElementById('estado');
   function info() {
-    return 'paused=' + v.paused + ' readyState=' + v.readyState + ' currentTime=' + v.currentTime.toFixed(2) + ' videoWidth=' + v.videoWidth + ' error=' + (v.error ? v.error.code : 'no');
+    var r = v.getBoundingClientRect();
+    return 'paused=' + v.paused + ' readyState=' + v.readyState + ' currentTime=' + v.currentTime.toFixed(2) + ' videoWidth=' + v.videoWidth + ' error=' + (v.error ? v.error.code : 'no') + ' w=' + v.offsetWidth + ' h=' + v.offsetHeight + ' display=' + getComputedStyle(v).display + ' opacity=' + getComputedStyle(v).opacity + ' rect=' + Math.round(r.width) + 'x' + Math.round(r.height) + '@' + Math.round(r.top);
   }
   p.textContent = 'T0: ' + info();
   setTimeout(function () { p.textContent += ' | T2s: ' + info(); }, 2000);

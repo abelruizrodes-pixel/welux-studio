@@ -553,3 +553,43 @@
     for (var j = 1; j < pk.length; j++) pk[j].remove();
   });
 })();
+
+/* Hueco de vídeo del hero cuando la plantilla no lo trae: las homes de
+   idioma llevan un fondo WebGL y no tienen .welux-hero-video; en ese caso se
+   crea el hueco con el vídeo de Luxemburgo antes de la cabecera del hero,
+   para que todas las páginas lleven el mismo header con vídeo. */
+(function () {
+  function heroHeader() {
+    var main = document.querySelector('main');
+    if (!main) return null;
+    var container = main.querySelector('.max-w-7xl');
+    if (!container) return null;
+    var header = container.querySelector('header');
+    return header || null;
+  }
+  function ensureHeroVideo() {
+    if (document.querySelector('.welux-hero-video')) return;
+    var header = heroHeader();
+    if (!header || !header.parentElement) return;
+    var box = document.createElement('div');
+    box.className = 'welux-hero-video';
+    box.setAttribute('aria-hidden', 'true');
+    var v = document.createElement('video');
+    v.id = 'welux-hero-video';
+    v.setAttribute('src', '/assets/videos/welux-hero-luxemburgo.mp4');
+    v.setAttribute('poster', '/assets/images/luxemburgo-header.jpg');
+    v.setAttribute('muted', '');
+    v.setAttribute('loop', '');
+    v.setAttribute('playsinline', '');
+    v.setAttribute('autoplay', '');
+    v.setAttribute('preload', 'none');
+    v.setAttribute('data-video-fondo', 'hero');
+    box.appendChild(v);
+    header.parentElement.insertBefore(box, header);
+    v.load();
+    var pr = v.play();
+    if (pr && pr.catch) pr.catch(function () {});
+  }
+  ensureHeroVideo();
+  window.addEventListener('load', function () { ensureHeroVideo(); });
+})();

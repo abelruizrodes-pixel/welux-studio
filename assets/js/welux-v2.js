@@ -876,3 +876,7 @@ Array.prototype.slice.call(document.querySelectorAll('body>section,main+section,
 Array.prototype.slice.call(document.querySelectorAll('footer h4')).forEach(function(h){if(/arsenal|experiencias|talento|talent|invitaciones|invitations|catálogo|catalogue|rodaje|shoot/i.test(h.textContent)){var d=h.closest('div');if(d)d.style.display='none';}});
 }catch(e){}
 })();
+
+/* WeLux — corrección de contraste: títulos de las tarjetas simples y de las
+   secciones nuevas en oscuro, porque las páginas de división usan tema oscuro. */
+(function(){'use strict';try{var s=document.createElement('style');s.textContent='.welux-card h3{color:#141310!important}.welux-services>h2{color:#141310!important}';document.head.appendChild(s);}catch(e){}})();

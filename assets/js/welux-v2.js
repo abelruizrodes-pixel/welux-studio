@@ -821,3 +821,58 @@ if(anchor&&anchor.parentNode)anchor.parentNode.insertBefore(sec,anchor.nextSibli
 else main.appendChild(sec);
 }catch(e){}
 })();
+
+/* WeLux — corrección: ocultar por secciones en las páginas principales de división.
+   Gear, Careers y Studio llevan todo el contenido dentro de un contenedor único,
+   por eso ocultar los hijos directos de <main> no bastaba. Aquí se ocultan todas
+   las <section> de main salvo el hero y las secciones nuevas, las tarjetas muestran
+   su sección de detalle al pulsarlas, y se aligeran la navegación y el pie. */
+(function(){
+'use strict';
+try{
+var path=(location.pathname||'/').replace(/\/+$/,'')||'/';
+var parts=path.split('/').filter(function(s){return s;});
+var LANGS=['en','fr','de','pt','lu'];
+var lang='es';var rest=parts.slice();
+if(LANGS.indexOf(parts[0])>=0){lang=parts[0];rest=parts.slice(1);}
+var slug=(rest[0]||'').replace(/\.html$/,'');
+if(['studio','careers','gear'].indexOf(slug)<0||rest.length!==1)return;
+var main=document.querySelector('main');if(!main)return;
+var h1=document.querySelector('main h1');if(!h1)return;
+var heroSec=h1.closest('section,header')||h1;
+var KEYS={gear:[['arsenal','camera','cámara','kamera','caméra'],['set','disponib','availab','verfüg'],['glam','imagen','image','bild']],careers:[['oferta','job','offre','angebot','emprego','stelle'],['aplic','apply','postul','bewerb','candidat'],['proceso','roadmap','process','prozess','ablauf']],studio:[['producci','production','produktion'],['proyecto','project','projet','projekt'],['contact','kontakt']]};
+var keys=KEYS[slug]||KEYS.studio;
+function isKeep(e){if(!e)return false;if(e===heroSec)return true;if(e.classList&&(e.classList.contains('welux-clauses')||e.classList.contains('welux-services')))return true;if(e.id==='welux-cards'||e.id==='welux-servicios'||e.id==='welux-productos')return true;return false;}
+var hidden=[];
+Array.prototype.slice.call(main.querySelectorAll('section')).forEach(function(s){
+if(isKeep(s)||heroSec.contains(s)||s.contains(h1))return;
+if(s.closest('.welux-cards'))return;
+s.style.display='none';hidden.push(s);});
+Array.prototype.slice.call(main.children).forEach(function(ch){
+if(isKeep(ch)||ch===heroSec||ch.contains(heroSec))return;
+if(ch.querySelector('section')||ch.querySelector('.welux-cards,.welux-clauses,.welux-services'))return;
+if((ch.textContent||'').trim().length>0)ch.style.display='none';});
+var shown=null;
+function closeAll(){hidden.forEach(function(s){s.style.display='none';s.classList.remove('welux-detail-open');});shown=null;}
+function findTarget(words){
+for(var i=0;i<hidden.length;i++){
+var hs=hidden[i].querySelectorAll('h1,h2,h3');
+for(var j=0;j<hs.length;j++){
+var t=(hs[j].textContent||'').toLowerCase();
+for(var k=0;k<words.length;k++){if(t.indexOf(words[k])>=0)return hidden[i];}}}
+return null;}
+Array.prototype.slice.call(document.querySelectorAll('#welux-cards .welux-card')).forEach(function(card,idx){
+var old=card.querySelector('a,button');if(!old)return;
+var label=old.textContent;
+var target=findTarget(keys[idx]||[])||hidden[hidden.length-1]||null;
+var b=document.createElement('button');b.type='button';b.textContent=label;
+b.addEventListener('click',function(){
+if(shown===target){closeAll();return;}
+closeAll();
+if(target){target.style.display='block';target.classList.add('welux-detail-open');shown=target;target.scrollIntoView({behavior:'smooth',block:'start'});}});
+old.parentNode.replaceChild(b,old);});
+var nav=document.querySelector('header nav');if(nav)nav.style.display='none';
+Array.prototype.slice.call(document.querySelectorAll('body>section,main+section,footer section')).forEach(function(s){var h=s.querySelector('h1,h2,h3');if(h&&/invitaciones|invitations/i.test(h.textContent))s.style.display='none';});
+Array.prototype.slice.call(document.querySelectorAll('footer h4')).forEach(function(h){if(/arsenal|experiencias|talento|talent|invitaciones|invitations|catálogo|catalogue|rodaje|shoot/i.test(h.textContent)){var d=h.closest('div');if(d)d.style.display='none';}});
+}catch(e){}
+})();

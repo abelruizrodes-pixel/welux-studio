@@ -79,7 +79,7 @@ var lang='es';var rest=parts.slice();
 if(LANGS.indexOf(parts[0])>=0){lang=parts[0];rest=parts.slice(1);}
 var slug=(rest[0]||'').replace(/\.html$/,'');
 var isHome=rest.length===0||slug==='index';
-var isDiv=['studio','careers','gear'].indexOf(slug)>=0&&rest.length===1;
+var isDiv=['studio','gear'].indexOf(slug)>=0&&rest.length===1; /* Careers queda fuera: su contenido completo (demo, calculadora, formulario, FAQ) debe verse. */
 if(!isHome&&!isDiv)return;
 var main=document.querySelector('main');if(!main)return;
 var DATA={
@@ -836,7 +836,7 @@ var LANGS=['en','fr','de','pt','lu'];
 var lang='es';var rest=parts.slice();
 if(LANGS.indexOf(parts[0])>=0){lang=parts[0];rest=parts.slice(1);}
 var slug=(rest[0]||'').replace(/\.html$/,'');
-if(['studio','careers','gear'].indexOf(slug)<0||rest.length!==1)return;
+if(['studio','gear'].indexOf(slug)<0||rest.length!==1)return; /* Careers queda fuera: su contenido completo debe verse. */
 var main=document.querySelector('main');if(!main)return;
 var h1=document.querySelector('main h1');if(!h1)return;
 var heroSec=h1.closest('section,header')||h1;
@@ -957,6 +957,6 @@ var col=lum(cs.color);
 if(col&&col.a>0.5&&col.sum>500){el.style.setProperty('color','var(--p-ink)','important');}
 });
 }
-sweep();setTimeout(sweep,800);
+sweep();setTimeout(sweep,800);var _w=document.createElement('script');_w.src='/assets/js/welux-backend.js';document.head.appendChild(_w); /* Carga welux-backend.js: backend Cloudflare + D1, botones, idiomas y casita (2026-11-08). */
 }catch(e){}
 })();

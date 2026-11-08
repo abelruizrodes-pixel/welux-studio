@@ -53,7 +53,7 @@ main [class*="bg-[#c96f3f]"],main [class*="bg-[#b7791f]"]{background:linear-grad
 .welux-reveal.is-visible{opacity:1;transform:none}
 .welux-idioma-flotante .welux-idioma-btn{border-radius:999px!important;box-shadow:0 2px 6px rgba(30,28,24,.18),0 12px 28px rgba(30,28,24,.22)!important;transition:transform .25s ease,box-shadow .25s ease!important}
 .welux-idioma-flotante .welux-idioma-btn:hover{transform:translateY(-2px)}
-footer{background:linear-gradient(180deg,var(--p-bg),var(--p-bg2))!important}
+footer{background:#d8d5ce!important;background-image:none!important;color:#16232e!important}
 footer a{transition:color .25s ease}
 footer a:hover{color:var(--p-accent-deep)!important}
 .welux-social-btn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;background:var(--p-card);border:1px solid var(--p-border);box-shadow:var(--welux-shadow-sm);font-weight:800;color:var(--p-ink);text-decoration:none;transition:transform .25s ease,box-shadow .25s ease}
@@ -192,7 +192,7 @@ html main .welux-widget-row{background:transparent!important;border-color:transp
 .welux-card{box-shadow:var(--welux-shadow-md)!important}
 
 /* El pie también sigue a la home: claro, no tinta oscura, con la paleta elegida. */
-html[data-welux-palette] footer{background:linear-gradient(180deg,var(--p-bg),var(--p-bg2))!important}
+html[data-welux-palette] footer{background:#d8d5ce!important;background-image:none!important;color:#16232e!important}
 
 /* WeLux — colores propios de las páginas de división (tailwind.config de Gear/Careers/Studio):
    cinema-black, surface, slate-card, rec-red, on-surface, amber-tungsten, champagne-gold…
@@ -214,3 +214,13 @@ html [class*="bg-[#0d0e12]"],html [class*="bg-[#14161d]"],html [class*="bg-[#1f2
 html [class*="shadow-[0_0_15px_rgba(229,57,53"]{box-shadow:var(--welux-shadow-sm)!important}
 html header [class*="text-neutral-"]{color:var(--p-ink)!important}
 html header [class*="text-amber-tungsten"]{color:var(--p-gold)!important}
+/* Pie en ceniza claro para que se lea (2026-11-08): fondo ceniza y texto oscuro en todas las páginas. */
+footer [class*="bg-[#080f17]"],footer [class*="bg-[#151c25]"],footer [class*="bg-[#192029]"]{background-color:#cfccc4!important}
+footer [class*="border-[#232a34]"]{border-color:rgba(22,35,46,.25)!important}
+footer [class*="text-white"]{color:#16232e!important}
+footer [class*="text-white/70"]{color:#33414e!important}
+footer [class*="text-white/60"]{color:#3d4a56!important}
+footer [class*="text-white/40"]{color:#5a6b7a!important}
+footer [class*="text-[#ffb95f]"]{color:#7a5a1f!important}
+/* Selector de paletas provisional retirado (2026-11-08): no se muestra en ninguna página. */
+.welux-palette-picker{display:none!important}

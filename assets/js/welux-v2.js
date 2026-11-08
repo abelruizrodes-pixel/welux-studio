@@ -596,7 +596,7 @@
 
 /* Corrección: oculta también la fila «audiencia» completa de las tarjetas
    en los demás idiomas (DE «ZIELGRUPPE», FR «AUDIENCE CIBLE», PT
-   «PÚBLICO-ALVO», LU «ZILGRUPP»), no solo su etiqueta, para no dejar
+   «PÚBLICO-ALVO», LU «ZIELGRUPP»), no solo su etiqueta, para no dejar
    huérfano el valor. */
 (function () {
   function isHome() {
@@ -608,7 +608,7 @@
     for (var s = 0; s < cards.length; s++) {
       var els = cards[s].querySelectorAll('*');
       for (var e = 0; e < els.length; e++) {
-        if (/AUDIENCIA DIANA|TARGET AUDIENCE|ZIELGRUPPE|AUDIENCE CIBLE|PÚBLICO-?ALVO|ZILGRUPP/i.test(els[e].textContent) && els[e].children.length === 0) {
+        if (/AUDIENCIA DIANA|TARGET AUDIENCE|ZIELGRUPPE|AUDIENCE CIBLE|PÚBLICO-?ALVO|ZIELGRUPP/i.test(els[e].textContent) && els[e].children.length === 0) {
           var row = els[e].parentElement;
           if (row && row.textContent.length < 120) row.style.display = 'none';
           else els[e].style.display = 'none';

@@ -467,3 +467,37 @@
   ensureLangButton();
   window.addEventListener('load', function () { syncPaletteVars(); lightenHome(); ensureLangButton(); });
 })();
+
+/* Corrección: la sección de invitaciones se llama «invitaciones» (id) /
+   «welux-invitations» (clase) en el código original, y la nota del selector
+   de paletas lleva su texto por idioma. Se oculta también aquí como red de
+   seguridad, por si la id usada en el bloque anterior no coincidía. */
+(function () {
+  function isHome() {
+    var p = location.pathname.replace(/\/+$/, '');
+    return p === '' || p === '/en' || p === '/fr' || p === '/de' || p === '/pt' || p === '/lu';
+  }
+  function hideInvitations() {
+    var inv = document.getElementById('welux-invitaciones') || document.getElementById('invitaciones') || document.querySelector('.welux-invitations');
+    if (inv) inv.style.display = 'none';
+  }
+  function fixPaletteNote() {
+    var sec = document.querySelector('.welux-palette-picker');
+    if (!sec) return;
+    var sub = sec.querySelector('p');
+    if (!sub) return;
+    var NOTE = {
+      es: 'Se aplica al instante en toda la página y se guarda en este navegador.',
+      en: 'It applies instantly across the whole page and is saved in this browser.',
+      fr: 'Elle s’applique instantanément à toute la page et est enregistrée dans ce navigateur.',
+      de: 'Sie wird sofort auf der ganzen Seite angewendet und in diesem Browser gespeichert.',
+      pt: 'Aplica-se instantaneamente em toda a página e fica guardada neste navegador.',
+      lu: 'Si gëtt direkt op der ganzer Säit ugewannt a gëtt an dësem Browser gespäichert.'
+    };
+    var l = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
+    sub.textContent = NOTE[l] || NOTE.es;
+  }
+  if (isHome()) hideInvitations();
+  fixPaletteNote();
+  window.addEventListener('load', function () { if (isHome()) hideInvitations(); fixPaletteNote(); });
+})();

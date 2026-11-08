@@ -138,3 +138,97 @@
   }
   onScroll();
 })();
+
+/* Vídeos de la home: Luxemburgo en el header, estudio en Studio y fotomatón en Gear.
+   El bloque del vídeo del hero de este archivo apuntaba al vídeo del estudio; a
+   partir de aquí el header usa el sobrevuelo de Luxemburgo al atardecer, con la
+   foto del casco antiguo como póster y reserva, y el vídeo del estudio queda como
+   pieza principal de la sección Studio. Los tres se reproducen solos, sin sonido
+   y en bucle; si un vídeo no carga, se ve su foto (póster). */
+(function () {
+  var luxPoster = '/assets/images/luxemburgo-header.jpg';
+  var luxSrc = '/assets/videos/welux-hero-luxemburgo.mp4';
+  var estudioSrc = '/assets/videos/welux-hero-estudio.mp4';
+  var boothSrc = '/assets/videos/welux-hero-photobooth.mp4';
+
+  function playVideo(v) {
+    if (!v) { return; }
+    var p = v.play && v.play();
+    if (p && p.catch) { p.catch(function () {}); }
+  }
+
+  function makeVideo(src, poster, label) {
+    var v = document.createElement('video');
+    v.setAttribute('src', src);
+    v.setAttribute('poster', poster);
+    v.setAttribute('aria-label', label);
+    v.autoplay = true;
+    v.muted = true;
+    v.loop = true;
+    v.playsInline = true;
+    v.preload = 'metadata';
+    return v;
+  }
+
+  function swapImgForVideo(img, src, label) {
+    if (!img || !img.parentNode) { return null; }
+    var holder = img.closest ? (img.closest('picture') || img) : img;
+    if (!holder.parentNode) { return null; }
+    var v = makeVideo(src, img.currentSrc || img.src, label);
+    v.className = 'welux-section-video ' + (holder.className || '') + ' ' + (img.className || '');
+    holder.parentNode.replaceChild(v, holder);
+    playVideo(v);
+    return v;
+  }
+
+  function wireSectionVideos() {
+    if (!document.querySelector('video[src*="welux-hero-estudio"]')) {
+      var studioImg = document.querySelector('img[src*="master_cinema_studio_gear"]');
+      if (studioImg) {
+        swapImgForVideo(studioImg, estudioSrc, 'Estudio de cine WeLux');
+      } else {
+        var studioTitle = document.getElementById('welux-studio-b2b');
+        if (studioTitle && studioTitle.parentNode && /^H[123]$/.test(studioTitle.tagName)) {
+          var sv = makeVideo(estudioSrc, '/assets/images/master_cinema_studio_gear.jpg', 'Estudio de cine WeLux');
+          sv.className = 'welux-section-video';
+          studioTitle.parentNode.insertBefore(sv, studioTitle.nextSibling);
+          playVideo(sv);
+        }
+      }
+    }
+    if (!document.querySelector('video[src*="welux-hero-photobooth"]')) {
+      var boothImg = document.querySelector('img[src*="photo-camera-transparent"]');
+      if (boothImg) {
+        swapImgForVideo(boothImg, boothSrc, 'Fotomatón WeLux');
+      }
+    }
+  }
+
+  /* Header: el vídeo de Luxemburgo con la foto del casco antiguo como póster. */
+  var heroVideo = document.getElementById('welux-hero-video');
+  var heroBox = document.querySelector('.welux-hero-video');
+  if (!heroVideo && heroBox) {
+    heroVideo = makeVideo(luxSrc, luxPoster, 'Casco antiguo de Luxemburgo al atardecer');
+    heroVideo.id = 'welux-hero-video';
+    heroVideo.className = 'welux-hero-video';
+    heroBox.appendChild(heroVideo);
+  }
+  if (heroVideo) {
+    heroVideo.setAttribute('src', luxSrc);
+    heroVideo.setAttribute('poster', luxPoster);
+    heroVideo.preload = 'metadata';
+    heroVideo.load();
+    playVideo(heroVideo);
+  }
+  if (heroBox && !heroBox.querySelector('img.welux-hero-photo')) {
+    var photo = document.createElement('img');
+    photo.className = 'welux-hero-photo';
+    photo.src = luxPoster;
+    photo.alt = '';
+    photo.setAttribute('fetchpriority', 'high');
+    heroBox.insertBefore(photo, heroBox.firstChild);
+  }
+
+  wireSectionVideos();
+  window.addEventListener('load', wireSectionVideos);
+})();

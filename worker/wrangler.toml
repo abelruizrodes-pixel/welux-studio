@@ -1,0 +1,26 @@
+# WeLux Hub — configuracion del Worker de formularios (Cloudflare).
+# Despliegue paso a paso en worker/README.md.
+# IMPORTANTE: el database_id hay que ponerlo tras crear la D1 con:
+#   npx wrangler d1 create welux-leads
+# y despues aplicar el esquema con:
+#   npx wrangler d1 execute welux-leads --remote --file schema.sql
+
+name = "weluxhub-api"
+main = "src/index.js"
+compatibility_date = "2026-11-08"
+workers_dev = true
+
+[vars]
+TEAM_EMAILS = "info@weluxhub.com,stayarista@gmail.com"
+FROM_EMAIL = "candidaturas@weluxhub.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "welux-leads"
+database_id = "REEMPLAZAR_TRAS_CREAR_LA_BD"
+
+# Dominio propio de la API: https://api.weluxhub.com
+# Al desplegar, Cloudflare crea el registro DNS automaticamente.
+routes = [
+  { pattern = "api.weluxhub.com", custom_domain = true }
+]

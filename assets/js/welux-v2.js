@@ -328,7 +328,7 @@ if(slug==='studio')main.appendChild(buildServices());
 
   function fixPaletteNote() {
     var sec = document.querySelector('.welux-palette-picker');
-    if (!sec) return;
+    if (sec) sec.remove(); try { var ks=[]; for (var j=0;j<localStorage.length;j++) ks.push(localStorage.key(j)); ks.forEach(function(k){ if(/palet/i.test(k)) localStorage.removeItem(k); }); } catch(e){} document.documentElement.removeAttribute('data-welux-palette'); VARS.forEach(function(k){ document.documentElement.style.removeProperty(k); }); return;
     var best = null;
     var nodes = sec.querySelectorAll('p, div, span');
     for (var i = 0; i < nodes.length; i++) {
@@ -555,7 +555,7 @@ if(slug==='studio')main.appendChild(buildServices());
   }
   function fixPaletteNote() {
     var sec = document.querySelector('.welux-palette-picker');
-    if (!sec) return;
+    if (sec) sec.remove(); try { var ks=[]; for (var j=0;j<localStorage.length;j++) ks.push(localStorage.key(j)); ks.forEach(function(k){ if(/palet/i.test(k)) localStorage.removeItem(k); }); } catch(e){} document.documentElement.removeAttribute('data-welux-palette'); return;
     var sub = sec.querySelector('p');
     if (!sub) return;
     var NOTE = {

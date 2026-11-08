@@ -619,3 +619,49 @@
   if (isHome()) fix();
   window.addEventListener('load', function () { if (isHome()) fix(); });
 })();
+/* Guardián del vídeo del hero (2026-11-08): el vídeo de Luxemburgo
+   debe reproducirse en la home. Reintenta play() varias veces, oculta
+   la foto de reserva cuando el vídeo ya tiene fuente y elimina los
+   vídeos duplicados de Luxemburgo fuera del hero. */
+(function () {
+  var LUX = '/assets/videos/welux-hero-luxemburgo.mp4';
+  var POSTER = '/assets/images/luxemburgo-header.jpg';
+  function heroVideo() {
+    return document.querySelector('.welux-hero-video video, video#welux-hero-video');
+  }
+  function quitarDuplicados() {
+    var principal = heroVideo();
+    var todos = document.querySelectorAll('video[src*="welux-hero-luxemburgo"]');
+    todos.forEach(function (v) {
+      if (v !== principal && v.parentNode) { try { v.pause(); } catch (e) {} v.removeAttribute('src'); try { v.load(); } catch (e2) {} v.parentNode.removeChild(v); }
+    });
+  }
+  function asegurar() {
+    var v = heroVideo();
+    if (!v) return;
+    if (!v.getAttribute('src')) v.setAttribute('src', LUX);
+    if (!v.getAttribute('poster')) v.setAttribute('poster', POSTER);
+    v.muted = true;
+    v.classList.remove('welux-hero-video--error');
+    var caja = v.closest ? v.closest('.welux-hero-video') : null;
+    if (caja) {
+      var foto = caja.querySelector('img.welux-hero-photo');
+      if (foto) foto.style.display = 'none';
+    }
+    if (v.paused || v.readyState < 2) {
+      var p = v.play && v.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+  }
+  function arrancar() {
+    quitarDuplicados();
+    asegurar();
+    [600, 1500, 3000, 6000].forEach(function (ms) {
+      setTimeout(function () { quitarDuplicados(); asegurar(); }, ms);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', arrancar);
+  } else { arrancar(); }
+  window.addEventListener('load', function () { quitarDuplicados(); asegurar(); });
+})();

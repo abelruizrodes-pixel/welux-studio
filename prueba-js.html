@@ -5,7 +5,7 @@
 <p id="r">CARGANDO…</p>
 <script>
 window.addEventListener('error', function (e) {
-  document.getElementById('r').textContent = 'ERROR JS: ' + (e.message || e.type);
+  document.getElementById('r').textContent = 'ERROR JS: ' + (e.message || e.type) + ' — linea ' + e.lineno + ' col ' + e.colno;
 });
 </script>
 <script src="/assets/js/welux-v2.js"></script>

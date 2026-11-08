@@ -135,7 +135,7 @@
   var legalMap = [[/aviso|legal notice|mentions|impressum/i, '/legal/aviso-legal.html'], [/privac|privacy|confidentialit|datenschutz|privatsph/i, '/legal/privacidad.html'], [/t.rminos|terms|conditions|agb|termos|bedingung/i, '/legal/terminos.html'], [/cookies/i, '/legal/cookies.html']];
   document.querySelectorAll('footer a[href="#"]').forEach(function (a) {
     legalMap.forEach(function (pair) { if (pair[0].test(a.textContent)) a.setAttribute('href', pair[1]); });
-  }
+  });
   onScroll();
 })();
 

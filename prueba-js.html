@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Prueba welux-v2.js</title></head>
+<body>
+<p id="r">CARGANDO…</p>
+<script>
+window.addEventListener('error', function (e) {
+  document.getElementById('r').textContent = 'ERROR JS: ' + (e.message || e.type);
+});
+</script>
+<script src="/assets/js/welux-v2.js"></script>
+<script>
+var r = document.getElementById('r');
+if (r.textContent.indexOf('CARGANDO') === 0) {
+  r.textContent = 'JS OK — ctas: ' + document.querySelectorAll('.welux-hero-ctas').length + ' — video hero: ' + !!document.querySelector('.welux-hero-video') + ' — fab: ' + !!document.querySelector('.welux-idioma-flotante');
+}
+</script>
+</body>
+</html>

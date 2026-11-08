@@ -3,12 +3,12 @@
 La web es estatica (GitHub Pages), pero los formularios ya no son un mock:
 este Worker recibe los envios, los guarda en la base de datos D1
 `welux-leads` y avisa por correo al equipo. El front (`assets/js/welux-backend.js`)
-publica en `https://api.weluxhub.com/api/lead`.
+publica en `https://weluxhub-api.yucolaguilar.workers.dev/api/lead`.
 
 ## Circuito completo
 
 ```
-Formulario (Careers y demas)  →  POST https://api.weluxhub.com/api/lead
+Formulario (Careers y demas)  →  POST https://weluxhub-api.yucolaguilar.workers.dev/api/lead
   →  Worker (worker/src/index.js)
   →  D1 welux-leads: candidaturas | contactos | leads (con fecha)
   →  Correo a info@weluxhub.com y a stayarista@gmail.com (asunto "[WeLux] Nueva candidatura: <nombre>")
@@ -24,12 +24,12 @@ Formulario (Careers y demas)  →  POST https://api.weluxhub.com/api/lead
   `email_enviado = 0` y el motivo en `email_error`: un envio nunca se pierde
   por el correo.
 
-## Estado actual (8 de noviembre de 2026)
+## Estado actual (9 de noviembre de 2026): Worker y D1 desplegados
 
-El codigo esta completo y el front ya apunta a `api.weluxhub.com`, pero el
-Worker y la D1 todavia NO estan desplegados: hace falta entrar en la cuenta
-de Cloudflare que tiene el dominio `weluxhub.com` y ejecutar los pasos de
-abajo. Hasta entonces el formulario muestra el error real ("servicio de
+El codigo esta completo y el front ya apunta a `weluxhub-api.yucolaguilar.workers.dev`, pero el
+Worker y la D1 ya estan desplegados y verificados en vivo: los pasos de abajo solo se repiten si se recrea el backend: no hace falta entrar en la cuenta
+de Cloudflare para nada: el despliegue ya esta hecho.
+El formulario ya envia de verdad y guarda en D1; ya no muestra el error real ("servicio de
  envio pendiente de desplegar") y no finge un envio.
 
 ## Despliegue (lo hace el dueno, con la cuenta de Cloudflare del dominio)
@@ -44,14 +44,14 @@ npx wrangler d1 create welux-leads
 ```
 
 Wrangler mostrara un `database_id`: copialo en `wrangler.toml`, en el campo
-`database_id` (ahora pone `REEMPLAZAR_TRAS_CREAR_LA_BD`). Despues:
+`database_id` (ahora pone `9d91c86a-5b8c-4858-9a3b-ed260ff70142`). Despues:
 
 ```bash
 npx wrangler d1 execute welux-leads --remote --file schema.sql
 npx wrangler deploy
 ```
 
-El despliegue crea el dominio propio `api.weluxhub.com` (el registro DNS lo
+El despliegue configura en wrangler el dominio propio `api.weluxhub.com` (el registro DNS lo
 crea Cloudflare al desplegar con `custom_domain`).
 
 ## Correo: que llegue a info@weluxhub.com y a stayarista@gmail.com
@@ -82,7 +82,7 @@ npx wrangler secret put LEADS_TOKEN   # inventa una contrasena larga; luego: /ap
 
 ```bash
 curl https://api.weluxhub.com/api/health
-curl -X POST https://api.weluxhub.com/api/lead -H "Content-Type: application/json" -d '{"tipo":"candidatura","nombre":"Prueba WeLux","email":"prueba@example.com","telefono":"612345678","sector":"Hostelería","idiomas":"ES, EN","mensaje":"Prueba del circuito formulario-Worker-D1-correo"}'
+curl -X POST https://weluxhub-api.yucolaguilar.workers.dev/api/lead -H "Content-Type: application/json" -d '{"tipo":"candidatura","nombre":"Prueba WeLux","email":"prueba@example.com","telefono":"612345678","sector":"Hostelería","idiomas":"ES, EN","mensaje":"Prueba del circuito formulario-Worker-D1-correo"}'
 ```
 
 El POST debe devolver `{ "ok": true, "id": "...", "tipo": "candidatura", "email_enviado": true }`.

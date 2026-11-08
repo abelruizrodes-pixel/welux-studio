@@ -739,7 +739,7 @@ if(slug==='studio')main.appendChild(buildServices());
 })();
 
 /* WeLux — Nuestros productos: chat widget, chatbot de WhatsApp, automatización con IA,
-   transición con IA para empresas y CRM dinámicos. Sección corta, en la home y en Studio,
+   transición con IA para empresas, CRM dinámicos y HogarGo (en desarrollo). Sección corta, en la home y en Studio,
    en los 6 idiomas. El producto de WhatsApp se describe como producto, sin publicar
    ningún número de teléfono ni enlace wa.me. */
 (function(){
@@ -757,12 +757,12 @@ if(!isHome&&!isStudio)return;
 var main=document.querySelector('main');if(!main)return;
 function prefix(){return lang==='es'?'':'/'+lang;}
 var P={
-es:{t:'Nuestros productos',l:'Productos digitales, listos para usar.',cta:'Pedir propuesta',items:[['Chat widget','Chat en tu web que atiende siempre.'],['Chatbot de WhatsApp','Respuestas automáticas en WhatsApp.'],['Automatización con IA','Tareas repetidas, hechas solas.'],['Transición con IA','Tu empresa, trabajando con IA.'],['CRM dinámicos','Tus clientes, siempre ordenados.']]},
-en:{t:'Our products',l:'Digital products, ready to use.',cta:'Request a proposal',items:[['Chat widget','Chat on your site, always on.'],['WhatsApp chatbot','Automatic replies on WhatsApp.'],['AI automation','Repetitive tasks, done alone.'],['AI transition','Your company, working with AI.'],['Dynamic CRMs','Your customers, always in order.']]},
-fr:{t:'Nos produits',l:'Des produits numériques, prêts à l\'emploi.',cta:'Demander une proposition',items:[['Chat widget','Le chat de votre site, toujours actif.'],['Chatbot WhatsApp','Des réponses automatiques sur WhatsApp.'],['Automatisation IA','Les tâches répétées, faites seules.'],['Transition IA','Votre entreprise, au travail avec l\'IA.'],['CRM dynamiques','Vos clients, toujours bien suivis.']]},
-de:{t:'Unsere Produkte',l:'Digitale Produkte, einsatzbereit.',cta:'Angebot anfragen',items:[['Chat-Widget','Chat auf Ihrer Website, immer aktiv.'],['WhatsApp-Chatbot','Automatische Antworten auf WhatsApp.'],['KI-Automatisierung','Wiederkehrende Aufgaben, von selbst erledigt.'],['KI-Übergang','Ihr Unternehmen, mit KI im Einsatz.'],['Dynamische CRMs','Ihre Kunden, immer im Blick.']]},
-pt:{t:'Os nossos produtos',l:'Produtos digitais, prontos a usar.',cta:'Pedir proposta',items:[['Chat widget','Chat no seu site, sempre ativo.'],['Chatbot de WhatsApp','Respostas automáticas no WhatsApp.'],['Automação com IA','Tarefas repetidas, feitas sozinhas.'],['Transição com IA','A sua empresa, a trabalhar com IA.'],['CRM dinâmicos','Os seus clientes, sempre organizados.']]},
-lu:{t:'Eis Produkter',l:'Digital Produkter, prett ze benotzen.',cta:'Propositioun ufroen',items:[['Chat-Widget','Chat op Ärer Websäit, ëmmer aktiv.'],['WhatsApp-Chatbot','Automatesch Äntwerten op WhatsApp.'],['Automatiséierung mat KI','Widderhuelend Aufgaben, eleng gemaach.'],['KI-Transitioun','Är Entreprise, schafft mat KI.'],['Dynamesch CRMen','Är Clienten, ëmmer uerdentlech.']]}
+es:{t:'Nuestros productos',l:'Productos digitales, listos para usar.',cta:'Pedir propuesta',items:[['Chat widget','Chat en tu web que atiende siempre.'],['Chatbot de WhatsApp','Respuestas automáticas en WhatsApp.'],['Automatización con IA','Tareas repetidas, hechas solas.'],['Transición con IA','Tu empresa, trabajando con IA.'],['CRM dinámicos','Tus clientes, siempre ordenados.'],['HogarGo','En desarrollo: las personas que necesitan un servicio para el hogar encuentran a quien lo ofrece, con un match como en Tinder, el mismo principio que ConCompás.','mailto:info@weluxhub.com?subject=HogarGo','Quiero saber más']]},
+en:{t:'Our products',l:'Digital products, ready to use.',cta:'Request a proposal',items:[['Chat widget','Chat on your site, always on.'],['WhatsApp chatbot','Automatic replies on WhatsApp.'],['AI automation','Repetitive tasks, done alone.'],['AI transition','Your company, working with AI.'],['Dynamic CRMs','Your customers, always in order.'],['HogarGo','In development: people who need a service for their home find those who offer it, with a match like on Tinder, the same principle as ConCompás.','mailto:info@weluxhub.com?subject=HogarGo','I want to know more']]},
+fr:{t:'Nos produits',l:'Des produits numériques, prêts à l\'emploi.',cta:'Demander une proposition',items:[['Chat widget','Le chat de votre site, toujours actif.'],['Chatbot WhatsApp','Des réponses automatiques sur WhatsApp.'],['Automatisation IA','Les tâches répétées, faites seules.'],['Transition IA','Votre entreprise, au travail avec l\'IA.'],['CRM dynamiques','Vos clients, toujours bien suivis.'],['HogarGo','En développement: les personnes qui ont besoin d\'un service pour leur maison trouvent celles qui le proposent, avec un match comme sur Tinder, le même principe que ConCompás.','mailto:info@weluxhub.com?subject=HogarGo','Je veux en savoir plus']]},
+de:{t:'Unsere Produkte',l:'Digitale Produkte, einsatzbereit.',cta:'Angebot anfragen',items:[['Chat-Widget','Chat auf Ihrer Website, immer aktiv.'],['WhatsApp-Chatbot','Automatische Antworten auf WhatsApp.'],['KI-Automatisierung','Wiederkehrende Aufgaben, von selbst erledigt.'],['KI-Übergang','Ihr Unternehmen, mit KI im Einsatz.'],['Dynamische CRMs','Ihre Kunden, immer im Blick.'],['HogarGo','In Entwicklung: Menschen, die einen Service für ihr Zuhause brauchen, finden diejenigen, die ihn anbieten, mit einem Match wie bei Tinder, das gleiche Prinzip wie ConCompás.','mailto:info@weluxhub.com?subject=HogarGo','Ich möchte mehr erfahren']]},
+pt:{t:'Os nossos produtos',l:'Produtos digitais, prontos a usar.',cta:'Pedir proposta',items:[['Chat widget','Chat no seu site, sempre ativo.'],['Chatbot de WhatsApp','Respostas automáticas no WhatsApp.'],['Automação com IA','Tarefas repetidas, feitas sozinhas.'],['Transição com IA','A sua empresa, a trabalhar com IA.'],['CRM dinâmicos','Os seus clientes, sempre organizados.'],['HogarGo','Em desenvolvimento: pessoas que precisam de um serviço para a sua casa encontram quem o oferece, com um match como no Tinder, o mesmo princípio que o ConCompás.','mailto:info@weluxhub.com?subject=HogarGo','Quero saber mais']]},
+lu:{t:'Eis Produkter',l:'Digital Produkter, prett ze benotzen.',cta:'Propositioun ufroen',items:[['Chat-Widget','Chat op Ärer Websäit, ëmmer aktiv.'],['WhatsApp-Chatbot','Automatesch Äntwerten op WhatsApp.'],['Automatiséierung mat KI','Widderhuelend Aufgaben, eleng gemaach.'],['KI-Transitioun','Är Entreprise, schafft mat KI.'],['Dynamesch CRMen','Är Clienten, ëmmer uerdentlech.'],['HogarGo','An Entwécklung: Leit, déi e Service fir hiert Heem brauchen, fannen déi, déi en ubidden, mat engem Match wéi op Tinder, dat selwecht Prinzip wéi ConCompás.','mailto:info@weluxhub.com?subject=HogarGo','Ech wëll méi wëssen']]}
 };
 var D=P[lang]||P.es;
 function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
@@ -773,7 +773,7 @@ var grid=el('div','welux-cards');
 D.items.forEach(function(c){
 var card=el('article','welux-card');
 card.appendChild(el('h3',null,c[0]));card.appendChild(el('p',null,c[1]));
-var a=el('a',null,D.cta);a.href=prefix()+'/studio/';
+var a=el('a',null,c[3]||D.cta);a.href=c[2]||prefix()+'/studio/';
 card.appendChild(a);grid.appendChild(card);});
 sec.appendChild(grid);
 var anchor=document.getElementById('welux-servicios');

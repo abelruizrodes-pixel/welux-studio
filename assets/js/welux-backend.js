@@ -213,3 +213,18 @@ if(location.pathname.indexOf('/gear')===-1)return;
 var css='main section:nth-of-type(2) div.grid.grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))!important}'+'@media(max-width:768px){main section:nth-of-type(2) div.grid[class*="grid-cols-1"]{grid-template-columns:minmax(0,1fr)!important}main section:nth-of-type(2) [class*="lg:col-span-7"],main section:nth-of-type(2) [class*="lg:col-span-5"]{grid-column:auto!important;min-width:0!important}main section:nth-of-type(2) div.grid.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))!important}}'+'@media(min-width:768px) and (max-width:1023px){main section:nth-of-type(2) div.grid.grid-cols-2{grid-template-columns:repeat(3,minmax(0,1fr))!important}}'+'@media(max-width:480px){main section:nth-of-type(2) [class*="lg:col-span-5"]>div>div.flex{flex-wrap:wrap!important;row-gap:4px!important}main section:nth-of-type(2) [class*="lg:col-span-5"]>div>div.flex>div{white-space:nowrap!important;flex-shrink:0!important}main section:nth-of-type(2) [class*="lg:col-span-5"] div.absolute.top-4{white-space:nowrap!important}main section:nth-of-type(2) [class*="lg:col-span-5"] div.absolute.bottom-4{flex-direction:column!important;align-items:flex-start!important;gap:6px!important}main section:nth-of-type(2) [class*="lg:col-span-5"] div.absolute.bottom-4 h3{font-size:1.15rem!important;line-height:1.25!important;white-space:nowrap!important}main section:nth-of-type(2) [class*="lg:col-span-5"] div.absolute.bottom-4 p{font-size:11px!important;white-space:nowrap!important}main section:nth-of-type(2) div.grid.grid-cols-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}main section:nth-of-type(2) div.grid.grid-cols-4>div>div{white-space:nowrap!important}}';
 var st=document.createElement('style');st.setAttribute('data-welux','gear-card');st.textContent=css;(document.head||document.documentElement).appendChild(st);
 })();
+
+/* VUELTA 7 - TARJETA GEAR 2 (2026-11-09, captura del dueno 10:54). Solo Gear: cabecera en una sola barra, pastillas de ventajas en una linea, WhatsApp sin tapar la tarjeta, metricas sin solapar. No se toca /films/. */
+(function(){
+if(location.pathname.indexOf('/gear')===-1)return;
+var css='header>div.h-20{flex-wrap:nowrap!important;overflow-x:auto!important}'+'header>div.h-20 *{flex-shrink:0!important}'+'header>div.h-20 a,header>div.h-20 span{white-space:nowrap!important}'+'@media(max-width:1023px){header>div.h-20{scrollbar-width:none!important}header>div.h-20::-webkit-scrollbar{display:none!important}}'+'@media(max-width:480px){header a.group span.font-headline-sm{font-size:1.05rem!important}header a.group>span.font-technical-eyebrow{font-size:10px!important}header a[href="#calculadora"]{padding-left:12px!important;padding-right:12px!important}}'+
+'@media(max-width:480px){main section:nth-of-type(2) [class*="lg:col-span-7"]>div{flex-wrap:wrap!important}main section:nth-of-type(2) [class*="lg:col-span-7"] div:has(.material-symbols-outlined){flex-wrap:wrap!important}main section:nth-of-type(2) [class*="lg:col-span-7"] .material-symbols-outlined+span{white-space:nowrap!important}main section:nth-of-type(2) div.grid.grid-cols-2>div *{white-space:nowrap!important}}';
+var st=document.createElement('style');st.setAttribute('data-welux','gear-card-2');st.textContent=css;(document.head||document.documentElement).appendChild(st);
+if(window.matchMedia&&window.matchMedia('(max-width:768px)').matches&&'IntersectionObserver' in window){
+var card=document.querySelector('main section:nth-of-type(2) [class*="lg:col-span-5"]');
+if(card){
+var io=new IntersectionObserver(function(es){var b=document.querySelector('.welux-wa-float');if(!b)return;b.style.display=es[0].isIntersecting?'none':'';},{threshold:0.02});
+io.observe(card);
+}
+}
+})();

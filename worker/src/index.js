@@ -159,7 +159,7 @@ export default {
       return json({ ok: false, error: 'JSON no valido' }, 400, origin);
     }
     if (data && data.honeypot) return json({ ok: true, id: 'honeypot' }, 200, origin);
-    const tipo = ['candidatura', 'contacto', 'lead'].includes(data.tipo) ? data.tipo : 'lead';
+    const tipo = ['candidatura', 'contacto', 'lead', 'reserva'].includes(data.tipo) ? data.tipo : 'lead';
     const d = {
       id: crypto.randomUUID(),
       created_at: new Date().toISOString(),

@@ -101,3 +101,55 @@ welux-studio/
 ## 📄 Licencia
 
 © 2026 WELUX STUDIO & AMCROPA FILMS. Todos los derechos reservados.
+
+---
+
+## 📘 Referencia viva del proyecto
+
+> Esta sección es la referencia de trabajo actual del repo. La documentación anterior de este README se conserva íntegra por historia: describe la versión inicial del proyecto (una SPA de un solo `index.html`). La estructura viva hoy es multi-página por idioma, como se describe abajo. En caso de contradicción, manda esta sección.
+
+### Qué es este repo
+
+- Fuente de **weluxhub.com**, publicada con **GitHub Pages** desde la rama `main`.
+- Sitio multi-página por idioma: el español vive en la raíz (`index.html`, `gear/`, `films/`, `studio/`, `careers/`) y las demás lenguas en sus carpetas: `en/`, `fr/`, `de/`, `pt/` y `lu/`.
+- Secciones principales: **Gear** (alquiler de material de cine), **Films**, **Studio** y **Careers**.
+- Script central: `assets/js/welux-v2.js` (efectos, parallax, vídeo del hero y botón de cambio de idioma). Las páginas comparten la misma base de estilos con Tailwind.
+
+### ⛔ REGLA DURA — Tema claro (no es un error)
+
+- `assets/js/welux-v2.js`, línea 17: `document.documentElement.classList.remove('dark')` quita el modo oscuro al cargar la página. El tema claro es deliberado.
+- Las plantillas declaran `<html class="dark">` y Tailwind está configurado con `darkMode: "class"`. Esa combinación es intencional: el tema claro se fuerza por script al cargar.
+- **No quitar ni «arreglar» esa línea ni el `class="dark"` del `<html>`.** Quien la lea como un error está equivocado: es el comportamiento querido del sitio.
+
+### ⛔ REGLA DURA — Datos personales (nunca en el código público)
+
+- Nunca publicar en este repo público: dirección particular, teléfono, WhatsApp, RCS ni pólizas.
+- Único contacto público: **info@weluxhub.com**.
+- El RCS solo va detrás de la puerta de datos del aviso legal; nunca en el código público.
+
+### Sin paso de compilación
+
+- Tailwind se carga por **Play CDN** (`cdn.tailwindcss.com`); no hay `package.json` ni `tailwind.config.js` (la configuración de Tailwind vive en línea en cada página).
+- Las páginas parecen generadas por scripts (`generate_multilingual_complete.py`, `build_full_multilingual_ecosystem.py` en la raíz): **no regenerar**. Regenerar reintroduce la dirección, el teléfono y el WhatsApp que ya se quitaron a mano.
+- Los cambios se hacen editando directamente los archivos HTML en `main`.
+
+### Backend
+
+- **Worker `weluxhub-api`** + base de datos **D1 `welux-leads`** (ver carpeta `worker/`).
+- Los formularios guardan los envíos en D1.
+- Notificaciones por correo con **Resend** (secreto `RESEND_API_KEY`, nunca en el repo) o **MailChannels** como respaldo.
+
+### Despliegue
+
+- **GitHub Pages**: cada push a `main` lanza un despliegue nuevo y cancela el despliegue anterior.
+- Durante la propagación, el CDN puede mezclar versiones viejas y nuevas: **verificar en vivo solo al final**, cuando el despliegue de ese push haya terminado.
+
+### Pendientes abiertos (los escribe el dueño; no inventarlos)
+
+- Traducción al luxemburgués (LU) del hero.
+- Textos del cuerpo en español de Gear/Films.
+
+### Regla de mantenimiento de este README
+
+- **Cada vuelta de revisión y corrección actualiza esta sección** con lo que cambie o se descubra (reglas nuevas, estructura, backend, despliegue o pendientes). La documentación antigua no se borra: queda arriba como historia de la versión inicial.
+

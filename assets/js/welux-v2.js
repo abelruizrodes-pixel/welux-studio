@@ -1032,3 +1032,53 @@ form.addEventListener('submit',function(){if(!form.checkValidity())return;setTim
 
 /* Quinta vuelta: separa las reseñas en dos cuadros propios, Google y Editus, cada uno con su formulario al Worker y su guía para publicar en esa plataforma. */(function(){'use strict';var HECHO=false;function pintar(f){var ls=f.querySelectorAll('.welux-resena-rate label');function pinta(){ls.forEach(function(lb){var i=lb.querySelector('input');if(i&&i.checked){var n=+i.value;ls.forEach(function(lb2,j){lb2.style.removeProperty('color');lb2.classList.toggle('on',j<n);});}});}ls.forEach(function(lb){lb.addEventListener('click',function(){setTimeout(pinta,0);});});f.querySelectorAll('input[name="valoracion"]').forEach(function(r){r.addEventListener('change',pinta);});pinta();}function dividir(){if(HECHO)return;var orig=document.getElementById('welux-resena-form');if(!orig)return;var guia=document.querySelector('.welux-resena-guia');var st=document.createElement('style');st.textContent='.welux-resena-forms{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:72rem;margin:1rem auto 0}@media(max-width:640px){.welux-resena-forms{grid-template-columns:1fr}}.welux-resena-forms .welux-resena-form{max-width:none;margin:0}.welux-resena-forms .welux-resena-guia{max-width:none;margin:1rem 0 0}';document.head.appendChild(st);var wrap=document.createElement('div');wrap.className='welux-resena-forms';orig.parentNode.insertBefore(wrap,orig);var conf=[{id:'welux-resena-form-google',origen:'resena-google',titulo:'Google',link:0},{id:'welux-resena-form-editus',origen:'resena-editus',titulo:'Editus',link:1}];conf.forEach(function(c){var box=document.createElement('div');var f=orig.cloneNode(true);f.id=c.id;var o=f.querySelector('input[name="origen"]');if(o)o.value=c.origen;var t=f.querySelector('h3');if(t)t.textContent=c.titulo+' — '+t.textContent;var g=guia?guia.cloneNode(true):document.createElement('div');g.className='welux-resena-guia';g.hidden=true;var gp=g.querySelector('p');if(gp){var gl=(document.documentElement.lang||'es').slice(0,2);var GT={es:['Ya la tenemos. Para que cuente en Google, publícala en Google con el enlace de abajo: cada plataforma guarda su propia reseña.','Ya la tenemos. Para que cuente en Editus, publícala en Editus con el enlace de abajo: cada plataforma guarda su propia reseña.'],en:['Got it. For it to count on Google, publish it on Google with the link below: each platform keeps its own review.','Got it. For it to count on Editus, publish it on Editus with the link below: each platform keeps its own review.'],fr:['Bien reçu. Pour que votre avis compte sur Google, publiez-le sur Google avec le lien ci-dessous : chaque plateforme garde son propre avis.','Bien reçu. Pour que votre avis compte sur Editus, publiez-le sur Editus avec le lien ci-dessous : chaque plateforme garde son propre avis.'],de:['Danke, wir haben sie erhalten. Damit sie auf Google zählt, veröffentlichen Sie sie auf Google über den Link unten: Jede Plattform speichert ihre eigene Bewertung.','Danke, wir haben sie erhalten. Damit sie auf Editus zählt, veröffentlichen Sie sie auf Editus über den Link unten: Jede Plattform speichert ihre eigene Bewertung.'],pt:['Recebemos. Para que conte no Google, publique-a no Google com o link abaixo: cada plataforma guarda a sua própria avaliação.','Recebemos. Para que conte no Editus, publique-a no Editus com o link abaixo: cada plataforma guarda a sua própria avaliação.'],lu:['Merci, mir hunn se kritt. Fir datt se op Google zielt, publizéiert se op Google mam Link hei drënner: all Plattform späichert hir eege Bewäertung.','Merci, mir hunn se kritt. Fir datt se op Editus zielt, publizéiert se op Editus mam Link hei drënner: all Plattform späichert hir eege Bewäertung.']};var gt=GT[gl]||GT.es;gp.textContent=gt[c.link];}var ls=g.querySelectorAll('a');ls.forEach(function(a,i){if(i!==c.link)a.remove();});box.appendChild(f);box.appendChild(g);pintar(f);f.addEventListener('submit',function(){if(!f.checkValidity())return;setTimeout(function(){g.hidden=false;g.scrollIntoView({block:'nearest'});},2500);});wrap.appendChild(box);});orig.remove();if(guia)guia.remove();HECHO=true;}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',dividir);dividir();setTimeout(dividir,900);})();/* Sexta vuelta: repintado de estrellas delegado */(function(){function repintar(){document.querySelectorAll('.welux-resena-rate').forEach(function(rate){var labels=rate.querySelectorAll('label'),n=null;labels.forEach(function(lb){var i=lb.querySelector('input');if(i&&i.checked)n=+i.value;});if(n===null)return;labels.forEach(function(lb,j){lb.style.removeProperty('color');lb.classList.toggle('on',j<n);});});}document.addEventListener('change',function(e){if(e.target&&e.target.matches&&e.target.matches('input[name="valoracion"]'))repintar();});document.addEventListener('click',function(e){var l=e.target&&e.target.closest?e.target.closest('.welux-resena-rate label'):null;if(l)setTimeout(repintar,0);});if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',repintar);else repintar();})(); /* Cuarta vuelta: al cargar con un ancla en la dirección, desplaza hasta su sección aunque se haya inyectado tarde o estuviera oculta. */
 (function(){'use strict';function ir(){var id=(location.hash||'').slice(1);if(!id)return;var el=document.getElementById(id);if(!el)return;var n=el;while(n&&n!==document.body){if(n.style&&n.style.display==='none')n.style.display='block';n=n.parentElement;}el.scrollIntoView({behavior:'smooth',block:'start'});}window.addEventListener('load',function(){setTimeout(ir,400);});setTimeout(ir,1200);})();
+
+/* Vuelta 12 (2026-11-09): compensacion de la cabecera fija en Careers (hallazgo 9 de la vuelta 11) y subtitulo del kit en Gear.
+   Careers: la cabecera fija (~178 px en escritorio, al envolverse el nav; ~80 px en movil) tapaba la barra de anuncios
+   y recortaba la primera linea del H1. Se mide su altura real y se compensa con padding-top en el body; se re-mide al
+   redimensionar y al cargar las fuentes. El menu EN recortaba "Invitations" porque el nav no envolvia: se permite el wrap.
+   Gear: la variante de division servida en vivo no renderiza la linea del subtitulo del kit ("Kit ... $425 / ...") que si
+   existe en la plantilla estatica; si falta tras el h3 del rig, se inserta con el texto ya traducido de la plantilla
+   (LU conserva el texto en ingles, como en la plantilla). */
+(function(){
+'use strict';
+function hasSeg(name){var s=(location.pathname||'/').split('/').filter(function(x){return x;});return s.indexOf(name)>=0||s.indexOf(name+'.html')>=0;}
+if(hasSeg('careers')){
+var header=document.querySelector('header');
+function fixCareers(){
+if(!header)return;
+var inner=header.firstElementChild;
+if(inner){inner.style.flexWrap='wrap';inner.style.height='auto';inner.style.minHeight='5rem';}
+var nav=header.querySelector('nav');
+if(nav){nav.style.flexWrap='wrap';nav.style.rowGap='0.25rem';nav.style.columnGap='1rem';}
+var h=header.offsetHeight||0;
+if(h>0){document.body.style.paddingTop=(h+8)+'px';
+var els=document.querySelectorAll('main [id]');
+for(var i=0;i<els.length;i++){els[i].style.scrollMarginTop=(h+16)+'px';}}
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fixCareers);}else{fixCareers();}
+window.addEventListener('resize',fixCareers);
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fixCareers);}
+setTimeout(fixCareers,60);setTimeout(fixCareers,700);setTimeout(fixCareers,2500);
+}
+if(hasSeg('gear')){
+var SUB={es:'Kit de Cine Listo para Rodar • $425 / día',en:'Ready-to-Shoot Cine Kit • $425 / day',de:'Drehfertiges Cine-Kit • $425 / Tag',fr:'Kit Cinéma Prêt à Tourner • $425 / jour',lu:'Ready-to-Shoot Cine Kit • $425 / día',pt:'Kit de Cinema Pronto a Filmar • $425 / dia'};
+var lang=(document.documentElement.lang||'es').slice(0,2).toLowerCase();
+function fixRig(){
+var heads=document.querySelectorAll('h3');
+for(var i=0;i<heads.length;i++){
+var h3=heads[i];
+if(h3.textContent.indexOf('Blackmagic URSA 4.6K G2')<0)continue;
+var nx=h3.nextElementSibling;
+if(nx&&nx.tagName==='P'&&nx.textContent.indexOf('$425')>=0)continue;
+var p=document.createElement('p');
+p.className='font-technical-spec text-technical-spec';
+p.style.color='#57534e';p.style.marginTop='2px';
+p.textContent=SUB[lang]||SUB.es;
+h3.parentNode.insertBefore(p,h3.nextSibling);
+}
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fixRig);}else{fixRig();}
+setTimeout(fixRig,900);
+}
+})();

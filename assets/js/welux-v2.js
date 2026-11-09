@@ -1005,3 +1005,6 @@ paint();
 form.addEventListener('submit',function(){if(!form.checkValidity())return;setTimeout(function(){guia.hidden=false;guia.scrollIntoView({block:'nearest'});},2500);});
 }catch(e){}
 })();
+
+/* Cuarta vuelta: retira del pie los enlaces rotos (Facebook sin perfil real y HogarGo sin sitio activo). */
+(function(){'use strict';function limpiar(){document.querySelectorAll('a[href*="facebook.com/weluxhub"],a[href*="hogargo.pages.dev"]').forEach(function(a){a.remove();});}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',limpiar);}else{limpiar();}setTimeout(limpiar,800);})();

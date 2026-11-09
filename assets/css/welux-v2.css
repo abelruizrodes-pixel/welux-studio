@@ -223,4 +223,4 @@ footer [class*="text-white/60"]{color:#3d4a56!important}
 footer [class*="text-white/40"]{color:#5a6b7a!important}
 footer [class*="text-[#ffb95f]"]{color:#7a5a1f!important}
 /* Selector de paletas provisional retirado (2026-11-08): no se muestra en ninguna página. */
-.welux-palette-picker{display:none!important}
+.welux-palette-picker{display:none!important} /* Careers: cabecera en una sola barra en movil y tablet. */ @media (max-width:768px){header .welux-header-row{flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:thin}header .welux-header-row>div{flex-wrap:nowrap!important}header .welux-header-row a{white-space:nowrap!important}}

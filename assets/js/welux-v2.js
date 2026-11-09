@@ -14,7 +14,7 @@
   };
   var t = T[lang] || T.es;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.documentElement.classList.remove('dark');window.__weluxLite=window.innerWidth<768||window.matchMedia('(prefers-reduced-motion: reduce)').matches||(navigator.connection&&(navigator.connection.saveData||(navigator.connection.effectiveType||'').indexOf('2g')>=0));var contactLabel={es:'Contacto',en:'Contact',fr:'Contact',de:'Kontakt',pt:'Contacto',lu:'Kontakt'}[lang]||'Contacto';Array.prototype.forEach.call(document.querySelectorAll('header a[href^="mailto:"]'),function(a){if(a.textContent.indexOf('Contacto')>=0)a.innerHTML=a.innerHTML.replace('Contacto',contactLabel);});
+  document.documentElement.classList.remove('dark');window.__weluxLite=window.innerWidth<768||window.matchMedia('(prefers-reduced-motion: reduce)').matches||(navigator.connection&&(navigator.connection.saveData||(navigator.connection.effectiveType||'').indexOf('2g')>=0));var contactLabel={es:'Contacto',en:'Contact',fr:'Contact',de:'Kontakt',pt:'Contacto',lu:'Kontakt'}[lang]||'Contacto';function fixContactLabel(){var L=(location.pathname.match(/^\/(en|fr|de|pt|lu)\//)||[])[1]||lang;var lbl={es:'Contacto',en:'Contact',fr:'Contact',de:'Kontakt',pt:'Contacto',lu:'Kontakt'}[L]||'Contacto';Array.prototype.forEach.call(document.querySelectorAll('a[href^="mailto:"]'),function(a){if(a.textContent.indexOf('Contacto')>=0)a.innerHTML=a.innerHTML.replace('Contacto',lbl);});}fixContactLabel();window.addEventListener('load',fixContactLabel);
     /* Header con sombra al hacer scroll */
   var header = document.querySelector('header');
   function onScroll() {
@@ -657,7 +657,7 @@ if(slug==='studio')main.appendChild(buildServices());
     v.setAttribute('preload', 'none');
     v.setAttribute('data-video-fondo', 'hero');
     box.appendChild(v);
-    header.parentElement.insertBefore(box, header);var hi=header.querySelector('img');if(hi)hi.style.display='none';
+    header.parentElement.insertBefore(box, header);var hi=document.querySelector('img[src*="luxemburgo-header"]');if(hi)hi.style.display='none';
     v.load();
     var pr = v.play();
     if (pr && pr.catch) pr.catch(function () {});

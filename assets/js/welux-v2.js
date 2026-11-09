@@ -1023,3 +1023,6 @@ form.addEventListener('submit',function(){if(!form.checkValidity())return;setTim
 
 /* Cuarta vuelta: al abrir las tarjetas de Studio y Gear, el desplazamiento se calcula con la altura del encabezado en ese momento (crece al cargar) y se refresca el margen de las anclas. */
 (function(){'use strict';function margen(){var h=document.querySelector('header');return (h?h.offsetHeight:90)+32;}function aplicar(){document.documentElement.style.scrollPaddingTop=margen()+'px';}aplicar();window.addEventListener('load',aplicar);window.addEventListener('resize',aplicar);setTimeout(aplicar,2000);document.addEventListener('click',function(e){var b=e.target&&e.target.closest?e.target.closest('#welux-cards .welux-card button'):null;if(!b)return;setTimeout(function(){var open=document.querySelector('.welux-detail-open');if(!open)return;var y=open.getBoundingClientRect().top+window.scrollY-margen();window.scrollTo({top:y,behavior:'smooth'});},180);});})();
+
+/* Cuarta vuelta: las secciones de detalle de Studio y Gear se abren con aire arriba para que el encabezado fijo no corte su título. */
+(function(){'use strict';var st=document.createElement('style');st.textContent='.welux-detail-open{padding-top:120px!important}';document.head.appendChild(st);})();

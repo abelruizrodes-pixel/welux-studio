@@ -839,7 +839,7 @@ Array.prototype.slice.call(document.querySelectorAll('footer h4')).forEach(funct
 
 /* WeLux — corrección de contraste: títulos de las tarjetas simples y de las
    secciones nuevas en oscuro, porque las páginas de división usan tema oscuro. */
-(function(){'use strict';try{var s=document.createElement('style');s.textContent='.welux-card h3{color:#141310!important}.welux-services>h2{color:#141310!important}';document.head.appendChild(s);}catch(e){}})();
+(function(){'use strict';try{var s=document.createElement('style');s.textContent='.welux-card h3{color:#141310!important}header a[href="#calculadora"]{white-space:nowrap!important;flex-shrink:0!important;max-width:none!important}header nav a{white-space:nowrap!important}.welux-services>h2{color:#141310!important}';document.head.appendChild(s);}catch(e){}})();
 
 /* WeLux — cargar el CSS compartido (paleta de la home) en las páginas que no lo enlazan
    y convertir franjas de cifras, tarjetas oscuras y bloques destacados en widgets claros.

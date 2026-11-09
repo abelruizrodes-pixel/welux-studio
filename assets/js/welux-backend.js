@@ -132,7 +132,7 @@
     var oldBack = [];
     document.querySelectorAll('a').forEach(function (a) {
       var t = (a.textContent || '').replace(/\s+/g, ' ').trim();
-      if (/volver a welux|back to weluxhub|\u2190\s*WeLux Hub/i.test(t)) oldBack.push(a);
+      if (a.classList && a.classList.contains('welux-header-back')) return; if (/volver a welux|back to weluxhub|\u2190\s*WeLux Hub/i.test(t)) oldBack.push(a);
     });
     oldBack.forEach(function (a) {
       var fixedParent = a.closest('div');

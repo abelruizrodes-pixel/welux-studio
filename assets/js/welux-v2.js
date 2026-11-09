@@ -1026,3 +1026,6 @@ form.addEventListener('submit',function(){if(!form.checkValidity())return;setTim
 
 /* Cuarta vuelta: las secciones de detalle de Studio y Gear se abren con aire arriba para que el encabezado fijo no corte su título. */
 (function(){'use strict';var st=document.createElement('style');st.textContent='.welux-detail-open{padding-top:120px!important}';document.head.appendChild(st);})();
+
+/* Cuarta vuelta: el enlace de Invitaciones del menú lleva a la sección de invitaciones del portal, también desde las páginas de cada división. */
+(function(){'use strict';var m=(location.pathname||'/').match(/^\/(en|fr|de|pt|lu)(\/|$)/);var base=m?('/'+m[1]+'/#invitaciones'):'/#invitaciones';var enCasa=location.pathname==='/'||(!!m&&location.pathname==='/'+m[1]+'/');if(!enCasa){document.querySelectorAll('a[href="#invitaciones"]').forEach(function(a){a.setAttribute('href',base);});}})();

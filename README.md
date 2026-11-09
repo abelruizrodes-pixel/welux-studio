@@ -153,3 +153,10 @@ welux-studio/
 
 - **Cada vuelta de revisión y corrección actualiza esta sección** con lo que cambie o se descubra (reglas nuevas, estructura, backend, despliegue o pendientes). La documentación antigua no se borra: queda arriba como historia de la versión inicial.
 
+### Vuelta 16 (9 nov 2026)
+
+- **Careers EN** (`en/careers/index.html`): la fila interna de la cabecera rebosaba ~40 px y dejaba visible la barra de desplazamiento horizontal bajo la cabecera (el documento no se desplazaba). Se añadió un `<style>` en ese archivo: la fila y el `nav` envuelven en dos líneas y se quita el desplazamiento horizontal.
+- **Gear ES/FR** (`gear/index.html`, `fr/gear/index.html`): el HTML del catálogo está completo en `main` (`#catalogo` con el kit y las tarjetas), pero `assets/js/welux-v2.js` lo oculta: el bloque «ocultar por secciones» pone `display:none` a todas las `<section>` de `main` salvo el héroe y solo las muestra al pulsar una tarjeta; los enlaces del menú (`#catalogo`, `#fotomaton-glam`, `#talent-lab`) no las revelaban. En cada archivo se añadió un `<style>` con `main section{display:block!important}` para que el catálogo se vea al desplazar.
+- **Línea del kit**: «Kit de Cine Listo para Rodar • $425 / día» / «Kit Cinéma Prêt à Tourner • $425 / jour» existe en el HTML estático tras el `h3` del rig, pero la versión servida en vivo no la renderizaba. Las páginas Gear cargaban un `welux-v2.js` sin la inserción de `fixRig` (vuelta 12): ES tenía `?v=10` y FR no tenía versión; en ambas se subió a `?v=13` para servir el JS actual.
+- **Despliegue**: el sitio vive en Cloudflare Pages (proyecto «weluxhub», https://weluxhub.pages.dev); GitHub sigue como fuente del código. La verificación en vivo se hace tras el despliegue en Cloudflare.
+

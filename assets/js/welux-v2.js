@@ -1029,3 +1029,6 @@ form.addEventListener('submit',function(){if(!form.checkValidity())return;setTim
 
 /* Cuarta vuelta: el enlace de Invitaciones del menú lleva a la sección de invitaciones del portal, también desde las páginas de cada división. */
 (function(){'use strict';var m=(location.pathname||'/').match(/^\/(en|fr|de|pt|lu)(\/|$)/);var base=m?('/'+m[1]+'/#invitaciones'):'/#invitaciones';var enCasa=location.pathname==='/'||(!!m&&location.pathname==='/'+m[1]+'/');if(!enCasa){document.querySelectorAll('a[href="#invitaciones"]').forEach(function(a){a.setAttribute('href',base);});}})();
+
+/* Cuarta vuelta: al cargar con un ancla en la dirección, desplaza hasta su sección aunque se haya inyectado tarde o estuviera oculta. */
+(function(){'use strict';function ir(){var id=(location.hash||'').slice(1);if(!id)return;var el=document.getElementById(id);if(!el)return;var n=el;while(n&&n!==document.body){if(n.style&&n.style.display==='none')n.style.display='block';n=n.parentElement;}el.scrollIntoView({behavior:'smooth',block:'start'});}window.addEventListener('load',function(){setTimeout(ir,400);});setTimeout(ir,1200);})();

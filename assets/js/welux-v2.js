@@ -831,7 +831,7 @@ if(shown===target){closeAll();return;}
 closeAll();
 if(target){target.style.display='block';target.classList.add('welux-detail-open');shown=target;target.style.scrollMarginTop='90px';(function(_t){var _p=_t.parentElement;while(_p&&_p!==document.body){if(_p.style.display==='none')_p.style.display='block';_p=_p.parentElement;}})(target);target.scrollIntoView({behavior:'smooth',block:'start'});}});
 old.parentNode.replaceChild(b,old);});
-var nav=document.querySelector('header nav');if(nav)nav.style.display='none';
+var nav=document.querySelector('header nav');if(nav)nav.style.display='none';Array.prototype.slice.call(document.querySelectorAll('a[href="#calculadora"],a[href="#reserva"]')).forEach(function(a){a.addEventListener('click',function(ev){var t=document.getElementById(a.getAttribute('href').slice(1));if(!t)return;ev.preventDefault();closeAll();var n=t;while(n&&n!==document.body){if(n.style)n.style.display='block';n=n.parentElement;}t.classList.add('welux-detail-open');shown=t;t.scrollIntoView({behavior:'smooth',block:'start'});});});
 Array.prototype.slice.call(document.querySelectorAll('body>section,main+section,footer section')).forEach(function(s){var h=s.querySelector('h1,h2,h3');if(h&&/invitaciones|invitations/i.test(h.textContent))s.style.display='none';});
 Array.prototype.slice.call(document.querySelectorAll('footer h4')).forEach(function(h){if(/arsenal|experiencias|talento|talent|invitaciones|invitations|catálogo|catalogue|rodaje|shoot/i.test(h.textContent)){var d=h.closest('div');if(d)d.style.display='none';}});
 }catch(e){}

@@ -238,7 +238,7 @@ if(slug==='studio')main.appendChild(buildServices());
     v.muted = true;
     v.loop = true;
     v.playsInline = true;
-    v.preload = 'metadata';
+    v.preload = 'auto';if (v.load) { v.load(); }
     return v;
   }
 
@@ -301,7 +301,7 @@ if(slug==='studio')main.appendChild(buildServices());
     heroBox.insertBefore(photo, heroBox.firstChild);
   }
 
-  wireSectionVideos();
+  wireSectionVideos();[600,1500,3000].forEach(function(t){setTimeout(function(){var v=document.querySelector('video[src*="welux-hero-estudio"]');if(v&&v.paused){playVideo(v);}},t);});
   window.addEventListener('load', wireSectionVideos);
 })();
 

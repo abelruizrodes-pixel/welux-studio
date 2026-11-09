@@ -423,7 +423,7 @@ if(slug==='studio')main.appendChild(buildServices());
           var a = document.createElement('a');
           a.className = 'welux-hero-button ' + (k === 0 ? 'welux-hero-button--primary' : 'welux-hero-button--secondary');
           a.href = hrefs[k];
-          a.textContent = t[k];
+          a.textContent = t[k]; a.style.cssText = 'display:inline-flex!important;align-items:center!important;justify-content:center!important;height:auto!important;min-height:44px!important;width:auto!important;max-width:none!important;flex:0 0 auto!important;white-space:normal!important;overflow:visible!important;line-height:1.25!important;text-align:center!important;padding:12px 20px!important;';
           box.appendChild(a);
         }
         var anchor = heroHeader.querySelector('p');

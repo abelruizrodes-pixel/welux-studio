@@ -14,7 +14,7 @@
   };
   var t = T[lang] || T.es;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.documentElement.classList.remove('dark');
+  document.documentElement.classList.remove('dark');window.__weluxLite=window.innerWidth<768||window.matchMedia('(prefers-reduced-motion: reduce)').matches||(navigator.connection&&(navigator.connection.saveData||(navigator.connection.effectiveType||'').indexOf('2g')>=0));var contactLabel={es:'Contacto',en:'Contact',fr:'Contact',de:'Kontakt',pt:'Contacto',lu:'Kontakt'}[lang]||'Contacto';Array.prototype.forEach.call(document.querySelectorAll('header a[href^="mailto:"]'),function(a){if(a.textContent.indexOf('Contacto')>=0)a.innerHTML=a.innerHTML.replace('Contacto',contactLabel);});
     /* Header con sombra al hacer scroll */
   var header = document.querySelector('header');
   function onScroll() {
@@ -100,7 +100,7 @@ var a=main.querySelector('a[href*="/'+k+'"],a[href*="'+k+'.html"]');
 if(a)a.textContent=map[k];});
 var dlink=main.querySelector('a[href*="/studio"],a[href*="studio.html"]');
 var blk=dlink;while(blk&&blk.parentElement!==main)blk=blk.parentElement;
-var svc=buildServices();
+if(Array.prototype.some.call(document.querySelectorAll('h2'),function(h){return(h.textContent||'').trim()===D.svcT;}))return;var svc=buildServices();
 if(blk&&blk.parentNode)blk.parentNode.insertBefore(svc,blk.nextSibling);else main.appendChild(svc);
 return;}
 /* Páginas principales de Studio, Careers y Gear */
@@ -154,7 +154,7 @@ main.appendChild(grid);
 if(slug==='studio')main.appendChild(buildServices());
 }catch(e){}
 })();
-  if (!video && header) {
+  if (!video && header && !window.__weluxLite) {
     video = document.createElement('video');
     video.id = 'welux-hero-video';
     video.className = 'welux-video welux-hero-video';
@@ -225,7 +225,7 @@ if(slug==='studio')main.appendChild(buildServices());
 
   function playVideo(v) {
     if (!v) { return; }
-    var p = v.play && v.play();
+    if (window.__weluxLite) { return; } var p = v.play && v.play();
     if (p && p.catch) { p.catch(function () {}); }
   }
 
@@ -238,12 +238,12 @@ if(slug==='studio')main.appendChild(buildServices());
     v.muted = true;
     v.loop = true;
     v.playsInline = true;
-    v.preload = 'auto';if (v.load) { v.load(); }
+    v.preload = window.__weluxLite ? 'none' : 'auto';if (window.__weluxLite) { v.autoplay = false; } else if (v.load) { v.load(); }
     return v;
   }
 
   function swapImgForVideo(img, src, label) {
-    if (!img || !img.parentNode) { return null; }
+    if (window.__weluxLite || !img || !img.parentNode) { return null; }
     var holder = img.closest ? (img.closest('picture') || img) : img;
     if (!holder.parentNode) { return null; }
     var v = makeVideo(src, img.currentSrc || img.src, label);
@@ -640,7 +640,7 @@ if(slug==='studio')main.appendChild(buildServices());
     return header || null;
   }
   function ensureHeroVideo() {
-    if (document.querySelector('.welux-hero-video')) return;
+    if (window.__weluxLite || document.querySelector('.welux-hero-video')) return;
     var header = heroHeader();
     if (!header || !header.parentElement) return;
     var box = document.createElement('div');
@@ -657,13 +657,13 @@ if(slug==='studio')main.appendChild(buildServices());
     v.setAttribute('preload', 'none');
     v.setAttribute('data-video-fondo', 'hero');
     box.appendChild(v);
-    header.parentElement.insertBefore(box, header);
+    header.parentElement.insertBefore(box, header);var hi=header.querySelector('img');if(hi)hi.style.display='none';
     v.load();
     var pr = v.play();
     if (pr && pr.catch) pr.catch(function () {});
   }
   ensureHeroVideo();
-  window.addEventListener('load', function () { ensureHeroVideo(); });
+  window.addEventListener('load', function () { ensureHeroVideo(); });/* Vuelta 9 (ligero): alt real desde data-alt y carga perezosa fuera del hero */(function(){Array.prototype.forEach.call(document.querySelectorAll('img[data-alt]'),function(im){if(!im.getAttribute('alt'))im.setAttribute('alt',im.getAttribute('data-alt'));});var mn=document.querySelector('main');if(mn){Array.prototype.forEach.call(mn.querySelectorAll('img'),function(im,i){if(i===0||im.closest('header'))return;if(!im.getAttribute('loading'))im.setAttribute('loading','lazy');});}})();
 })();
 
 /* Corrección: oculta también la fila «audiencia» completa de las tarjetas
@@ -721,7 +721,7 @@ if(slug==='studio')main.appendChild(buildServices());
       if (foto) foto.style.display = 'none';
     }
     if (v.paused || v.readyState < 2) {
-      var p = v.play && v.play();
+      if (window.__weluxLite) { return; } var p = v.play && v.play();
       if (p && p.catch) p.catch(function () {});
     }
   }
@@ -776,7 +776,7 @@ card.appendChild(el('h3',null,c[0]));card.appendChild(el('p',null,c[1]));
 var a=el('a',null,c[3]||D.cta);a.href=c[2]||prefix()+'/studio/';
 card.appendChild(a);grid.appendChild(card);});
 sec.appendChild(grid);
-var anchor=document.getElementById('welux-servicios');
+if(isHome&&Array.prototype.some.call(document.querySelectorAll('h2'),function(h){return(h.textContent||'').trim()===D.t;}))return;var anchor=document.getElementById('welux-servicios');
 if(anchor&&anchor.parentNode)anchor.parentNode.insertBefore(sec,anchor.nextSibling);
 else main.appendChild(sec);
 }catch(e){}

@@ -191,3 +191,18 @@
     }
   } catch (e) { /* Sin romper la pagina si algo falla */ }
 })();
+
+/* VUELTA 7 (2026-11-09): red de seguridad movil/tablet + CSS central (igual que welux-v2.css). */
+(function(){'use strict';
+var css=document.createElement('style');css.setAttribute('data-welux','vuelta7');
+css.textContent='html,body{overflow-x:hidden!important;max-width:100%!important}img,video,iframe{max-width:100%!important}video{max-width:100%!important;height:auto!important}input,select,textarea{max-width:100%!important;box-sizing:border-box!important}header .h-20,header .welux-header-row{flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:thin!important}header .h-20>*,header .welux-header-row>*{flex-shrink:0!important}header .h-20 a,header .welux-header-row a{white-space:nowrap!important}.welux-idioma-flotante{right:12px!important;bottom:12px!important;left:auto!important}.welux-wa-float{right:12px!important;bottom:76px!important;left:auto!important;max-width:calc(100vw - 24px)!important}div.fixed.bottom-6.left-6{left:50%!important;right:auto!important;transform:translateX(-50%)!important;bottom:calc(8px + env(safe-area-inset-bottom))!important;z-index:45!important;max-width:calc(100vw - 24px)!important}div.fixed.bottom-6.left-6 a{white-space:nowrap!important;max-width:100%!important}@media(max-width:768px){div.fixed.bottom-6.left-6 a span:last-child{display:none!important}div.fixed.bottom-6.left-6 a{padding:.55rem .7rem!important;gap:.4rem!important}}.welux-studio-hero,.welux-careers-hero{background-color:#0a1420!important}html main div:has(>video){background-color:#0a1420!important}div:has(>video) h1,div:has(>video) h2,div:has(>video) p{text-shadow:0 1px 3px rgba(0,0,0,.6)}@media(max-width:768px){main>section:first-of-type [class*="grid-cols-2"],main header [class*="grid-cols-2"],main>header [class*="grid-cols-2"],[class*="hero"] [class*="grid-cols-2"]{grid-template-columns:minmax(0,1fr)!important}}';
+document.head.appendChild(css);
+function quitarBarra(){document.querySelectorAll('.welux-lang-bar').forEach(function(el){el.remove();});}
+quitarBarra();if('MutationObserver' in window){new MutationObserver(quitarBarra).observe(document.documentElement,{childList:true,subtree:true});}
+setTimeout(quitarBarra,600);setTimeout(quitarBarra,2000);
+function quitarIconoDuplicado(){if(document.querySelector('div.fixed.bottom-6.left-6')){document.querySelectorAll('.welux-home-fab').forEach(function(el){el.remove();});}}
+quitarIconoDuplicado();setTimeout(quitarIconoDuplicado,900);
+try{var tw=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);var n;while((n=tw.nextNode())){if(n.nodeValue&&(n.nodeValue.indexOf('FPS: 24.00')>-1||n.nodeValue.indexOf('24.000')>-1)){n.nodeValue=n.nodeValue.replace(/FPS: 24\.00/g,'FPS: 24').replace(/24\.000 FPS/g,'24 FPS').replace(/24,000 FPS/g,'24 FPS');}}}catch(e){}
+function activarCv(){var sp=document.getElementById('demo-pdf-label');if(!sp)return;var b=sp.closest('button');if(!b||b.dataset.qvPdf)return;b.dataset.qvPdf='1';b.addEventListener('click',function(ev){ev.preventDefault();var f=document.querySelector('#solicitud-alta');if(f){f.scrollIntoView({behavior:'smooth',block:'start'});var i=f.querySelector('input,select,textarea');if(i){setTimeout(function(){i.focus({preventScroll:true});},700);}}});}
+activarCv();setTimeout(activarCv,900);setTimeout(activarCv,2500);
+})();

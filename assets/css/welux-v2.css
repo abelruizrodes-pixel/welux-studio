@@ -247,7 +247,7 @@ div:has(>video) h1,div:has(>video) h2,div:has(>video) p{text-shadow:0 1px 3px rg
 .welux-resena-rate label{font-size:1.7rem;line-height:1;cursor:pointer;color:#c9c2b4}
 .welux-resena-rate label.on{color:#c9a227}
 .welux-resena-rate input{position:absolute;opacity:0;pointer-events:none}
-.welux-resena-rate:has(input[value="5"]:checked) label{color:#c9a227}/* VUELTA 9 (2026-11-09): la navegación de Gear/Films no se corta en escritorio; sus enlaces pasan a otra fila. Solo afecta a la navegación con la calculadora (Gear/Films); Careers sigue en una sola barra. */header .h-20:has(nav a[href="#calculadora"]),header .welux-header-row:has(nav a[href="#calculadora"]){flex-wrap:wrap!important;overflow-x:visible!important;height:auto!important;min-height:5rem!important}header nav:has(a[href="#calculadora"]){flex-wrap:wrap!important;max-width:100%!important}
+.welux-resena-rate:has(input[value="5"]:checked) label{color:#c9a227}/* VUELTA 9 (2026-11-09): la navegación de Gear/Films no se corta en escritorio; sus enlaces pasan a otra fila. Solo afecta a la navegación con la calculadora (Gear/Films); Careers sigue en una sola barra. */header .h-20:has(nav a[href="#calculadora"]),header .welux-header-row:has(nav a[href="#calculadora"]){flex-wrap:wrap!important;overflow-x:visible!important;height:auto!important;min-height:5rem!important}header nav:has(a[href="#calculadora"]){flex-wrap:wrap!important;max-width:100%!important}.welux-hero-video img.welux-hero-photo{display:none!important}
 .welux-resena-rate:has(input[value="4"]:checked) label:nth-child(-n+4){color:#c9a227}
 .welux-resena-rate:has(input[value="3"]:checked) label:nth-child(-n+3){color:#c9a227}
 .welux-resena-rate:has(input[value="2"]:checked) label:nth-child(-n+2){color:#c9a227}

@@ -35,8 +35,8 @@
   if ('IntersectionObserver' in window && !reduceMotion) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    revealEls.forEach(function (el) { io.observe(el); });
+    }, { threshold: 0 });
+    revealEls.forEach(function (el) { io.observe(el); }); setTimeout(function(){ revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }, 4000);
   } else { revealEls.forEach(function (el) { el.classList.add('is-visible'); }); }
   /* Vídeo del hero: si la página no tiene, se inyecta; si no carga, póster de reserva */
   var poster = '/assets/images/master_cinema_studio_gear.jpg';
@@ -479,7 +479,7 @@ if(slug==='studio')main.appendChild(buildServices());
     if (!('IntersectionObserver' in window)) { showAll(); return; }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
     var rev = document.querySelectorAll('.welux-reveal');
     for (var k = 0; k < rev.length; k++) io.observe(rev[k]);
     setTimeout(showAll, 4000);

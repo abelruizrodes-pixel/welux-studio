@@ -224,3 +224,21 @@ footer [class*="text-white/40"]{color:#5a6b7a!important}
 footer [class*="text-[#ffb95f]"]{color:#7a5a1f!important}
 /* Selector de paletas provisional retirado (2026-11-08): no se muestra en ninguna página. */
 .welux-palette-picker{display:none!important} /* Careers: cabecera en una sola barra en movil y tablet. */ @media (max-width:768px){header .welux-header-row{flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:thin}header .welux-header-row>div{flex-wrap:nowrap!important}header .welux-header-row a{white-space:nowrap!important}}
+
+/* VUELTA 7 (2026-11-09): correcciones verificadas en capturas a 390 y 768 px. */
+html,body{overflow-x:hidden!important;max-width:100%!important}
+img,video,iframe{max-width:100%!important}
+video{max-width:100%!important;height:auto!important}
+input,select,textarea{max-width:100%!important;box-sizing:border-box!important}
+header .h-20,header .welux-header-row{flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:thin!important}
+header .h-20>*,header .welux-header-row>*{flex-shrink:0!important}
+header .h-20 a,header .welux-header-row a{white-space:nowrap!important}
+.welux-idioma-flotante{right:12px!important;bottom:12px!important;left:auto!important}
+.welux-wa-float{right:12px!important;bottom:76px!important;left:auto!important;max-width:calc(100vw - 24px)!important}
+div.fixed.bottom-6.left-6{left:50%!important;right:auto!important;transform:translateX(-50%)!important;bottom:calc(8px + env(safe-area-inset-bottom))!important;z-index:45!important;max-width:calc(100vw - 24px)!important}
+div.fixed.bottom-6.left-6 a{white-space:nowrap!important;max-width:100%!important}
+@media(max-width:768px){div.fixed.bottom-6.left-6 a span:last-child{display:none!important}div.fixed.bottom-6.left-6 a{padding:.55rem .7rem!important;gap:.4rem!important}}
+.welux-studio-hero,.welux-careers-hero{background-color:#0a1420!important}
+html main div:has(>video){background-color:#0a1420!important}
+div:has(>video) h1,div:has(>video) h2,div:has(>video) p{text-shadow:0 1px 3px rgba(0,0,0,.6)}
+@media(max-width:768px){main>section:first-of-type [class*="grid-cols-2"],main header [class*="grid-cols-2"],main>header [class*="grid-cols-2"],[class*="hero"] [class*="grid-cols-2"]{grid-template-columns:minmax(0,1fr)!important}}

@@ -166,7 +166,7 @@ if(slug==='studio')main.appendChild(buildServices());
     if (!video.getAttribute('src')) video.setAttribute('src', videoSrc);
     if (!video.getAttribute('poster')) video.setAttribute('poster', poster);
     video.addEventListener('error', function () { video.classList.add('welux-hero-video--error'); if (header) { header.style.backgroundImage = 'linear-gradient(180deg,rgba(43,28,12,.25),rgba(43,28,12,.62)),url(' + poster + ')'; header.style.backgroundSize = 'cover'; header.style.backgroundPosition = 'center'; } });
-    var p = video.play && video.play();
+    var p = window.__weluxLite ? null : (video.play && video.play());
     if (p && p.catch) p.catch(function () {});
   }
   /* Un solo botón flotante de idiomas */

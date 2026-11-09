@@ -1,0 +1,26 @@
+# llms.txt — WeLux Digital Services
+
+WeLux Digital Services (WeLux Group / WeLux Hub) is a digital services company from Luxembourg. Its website is https://weluxhub.com/ and its only public contact is info@weluxhub.com.
+
+## Divisions
+
+- WeLux Studio — Luxury digital & cinema studio (private office): luxury websites and online shops, 3D scanning and virtual twins (Matterport Pro3 LiDAR), cinema advertising, and film production.
+- WeLux Careers — Interactive web CV and executive career acceleration in Luxembourg. Free for candidates (0 EUR upfront); employability support for people not in employment, education or training (NEET).
+- WeLux Gear — Cinema camera and lens rental in Luxembourg, Madrid and Paris: Blackmagic URSA Mini Pro 4.6K G2 (Super 35), high-speed cine lenses (T2), ready-to-shoot filming kits and a glam photobooth.
+- WeLux Films — Amcropa Films: the Group's film production arm.
+
+## Services
+
+- Digital studio: luxury websites and online commerce, 3D LiDAR scanning and virtual tours, cinema-quality content for premium products and real estate.
+- Cinema rental: Blackmagic URSA Mini Pro 4.6K G2 cameras, Super 35 T2 cine lenses, filming kits and glam photobooth.
+- Careers: interactive web CV, executive career acceleration, open applications and a waiting list.
+- Films: European cinema production.
+
+## Languages
+
+The website is published in six languages: Spanish (es), English (en), French (fr), German (de), Portuguese (pt) and Luxembourgish (lu), at https://weluxhub.com/ and under /en/, /fr/, /de/, /pt/ and /lu/.
+
+## Contact
+
+- Email: info@weluxhub.com
+- Website: https://weluxhub.com/

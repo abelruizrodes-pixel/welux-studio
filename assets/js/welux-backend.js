@@ -80,6 +80,8 @@
         honeypot: pick(raw, ['website', 'url']), datos: raw
       };
     }
+    var FEEDBACK_TXT={es:{recibida:'Candidatura recibida. Te escribiremos pronto.',revisa:'Revisa el nombre y el correo antes de enviar.',enviando:'Enviando…',reservaOk:'Reserva enviada. Te confirmamos por email en menos de 24 horas.',candidaturaOk:'Candidatura enviada. La hemos recibido y el equipo te escribirá pronto.',mensajeOk:'Mensaje enviado. Gracias, te escribiremos pronto.',fallo:'No se pudo enviar. Inténtalo de nuevo o escríbenos a info@weluxhub.com.',sinServicio:'El servicio de envío no responde todavía. Inténtalo de nuevo o escríbenos a info@weluxhub.com.'},en:{recibida:'Application received. We will write to you soon.',revisa:'Please check the name and email before sending.',enviando:'Sending…',reservaOk:'Booking sent. We will confirm by email within 24 hours.',candidaturaOk:'Application sent. We have received it and the team will write to you soon.',mensajeOk:'Message sent. Thank you, we will write to you soon.',fallo:'Could not be sent. Please try again or write to info@weluxhub.com.',sinServicio:'The sending service is not responding yet. Please try again or write to info@weluxhub.com.'},fr:{recibida:'Candidature reçue. Nous vous écrirons bientôt.',revisa:'Vérifiez le nom et l’e-mail avant d’envoyer.',enviando:'Envoi…',reservaOk:'Réservation envoyée. Nous vous confirmons par e-mail sous 24 heures.',candidaturaOk:'Candidature envoyée. Nous l’avons bien reçue et l’équipe vous écrira bientôt.',mensajeOk:'Message envoyé. Merci, nous vous écrirons bientôt.',fallo:'Envoi impossible. Réessayez ou écrivez à info@weluxhub.com.',sinServicio:'Le service d’envoi ne répond pas encore. Réessayez ou écrivez à info@weluxhub.com.'},de:{recibida:'Bewerbung erhalten. Wir schreiben Ihnen bald.',revisa:'Bitte prüfen Sie Name und E-Mail vor dem Absenden.',enviando:'Wird gesendet…',reservaOk:'Buchung gesendet. Wir bestätigen Ihnen per E-Mail innerhalb von 24 Stunden.',candidaturaOk:'Bewerbung gesendet. Wir haben sie erhalten und das Team wird Ihnen bald schreiben.',mensajeOk:'Nachricht gesendet. Danke, wir schreiben Ihnen bald.',fallo:'Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder schreiben Sie an info@weluxhub.com.',sinServicio:'Der Versanddienst antwortet noch nicht. Bitte versuchen Sie es erneut oder schreiben Sie an info@weluxhub.com.'},pt:{recibida:'Candidatura recebida. Escreveremos em breve.',revisa:'Verifique o nome e o e-mail antes de enviar.',enviando:'A enviar…',reservaOk:'Reserva enviada. Confirmamos por e-mail em menos de 24 horas.',candidaturaOk:'Candidatura enviada. Recebemo-la e a equipa escreverá em breve.',mensajeOk:'Mensagem enviada. Obrigado, escreveremos em breve.',fallo:'Não foi possível enviar. Tente novamente ou escreva para info@weluxhub.com.',sinServicio:'O serviço de envio ainda não responde. Tente novamente ou escreva para info@weluxhub.com.'},lu:{recibida:'Kandidatur empfaangen. Mir schreiwen Iech geschwënn.',revisa:'Kuckt w.e.g. Numm an E-Mail no ier Dir schéckt.',enviando:'Gëtt geschéckt…',reservaOk:'Reservatioun geschéckt. Mir confirméieren Iech per E-Mail bannent 24 Stonnen.',candidaturaOk:'Kandidatur geschéckt. Mir hunn se empfaangen an d’Equipe schreift Iech geschwënn.',mensajeOk:'Message geschéckt. Merci, mir schreiwen Iech geschwënn.',fallo:'Et konnt net geschéckt ginn. Probéiert et nach eng Kéier oder schreift un info@weluxhub.com.',sinServicio:'De Versandservice äntwert nach net. Probéiert et nach eng Kéier oder schreift un info@weluxhub.com.'}};
+    function txtFB(k){var T=FEEDBACK_TXT[currentLang()]||FEEDBACK_TXT.es;return T[k];}
     function enviarFormulario(event) {
       if (event) event.preventDefault();
       var form = event ? (event.target && event.target.tagName === 'FORM' ? event.target : event.currentTarget) : null;
@@ -87,24 +89,24 @@
       if (form.getAttribute('data-welux-enviando') === '1') return false;
       if (typeof form.reportValidity === 'function' && !form.reportValidity()) return false;
       var data = collect(form);
-      if (data.honeypot) { feedback('Candidatura recibida. Te escribiremos pronto.', true); form.reset(); return false; }
-      if (!data.nombre || !data.email || data.email.indexOf('@') < 0) { feedback('Revisa el nombre y el correo antes de enviar.', false); return false; }
+      if (data.honeypot) { feedback(txtFB('recibida'), true); form.reset(); return false; }
+      if (!data.nombre || !data.email || data.email.indexOf('@') < 0) { feedback(txtFB('revisa'), false); return false; }
       var btn = form.querySelector('button[type="submit"], input[type="submit"]');
       var btnTxt = btn ? btn.textContent : '';
-      if (btn) { btn.disabled = true; if (btn.tagName === 'BUTTON') btn.textContent = 'Enviando…'; }
+      if (btn) { btn.disabled = true; if (btn.tagName === 'BUTTON') btn.textContent = txtFB('enviando'); }
       form.setAttribute('data-welux-enviando', '1');
       fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
         .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
         .then(function (json) {
           form.removeAttribute('data-welux-enviando');
           if (btn) { btn.disabled = false; if (btn.tagName === 'BUTTON') btn.textContent = btnTxt; }
-          if (json && json.ok) { form.reset(); feedback(data.tipo === 'reserva' ? 'Reserva enviada. Te confirmamos por email en menos de 24 horas.' : data.tipo === 'candidatura' ? 'Candidatura enviada. La hemos recibido y el equipo te escribirá pronto.' : 'Mensaje enviado. Gracias, te escribiremos pronto.', true); if (data.tipo === 'reserva') { var _sb = form.querySelector('#booking-success'); if (_sb) { _sb.classList.remove('hidden'); _sb.style.display = 'block'; setTimeout(function () { _sb.classList.add('hidden'); _sb.style.display = 'none'; }, 7000); } } }
-          else { feedback('No se pudo enviar. Inténtalo de nuevo o escríbenos a info@weluxhub.com.', false); }
+          if (json && json.ok) { form.reset(); feedback(data.tipo === 'reserva' ? txtFB('reservaOk') : data.tipo === 'candidatura' ? txtFB('candidaturaOk') : txtFB('mensajeOk'), true); if (data.tipo === 'reserva') { var _sb = form.querySelector('#booking-success'); if (_sb) { _sb.classList.remove('hidden'); _sb.style.display = 'block'; setTimeout(function () { _sb.classList.add('hidden'); _sb.style.display = 'none'; }, 7000); } } }
+          else { feedback(txtFB('fallo'), false); }
         })
         .catch(function () {
           form.removeAttribute('data-welux-enviando');
           if (btn) { btn.disabled = false; if (btn.tagName === 'BUTTON') btn.textContent = btnTxt; }
-          feedback('El servicio de envío no responde todavía. Inténtalo de nuevo o escríbenos a info@weluxhub.com.', false);
+          feedback(txtFB('sinServicio'), false);
         });
       return false;
     }

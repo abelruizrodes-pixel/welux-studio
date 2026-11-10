@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="dark" lang="pt"><head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB3PES4ZGQ"></script><!-- TURNSTILE (Vuelta 22): script de Cloudflare Turnstile, preparado sin sitekey — ver README. --><script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB3PES4ZGQ"></script><!-- TURNSTILE (Volta 22): script do Cloudflare Turnstile, preparado sem sitekey — ver README. --><script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-NB3PES4ZGQ');</script>
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"/>
@@ -1133,21 +1133,21 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
 <div class="space-y-1">
 <label class="font-technical-spec text-technical-spec uppercase text-neutral-400 block">Nome completo</label>
-<input class="w-full px-4 py-3 bg-[#14161d] border border-neutral-800 rounded-lg text-white font-body-sm text-body-sm focus:outline-none focus:border-amber-tungsten shadow-inner placeholder-neutral-600" placeholder="p. ex. Sofia Larrea" required="" type="text"/>
+<input class="w-full px-4 py-3 bg-[#14161d] border border-neutral-800 rounded-lg text-white font-body-sm text-body-sm focus:outline-none focus:border-amber-tungsten shadow-inner placeholder-neutral-600" placeholder="p. ex. Sofia Larrea" required="" type="text" maxlength="500" />
 </div>
 <div class="space-y-1">
 <label class="font-technical-spec text-technical-spec uppercase text-neutral-400 block">Produtora / Agência / Projeto</label>
-<input class="w-full px-4 py-3 bg-[#14161d] border border-neutral-800 rounded-lg text-white font-body-sm text-body-sm focus:outline-none focus:border-amber-tungsten shadow-inner placeholder-neutral-600" placeholder="p. ex. Nocturna Films Lda." type="text"/>
+<input class="w-full px-4 py-3 bg-[#14161d] border border-neutral-800 rounded-lg text-white font-body-sm text-body-sm focus:outline-none focus:border-amber-tungsten shadow-inner placeholder-neutral-600" placeholder="p. ex. Nocturna Films Lda." type="text" maxlength="200" />
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
 <div class="space-y-1">
 <label class="font-technical-spec text-technical-spec uppercase text-neutral-400 block">E-mail de contacto</label>
-<input class="w-full px-4 py-3 bg-[#14161d] border border-neutral-800 rounded-lg text-white font-body-sm text-body-sm focus:outline-none focus:border-amber-tungsten shadow-inner placeholder-neutral-600" placeholder="diretor@produtora.com" required="" type="email"/>
+<input class="w-full px-4 py-3 bg-[#14161d] border border-neutral-800 rounded-lg text-white font-body-sm text-body-sm focus:outline-none focus:border-amber-tungsten shadow-inner placeholder-neutral-600" placeholder="diretor@produtora.com" required="" type="email" maxlength="254" />
 </div>
 <div class="space-y-1">
 <label class="font-technical-spec text-technical-spec uppercase text-neutral-400 block">Telemóvel</label>
-<input class="w-full px-4 py-3 bg-[#14161d] border border-neutral-800 rounded-lg text-white font-body-sm text-body-sm focus:outline-none focus:border-amber-tungsten shadow-inner placeholder-neutral-600" placeholder="+34 600 000 000" required="" type="tel"/>
+<input class="w-full px-4 py-3 bg-[#14161d] border border-neutral-800 rounded-lg text-white font-body-sm text-body-sm focus:outline-none focus:border-amber-tungsten shadow-inner placeholder-neutral-600" placeholder="+34 600 000 000" required="" type="tel" maxlength="30" />
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
@@ -1182,7 +1182,7 @@
 </div>
 <div class="space-y-1">
 <label class="font-technical-spec text-technical-spec uppercase text-neutral-400 block">Notas técnicas, filtros adicionais ou detalhes do cenário</label>
-<textarea class="w-full px-4 py-3 bg-[#14161d] border border-neutral-800 rounded-lg text-white font-body-sm text-body-sm focus:outline-none focus:border-amber-tungsten shadow-inner placeholder-neutral-600" placeholder="Indique os requisitos específicos: filtros ND, número de baterias V-Mount extra, design do néon, cenas do videobook..." rows="3"></textarea>
+<textarea class="w-full px-4 py-3 bg-[#14161d] border border-neutral-800 rounded-lg text-white font-body-sm text-body-sm focus:outline-none focus:border-amber-tungsten shadow-inner placeholder-neutral-600" placeholder="Indique os requisitos específicos: filtros ND, número de baterias V-Mount extra, design do néon, cenas do videobook..." rows="3" maxlength="2000"></textarea>
 </div>
 <div class="pt-space-xs">
 <button class="w-full py-4 bg-amber-tungsten hover:bg-amber-400 text-black font-label-caps text-label-caps uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(245,158,11,0.35)] flex items-center justify-center gap-2 rounded-full font-bold" type="submit">
@@ -1193,7 +1193,7 @@
 <div class="hidden p-3 bg-spec-code-green/20 border border-spec-code-green/40 text-spec-code-green rounded-lg font-technical-spec text-technical-spec text-center" id="booking-success">
                 ✓ Pedido registado com sucesso. Um supervisor técnico da Amcropa × Welux entrará em contacto consigo em menos de 2 horas.
               </div>
-<!-- TURNSTILE (Vuelta 22, preparado sin activar): para activarlo, descomentar el div y poner la sitekey de Cloudflare — ver README. --><!-- <div class="cf-turnstile" data-sitekey="PON-AQUI-TU-SITEKEY" data-theme="dark"></div> --></form>
+<!-- TURNSTILE (Volta 22, preparado mas não ativado): para ativar, descomente a div e coloque a sitekey do Cloudflare — ver README. --><!-- <div class="cf-turnstile" data-sitekey="PON-AQUI-TU-SITEKEY" data-theme="dark"></div> --></form>
 </div>
 </div>
 </div>

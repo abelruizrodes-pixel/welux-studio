@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="light" lang="fr"><head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB3PES4ZGQ"></script><!-- TURNSTILE (Vuelta 22): script de Cloudflare Turnstile, preparado sin sitekey — ver README. --><script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB3PES4ZGQ"></script><!-- TURNSTILE (Passage 22) : script Cloudflare Turnstile, préparé sans sitekey — voir README. --><script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-NB3PES4ZGQ');</script>
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"/>
@@ -846,13 +846,13 @@
 <label class="block font-mono text-[0.68rem] uppercase tracking-wider text-carbon-graphite mb-2" for="client-name">
                       Nom &amp; fonction de direction *
                     </label>
-<input class="w-full bg-surface-alabaster px-4 py-3.5 rounded-lg border border-border-fine font-sans text-[0.9rem] text-carbon-graphite placeholder:text-warm-muted/60 focus:border-gold-aged focus:ring-0 transition-colors" id="client-name" placeholder="p. ex. Alexandre de la Tour (Managing Partner)" required="" type="text"/>
+<input class="w-full bg-surface-alabaster px-4 py-3.5 rounded-lg border border-border-fine font-sans text-[0.9rem] text-carbon-graphite placeholder:text-warm-muted/60 focus:border-gold-aged focus:ring-0 transition-colors" id="client-name" placeholder="p. ex. Alexandre de la Tour (Managing Partner)" required="" type="text" maxlength="500" />
 </div>
 <div>
 <label class="block font-mono text-[0.68rem] uppercase tracking-wider text-carbon-graphite mb-2" for="client-company">
                       Entreprise / Promoteur / Marque *
                     </label>
-<input class="w-full bg-surface-alabaster px-4 py-3.5 rounded-lg border border-border-fine font-sans text-[0.9rem] text-carbon-graphite placeholder:text-warm-muted/60 focus:border-gold-aged focus:ring-0 transition-colors" id="client-company" placeholder="p. ex. Luxembourg Prime Estates S.A." required="" type="text"/>
+<input class="w-full bg-surface-alabaster px-4 py-3.5 rounded-lg border border-border-fine font-sans text-[0.9rem] text-carbon-graphite placeholder:text-warm-muted/60 focus:border-gold-aged focus:ring-0 transition-colors" id="client-company" placeholder="p. ex. Luxembourg Prime Estates S.A." required="" type="text" maxlength="200" />
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -860,7 +860,7 @@
 <label class="block font-mono text-[0.68rem] uppercase tracking-wider text-carbon-graphite mb-2" for="client-email">
                       E-mail professionnel direct *
                     </label>
-<input class="w-full bg-surface-alabaster px-4 py-3.5 rounded-lg border border-border-fine font-sans text-[0.9rem] text-carbon-graphite placeholder:text-warm-muted/60 focus:border-gold-aged focus:ring-0 transition-colors" id="client-email" placeholder="director@holding.lu" required="" type="email"/>
+<input class="w-full bg-surface-alabaster px-4 py-3.5 rounded-lg border border-border-fine font-sans text-[0.9rem] text-carbon-graphite placeholder:text-warm-muted/60 focus:border-gold-aged focus:ring-0 transition-colors" id="client-email" placeholder="director@holding.lu" required="" type="email" maxlength="254" />
 </div>
 <div>
 <label class="block font-mono text-[0.68rem] uppercase tracking-wider text-carbon-graphite mb-2" for="client-budget">
@@ -901,7 +901,7 @@
 <label class="block font-mono text-[0.68rem] uppercase tracking-wider text-carbon-graphite mb-2" for="client-message">
                     Bref contexte de l'actif ou de la marque
                   </label>
-<textarea class="w-full bg-surface-alabaster px-4 py-3 rounded-lg border border-border-fine font-sans text-[0.9rem] text-carbon-graphite placeholder:text-warm-muted/60 focus:border-gold-aged focus:ring-0 transition-colors" id="client-message" placeholder="Indiquez les caractéristiques de l'actif immobilier, la taille du fonds ou l'objectif de positionnement..." rows="3"></textarea>
+<textarea class="w-full bg-surface-alabaster px-4 py-3 rounded-lg border border-border-fine font-sans text-[0.9rem] text-carbon-graphite placeholder:text-warm-muted/60 focus:border-gold-aged focus:ring-0 transition-colors" id="client-message" placeholder="Indiquez les caractéristiques de l'actif immobilier, la taille du fonds ou l'objectif de positionnement..." rows="3" maxlength="2000"></textarea>
 </div>
 <!-- Case à cocher de rigueur NDA -->
 <div class="p-4 rounded-lg bg-surface-pergamino border border-border-fine flex items-start gap-3">
@@ -917,7 +917,7 @@
 <div class="hidden text-center font-mono text-[0.72rem] text-sage-deep bg-sage-subtle p-3 rounded border border-sage-heraldic/30" id="form-feedback">
                   ✓ Candidature reçue sous chiffrement sécurisé. Notre directeur général vous contactera sous &lt; 12 heures.
                 </div>
-<!-- TURNSTILE (Vuelta 22, preparado sin activar): para activarlo, descomentar el div y poner la sitekey de Cloudflare — ver README. --><!-- <div class="cf-turnstile" data-sitekey="PON-AQUI-TU-SITEKEY" data-theme="dark"></div> --></form>
+<!-- TURNSTILE (Passage 22, préparé mais non activé) : pour l'activer, décommenter la div et renseigner la sitekey Cloudflare — voir README. --><!-- <div class="cf-turnstile" data-sitekey="PON-AQUI-TU-SITEKEY" data-theme="dark"></div> --></form>
 </div>
 </div>
 </div>

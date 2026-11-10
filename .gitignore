@@ -18,3 +18,15 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Secrets & sensitive files — nunca en el repo (auditoría de seguridad, pasada 4, 10/11)
+# worker/schema.sql está trackeado a propósito (esquema D1, sin secretos); esto solo bloquea futuros volcados.
+.env
+.env.*
+*.pem
+*.key
+*.backup
+*.bak
+*.dump
+*.sql
+.wrangler/

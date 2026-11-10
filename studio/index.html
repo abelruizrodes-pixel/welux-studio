@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="light" lang="es"><head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB3PES4ZGQ"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NB3PES4ZGQ"></script><!-- TURNSTILE (Vuelta 22): script de Cloudflare Turnstile, preparado sin sitekey — ver README. --><script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-NB3PES4ZGQ');</script>
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"/>
@@ -840,6 +840,7 @@
                 </span>
 </div>
 <form class="space-y-6" onsubmit="handleFormSubmit(event)">
+<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div>
 <label class="block font-mono text-[0.68rem] uppercase tracking-wider text-carbon-graphite mb-2" for="client-name">
@@ -879,19 +880,19 @@
                   </label>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
 <label class="flex items-center gap-3 p-3 rounded-lg border border-border-fine bg-surface-alabaster hover:bg-surface-pergamino cursor-pointer transition-colors">
-<input checked="" class="w-4 h-4 accent-ebony-deep rounded text-ebony-deep focus:ring-0" type="checkbox"/>
+<input checked="" name="servicio" value="Estrategia &amp; Social Growth" class="w-4 h-4 accent-ebony-deep rounded text-ebony-deep focus:ring-0" type="checkbox"/>
 <span class="font-mono text-[0.72rem] text-carbon-graphite">Estrategia &amp; Social Growth</span>
 </label>
 <label class="flex items-center gap-3 p-3 rounded-lg border border-border-fine bg-surface-alabaster hover:bg-surface-pergamino cursor-pointer transition-colors">
-<input checked="" class="w-4 h-4 accent-ebony-deep rounded text-ebony-deep focus:ring-0" type="checkbox"/>
+<input checked="" name="servicio" value="Producción Cinemática 4K" class="w-4 h-4 accent-ebony-deep rounded text-ebony-deep focus:ring-0" type="checkbox"/>
 <span class="font-mono text-[0.72rem] text-carbon-graphite">Producción Cinemática 4K</span>
 </label>
 <label class="flex items-center gap-3 p-3 rounded-lg border border-border-fine bg-surface-alabaster hover:bg-surface-pergamino cursor-pointer transition-colors">
-<input class="w-4 h-4 accent-ebony-deep rounded text-ebony-deep focus:ring-0" type="checkbox"/>
+<input name="servicio" value="Tours 360° &amp; Gemelos LiDAR" class="w-4 h-4 accent-ebony-deep rounded text-ebony-deep focus:ring-0" type="checkbox"/>
 <span class="font-mono text-[0.72rem] text-carbon-graphite">Tours 360° &amp; Gemelos LiDAR</span>
 </label>
 <label class="flex items-center gap-3 p-3 rounded-lg border border-border-fine bg-surface-alabaster hover:bg-surface-pergamino cursor-pointer transition-colors">
-<input class="w-4 h-4 accent-ebony-deep rounded text-ebony-deep focus:ring-0" type="checkbox"/>
+<input name="servicio" value="Desarrollo Web High-End" class="w-4 h-4 accent-ebony-deep rounded text-ebony-deep focus:ring-0" type="checkbox"/>
 <span class="font-mono text-[0.72rem] text-carbon-graphite">Desarrollo Web High-End</span>
 </label>
 </div>
@@ -916,7 +917,7 @@
 <div class="hidden text-center font-mono text-[0.72rem] text-sage-deep bg-sage-subtle p-3 rounded border border-sage-heraldic/30" id="form-feedback">
                   ✓ Candidatura recibida bajo cifrado seguro. Nuestro director ejecutivo le contactará en &lt; 12 horas.
                 </div>
-</form>
+<!-- TURNSTILE (Vuelta 22, preparado sin activar): para activarlo, descomentar el div y poner la sitekey de Cloudflare — ver README. --><!-- <div class="cf-turnstile" data-sitekey="PON-AQUI-TU-SITEKEY" data-theme="dark"></div> --></form>
 </div>
 </div>
 </div>
@@ -1091,14 +1092,62 @@
 
     function handleFormSubmit(e) {
       e.preventDefault();
-      const btn = document.getElementById('submit-btn');
-      const feedback = document.getElementById('form-feedback');
-      btn.disabled = true;
-      btn.innerHTML = '<span>Transmitiendo Expediente Cifrado...</span>';
-      setTimeout(() => {
-        btn.classList.add('hidden');
-        feedback.classList.remove('hidden');
-      }, 800);
+      var f = e.target && e.target.tagName === 'FORM' ? e.target : document.querySelector('form');
+      if (!f) return;
+      if (f.getAttribute('data-welux-enviando') === '1') return;
+      if (!f.reportValidity()) return;
+      var raw = {};
+      Array.prototype.slice.call(f.querySelectorAll('input,select,textarea')).forEach(function(el) {
+        var k = el.name || el.id;
+        if (!k) return;
+        if (el.type === 'checkbox') { if (el.checked) raw[k] = (raw[k] ? raw[k] + ', ' : '') + el.value; }
+        else if (el.type === 'radio') { if (el.checked) raw[k] = el.value; }
+        else { raw[k] = el.value; }
+      });
+      function pk(list) { for (var i = 0; i < list.length; i++) { var v = raw[list[i]]; if (v !== undefined && v !== null && String(v).trim() !== '') return v; } return ''; }
+      var servicios = pk(['servicio', 'service']);
+      var mensajeBase = pk(['client-message', 'mensaje', 'message']);
+      var mensaje = mensajeBase;
+      if (servicios) mensaje += (mensaje ? '\n\n' : '') + 'Servicios: ' + servicios;
+      if (raw['nda-agree']) mensaje += (mensaje ? '\n' : '') + 'NDA bilateral solicitado';
+      var d = { tipo: 'lead', origen: 'studio', pagina: location.href, idioma: (document.documentElement.lang || 'es').slice(0, 2),
+        nombre: pk(['client-name', 'nombre', 'name']),
+        email: pk(['client-email', 'email']),
+        telefono: '', sector: pk(['client-company', 'empresa', 'sector']),
+        idiomas: '', oferta: pk(['client-budget', 'oferta', 'offer']),
+        cv_url: '', mensaje: mensaje, servicio: servicios,
+        honeypot: pk(['website', 'url']), datos: raw };
+      var btn = document.getElementById('submit-btn');
+      var origBtn = btn ? btn.innerHTML : '';
+      var fb = document.getElementById('form-feedback');
+      if (d.honeypot) { f.reset(); if (fb) fb.classList.remove('hidden'); return; }
+      if (!d.nombre || !d.email || d.email.indexOf('@') < 0) return;
+      if (btn) { btn.disabled = true; btn.innerHTML = '<span>Enviando…</span>'; }
+      f.setAttribute('data-welux-enviando', '1');
+      var okFlag = false;
+      fetch('https://weluxhub-api.yucolaguilar.workers.dev/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) })
+        .then(function(r) { return r.json(); })
+        .then(function(json) {
+          if (json && json.ok) {
+            okFlag = true; f.reset();
+            if (fb) { fb.classList.remove('hidden'); setTimeout(function() { fb.classList.add('hidden'); }, 7000); }
+            if (btn) btn.innerHTML = '<span>Solicitud Registrada Exitosamente ✓</span>';
+          } else { showErr('No se pudo enviar. Inténtalo de nuevo o escríbenos a info@weluxhub.com.'); }
+        })
+        .catch(function() { showErr('El servicio de envío no responde todavía. Inténtalo de nuevo o escríbenos a info@weluxhub.com.'); })
+        .finally(function() {
+          f.removeAttribute('data-welux-enviando');
+          if (!okFlag && btn) { btn.disabled = false; btn.innerHTML = origBtn; }
+        });
+      function showErr(msg) {
+        var e2 = document.getElementById('form-error');
+        if (!e2) {
+          e2 = document.createElement('div'); e2.id = 'form-error';
+          e2.className = 'mt-4 rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700 text-center';
+          if (fb && fb.parentNode) fb.parentNode.insertBefore(e2, fb); else f.appendChild(e2);
+        }
+        e2.textContent = msg; e2.classList.remove('hidden');
+      }
     }
   </script>
 

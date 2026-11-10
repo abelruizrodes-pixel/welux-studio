@@ -1,6 +1,9 @@
 # _headers — cabeceras de seguridad para Cloudflare Pages (weluxhub.com).
-# Formato Cloudflare Pages: https://developers.cloudflare.com/pages/configuration/headers/
-# Se aplica en el próximo despliegue; verificar en vivo con curl -I.
+# NOTA (10/11, verificado): en proyectos de subida directa Cloudflare NO
+# parsea este archivo (bug conocido; se sirve como un asset más). Las
+# cabeceras en vivo se fijan con Transform Rules en la zona weluxhub.com
+# (pendiente: token con permiso de Rulesets). Este archivo queda como
+# referencia de la política y respaldo si el proyecto pasa a Git-connected.
 /*
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Frame-Options: SAMEORIGIN

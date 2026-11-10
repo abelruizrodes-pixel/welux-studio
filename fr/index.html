@@ -80,6 +80,11 @@
     vertical-align: middle;
   }
   ::-webkit-scrollbar { display: none; }
+
+  /* Vídeo de fondo del hero (igual que en ES index.html) */
+  .welux-hero-video { position: absolute; top: 0; left: 0; right: 0; height: 680px; overflow: hidden; pointer-events: none; }
+  .welux-hero-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (max-width: 640px) { .welux-hero-video { height: 960px; } }
 </style>
 
 <!-- Schema.org Multi-Entity JSON-LD Structured Data for Google Rich Snippets -->
@@ -218,6 +223,10 @@
 
   <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 flex flex-col gap-14">
     
+    <div class="welux-hero-video" aria-hidden="true">
+      <video id="welux-hero-video" src="/assets/videos/welux-hero-luxemburgo.mp4" poster="/assets/images/luxemburgo-header.jpg" muted loop playsinline preload="metadata" data-video-fondo="hero"></video>
+    </div>
+
     <!-- 2. HERO SECTION -->
     <header class="flex flex-col items-center text-center relative z-10 max-w-4xl mx-auto">
       <!-- High-Prestige Status Pill -->

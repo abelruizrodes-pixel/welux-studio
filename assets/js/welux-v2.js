@@ -1062,7 +1062,7 @@ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fixCareers);}
 setTimeout(fixCareers,60);setTimeout(fixCareers,700);setTimeout(fixCareers,2500);
 }
 if(hasSeg('gear')){
-var SUB={es:'Kit de Cine Listo para Rodar • 379 € / día',en:'Ready-to-Shoot Cine Kit • 379 € / day',de:'Drehfertiges Cine-Kit • 379 € / Tag',fr:'Kit Cinéma Prêt à Tourner • 379 € / jour',lu:'Ready-to-Shoot Cine Kit • 379 € / día',pt:'Kit de Cinema Pronto a Filmar • 379 € / dia'};
+var SUB={es:'Kit de Cine Listo para Rodar • 379 € / día',en:'Ready-to-Shoot Cine Kit • 379 € / day',de:'Drehfertiges Cine-Kit • 379 € / Tag',fr:'Kit Cinéma Prêt à Tourner • 379 € / jour',lu:'Ready-to-Shoot Cine Kit • 379 € / Dag',pt:'Kit de Cinema Pronto a Filmar • 379 € / dia'};
 var lang=(document.documentElement.lang||'es').slice(0,2).toLowerCase();
 function fixRig(){
 var heads=document.querySelectorAll('h3');

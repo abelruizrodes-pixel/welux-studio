@@ -1037,7 +1037,7 @@ form.addEventListener('submit',function(){if(!form.checkValidity())return;setTim
    Careers: la cabecera fija (~178 px en escritorio, al envolverse el nav; ~80 px en movil) tapaba la barra de anuncios
    y recortaba la primera linea del H1. Se mide su altura real y se compensa con padding-top en el body; se re-mide al
    redimensionar y al cargar las fuentes. El menu EN recortaba "Invitations" porque el nav no envolvia: se permite el wrap.
-   Gear: la variante de division servida en vivo no renderiza la linea del subtitulo del kit ("Kit ... $425 / ...") que si
+   Gear: la variante de division servida en vivo no renderiza la linea del subtitulo del kit ("Kit ... 379 € / ...") que si
    existe en la plantilla estatica; si falta tras el h3 del rig, se inserta con el texto ya traducido de la plantilla
    (LU conserva el texto en ingles, como en la plantilla). */
 (function(){
@@ -1062,7 +1062,7 @@ if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fixCareers);}
 setTimeout(fixCareers,60);setTimeout(fixCareers,700);setTimeout(fixCareers,2500);
 }
 if(hasSeg('gear')){
-var SUB={es:'Kit de Cine Listo para Rodar • $425 / día',en:'Ready-to-Shoot Cine Kit • $425 / day',de:'Drehfertiges Cine-Kit • $425 / Tag',fr:'Kit Cinéma Prêt à Tourner • $425 / jour',lu:'Ready-to-Shoot Cine Kit • $425 / día',pt:'Kit de Cinema Pronto a Filmar • $425 / dia'};
+var SUB={es:'Kit de Cine Listo para Rodar • 379 € / día',en:'Ready-to-Shoot Cine Kit • 379 € / day',de:'Drehfertiges Cine-Kit • 379 € / Tag',fr:'Kit Cinéma Prêt à Tourner • 379 € / jour',lu:'Ready-to-Shoot Cine Kit • 379 € / día',pt:'Kit de Cinema Pronto a Filmar • 379 € / dia'};
 var lang=(document.documentElement.lang||'es').slice(0,2).toLowerCase();
 function fixRig(){
 var heads=document.querySelectorAll('h3');
@@ -1070,7 +1070,7 @@ for(var i=0;i<heads.length;i++){
 var h3=heads[i];
 if(h3.textContent.indexOf('Blackmagic URSA 4.6K G2')<0)continue;
 var nx=h3.nextElementSibling;
-if(nx&&nx.tagName==='P'&&nx.textContent.indexOf('$425')>=0)continue;
+if(nx&&nx.tagName==='P'&&nx.textContent.indexOf('379 €')>=0)continue;
 var p=document.createElement('p');
 p.className='font-technical-spec text-technical-spec';
 p.style.color='#57534e';p.style.marginTop='2px';
@@ -1088,7 +1088,7 @@ setTimeout(fixRig,900);
 'use strict';
 function isDivPage(){var parts=(location.pathname||'/').split('/').filter(function(s){return s;});var LANGS=['en','fr','de','pt','lu'];if(LANGS.indexOf(parts[0])>=0)parts=parts.slice(1);return ['studio','gear'].indexOf((parts[0]||'').replace(/\.html$/,''))>=0&&parts.length===1;}
 function showSections(){if(!isDivPage())return;try{var secs=document.querySelectorAll('main section');for(var i=0;i<secs.length;i++){if(secs[i].style.display==='none')secs[i].style.display='';secs[i].classList.add('is-visible');}var main=document.querySelector('main');if(main){var kids=main.children;for(var j=0;j<kids.length;j++){var k=kids[j];if(!k.querySelector||!k.querySelector('section'))continue;if(k.classList&&(k.classList.contains('welux-cards')||k.classList.contains('welux-clauses')||k.classList.contains('welux-services')))continue;if(k.style.display==='none')k.style.display='';}}}catch(e){}}
-function showKitLine(){try{var SUB={es:'Kit de Cine Listo para Rodar • $425 / día',en:'Ready-to-Shoot Cine Kit • $425 / day',de:'Drehfertiges Cine-Kit • $425 / Tag',fr:'Kit Cinéma Prêt à Tourner • $425 / jour',lu:'Ready-to-Shoot Cine Kit • $425 / day',pt:'Kit de Cinema Pronto a Filmar • $425 / dia'};var lang=(document.documentElement.lang||'es').slice(0,2).toLowerCase();var heads=document.querySelectorAll('h3');for(var i=0;i<heads.length;i++){var h3=heads[i];if(h3.textContent.indexOf('Blackmagic URSA 4.6K G2')<0)continue;var nx=h3.nextElementSibling;if(nx&&nx.tagName==='P'&&nx.textContent.indexOf('$425')>=0){nx.style.setProperty('display','block','important');continue;}var p=document.createElement('p');p.className='font-technical-spec text-technical-spec';p.style.color='#57534e';p.style.marginTop='2px';p.textContent=SUB[lang]||SUB.es;h3.parentNode.insertBefore(p,h3.nextSibling);}}catch(e){}}
+function showKitLine(){try{var SUB={es:'Kit de Cine Listo para Rodar • 379 € / día',en:'Ready-to-Shoot Cine Kit • 379 € / day',de:'Drehfertiges Cine-Kit • 379 € / Tag',fr:'Kit Cinéma Prêt à Tourner • 379 € / jour',lu:'Ready-to-Shoot Cine Kit • 379 € / day',pt:'Kit de Cinema Pronto a Filmar • 379 € / dia'};var lang=(document.documentElement.lang||'es').slice(0,2).toLowerCase();var heads=document.querySelectorAll('h3');for(var i=0;i<heads.length;i++){var h3=heads[i];if(h3.textContent.indexOf('Blackmagic URSA 4.6K G2')<0)continue;var nx=h3.nextElementSibling;if(nx&&nx.tagName==='P'&&nx.textContent.indexOf('379 €')>=0){nx.style.setProperty('display','block','important');continue;}var p=document.createElement('p');p.className='font-technical-spec text-technical-spec';p.style.color='#57534e';p.style.marginTop='2px';p.textContent=SUB[lang]||SUB.es;h3.parentNode.insertBefore(p,h3.nextSibling);}}catch(e){}}
 function showRevealNow(){try{if(!document.getElementById('welux-v17-reveal')){var st=document.createElement('style');st.id='welux-v17-reveal';st.textContent='.welux-reveal{transition-duration:.35s!important}.welux-reveal.is-visible{opacity:1!important;transform:none!important}';document.head.appendChild(st);}var els=document.querySelectorAll('.welux-reveal');for(var i=0;i<els.length;i++)els[i].classList.add('is-visible');}catch(e){}}
 function fixCareersBar(){try{if((location.pathname||'/').indexOf('careers')<0)return;var header=document.querySelector('header');if(header){header.style.setProperty('overflow-x','clip','important');var inner=header.firstElementChild;if(inner){inner.style.flexWrap='wrap';inner.style.height='auto';inner.style.setProperty('overflow-x','visible','important');}var nav=header.querySelector('nav');if(nav){nav.style.flexWrap='wrap';nav.style.setProperty('overflow-x','visible','important');if(nav.style.display==='none')nav.style.display='';}}var aside=document.querySelector('header+aside,body>aside');if(aside){var d=aside.querySelector('div');if(d){d.style.flexWrap='wrap';d.style.setProperty('overflow-x','visible','important');}}}catch(e){}}
 function fixNav(){try{var nav=document.querySelector('header nav');if(nav&&nav.style.display==='none')nav.style.display='';}catch(e){}}

@@ -1281,7 +1281,7 @@
     if (itemNames.length === 0) {
       emptyState.style.display = 'block';
       subtotalEl.textContent = '0 €';
-      multiplierEl.textContent = `× ${currentDuration} día${currentDuration > 1 ? 's' : ''}`;
+      multiplierEl.textContent = `× ${currentDuration} Tag${currentDuration > 1 ? 'e' : ''}`;
       discountRow.style.display = 'none';
       totalEl.textContent = '0 €';
       return;
@@ -1308,7 +1308,7 @@
     });
 
     subtotalEl.textContent = `${subtotalDaily} €`;
-    multiplierEl.textContent = `× ${currentDuration} día${currentDuration > 1 ? 's' : ''}`;
+    multiplierEl.textContent = `× ${currentDuration} Tag${currentDuration > 1 ? 'e' : ''}`;
 
     let grossTotal = subtotalDaily * currentDuration;
     let discount = 0;

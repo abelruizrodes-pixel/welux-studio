@@ -4,7 +4,7 @@
  * (codigo del Worker en worker/, despliegue paso a paso en worker/README.md).
  * Este script sustituye al mock handleFormSubmission de Careers: envia de
  * verdad, guarda el dato en D1 (tablas candidaturas, contactos y leads) y
- * el Worker avisa por correo a info@weluxhub.com y a stayarista@gmail.com.
+ * el Worker avisa por correo al equipo (info@weluxhub.com).
  * El Worker ya esta desplegado en weluxhub-api.yucolaguilar.workers.dev; si no responde, el formulario muestra el error real
  * y no finge un envio.
  *

@@ -26,6 +26,7 @@ html.dark,html.dark body{background:var(--p-bg)!important}
 main,section,footer{background-color:transparent}
 main [class*="bg-[#0d141d]"],main [class*="bg-[#080f17]"],main [class*="bg-[#151c25]"],main [class*="bg-[#192029]"],main [class*="bg-[#232a34]"],main [class*="bg-[#1a1527]"],main [class*="bg-[#251a0e]"],footer [class*="bg-[#0d141d]"],footer [class*="bg-[#080f17]"]{background-color:var(--p-card)!important;border-color:var(--p-border)!important}
 main .text-white,main [class*="text-[#dce3f0]"],main [class*="text-[#f5e8d3]"]{color:var(--p-ink)!important}
+[data-welux-media] h1,[data-welux-media] h2,[data-welux-media] h3,[data-welux-media] .text-white{color:#fff!important} /* Pasada 59: la paleta forzaba h1/.text-white a --p-heading/--p-ink con !important y anulaba el titular blanco del hero Gear/Films. */
 main [class*="text-[#ffb95f]"],main [class*="text-[#ffcf85]"],main [class*="text-[#c96f3f]"]{color:var(--p-accent-deep)!important}
 main [class*="border-[#2c3646]"],main [class*="border-[#3a5268]"]{border-color:var(--p-border)!important}
 header{background:var(--p-header-bg)!important;transition:box-shadow .35s ease,background-color .35s ease,border-radius .35s ease}

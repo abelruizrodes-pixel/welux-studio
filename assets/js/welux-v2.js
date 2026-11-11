@@ -195,16 +195,19 @@ if(slug==='studio')main.appendChild(buildServices());
     if (footer && footer.parentNode) footer.parentNode.insertBefore(sec, footer); else document.body.appendChild(sec);
   }
   /* ConCompás aparte: su propio producto (matching), sin mezclarse con las invitaciones digitales. */ if (!document.getElementById('concompas')) { var sec2 = document.createElement('section'); sec2.id = 'concompas'; sec2.className = 'welux-concompas welux-reveal is-visible'; sec2.innerHTML = '<div style="max-width:72rem;margin:0 auto;padding:2.5rem 1.5rem;text-align:center"><p style="letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;color:#9a6f2b;font-weight:800">WeLux · ConCompás</p><h2 class="font-headline" style="font-size:clamp(1.7rem,4vw,2.4rem);margin:.6rem 0">' + t.ccTitle + '</h2><p style="max-width:46rem;margin:0 auto;color:#6f5a44;line-height:1.7">' + t.ccText + '</p><p style="margin:1.1rem 0"><a class="welux-hero-button welux-hero-button--primary" href="https://www.concompas.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(180deg,#d9a75f,#a9742f);color:#fff;padding:.9rem 1.6rem;font-weight:800">' + t.ccCta + ' ↗</a></p></div>'; var footer2 = document.querySelector('footer'); if (footer2 && footer2.parentNode) footer2.parentNode.insertBefore(sec2, footer2); else document.body.appendChild(sec2); } /* Footer completo: redes, ConCompás, contacto y legales */
+  /* Legales por idioma (pasada 21): misma convención que los footers de las homes — ES→ES, FR→FR, EN/DE/LU/PT→EN. Antes el footer inyectado enlazaba siempre a las páginas ES aunque la etiqueta estuviera traducida. */
+  var legalUrls = { es: ['/legal/aviso-legal.html', '/legal/privacidad.html', '/legal/terminos.html', '/legal/cookies.html'], en: ['/legal/legal-notice.html', '/legal/privacy-policy.html', '/legal/terms-of-use.html', '/legal/cookie-policy.html'], fr: ['/legal/mentions-legales.html', '/legal/politique-de-confidentialite.html', '/legal/conditions-dutilisation.html', '/legal/politique-cookies.html'] };
+  var lu2 = lang === 'es' ? legalUrls.es : (lang === 'fr' ? legalUrls.fr : legalUrls.en);
   var footerEl = document.querySelector('footer');
   if (footerEl && !document.getElementById('welux-footer-v2')) {
     var div = document.createElement('div');
     div.id = 'welux-footer-v2';
     div.style.cssText = 'max-width:72rem;margin:0 auto;padding:1.6rem 1.5rem 2rem;border-top:1px solid #eadfc8;text-align:center';
-    div.innerHTML = '<p style="margin:.4rem 0"><strong>' + t.follow + '</strong> &nbsp;<a class="welux-social-btn" href="https://www.facebook.com/weluxhub" target="_blank" rel="noopener" aria-label="Facebook Welux">f</a> <a class="welux-social-btn" href="https://www.instagram.com/weluxhub" target="_blank" rel="noopener" aria-label="Instagram Welux">◎</a></p><p style="margin:.4rem 0">✉️ <a href="mailto:info@weluxhub.com">info@weluxhub.com</a> · <a href="https://www.concompas.com/" target="_blank" rel="noopener">ConCompás</a> · <a href="#invitaciones">' + t.inv + '</a></p><p style="margin:.4rem 0;font-size:.85rem"><a href="/legal/aviso-legal.html">' + t.legal + '</a> · <a href="/legal/privacidad.html">' + t.priv + '</a> · <a href="/legal/terminos.html">' + t.terms + '</a> · <a href="/legal/cookies.html">' + t.cook + '</a></p><p style="margin:.4rem 0;font-size:.8rem;color:#8a755c">WeLux Digital Services S.à r.l - S · Luxemburgo — ' + t.rights + '</p>';
+    div.innerHTML = '<p style="margin:.4rem 0"><strong>' + t.follow + '</strong> &nbsp;<a class="welux-social-btn" href="https://www.facebook.com/weluxhub" target="_blank" rel="noopener" aria-label="Facebook Welux">f</a> <a class="welux-social-btn" href="https://www.instagram.com/weluxhub" target="_blank" rel="noopener" aria-label="Instagram Welux">◎</a></p><p style="margin:.4rem 0">✉️ <a href="mailto:info@weluxhub.com">info@weluxhub.com</a> · <a href="https://www.concompas.com/" target="_blank" rel="noopener">ConCompás</a> · <a href="#invitaciones">' + t.inv + '</a></p><p style="margin:.4rem 0;font-size:.85rem"><a href="' + lu2[0] + '">' + t.legal + '</a> · <a href="' + lu2[1] + '">' + t.priv + '</a> · <a href="' + lu2[2] + '">' + t.terms + '</a> · <a href="' + lu2[3] + '">' + t.cook + '</a></p><p style="margin:.4rem 0;font-size:.8rem;color:#8a755c">WeLux Digital Services S.à r.l - S · Luxemburgo — ' + t.rights + '</p>';
     footerEl.appendChild(div);
   }
     /* Arreglar enlaces legales con href="#" del footer heredado */
-  var legalMap = [[/aviso|legal notice|mentions|impressum/i, '/legal/aviso-legal.html'], [/privac|privacy|confidentialit|datenschutz|privatsph/i, '/legal/privacidad.html'], [/t.rminos|terms|conditions|agb|termos|bedingung/i, '/legal/terminos.html'], [/cookies/i, '/legal/cookies.html']];
+  var legalMap = [[/aviso|legal notice|mentions|impressum/i, lu2[0]], [/privac|privacy|confidentialit|datenschutz|privatsph/i, lu2[1]], [/t.rminos|terms|conditions|agb|termos|bedingung/i, lu2[2]], [/cookies/i, lu2[3]]];
   document.querySelectorAll('footer a[href="#"]').forEach(function (a) {
     legalMap.forEach(function (pair) { if (pair[0].test(a.textContent)) a.setAttribute('href', pair[1]); });
   });
@@ -329,15 +332,7 @@ if(slug==='studio')main.appendChild(buildServices());
   function fixPaletteNote() {
     var sec = document.querySelector('.welux-palette-picker');
     if (sec) sec.remove(); try { var ks=[]; for (var j=0;j<localStorage.length;j++) ks.push(localStorage.key(j)); ks.forEach(function(k){ if(/palet/i.test(k)) localStorage.removeItem(k); }); } catch(e){} document.documentElement.removeAttribute('data-welux-palette'); VARS.forEach(function(k){ document.documentElement.style.removeProperty(k); }); return;
-    var best = null;
-    var nodes = sec.querySelectorAll('p, div, span');
-    for (var i = 0; i < nodes.length; i++) {
-      var t = nodes[i].textContent || '';
-      if (t.indexOf('Sin aplicar') !== -1 && nodes[i].children.length === 0) {
-        if (!best || t.length < best.textContent.length) best = nodes[i];
-      }
-    }
-    if (best) best.textContent = 'Se aplica al instante en toda la página y se guarda en este navegador.';
+    /* Pasada 21: se retiró el bloque inalcanzable tras el return (búsqueda del texto 'Sin aplicar'). */
   }
 
   function isHome() {
@@ -556,18 +551,7 @@ if(slug==='studio')main.appendChild(buildServices());
   function fixPaletteNote() {
     var sec = document.querySelector('.welux-palette-picker');
     if (sec) sec.remove(); try { var ks=[]; for (var j=0;j<localStorage.length;j++) ks.push(localStorage.key(j)); ks.forEach(function(k){ if(/palet/i.test(k)) localStorage.removeItem(k); }); } catch(e){} document.documentElement.removeAttribute('data-welux-palette'); return;
-    var sub = sec.querySelector('p');
-    if (!sub) return;
-    var NOTE = {
-      es: 'Se aplica al instante en toda la página y se guarda en este navegador.',
-      en: 'It applies instantly across the whole page and is saved in this browser.',
-      fr: 'Elle s’applique instantanément à toute la page et est enregistrée dans ce navigateur.',
-      de: 'Sie wird sofort auf der ganzen Seite angewendet und in diesem Browser gespeichert.',
-      pt: 'Aplica-se instantaneamente em toda a página e fica guardada neste navegador.',
-      lu: 'Si gëtt direkt op der ganzer Säit ugewannt a gëtt an dësem Browser gespäichert.'
-    };
-    var l = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
-    sub.textContent = NOTE[l] || NOTE.es;
+    /* Pasada 21: se retiró el bloque inalcanzable tras el return (diccionario NOTE por idioma, nunca se ejecutaba). */
   }
   if (isHome()) hideInvitations();
   fixPaletteNote();
@@ -1088,7 +1072,7 @@ setTimeout(fixRig,900);
 'use strict';
 function isDivPage(){var parts=(location.pathname||'/').split('/').filter(function(s){return s;});var LANGS=['en','fr','de','pt','lu'];if(LANGS.indexOf(parts[0])>=0)parts=parts.slice(1);return ['studio','gear'].indexOf((parts[0]||'').replace(/\.html$/,''))>=0&&parts.length===1;}
 function showSections(){if(!isDivPage())return;try{var secs=document.querySelectorAll('main section');for(var i=0;i<secs.length;i++){if(secs[i].style.display==='none')secs[i].style.display='';secs[i].classList.add('is-visible');}var main=document.querySelector('main');if(main){var kids=main.children;for(var j=0;j<kids.length;j++){var k=kids[j];if(!k.querySelector||!k.querySelector('section'))continue;if(k.classList&&(k.classList.contains('welux-cards')||k.classList.contains('welux-clauses')||k.classList.contains('welux-services')))continue;if(k.style.display==='none')k.style.display='';}}}catch(e){}}
-function showKitLine(){try{var SUB={es:'Kit de Cine Listo para Rodar • 379 € / día',en:'Ready-to-Shoot Cine Kit • 379 € / day',de:'Drehfertiges Cine-Kit • 379 € / Tag',fr:'Kit Cinéma Prêt à Tourner • 379 € / jour',lu:'Ready-to-Shoot Cine Kit • 379 € / day',pt:'Kit de Cinema Pronto a Filmar • 379 € / dia'};var lang=(document.documentElement.lang||'es').slice(0,2).toLowerCase();var heads=document.querySelectorAll('h3');for(var i=0;i<heads.length;i++){var h3=heads[i];if(h3.textContent.indexOf('Blackmagic URSA 4.6K G2')<0)continue;var nx=h3.nextElementSibling;if(nx&&nx.tagName==='P'&&nx.textContent.indexOf('379 €')>=0){nx.style.setProperty('display','block','important');continue;}var p=document.createElement('p');p.className='font-technical-spec text-technical-spec';p.style.color='#57534e';p.style.marginTop='2px';p.textContent=SUB[lang]||SUB.es;h3.parentNode.insertBefore(p,h3.nextSibling);}}catch(e){}}
+function showKitLine(){try{var SUB={es:'Kit de Cine Listo para Rodar • 379 € / día',en:'Ready-to-Shoot Cine Kit • 379 € / day',de:'Drehfertiges Cine-Kit • 379 € / Tag',fr:'Kit Cinéma Prêt à Tourner • 379 € / jour',lu:'Ready-to-Shoot Cine Kit • 379 € / Dag',pt:'Kit de Cinema Pronto a Filmar • 379 € / dia'};var lang=(document.documentElement.lang||'es').slice(0,2).toLowerCase();var heads=document.querySelectorAll('h3');for(var i=0;i<heads.length;i++){var h3=heads[i];if(h3.textContent.indexOf('Blackmagic URSA 4.6K G2')<0)continue;var nx=h3.nextElementSibling;if(nx&&nx.tagName==='P'&&nx.textContent.indexOf('379 €')>=0){nx.style.setProperty('display','block','important');continue;}var p=document.createElement('p');p.className='font-technical-spec text-technical-spec';p.style.color='#57534e';p.style.marginTop='2px';p.textContent=SUB[lang]||SUB.es;h3.parentNode.insertBefore(p,h3.nextSibling);}}catch(e){}}
 function showRevealNow(){try{if(!document.getElementById('welux-v17-reveal')){var st=document.createElement('style');st.id='welux-v17-reveal';st.textContent='.welux-reveal{transition-duration:.35s!important}.welux-reveal.is-visible{opacity:1!important;transform:none!important}';document.head.appendChild(st);}var els=document.querySelectorAll('.welux-reveal');for(var i=0;i<els.length;i++)els[i].classList.add('is-visible');}catch(e){}}
 function fixCareersBar(){try{if((location.pathname||'/').indexOf('careers')<0)return;var header=document.querySelector('header');if(header){header.style.setProperty('overflow-x','clip','important');var inner=header.firstElementChild;if(inner){inner.style.flexWrap='wrap';inner.style.height='auto';inner.style.setProperty('overflow-x','visible','important');}var nav=header.querySelector('nav');if(nav){nav.style.flexWrap='wrap';nav.style.setProperty('overflow-x','visible','important');if(nav.style.display==='none')nav.style.display='';}}var aside=document.querySelector('header+aside,body>aside');if(aside){var d=aside.querySelector('div');if(d){d.style.flexWrap='wrap';d.style.setProperty('overflow-x','visible','important');}}}catch(e){}}
 function fixNav(){try{var nav=document.querySelector('header nav');if(nav&&nav.style.display==='none')nav.style.display='';}catch(e){}}

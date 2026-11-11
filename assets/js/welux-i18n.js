@@ -53,7 +53,8 @@
     let route = '';
     if (p.includes('/studio')) route = 'studio';
     else if (p.includes('/careers')) route = 'careers';
-    else if (p.includes('/gear') || p.includes('/films')) route = 'gear';
+    else if (p.includes('/gear')) route = 'gear';
+    else if (p.includes('/films')) route = 'films'; /* Pasada 21: /films/ iba a 'gear' y el cambio de idioma desde Films caía en Gear; la ruta /{lang}/films/ existe. */
 
     return { lang, route };
   }

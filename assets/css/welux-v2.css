@@ -51,6 +51,9 @@ main [class*="bg-[#c96f3f]"],main [class*="bg-[#b7791f]"]{background:linear-grad
 .welux-hero-video--error{display:none!important}
 .welux-reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
 .welux-reveal.is-visible{opacity:1;transform:none}
+/* Pasada 52 (2026-11-11): red de seguridad CSS del reveal. Si el JS muere después de añadir .welux-reveal pero antes de disparar el temporizador de 4 s, el contenido quedaría invisible para siempre; esta animación lo revela a los 4,5 s aunque el JS falle. No cambia el comportamiento normal: el JS ya revela todo a los 4 s y .is-visible (!important) gana a la animación. En prefers-reduced-motion el bloque de arriba ya anula las animaciones y fuerza visible. */
+@keyframes weluxRevealSafe{to{opacity:1;transform:none}}
+.welux-reveal{animation:weluxRevealSafe .01s ease 4.5s forwards}
 .welux-idioma-flotante .welux-idioma-btn{border-radius:999px!important;box-shadow:0 2px 6px rgba(30,28,24,.18),0 12px 28px rgba(30,28,24,.22)!important;transition:transform .25s ease,box-shadow .25s ease!important}
 .welux-idioma-flotante .welux-idioma-btn:hover{transform:translateY(-2px)}
 footer{background:#d8d5ce!important;background-image:none!important;color:#16232e!important}
@@ -241,6 +244,10 @@ header .h-20,header .welux-header-row{flex-wrap:nowrap!important;overflow-x:auto
 header .h-20>*,header .welux-header-row>*{flex-shrink:0!important}
 header .h-20 a,header .welux-header-row a{white-space:nowrap!important}
 .welux-idioma-flotante{right:12px!important;bottom:12px!important;left:auto!important}
+/* Pasada 52 (2026-11-11): botones flotantes en móvil. A ~500 px tapaban el contenido al hacer scroll (WhatsApp tapaba el precio «107 €/d» de la calculadora de Gear; el botón de inicio la «R» de «Rodaje»). 1) Al bajar se ocultan y al subir reaparecen (clase .welux-fabs-hidden en <html>, solo ≤767 px, puesta por welux-v2.js; en escritorio no cambia nada). 2) En móvil se achican para tapar menos. */
+#welux-whatsapp-flotante,.welux-idioma-flotante,.welux-home-fab{transition:transform .3s ease,opacity .3s ease}
+html.welux-fabs-hidden #welux-whatsapp-flotante,html.welux-fabs-hidden .welux-idioma-flotante,html.welux-fabs-hidden .welux-home-fab{transform:translateY(160px);opacity:0;pointer-events:none}
+@media (max-width:767px){#welux-whatsapp-flotante{bottom:76px!important}#welux-whatsapp-flotante button{width:48px!important;height:48px!important}#welux-whatsapp-panel{bottom:136px!important}.welux-idioma-flotante .welux-idioma-btn{padding:.4rem .65rem!important;font-size:.82rem!important}}
 .welux-wa-float{right:12px!important;bottom:76px!important;left:auto!important;max-width:calc(100vw - 24px)!important}
 div.fixed.bottom-6.left-6{left:50%!important;right:auto!important;transform:translateX(-50%)!important;bottom:calc(8px + env(safe-area-inset-bottom))!important;z-index:45!important;max-width:calc(100vw - 24px)!important}
 div.fixed.bottom-6.left-6 a{white-space:nowrap!important;max-width:100%!important}

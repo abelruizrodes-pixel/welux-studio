@@ -85,6 +85,26 @@
   .welux-hero-video { position: absolute; top: 0; left: 0; right: 0; height: 680px; overflow: hidden; pointer-events: none; }
   .welux-hero-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
   @media (max-width: 640px) { .welux-hero-video { height: 960px; } }
+
+  /* Deck im Tinder-Stil: jeweils eine Division */
+  #portal-grid { display: block !important; max-width: 620px; margin-inline: auto; touch-action: pan-y; }
+  #portal-grid:focus-visible { outline: 2px solid #c65d21; outline-offset: 6px; border-radius: 28px; }
+  #portal-grid .portal-card { display: none; margin: 0 auto; }
+  #portal-grid .portal-card.welux-deck-activa { display: flex !important; animation: welux-deck-entra .45s ease both; }
+  #portal-grid img { user-select: none; }
+  @keyframes welux-deck-entra { from { opacity: 0; transform: translateY(14px) scale(.985); } to { opacity: 1; transform: none; } }
+  .welux-deck-pista { text-align: center; color: #8a6d4b; font-size: 13px; margin: 0 0 14px; }
+  .welux-deck-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 20px; }
+  .welux-deck-btn { width: 52px; height: 52px; flex: 0 0 auto; border-radius: 9999px; border: 1px solid #e0cba6; background: #fffdf8; color: #8a4b1f; font-size: 26px; line-height: 1; cursor: pointer; box-shadow: 0 6px 18px rgba(120, 72, 20, .15); }
+  .welux-deck-btn:hover { background: #c65d21; color: #fff; border-color: #c65d21; }
+  .welux-deck-btn:disabled { opacity: .35; cursor: default; }
+  .welux-deck-puntos { display: flex; align-items: center; gap: 8px; }
+  .welux-deck-punto { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 9999px; background: #e0cba6; cursor: pointer; }
+  .welux-deck-punto[aria-current="true"] { width: 28px; background: #c65d21; }
+  .welux-deck-contador { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8a6d4b; min-width: 42px; text-align: center; }
+  main button.welux-filtro-activo { background: #c65d21 !important; color: #fff !important; }
+  @media (max-width: 640px) { #portal-grid { max-width: 100%; } }
+  @media (prefers-reduced-motion: reduce) { #portal-grid .portal-card.welux-deck-activa { animation: none; } }
 </style>
 
 <!-- Schema.org Multi-Entity JSON-LD Structured Data for Google Rich Snippets -->
@@ -791,5 +811,123 @@ void main() {
 })();
 </script>
 
-<script src="/assets/js/welux-i18n.js"></script> <div class="welux-idioma-flotante"><button class="welux-idioma-btn" type="button" aria-label="Sprache" aria-expanded="false">🌐 DE</button><div class="welux-idioma-menu" hidden style="position:absolute;right:0;bottom:3.4rem;background:var(--p-card);border:1px solid var(--p-border);border-radius:14px;box-shadow:var(--welux-shadow-md);padding:.4rem;min-width:11rem"><a href="/" style="display:block;padding:.45rem.7rem;border-radius:9px;color:var(--p-ink-soft);text-decoration:none;font-size:.88rem">🇪🇸 Español</a><a href="/en/" style="display:block;padding:.45rem.7rem;border-radius:9px;color:var(--p-ink-soft);text-decoration:none;font-size:.88rem">🇬🇧 English</a><a href="/fr/" style="display:block;padding:.45rem.7rem;border-radius:9px;color:var(--p-ink-soft);text-decoration:none;font-size:.88rem">🇫🇷 Français</a><a href="/de/" style="display:block;padding:.45rem.7rem;border-radius:9px;color:var(--p-ink-soft);text-decoration:none;font-size:.88rem">🇩🇪 Deutsch</a><a href="/pt/" style="display:block;padding:.45rem.7rem;border-radius:9px;color:var(--p-ink-soft);text-decoration:none;font-size:.88rem">🇵🇹 Português</a><a href="/lu/" style="display:block;padding:.45rem.7rem;border-radius:9px;color:var(--p-ink-soft);text-decoration:none;font-size:.88rem">🇱🇺 Lëtzebuergesch</a></div></div><script>(function(){var t={'0':'#fdf7ee','1':'#F7F3EB','2':'#F6F1E7','3':'#F8F2E9','4':'#F5F1E8','5':'#F7F4EC'};var b=document.querySelectorAll('.welux-palette-opt');function ap(id){var h=document.documentElement;if(id==='0'){h.removeAttribute('data-welux-palette');try{localStorage.removeItem('welux-palette');}catch(e){}}else{h.setAttribute('data-welux-palette',id);try{localStorage.setItem('welux-palette',id);}catch(e){}}var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t[id]||'#fdf7ee');b.forEach(function(o){o.setAttribute('aria-pressed',o.getAttribute('data-palette')===id?'true':'false');});}var s='0';try{s=localStorage.getItem('welux-palette')||'0';}catch(e){}if(!t[s])s='0';ap(s);b.forEach(function(o){o.addEventListener('click',function(){ap(o.getAttribute('data-palette'));});});var f=document.querySelector('.welux-idioma-btn');var g=document.querySelector('.welux-idioma-menu');if(f&&g){f.addEventListener('click',function(e){e.stopPropagation();var o=g.hidden;g.hidden=!o;f.setAttribute('aria-expanded',o?'true':'false');});document.addEventListener('click',function(e){if(!e.target.closest('.welux-idioma-flotante')){g.hidden=true;f.setAttribute('aria-expanded','false');}});}})();</script><script src="/assets/js/welux-v2.js?v=14" defer></script>
+<script src="/assets/js/welux-i18n.js"></script>
+
+<!-- Deck im Tinder-Stil für die 3 Divisionen: Pfeile, Punkte, Wischen und Tastatur -->
+<script>
+(function () {
+  var grid = document.getElementById('portal-grid');
+  if (!grid) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.portal-card'));
+  if (cards.length < 2) return;
+
+  grid.setAttribute('tabindex', '0');
+  grid.setAttribute('role', 'region');
+  grid.setAttribute('aria-roledescription', 'Karussell');
+  grid.setAttribute('aria-label', 'Divisionen von WeLux: Studio, Careers und Gear');
+
+  var pista = document.createElement('p');
+  pista.className = 'welux-deck-pista';
+  pista.textContent = 'Wische oder nutze die Pfeile, um die drei Divisionen nacheinander durchzugehen.';
+  grid.parentNode.insertBefore(pista, grid);
+
+  var nav = document.createElement('div');
+  nav.className = 'welux-deck-nav';
+  nav.innerHTML = '<button type="button" class="welux-deck-btn welux-deck-anterior" aria-label="Vorherige Division anzeigen">‹</button>' +
+    '<div class="welux-deck-puntos" role="tablist" aria-label="Divisionen"></div>' +
+    '<span class="welux-deck-contador" aria-live="polite"></span>' +
+    '<button type="button" class="welux-deck-btn welux-deck-siguiente" aria-label="Nächste Division anzeigen">›</button>';
+  grid.parentNode.insertBefore(nav, grid.nextSibling);
+
+  var puntosCaja = nav.querySelector('.welux-deck-puntos');
+  var contador = nav.querySelector('.welux-deck-contador');
+  var btnAnterior = nav.querySelector('.welux-deck-anterior');
+  var btnSiguiente = nav.querySelector('.welux-deck-siguiente');
+
+  var puntos = cards.map(function (card, i) {
+    var titulo = card.querySelector('h2');
+    var punto = document.createElement('button');
+    punto.type = 'button';
+    punto.className = 'welux-deck-punto';
+    punto.setAttribute('role', 'tab');
+    punto.setAttribute('aria-label', 'Anzeigen: ' + (titulo ? titulo.textContent.trim() : 'Division ' + (i + 1)));
+    punto.addEventListener('click', function () { mostrar(i); });
+    puntosCaja.appendChild(punto);
+    return punto;
+  });
+
+  var permitidas = cards.map(function (_, i) { return i; });
+  var actual = 0;
+
+  function mostrar(indice) {
+    var pos = permitidas.indexOf(indice);
+    if (pos === -1) { indice = permitidas[0]; pos = 0; }
+    actual = indice;
+    cards.forEach(function (card, i) {
+      var activa = i === indice;
+      card.classList.toggle('welux-deck-activa', activa);
+      card.style.display = activa ? 'flex' : 'none';
+      card.style.opacity = activa ? '1' : '0';
+      card.setAttribute('aria-hidden', activa ? 'false' : 'true');
+    });
+    puntos.forEach(function (punto, i) {
+      var visible = permitidas.indexOf(i) !== -1;
+      punto.style.display = visible ? '' : 'none';
+      punto.setAttribute('aria-current', i === indice ? 'true' : 'false');
+    });
+    contador.textContent = (pos + 1) + ' / ' + permitidas.length;
+    var soloUna = permitidas.length < 2;
+    btnAnterior.disabled = soloUna;
+    btnSiguiente.disabled = soloUna;
+  }
+
+  function paso(direccion) {
+    if (permitidas.length < 2) return;
+    var pos = permitidas.indexOf(actual);
+    var siguiente = (pos + direccion + permitidas.length) % permitidas.length;
+    mostrar(permitidas[siguiente]);
+  }
+
+  btnAnterior.addEventListener('click', function () { paso(-1); });
+  btnSiguiente.addEventListener('click', function () { paso(1); });
+
+  grid.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); paso(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); paso(1); }
+  });
+
+  var inicioX = null;
+  Array.prototype.forEach.call(grid.querySelectorAll('img'), function (img) { img.draggable = false; });
+  grid.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  grid.addEventListener('pointerdown', function (e) { inicioX = e.clientX; });
+  window.addEventListener('pointerup', function (e) {
+    if (inicioX === null) return;
+    var dx = e.clientX - inicioX;
+    inicioX = null;
+    if (Math.abs(dx) > 50) paso(dx < 0 ? 1 : -1);
+  });
+  window.addEventListener('pointercancel', function () { inicioX = null; });
+
+  /* Die Filter wählen jetzt die Karte des Decks (die Schaltflächen werden ersetzt,
+     um die vorherige Filterung zu deaktivieren, die Karten ausblendete). */
+  var mapaFiltros = { all: [0, 1, 2], studio: [0], careers: [1], gear: [2] };
+  Array.prototype.slice.call(document.querySelectorAll('.filter-tab')).forEach(function (btn) {
+    var copia = btn.cloneNode(true);
+    if (copia.getAttribute('data-filter') === 'all') copia.classList.add('welux-filtro-activo');
+    btn.parentNode.replaceChild(copia, btn);
+    copia.addEventListener('click', function () {
+      Array.prototype.slice.call(document.querySelectorAll('.filter-tab')).forEach(function (b) {
+        b.classList.remove('welux-filtro-activo', 'bg-[#ffb95f]', 'text-[#0d141d]', 'font-bold');
+        b.classList.add('bg-[#192029]', 'text-white/70', 'font-medium');
+      });
+      copia.classList.add('welux-filtro-activo');
+      copia.classList.remove('bg-[#192029]', 'text-white/70', 'font-medium');
+      permitidas = mapaFiltros[copia.getAttribute('data-filter')] || [0, 1, 2];
+      mostrar(permitidas[0]);
+    });
+  });
+
+  mostrar(0);
+})();
+</script> <div class="welux-idioma-flotante"><button class="welux-idioma-btn" type="button" aria-label="Sprache" aria-expanded="false">🌐 DE</button><div class="welux-idioma-menu" hidden style="position:absolute;right:0;bottom:3.4rem;background:var(--p-card);border:1px solid var(--p-border);border-radius:14px;box-shadow:var(--welux-shadow-md);padding:.4rem;min-width:11rem"><a href="/" style="display:block;padding:.45rem.7rem;border-radius:9px;color:var(--p-ink-soft);text-decoration:none;font-size:.88rem">🇪🇸 Español</a><a href="/en/" style="display:block;padding:.45rem.7rem;border-radius:9px;color:var(--p-ink-soft);text-decoration:none;font-size:.88rem">🇬🇧 English</a><a href="/fr/" style="display:block;padding:.45rem.7rem;border-radius:9px;color:var(--p-ink-soft);text-decoration:none;font-size:.88rem">🇫🇷 Français</a><a href="/de/" style="display:block;padding:.45rem.7rem;border-radius:9px;color:var(--p-ink-soft);text-decoration:none;font-size:.88rem">🇩🇪 Deutsch</a><a href="/pt/" style="display:block;padding:.45rem.7rem;border-radius:9px;color:var(--p-ink-soft);text-decoration:none;font-size:.88rem">🇵🇹 Português</a><a href="/lu/" style="display:block;padding:.45rem.7rem;border-radius:9px;color:var(--p-ink-soft);text-decoration:none;font-size:.88rem">🇱🇺 Lëtzebuergesch</a></div></div><script>(function(){var t={'0':'#fdf7ee','1':'#F7F3EB','2':'#F6F1E7','3':'#F8F2E9','4':'#F5F1E8','5':'#F7F4EC'};var b=document.querySelectorAll('.welux-palette-opt');function ap(id){var h=document.documentElement;if(id==='0'){h.removeAttribute('data-welux-palette');try{localStorage.removeItem('welux-palette');}catch(e){}}else{h.setAttribute('data-welux-palette',id);try{localStorage.setItem('welux-palette',id);}catch(e){}}var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t[id]||'#fdf7ee');b.forEach(function(o){o.setAttribute('aria-pressed',o.getAttribute('data-palette')===id?'true':'false');});}var s='0';try{s=localStorage.getItem('welux-palette')||'0';}catch(e){}if(!t[s])s='0';ap(s);b.forEach(function(o){o.addEventListener('click',function(){ap(o.getAttribute('data-palette'));});});var f=document.querySelector('.welux-idioma-btn');var g=document.querySelector('.welux-idioma-menu');if(f&&g){f.addEventListener('click',function(e){e.stopPropagation();var o=g.hidden;g.hidden=!o;f.setAttribute('aria-expanded',o?'true':'false');});document.addEventListener('click',function(e){if(!e.target.closest('.welux-idioma-flotante')){g.hidden=true;f.setAttribute('aria-expanded','false');}});}})();</script><script src="/assets/js/welux-v2.js?v=14" defer></script>
 </body></html>

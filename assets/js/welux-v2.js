@@ -884,6 +884,7 @@ Array.prototype.slice.call(document.querySelectorAll('main video,main img')).for
 var all=Array.prototype.slice.call(document.body.querySelectorAll('*'));
 all.forEach(function(el){
 if(el.closest(SKIP))return;
+if(el.closest('[data-welux-media]'))return; /* Pasada 59: el bucle 1 no tenia esta guarda y forzaba background var(--p-card) sobre el hero oscuro de Gear/Films aunque llevara data-welux-media. */
 if(el.tagName==='A'||el.tagName==='BUTTON'||el.tagName==='VIDEO'||el.tagName==='IMG')return;
 var cs=getComputedStyle(el);
 var bg=lum(cs.backgroundColor);

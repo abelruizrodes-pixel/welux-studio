@@ -118,6 +118,10 @@
     });
     document.querySelectorAll('.welux-lang-bar').forEach(function (el) { el.remove(); });
     document.querySelectorAll('.welux-lang-btn').forEach(function (el) { el.remove(); });
+    /* Pasada 55 (2026-11-11): las páginas legales viven SOLO en /legal/ (no hay /en/legal/, /fr/legal/...), así que samePageHref() generaba /{lang}/legal/*.html → 404 al cambiar de idioma desde una legal con el botón flotante. El equivalente por idioma sigue la misma convención que legalUrls (welux-v2.js) y que los hreflang de las legales: ES→ES, FR→FR, EN/DE/PT/LU→EN. */
+    var LEGAL_TXT = { es: ['aviso-legal', 'privacidad', 'terminos', 'cookies'], en: ['legal-notice', 'privacy-policy', 'terms-of-use', 'cookie-policy'], fr: ['mentions-legales', 'politique-de-confidentialite', 'conditions-dutilisation', 'politique-cookies'] };
+    function legalInfo() { var m = location.pathname.match(/^\/legal\/([^\/]+)\.html$/); if (!m) return null; var f = m[1]; var info = null; ['es', 'en', 'fr'].forEach(function (L) { var i = LEGAL_TXT[L].indexOf(f); if (i >= 0) info = { lang: L, tipo: i }; }); return info; }
+    function legalHref(code) { var info = legalInfo(); if (!info) return null; var L = code === 'es' ? 'es' : (code === 'fr' ? 'fr' : 'en'); return '/legal/' + LEGAL_TXT[L][info.tipo] + '.html'; }
     var fabs = document.querySelectorAll('.welux-idioma-flotante');
     fabs.forEach(function (fab, i) { if (i > 0) fab.remove(); });
     var fab = document.querySelector('.welux-idioma-flotante');
@@ -127,8 +131,9 @@
         var href = a.getAttribute('href') || '';
         var m = href.match(/^\/(en|fr|de|pt|lu)(\/|$)/);
         if (m) code = m[1];
-        if (LANGS.indexOf(code) >= 0 || code === 'es') { a.setAttribute('href', samePageHref(code)); a.setAttribute('data-lang', code); }
-        if (code === currentLang()) a.setAttribute('aria-current', 'page');
+        if (LANGS.indexOf(code) >= 0 || code === 'es') { var lh = legalHref(code); a.setAttribute('href', lh || samePageHref(code)); a.setAttribute('data-lang', code); }
+        var infoL = legalInfo();
+        if (code === (infoL ? infoL.lang : currentLang())) a.setAttribute('aria-current', 'page');
       });
     }
     var oldBack = [];

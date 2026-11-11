@@ -960,7 +960,7 @@ var c2=el('article','welux-card');
 c2.appendChild(el('h3',null,D.e));
 c2.appendChild(el('p',null,D.eN));
 var a2=el('a',null,D.eB);a2.href=EDITUS_URL;a2.target='_blank';a2.rel='noopener';c2.appendChild(a2);
-var a2b=el('a',null,D.w);a2b.href=EDITUS_URL;a2b.target='_blank';a2b.rel='noopener';c2.appendChild(a2b);
+var a2b=el('a',null,D.w);a2b.href='#resenas';/* Pasada 54: antes apuntaba a EDITUS_URL, igual que el botón «Ver ficha» de arriba — destino duplicado y etiqueta engañosa: «Escribe tu reseña» debe llevar al formulario propio de aquí abajo, que es donde se deja la reseña antes de publicarla en cada plataforma. */c2.appendChild(a2b);
 grid.appendChild(c2);
 var c3=el('article','welux-card');
 c3.appendChild(el('h3',null,D.tp));

@@ -58,6 +58,11 @@ footer a{transition:color .25s ease}
 footer a:hover{color:var(--p-accent-deep)!important}
 .welux-social-btn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;background:var(--p-card);border:1px solid var(--p-border);box-shadow:var(--welux-shadow-sm);font-weight:800;color:var(--p-ink);text-decoration:none;transition:transform .25s ease,box-shadow .25s ease}
 .welux-social-btn:hover{transform:translateY(-2px);box-shadow:var(--welux-shadow-md)}
+
+/* Pasada 51: tarjeta estilo Apple para las redes del pie (Facebook, Instagram, TikTok y X). */
+.welux-social-widget{display:inline-block;background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(255,255,255,.78))!important;border:1px solid rgba(255,255,255,.7)!important;border-radius:20px!important;box-shadow:0 10px 28px rgba(30,28,24,.12),0 2px 6px rgba(30,28,24,.08)!important;padding:.85rem 1.1rem!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-align:center}
+.welux-social-widget-title{display:block!important;font-size:.7rem!important;font-weight:700!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:#6f5a44!important;margin:0 0 .55rem!important}
+.welux-social-widget .welux-footer-v2-social{margin:0!important}
 .welux-palette-picker{border-top:1px solid var(--p-border);margin-top:1.2rem;padding:1.2rem .5rem .4rem;text-align:center}
 .welux-palette-picker h3{font-size:.95rem;margin:0 0 .2rem}
 .welux-palette-picker p{font-size:.8rem;color:var(--p-ink-soft);margin:.2rem 0 .8rem}
@@ -93,8 +98,9 @@ header .welux-hero .hero-eyebrow,header .hero .hero-eyebrow{color:rgba(255,255,2
    el contraste y el título queda grande y limpio sobre el vídeo. */
 .welux-hero-video video,.welux-hero img.welux-hero-photo{filter:blur(3px);transform:scale(1.05)}
 .welux-hero-video + header{background:transparent!important}
-.welux-hero-video + header h1{color:#fff!important;text-shadow:0 2px 20px rgba(20,16,12,.6)}
+.welux-hero-video + header h1{color:#fff!important;text-shadow:0 2px 20px rgba(20,16,12,.6),0 1px 4px rgba(20,16,12,.65)}
 .welux-hero-video + header p[class*="text-white"],.welux-hero-video + header [class*="text-white/50"]{color:rgba(255,255,255,.93)!important;text-shadow:0 1px 14px rgba(20,16,12,.55)}
+.welux-hero-video + header p[class*="text-[#ffb95f]"]{text-shadow:0 1px 14px rgba(20,16,12,.55)}
 
 /* ===== Paletas: las superficies principales siguen las variables =====
    Fondo, títulos, botones, tarjetas y cabecera cambian al instante al elegir

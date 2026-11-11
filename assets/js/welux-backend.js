@@ -218,16 +218,25 @@ var st=document.createElement('style');st.setAttribute('data-welux','gear-card')
 
 /* VUELTA 7 - TARJETA GEAR 2 (2026-11-09, captura del dueno 10:54). Solo Gear: cabecera en una sola barra, pastillas de ventajas en una linea, WhatsApp sin tapar la tarjeta, metricas sin solapar. No se toca /films/. */
 (function(){
-if(location.pathname.indexOf('/gear')===-1)return;
+if(location.pathname.indexOf('/gear')===-1&&location.pathname.indexOf('/films')===-1)return;
+if(location.pathname.indexOf('/gear')!==-1){
 var css='header>div.h-20{flex-wrap:nowrap!important;overflow-x:auto!important}'+'header>div.h-20 *{flex-shrink:0!important}'+'header>div.h-20 a,header>div.h-20 span{white-space:nowrap!important}'+'@media(max-width:1023px){header>div.h-20{scrollbar-width:none!important}header>div.h-20::-webkit-scrollbar{display:none!important}}'+'@media(max-width:480px){header a.group span.font-headline-sm{font-size:1.05rem!important}header a.group>span.font-technical-eyebrow{font-size:10px!important}header a[href="#calculadora"]{padding-left:12px!important;padding-right:12px!important}}'+
 '@media(max-width:480px){main section:nth-of-type(2) [class*="lg:col-span-7"]>div{flex-wrap:wrap!important}main section:nth-of-type(2) [class*="lg:col-span-7"] div:has(.material-symbols-outlined){flex-wrap:wrap!important}main section:nth-of-type(2) [class*="lg:col-span-7"] .material-symbols-outlined+span{white-space:nowrap!important}main section:nth-of-type(2) div.grid.grid-cols-2>div *{white-space:nowrap!important}}';
 var st=document.createElement('style');st.setAttribute('data-welux','gear-card-2');st.textContent=css;(document.head||document.documentElement).appendChild(st);
+} /* Fin del CSS solo-Gear: el observer de abajo cubre Gear y Films. */
 if(window.matchMedia&&window.matchMedia('(max-width:768px)').matches&&'IntersectionObserver' in window){
-var card=document.querySelector('main section:nth-of-type(2) [class*="lg:col-span-5"]');
+var _p=location.pathname;
+if(_p.indexOf('/gear')===-1&&_p.indexOf('/films')===-1){/* Sin observador fuera de Gear/Films: el CSS de arriba sigue siendo solo Gear. */}
+else{
+var card=document.querySelector('#calculadora');
 if(card){
-/* Pasada 52 (2026-11-11): el selector original '.welux-wa-float' quedó MUERTO cuando el botón de WhatsApp se reconstruyó con id 'welux-whatsapp-flotante' (welux-v2.js:995) — el observador no ocultaba nada y el botón tapaba la tarjeta de la calculadora en móvil. Ahora se ocultan los TRES flotantes (WhatsApp, idioma, inicio) mientras la tarjeta de la calculadora está en pantalla. */
+/* Pasada 52 (2026-11-11): el selector original '.welux-wa-float' quedó MUERTO cuando el botón de WhatsApp se reconstruyó con id 'welux-whatsapp-flotante' (welux-v2.js:995) — el observador no ocultaba nada y el botón tapaba la tarjeta de la calculadora en móvil. Pasada 53 (2026-11-11): el selector de la 52 ('main section:nth-of-type(2) [class*="lg:col-span-5"]') apuntaba a la columna derecha del HERO (la sección 2 es el hero con su tarjeta «Media Showcase»; la calculadora es la 7ª, id=calculadora) — los flotantes solo se ocultaban arriba del todo y la calculadora quedaba sin proteger al subir. Ahora se observa la sección #calculadora entera (las dos columnas, incluido el «107 €/d») y también en /films, que tiene la misma calculadora. Se ocultan los TRES flotantes (WhatsApp, idioma, inicio) mientras la calculadora está en pantalla. */
 var io=new IntersectionObserver(function(es){var hid=es[0].isIntersecting?'none':'';var b=document.querySelector('#welux-whatsapp-flotante');if(b)b.style.display=hid;var c=document.querySelector('.welux-idioma-flotante');if(c)c.style.display=hid;var h=document.querySelector('.welux-home-fab');if(h)h.style.display=hid;},{threshold:0.02});
 io.observe(card);
+/* Pasada 53: re-aplicar tras la carga completa — ensureLangButton (welux-v2.js) pone display:flex en el flotante de idioma al cargar la ventana y puede deshacer este ocultado si la calculadora ya estaba en pantalla (el observer solo dispara al cambiar la intersección). */
+function reapplyFabs(){var r=card.getBoundingClientRect();var vis=r.bottom>0&&r.top<(window.innerHeight||0);var hid=vis?'none':'';var b=document.querySelector('#welux-whatsapp-flotante');if(b)b.style.display=hid;var c=document.querySelector('.welux-idioma-flotante');if(c)c.style.display=hid;var h=document.querySelector('.welux-home-fab');if(h)h.style.display=hid;}
+if(document.readyState==='complete'){setTimeout(reapplyFabs,100);}else{window.addEventListener('load',function(){setTimeout(reapplyFabs,100);});}
+}
 }
 }
 })();

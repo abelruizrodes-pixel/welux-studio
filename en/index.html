@@ -60,6 +60,7 @@
     color: #dce3f0;
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
+  html { scroll-behavior: smooth; }
   .font-headline { font-family: 'Fraunces', serif; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   
@@ -87,6 +88,16 @@
   @media (max-width: 640px) { .welux-hero-video { height: 960px; } }
 
   /* Tinder-style deck: one division at a time */
+  /* Division cards */
+  .portal-card { background: #fffdf8 !important; border: 1px solid #ead9bd !important; border-radius: 28px !important; box-shadow: 0 18px 40px rgba(120, 72, 20, .12) !important; overflow: hidden; }
+  .portal-card > div:last-child { background: #fbf0dc !important; }
+  main [class*="hover:bg-[#ffddb8]"]:hover { background-color: #ea580c !important; }
+  main [class*="hover:bg-[#80e5fb]"]:hover { background-color: #0d9488 !important; }
+  main [class*="hover:bg-[#ffd2cd]"]:hover { background-color: #a34a2e !important; }
+  main [class*="ring-[#ffb95f]"] { --tw-ring-color: #c65d21 !important; }
+  main [class*="ring-[#4cd7f6]"] { --tw-ring-color: #0f766e !important; }
+  main [class*="ring-[#ffb4ac]"] { --tw-ring-color: #be5a38 !important; }
+
   #portal-grid { display: block !important; max-width: 620px; margin-inline: auto; touch-action: pan-y; }
   #portal-grid:focus-visible { outline: 2px solid #c65d21; outline-offset: 6px; border-radius: 28px; }
   #portal-grid .portal-card { display: none; margin: 0 auto; }
@@ -103,8 +114,9 @@
   .welux-deck-punto[aria-current="true"] { width: 28px; background: #c65d21; }
   .welux-deck-contador { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8a6d4b; min-width: 42px; text-align: center; }
   main button.welux-filtro-activo { background: #c65d21 !important; color: #fff !important; }
-  @media (max-width: 640px) { #portal-grid { max-width: 100%; } }
-  @media (prefers-reduced-motion: reduce) { #portal-grid .portal-card.welux-deck-activa { animation: none; } }
+  @media (max-width: 1023px) { main { padding-top: 7.5rem !important; } }
+  @media (max-width: 640px) { #portal-grid { max-width: 100%; } .portal-card { border-radius: 24px !important; } }
+  @media (prefers-reduced-motion: reduce) { #portal-grid .portal-card.welux-deck-activa { animation: none; } html { scroll-behavior: auto; } }
 </style>
 
 <!-- Schema.org Multi-Entity JSON-LD Structured Data for Google Rich Snippets -->
@@ -233,6 +245,12 @@
       </a>
     </div>
   </div>
+  <nav class="lg:hidden flex items-center justify-center gap-1 px-3 py-2 border-t border-[#ead9bd] bg-[#fff8ec]" aria-label="Divisions">
+    <a class="px-3 py-1.5 rounded-full text-sm font-medium text-[#6b4a2a] hover:bg-[#f6e8d2]" href="/en/studio/">Studio</a>
+    <a class="px-3 py-1.5 rounded-full text-sm font-medium text-[#6b4a2a] hover:bg-[#f6e8d2]" href="/en/careers/">Careers</a>
+    <a class="px-3 py-1.5 rounded-full text-sm font-medium text-[#6b4a2a] hover:bg-[#f6e8d2]" href="/en/gear/">Gear</a>
+    <a class="px-3 py-1.5 rounded-full text-sm font-semibold text-[#c65d21]" href="mailto:info@weluxhub.com">info@weluxhub.com</a>
+  </nav>
 </header>
 
 <main class="w-full pt-20 bg-[#0d141d] min-h-screen relative overflow-hidden">

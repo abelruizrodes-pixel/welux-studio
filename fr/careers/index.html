@@ -112,7 +112,7 @@
 <style>
 header .welux-header-row{flex-wrap:wrap!important;height:auto!important;min-height:5rem;overflow-x:visible!important}
 header .welux-header-row nav{flex-wrap:wrap!important;flex-shrink:1;min-width:0;row-gap:.25rem;column-gap:1rem;overflow-x:visible!important}
-header aside>div{flex-wrap:wrap!important;overflow-x:visible!important}/*Vuelta 18: el aside es hermano de </header>, no hijo: la regla anterior no lo tocaba. Se recorta el desbordamiento de la cabecera, como en EN en la vuelta 17.*/header{overflow-x:clip!important}header+aside>div,body>aside>div{flex-wrap:wrap!important;overflow-x:visible!important}
+header aside>div{flex-wrap:wrap!important;overflow-x:visible!important}/*Vuelta 18 : l'aside est frère de </header>, pas enfant : la règle précédente ne le touchait pas. Le débordement de l'en-tête est rogné, comme en EN à la vuelta 17.*/header{overflow-x:clip!important}header+aside>div,body>aside>div{flex-wrap:wrap!important;overflow-x:visible!important}
 </style>
 </head><body class="bg-white font-sans text-slate-800 antialiased selection:bg-cobalt-100 selection:text-navy-900">
 
@@ -895,7 +895,7 @@ header aside>div{flex-wrap:wrap!important;overflow-x:visible!important}/*Vuelta 
 </section>
 <!-- Script vanilla interactif pour le sélecteur de langue de la démo CV, Calculateur et Accordéon -->
 <script>
-    // 1. Selector de idiomas en la Demo de CV Web
+    // 1. Sélecteur de langue dans la démo de CV Web
     const cvTranslations = {
       fr: {
         status: "Disponible Immédiatement",
@@ -1001,7 +1001,7 @@ header aside>div{flex-wrap:wrap!important;overflow-x:visible!important}/*Vuelta 
       document.getElementById('roi-percentage').textContent = `Représente seulement ${perc} % de votre 1er salaire net`;
     }
 
-    // 3. Acordeón FAQ
+    // 3. Accordéon FAQ
     function toggleFaq(btn) {
       const content = btn.nextElementSibling;
       const icon = btn.querySelector('.faq-icon');

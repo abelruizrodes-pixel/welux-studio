@@ -225,7 +225,8 @@ var st=document.createElement('style');st.setAttribute('data-welux','gear-card-2
 if(window.matchMedia&&window.matchMedia('(max-width:768px)').matches&&'IntersectionObserver' in window){
 var card=document.querySelector('main section:nth-of-type(2) [class*="lg:col-span-5"]');
 if(card){
-var io=new IntersectionObserver(function(es){var b=document.querySelector('.welux-wa-float');if(!b)return;b.style.display=es[0].isIntersecting?'none':'';},{threshold:0.02});
+/* Pasada 52 (2026-11-11): el selector original '.welux-wa-float' quedó MUERTO cuando el botón de WhatsApp se reconstruyó con id 'welux-whatsapp-flotante' (welux-v2.js:995) — el observador no ocultaba nada y el botón tapaba la tarjeta de la calculadora en móvil. Ahora se ocultan los TRES flotantes (WhatsApp, idioma, inicio) mientras la tarjeta de la calculadora está en pantalla. */
+var io=new IntersectionObserver(function(es){var hid=es[0].isIntersecting?'none':'';var b=document.querySelector('#welux-whatsapp-flotante');if(b)b.style.display=hid;var c=document.querySelector('.welux-idioma-flotante');if(c)c.style.display=hid;var h=document.querySelector('.welux-home-fab');if(h)h.style.display=hid;},{threshold:0.02});
 io.observe(card);
 }
 }

@@ -238,7 +238,7 @@ footer [class*="text-[#ffb95f]"]{color:#7a5a1f!important}
 .welux-palette-picker{display:none!important} /* Careers: cabecera en una sola barra en movil y tablet. */ @media (max-width:768px){header .welux-header-row{flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:thin}header .welux-header-row>div{flex-wrap:nowrap!important}header .welux-header-row a{white-space:nowrap!important}}
 
 /* VUELTA 7 (2026-11-09): correcciones verificadas en capturas a 390 y 768 px. */
-html,body{overflow-x:hidden!important;max-width:100%!important}
+html,body{overflow-x:clip!important;max-width:100%!important} /* Pasada 62: overflow-x:hidden convertia el body en scroll-container y el sticky (cabecera Studio, tarjeta calculadora) no se activaba nunca; clip impide el desbordamiento horizontal sin crear scroll-container. */
 img,video,iframe{max-width:100%!important}
 video{max-width:100%!important;height:auto!important}
 input,select,textarea{max-width:100%!important;box-sizing:border-box!important}

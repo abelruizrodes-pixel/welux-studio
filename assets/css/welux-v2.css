@@ -220,6 +220,11 @@ html main [class*="bg-amber-tungsten"],html main [class*="bg-champagne-"]{backgr
    Son clases Tailwind con valor arbitrario y no las cubría ningún selector anterior. */
 html [class*="bg-[#e53935]"],html [class*="bg-[#c62828]"],html [class*="bg-[#e11d48]"]{background:linear-gradient(180deg,var(--p-btn-from),var(--p-btn-to))!important;color:var(--p-btn-text)!important;border-color:transparent!important}
 html [class*="bg-[#0d0e12]"],html [class*="bg-[#14161d]"],html [class*="bg-[#1f232d]"],html [class*="bg-[#252a36]"],html [class*="bg-[#2c3340]"],html [class*="bg-[#111319]"]{background-color:var(--p-card)!important}
+/* Pasada 80: :222 convertia a crema los elementos oscuros DISENADOS dentro de los heroes de Gear/Films (tarjeta showcase bg-[#14161d], franja Quick Metrics bg-[#14161d], insignia bg-[#0d0e12]/80 y 11 chips bg-[#0d0e12]/90), dejando los valores blancos sobre crema (1,02:1, invisibles). Se eximen solo los subarboles [data-welux-media], restaurando cada hex a su valor disenado (las variantes /80 y /90 van despues de la regla plana, para que venzan por orden a igual especificidad). NO se toca :222: las 7 secciones inferiores de Gear/Films dependen de ella para el look crema aprobado. NO se incluye bg-[#252a36]: el CTA del hero lo lleva solo en hover:bg- y su blanco viene de la regla inyectada main section a[href="#calculadora"] (welux-v2.js:825), que debe seguir ganando. */
+[data-welux-media] [class*="bg-[#0d0e12]"]{background-color:#0d0e12!important}
+[data-welux-media] [class*="bg-[#14161d]"]{background-color:#14161d!important}
+[data-welux-media] [class*="bg-[#0d0e12]/80"]{background-color:rgba(13,14,18,.8)!important}
+[data-welux-media] [class*="bg-[#0d0e12]/90"]{background-color:rgba(13,14,18,.9)!important}
 html [class*="shadow-[0_0_15px_rgba(229,57,53"]{box-shadow:var(--welux-shadow-sm)!important}
 html header [class*="text-neutral-"]{color:var(--p-ink)!important}
 html header [class*="text-amber-tungsten"]{color:var(--p-gold)!important}

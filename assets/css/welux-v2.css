@@ -197,9 +197,6 @@ html main div:has(>video){background-color:transparent!important}
    Tarjeta clara y profesional, con sombra y profundidad, igual que las tarjetas de la home. */
 .welux-widget{background:var(--p-card)!important;border:1px solid var(--p-border)!important;border-radius:18px!important;box-shadow:var(--welux-shadow-md)!important;padding:22px 24px!important;color:var(--p-ink)!important}
 .welux-widget h1,.welux-widget h2,.welux-widget h3,.welux-widget h4{color:var(--p-heading)!important}
-.welux-widget-row{display:flex!important;flex-wrap:wrap!important;gap:16px!important;margin:32px auto!important}
-html main .welux-widget-row{background:transparent!important;border-color:transparent!important;box-shadow:none!important}
-.welux-widget-row>.welux-widget{flex:1 1 160px!important}
 .welux-widget [class*="text-2xl"],.welux-widget [class*="text-3xl"],.welux-widget [class*="text-4xl"]{font-family:'Fraunces',Georgia,serif!important;color:var(--p-heading)!important}
 .welux-card{box-shadow:var(--welux-shadow-md)!important}
 

@@ -843,6 +843,7 @@ function isDark(el){var c;try{c=getComputedStyle(el).backgroundColor;}catch(e){r
 Array.prototype.slice.call(main.querySelectorAll('div,section')).forEach(function(el){
 if(el.classList.contains('welux-widget')||el.closest('.welux-cards,.welux-services,.welux-widget,.welux-widget-row'))return;
 if(el.closest('#demo-cv-interactivo'))return; /* Isla Claudia: sección oscura diseñada — nunca añadirle .welux-widget (causa raíz verificada 12/11) */
+if(el.closest('[data-welux-media]'))return; /* Pasada 68 (12/11): secciones con media diseñada (heroes, showreel) — nunca convertirlas; mismo marcador que sweep/contrasteTexto. Sin esto, el bucle 2 aclaraba #showreel (bg-ebony-deep) y la tarjeta FLAGSHIP del hero de Gear/Films. */
 if(el.closest('form')||el.querySelector('video'))return;
 if(h1&&el.contains(h1))return;
 if(!el.querySelector('h2,h3,h4'))return;

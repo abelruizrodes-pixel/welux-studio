@@ -833,7 +833,7 @@ Array.prototype.slice.call(document.querySelectorAll('footer h4')).forEach(funct
 'use strict';
 try{
 if(!document.querySelector('link[href*="welux-v2.css"]')){
-var l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/welux-v2.css?v=6';document.head.appendChild(l);
+var l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/welux-v2.css?v=7';document.head.appendChild(l);
 }
 function mark(){
 var main=document.querySelector('main');if(!main)return;
@@ -842,6 +842,7 @@ function isDark(el){var c;try{c=getComputedStyle(el).backgroundColor;}catch(e){r
 function bigNum(k){var els=[k].concat(Array.prototype.slice.call(k.querySelectorAll('*')));for(var i=0;i<els.length;i++){var fs=parseFloat(getComputedStyle(els[i]).fontSize);if(fs>=18&&/\d/.test(els[i].textContent||''))return true;}return false;}
 Array.prototype.slice.call(main.querySelectorAll('div,section')).forEach(function(p){
 if(p.classList.contains('welux-widget-row')||p.closest('.welux-cards,.welux-services,.welux-widget-row'))return;
+if(p.closest('#demo-cv-interactivo'))return; /* Isla Claudia: componente oscuro diseñado — nunca convertir sus stats en widgets claros (causa raíz verificada 12/11) */
 if(p.closest('form'))return;
 if(h1&&p.contains(h1))return;
 var kids=Array.prototype.slice.call(p.children).filter(function(k){return k.nodeType===1&&!k.querySelector('video');});
@@ -853,6 +854,7 @@ kids.forEach(function(k){k.classList.add('welux-widget');});
 });
 Array.prototype.slice.call(main.querySelectorAll('div,section')).forEach(function(el){
 if(el.classList.contains('welux-widget')||el.closest('.welux-cards,.welux-services,.welux-widget,.welux-widget-row'))return;
+if(el.closest('#demo-cv-interactivo'))return; /* Isla Claudia: sección oscura diseñada — nunca añadirle .welux-widget (causa raíz verificada 12/11) */
 if(el.closest('form')||el.querySelector('video'))return;
 if(h1&&el.contains(h1))return;
 if(!el.querySelector('h2,h3,h4'))return;

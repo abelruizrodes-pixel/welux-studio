@@ -833,25 +833,13 @@ Array.prototype.slice.call(document.querySelectorAll('footer h4')).forEach(funct
 'use strict';
 try{
 if(!document.querySelector('link[href*="welux-v2.css"]')){
-var l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/welux-v2.css?v=7';document.head.appendChild(l);
+var l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/welux-v2.css?v=8';document.head.appendChild(l);
 }
 function mark(){
 var main=document.querySelector('main');if(!main)return;
 var h1=main.querySelector('h1');
 function isDark(el){var c;try{c=getComputedStyle(el).backgroundColor;}catch(e){return false;}if(!c)return false;var m=c.match(/rgba?\((\d+)\D+(\d+)\D+(\d+)/);if(!m)return false;if(m.length>4&&parseFloat(m[4])<0.5)return false;return (+m[1])+(+m[2])+(+m[3])<380;}
-function bigNum(k){var els=[k].concat(Array.prototype.slice.call(k.querySelectorAll('*')));for(var i=0;i<els.length;i++){var fs=parseFloat(getComputedStyle(els[i]).fontSize);if(fs>=18&&/\d/.test(els[i].textContent||''))return true;}return false;}
-Array.prototype.slice.call(main.querySelectorAll('div,section')).forEach(function(p){
-if(p.classList.contains('welux-widget-row')||p.closest('.welux-cards,.welux-services,.welux-widget-row'))return;
-if(p.closest('#demo-cv-interactivo'))return; /* Isla Claudia: componente oscuro diseñado — nunca convertir sus stats en widgets claros (causa raíz verificada 12/11) */
-if(p.closest('form'))return;
-if(h1&&p.contains(h1))return;
-var kids=Array.prototype.slice.call(p.children).filter(function(k){return k.nodeType===1&&!k.querySelector('video');});
-if(kids.length<3||kids.length>6)return;
-var ok=kids.every(function(k){var t=(k.textContent||'').replace(/\s+/g,' ').trim();return t.length>0&&t.length<=90&&bigNum(k);});
-if(!ok)return;
-p.classList.add('welux-widget-row');
-kids.forEach(function(k){k.classList.add('welux-widget');});
-});
+/* Pasada 66 (12/11): bucle 1 (detector de filas .welux-widget-row) ELIMINADO — codigo muerto: 0 conversiones en runtime a 390/768/1024/1280/1919px en 36 cargas; su unico disparo historico fue la isla Claudia, hoy protegida por la guarda del bucle 2 + CSS !important. bigNum() tambien eliminado (solo lo usaba este bucle). */
 Array.prototype.slice.call(main.querySelectorAll('div,section')).forEach(function(el){
 if(el.classList.contains('welux-widget')||el.closest('.welux-cards,.welux-services,.welux-widget,.welux-widget-row'))return;
 if(el.closest('#demo-cv-interactivo'))return; /* Isla Claudia: sección oscura diseñada — nunca añadirle .welux-widget (causa raíz verificada 12/11) */

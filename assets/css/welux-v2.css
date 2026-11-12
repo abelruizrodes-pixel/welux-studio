@@ -25,6 +25,15 @@ h1,h2,h3,.font-headline{font-family:'Fraunces',Georgia,serif!important;letter-sp
 html.dark,html.dark body{background:var(--p-bg)!important}
 main,section,footer{background-color:transparent}
 main [class*="bg-[#0d141d]"],main [class*="bg-[#080f17]"],main [class*="bg-[#151c25]"],main [class*="bg-[#192029]"],main [class*="bg-[#232a34]"],main [class*="bg-[#1a1527]"],main [class*="bg-[#251a0e]"],footer [class*="bg-[#0d141d]"],footer [class*="bg-[#080f17]"]{background-color:var(--p-card)!important;border-color:var(--p-border)!important}
+/* Pasada 83: :27 convertia a crema todo el sistema oscuro DISENADO de la home dentro de <main> (pildora + 4 KPI del hero, 3 portal cards + pies /70, seccion Concierge + botones, cajas de codigo, chips bg-[#080f17]/90). Los tres hexes solo se usan en <main> en las 6 homes y cada uso es un elemento disenado oscuro; el footer queda fuera de <main> y no se toca. NO se toca :27 (las secciones inferiores de Gear/Films no usan estos hexes). Orden: planas, variantes, /90-151c25 al final para que las portal cards (bg 151c25/90 + hover 192029/95) descansen en su valor. */
+html main [class*="bg-[#151c25]"]{background-color:#151c25!important}
+html main [class*="bg-[#192029]"]{background-color:#192029!important}
+html main [class*="bg-[#080f17]"]{background-color:#080f17!important}
+html main [class*="bg-[#192029]/70"]{background-color:rgba(25,32,41,.7)!important}
+html main [class*="bg-[#080f17]/90"]{background-color:rgba(8,15,23,.9)!important}
+html main [class*="bg-[#192029]/90"]{background-color:rgba(25,32,41,.9)!important}
+html main [class*="bg-[#192029]/95"]{background-color:rgba(25,32,41,.95)!important}
+html main [class*="bg-[#151c25]/90"]{background-color:rgba(21,28,37,.9)!important}
 main .text-white,main [class*="text-[#dce3f0]"],main [class*="text-[#f5e8d3]"]{color:var(--p-ink)!important}
 [data-welux-media] h1,[data-welux-media] h2,[data-welux-media] h3,[data-welux-media] .text-white{color:#fff!important} /* Pasada 59: la paleta forzaba h1/.text-white a --p-heading/--p-ink con !important y anulaba el titular blanco del hero Gear/Films. */
 main section[data-welux-media]{background-color:#0d0e12!important} /* Pasada 60: la regla 'main,section,footer{background-color:transparent}' (sin capa) vence a la clase Tailwind bg-[#0d0e12] (Tailwind Play CDN genera sus utilidades dentro de @layer) y el fondo del body crema se veia a traves del hero; la excepcion restaura el fondo oscuro. */
@@ -112,6 +121,8 @@ header .welux-hero .hero-eyebrow,header .hero .hero-eyebrow{color:rgba(255,255,2
    una paleta; la elección se guarda en localStorage. */
 main{background-color:var(--p-bg)!important}
 main [class*="bg-white"]{background-color:var(--p-card)!important}
+/* Pasada 83: :114 convertia a crema los vidrios bg-white/10 disenados sobre fondos oscuros: el chip PRORES 4444 XQ del showreel (texto dorado #D6BE98 a 1,77:1 sobre crema, casi invisible; restaurado: ~10,7:1 sobre oscuro) y el chip 5 ESPECIALISTAS de la calculadora de Studio (texto #FBF9F5 sobre panel bg-ebony-deep). Solo esos dos contextos usan bg-white/10 sobre oscuro en todo el repo; los hover:bg-white/10 de la barra de idioma (Films) no se tocan. NO se toca :114. */
+[data-welux-media] [class*="bg-white/10"], .bg-ebony-deep [class*="bg-white/10"]{background-color:rgba(255,255,255,.1)!important}
 html[data-welux-palette] body > header.fixed{background:var(--p-header-bg)!important}
 html[data-welux-palette] body > header.fixed nav a{color:var(--p-ink)!important}
 

@@ -833,7 +833,7 @@ Array.prototype.slice.call(document.querySelectorAll('footer h4')).forEach(funct
 'use strict';
 try{
 if(!document.querySelector('link[href*="welux-v2.css"]')){
-var l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/welux-v2.css?v=5';document.head.appendChild(l);
+var l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/welux-v2.css?v=6';document.head.appendChild(l);
 }
 function mark(){
 var main=document.querySelector('main');if(!main)return;

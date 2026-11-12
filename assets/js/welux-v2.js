@@ -833,7 +833,7 @@ Array.prototype.slice.call(document.querySelectorAll('footer h4')).forEach(funct
 'use strict';
 try{
 if(!document.querySelector('link[href*="welux-v2.css"]')){
-var l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/welux-v2.css?v=10';document.head.appendChild(l);
+var l=document.createElement('link');l.rel='stylesheet';l.href='/assets/css/welux-v2.css?v=11';document.head.appendChild(l);
 }
 function mark(){
 var main=document.querySelector('main');if(!main)return;
@@ -867,7 +867,7 @@ var LANGS=['en','fr','de','pt','lu'];
 var rest=parts.slice();
 if(LANGS.indexOf(parts[0])>=0)rest=parts.slice(1);
 var slug=(rest[0]||'').replace(/\.html$/,'');
-if(rest.length===0||slug==='index'){if(!document.querySelector('script[src*="welux-backend.js"]')){var _wb=document.createElement('script');_wb.src='/assets/js/welux-backend.js?v=17';document.head.appendChild(_wb);}return;};
+if(rest.length===0||slug==='index'){if(!document.querySelector('script[src*="welux-backend.js"]')){var _wb=document.createElement('script');_wb.src='/assets/js/welux-backend.js?v=18';document.head.appendChild(_wb);}return;};
 var SKIP='.welux-card,.welux-widget,.welux-clauses,.welux-hero-button,.welux-palette-picker,.welux-palette-grid,.welux-idioma-flotante,#welux-footer-v2,.welux-resena-rate,.welux-resena-form';
 function lum(c){var m=c.match(/rgba?\((\d+)\D+(\d+)\D+(\d+)(?:\D+([\d.]+))?/);if(!m)return null;var a=m[4]===undefined?1:parseFloat(m[4]);return {sum:(+m[1])+(+m[2])+(+m[3]),a:a};}
 function sweep(){
@@ -892,7 +892,7 @@ var col=lum(cs.color);
 if(col&&col.a>0.5&&col.sum>500){el.style.setProperty('color','var(--p-ink)','important');}
 });
 }
-sweep();setTimeout(sweep,800);var _w=document.createElement('script');_w.src='/assets/js/welux-backend.js?v=17';document.head.appendChild(_w); /* Carga welux-backend.js: backend Cloudflare + D1, botones, idiomas y casita (2026-11-08). */
+sweep();setTimeout(sweep,800);var _w=document.createElement('script');_w.src='/assets/js/welux-backend.js?v=18';document.head.appendChild(_w); /* Carga welux-backend.js: backend Cloudflare + D1, botones, idiomas y casita (2026-11-08). */
 }catch(e){}
 })();
 

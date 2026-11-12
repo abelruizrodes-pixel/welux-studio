@@ -35,6 +35,9 @@ html main [class*="bg-[#192029]/90"]{background-color:rgba(25,32,41,.9)!importan
 html main [class*="bg-[#192029]/95"]{background-color:rgba(25,32,41,.95)!important}
 html main [class*="bg-[#151c25]/90"]{background-color:rgba(21,28,37,.9)!important}
 main .text-white,main [class*="text-[#dce3f0]"],main [class*="text-[#f5e8d3]"]{color:var(--p-ink)!important}
+/* Pasada 85: en las secciones oscuras DISENADAS de la home, :28 oscurecia los titulos .text-white (#43301f sobre oscuro, ~1:1) y la regla text-[#ffb95f] apagaba el dorado a #9a6f2b; se restauran blanco y dorado brillante SOLO aqui — el pie claro de las portal cards (#fbf0dc) NO se toca: sus spans .text-white siguen oscuros por :28. */
+html main article.portal-card h2.text-white,html main section#concierge h2.text-white,html main section#concierge .concierge-option span.text-white,html main section#concierge #concierge-title{color:#fff!important}
+html main article.portal-card [class*="text-[#ffb95f]"],html main section#concierge [class*="text-[#ffb95f]"],html main header [class*="text-[#ffb95f]"],html main [class*="bg-[#080f17]/90"] [class*="text-[#ffb95f]"]{color:#ffb95f!important}
 [data-welux-media] h1,[data-welux-media] h2,[data-welux-media] h3,[data-welux-media] .text-white{color:#fff!important} /* Pasada 59: la paleta forzaba h1/.text-white a --p-heading/--p-ink con !important y anulaba el titular blanco del hero Gear/Films. */
 main section[data-welux-media]{background-color:#0d0e12!important} /* Pasada 60: la regla 'main,section,footer{background-color:transparent}' (sin capa) vence a la clase Tailwind bg-[#0d0e12] (Tailwind Play CDN genera sus utilidades dentro de @layer) y el fondo del body crema se veia a traves del hero; la excepcion restaura el fondo oscuro. */
 main [class*="text-[#ffb95f]"],main [class*="text-[#ffcf85]"],main [class*="text-[#c96f3f]"]{color:var(--p-accent-deep)!important}
